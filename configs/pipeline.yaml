@@ -1,0 +1,67 @@
+# Pipeline Configuration for MD Anomaly Detection
+# This file defines parameters for reproducible pipeline runs
+
+# Random seeds for reproducibility
+seeds:
+  global: 42  # Master seed
+  kmeans: 42  # KMeans clustering
+  bootstrap: 123  # Bootstrap resampling
+  vamp: 456  # VAMPNet training
+
+# TICA parameters
+tica:
+  lag_candidates: [5, 10, 15, 20, 30, 50]  # Lag times to test
+  dim_candidates: [2, 3, 4, 5, 6, 8, 10]    # Dimensions to test
+  default_lag: 10
+  default_dim: 5
+
+# MSM parameters
+msm:
+  lag: 30  # MSM lag time
+  n_clusters: 30  # Number of KMeans clusters
+  connectivity: 'largest'  # Use largest connected set
+  reversible: true
+
+# Bootstrap parameters
+bootstrap:
+  n_iterations: 100  # Number of bootstrap samples
+  method: 'frames'  # 'frames' or 'blocks'
+  block_size: 10  # For block bootstrap
+  confidence_level: 0.95  # CI level
+
+# Model selection
+model_selection:
+  method: 'vamp2'  # VAMP-2 scoring
+  cv_folds: 5  # Cross-validation folds
+  validation_fraction: 0.2  # Fraction for validation
+
+# Feature extraction
+features:
+  rmsd_reference: 'first'  # Reference frame for RMSD
+  contact_cutoff: 0.8  # nm for CA-CA contacts
+  cache_features: true
+
+# Anomaly scoring v2 (Phase 3)
+scoring:
+  normalize_method: 'rank'  # 'rank' or 'quantile'
+  fusion_method: 'median'  # 'median' or 'mean'
+  window_size: 5  # Moving window for smoothing
+  signals:
+    - rarity
+    - transition_surprise
+    - local_density
+
+# Performance
+performance:
+  parallel: false
+  n_workers: 4
+  cache_dir: '.cache'
+
+# Paths
+paths:
+  topology: 'data/raw_trajectory/align_topol.pdb'
+  trajectory: 'data/raw_trajectory/trajectory_*.xtc'
+  output_dir: 'outputs'
+  derived_dir: 'data/derived'
+  models_dir: 'models'
+  reports_dir: 'reports'

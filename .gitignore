@@ -1,0 +1,27 @@
+# Runtime directories
+data/
+artifacts/
+results/
+outputs/
+exports/
+
+# Keep sample data
+!sample_data/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.venv/
+*.pyc
+
+# Large binary files
+*.xtc
+*.dcd
+
+# NumPy arrays (runtime generated)
+*.npy
+
+# Keep pre-computed case study
+!sample_data/**/*.npy
