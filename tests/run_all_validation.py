@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      tests/run_all_validation.py
+#  Description: Runs all 13 validation tests and saves results
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Comprehensive validation test runner.
@@ -15,6 +22,10 @@ from pathlib import Path
 import time
 
 
+
+# -------------------------------------------------------------- #
+# Function: run_test_file
+# -------------------------------------------------------------- #
 def run_test_file(test_file):
     """Run a single test file and return results."""
     print(f"\n{'='*70}")
@@ -74,6 +85,10 @@ def run_test_file(test_file):
         }
 
 
+
+# -------------------------------------------------------------- #
+# Function: save_results_markdown
+# -------------------------------------------------------------- #
 def save_results_markdown(results, output_path):
     """Write a human-readable Markdown report of all test results."""
     now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
@@ -139,6 +154,10 @@ def save_results_markdown(results, output_path):
     print(f"\n📄 Full report saved to: {output_path}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     """Run all validation tests."""
     print("="*70)

@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      features/compute_md_features.py
+#  Description: Physics feature extraction — RMSD, Rg, native contacts, φ/ψ dihedrals per frame
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Compute MD features from trajectory files.
@@ -12,6 +19,10 @@ import numpy as np
 import mdtraj as md
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_features
+# -------------------------------------------------------------- #
 def compute_features(topology_path, trajectory_path, stride=1, reference_frame=0):
     """
     Compute MD features from a trajectory.
@@ -78,6 +89,10 @@ def compute_features(topology_path, trajectory_path, stride=1, reference_frame=0
     return features, traj
 
 
+
+# -------------------------------------------------------------- #
+# Function: features_to_matrix
+# -------------------------------------------------------------- #
 def features_to_matrix(features, keys=None):
     """
     Convert feature dictionary to a feature matrix.

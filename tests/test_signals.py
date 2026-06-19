@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      tests/test_signals.py
+#  Description: Signal tests — rarity, transition surprise, local density unit tests
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Unit tests for signals.py module.
@@ -19,6 +26,10 @@ from scoring.signals import (
 )
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_rank_normalize
+# -------------------------------------------------------------- #
 def test_rank_normalize():
     """Test rank normalization."""
     print("[TEST] Rank normalization...")
@@ -37,6 +48,10 @@ def test_rank_normalize():
     print(f"  ✓ Normalized: {normalized}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_percentile_normalize
+# -------------------------------------------------------------- #
 def test_percentile_normalize():
     """Test percentile normalization."""
     print("[TEST] Percentile normalization...")
@@ -54,6 +69,10 @@ def test_percentile_normalize():
     print(f"  ✓ Normalized: {normalized}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_normalize_scores_global
+# -------------------------------------------------------------- #
 def test_normalize_scores_global():
     """Test global normalization."""
     print("[TEST] Global normalization...")
@@ -72,6 +91,10 @@ def test_normalize_scores_global():
     print(f"  ✓ Percentile range: [{norm_perc.min():.3f}, {norm_perc.max():.3f}]")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_normalize_scores_per_frame
+# -------------------------------------------------------------- #
 def test_normalize_scores_per_frame():
     """Test per-frame normalization."""
     print("[TEST] Per-frame normalization...")
@@ -91,6 +114,10 @@ def test_normalize_scores_per_frame():
     print(f"  ✓ Normalized {norm.shape[0]} frames independently")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_dynamic_anomaly_signals
+# -------------------------------------------------------------- #
 def test_dynamic_anomaly_signals():
     """Test dynamic anomaly signal computation."""
     print("[TEST] Dynamic anomaly signals...")
@@ -140,6 +167,10 @@ def test_dynamic_anomaly_signals():
     print(f"  ✓ Density range: [{signals['local_density'].min():.3f}, {signals['local_density'].max():.3f}]")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_aggregate_frame_to_residue
+# -------------------------------------------------------------- #
 def test_aggregate_frame_to_residue():
     """Test frame-to-residue aggregation."""
     print("[TEST] Frame-to-residue aggregation...")
@@ -173,6 +204,10 @@ def test_aggregate_frame_to_residue():
     print(f"  ✓ Range: [{residue_scores.min():.3f}, {residue_scores.max():.3f}]")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_normalization_consistency
+# -------------------------------------------------------------- #
 def test_normalization_consistency():
     """Test that normalization methods give consistent orderings."""
     print("[TEST] Normalization consistency...")
@@ -191,6 +226,10 @@ def test_normalization_consistency():
     print(f"  ✓ Original order preserved")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_edge_cases
+# -------------------------------------------------------------- #
 def test_edge_cases():
     """Test edge cases."""
     print("[TEST] Edge cases...")
@@ -216,6 +255,10 @@ def test_edge_cases():
     print(f"  ✓ Edge cases handled correctly")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_normalization_ranges
+# -------------------------------------------------------------- #
 def test_normalization_ranges():
     """Test that all normalization methods respect [0,1] range."""
     print("[TEST] Normalization ranges...")
@@ -237,6 +280,10 @@ def test_normalization_ranges():
     print(f"  ✓ All methods respect [0,1] range across distributions")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_signal_properties
+# -------------------------------------------------------------- #
 def test_signal_properties():
     """Test that signals have expected properties."""
     print("[TEST] Signal properties...")
@@ -277,6 +324,10 @@ def test_signal_properties():
     print(f"  ✓ Common state (0) rarity: {mean_rarity_state0:.3f}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     """Run all tests."""
     print("="*70)

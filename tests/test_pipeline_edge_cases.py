@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      tests/test_pipeline_edge_cases.py
+#  Description: Edge case tests — short trajectories, zero-variance features, disconnected states
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Edge case tests for the pipeline.
@@ -28,6 +35,10 @@ from msm.select_lag_and_dim import compute_vamp2_score
 from msm.bootstrap_msm import bootstrap_resample
 
 
+
+# -------------------------------------------------------------- #
+# Class: MockMSM
+# -------------------------------------------------------------- #
 class MockMSM:
     """Mock MSM for testing."""
     def __init__(self, n_states=5, pi=None, P=None):
@@ -49,6 +60,10 @@ class MockMSM:
 # Test: Very Short Trajectories
 # ============================================================================
 
+
+# -------------------------------------------------------------- #
+# Function: test_very_short_trajectory_10_frames
+# -------------------------------------------------------------- #
 def test_very_short_trajectory_10_frames():
     """Test with only 10 frames - should handle gracefully."""
     print("[TEST] Very short trajectory (10 frames)...")
@@ -86,6 +101,10 @@ def test_very_short_trajectory_10_frames():
         raise
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_very_short_trajectory_50_frames
+# -------------------------------------------------------------- #
 def test_very_short_trajectory_50_frames():
     """Test with 50 frames - minimal viable trajectory."""
     print("[TEST] Short trajectory (50 frames)...")
@@ -116,6 +135,10 @@ def test_very_short_trajectory_50_frames():
     print(f"  ✓ Computed signals for {n_frames} frames successfully")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_vamp2_short_trajectory
+# -------------------------------------------------------------- #
 def test_vamp2_short_trajectory():
     """Test VAMP-2 with insufficient data."""
     print("[TEST] VAMP-2 with short trajectory...")
@@ -136,6 +159,10 @@ def test_vamp2_short_trajectory():
 # Test: Low/Zero Variance Features
 # ============================================================================
 
+
+# -------------------------------------------------------------- #
+# Function: test_constant_features
+# -------------------------------------------------------------- #
 def test_constant_features():
     """Test with constant (zero variance) features."""
     print("[TEST] Constant features...")
@@ -153,6 +180,10 @@ def test_constant_features():
     print("  ✓ Constant features handled correctly")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_near_zero_variance
+# -------------------------------------------------------------- #
 def test_near_zero_variance():
     """Test with very low variance features."""
     print("[TEST] Near-zero variance features...")
@@ -169,6 +200,10 @@ def test_near_zero_variance():
     print("  ✓ Low variance features handled correctly")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_single_unique_value
+# -------------------------------------------------------------- #
 def test_single_unique_value():
     """Test with all identical values."""
     print("[TEST] Single unique value...")
@@ -188,6 +223,10 @@ def test_single_unique_value():
 # Test: Disconnected MSM States
 # ============================================================================
 
+
+# -------------------------------------------------------------- #
+# Function: test_disconnected_states
+# -------------------------------------------------------------- #
 def test_disconnected_states():
     """Test MSM with disconnected/absorbing states."""
     print("[TEST] Disconnected MSM states...")
@@ -226,6 +265,10 @@ def test_disconnected_states():
     print("  ✓ Disconnected states handled correctly")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_single_state_trajectory
+# -------------------------------------------------------------- #
 def test_single_state_trajectory():
     """Test trajectory stuck in one state."""
     print("[TEST] Single-state trajectory...")
@@ -262,6 +305,10 @@ def test_single_state_trajectory():
 # Test: Extreme Outliers
 # ============================================================================
 
+
+# -------------------------------------------------------------- #
+# Function: test_extreme_outlier_coordinates
+# -------------------------------------------------------------- #
 def test_extreme_outlier_coordinates():
     """Test with extreme outlier in tICA coordinates."""
     print("[TEST] Extreme outlier coordinates...")
@@ -297,6 +344,10 @@ def test_extreme_outlier_coordinates():
     print(f"  ✓ Outlier detected with density score {outlier_density:.3f}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_extreme_probability_values
+# -------------------------------------------------------------- #
 def test_extreme_probability_values():
     """Test with extreme probability values in MSM."""
     print("[TEST] Extreme probability values...")
@@ -337,6 +388,10 @@ def test_extreme_probability_values():
 # Test: Empty and Edge Arrays
 # ============================================================================
 
+
+# -------------------------------------------------------------- #
+# Function: test_empty_array_normalization
+# -------------------------------------------------------------- #
 def test_empty_array_normalization():
     """Test normalization of empty arrays."""
     print("[TEST] Empty array normalization...")
@@ -352,6 +407,10 @@ def test_empty_array_normalization():
     print("  ✓ Empty arrays handled correctly")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_single_element_array
+# -------------------------------------------------------------- #
 def test_single_element_array():
     """Test with single-element arrays."""
     print("[TEST] Single element array...")
@@ -364,6 +423,10 @@ def test_single_element_array():
     print("  ✓ Single element arrays handled correctly")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_two_element_array
+# -------------------------------------------------------------- #
 def test_two_element_array():
     """Test with two-element arrays."""
     print("[TEST] Two element array...")
@@ -380,6 +443,10 @@ def test_two_element_array():
 # Test: Bootstrap Edge Cases
 # ============================================================================
 
+
+# -------------------------------------------------------------- #
+# Function: test_bootstrap_preserves_length
+# -------------------------------------------------------------- #
 def test_bootstrap_preserves_length():
     """Test bootstrap resampling preserves trajectory length."""
     print("[TEST] Bootstrap preserves length...")
@@ -395,6 +462,10 @@ def test_bootstrap_preserves_length():
     print("  ✓ Bootstrap preserves trajectory length")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_bootstrap_short_trajectory
+# -------------------------------------------------------------- #
 def test_bootstrap_short_trajectory():
     """Test bootstrap with very short trajectory."""
     print("[TEST] Bootstrap short trajectory...")
@@ -415,6 +486,10 @@ def test_bootstrap_short_trajectory():
 # Test: Numerical Stability
 # ============================================================================
 
+
+# -------------------------------------------------------------- #
+# Function: test_log_zero_protection
+# -------------------------------------------------------------- #
 def test_log_zero_protection():
     """Test protection against log(0) in transition surprise."""
     print("[TEST] Log(0) protection...")
@@ -455,6 +530,10 @@ def test_log_zero_protection():
     print("  ✓ Log(0) protected with epsilon")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_divide_by_zero_protection
+# -------------------------------------------------------------- #
 def test_divide_by_zero_protection():
     """Test protection against division by zero in normalization."""
     print("[TEST] Division by zero protection...")
@@ -474,6 +553,10 @@ def test_divide_by_zero_protection():
 # Test: Negative and Special Values
 # ============================================================================
 
+
+# -------------------------------------------------------------- #
+# Function: test_negative_coordinates
+# -------------------------------------------------------------- #
 def test_negative_coordinates():
     """Test with negative tICA coordinates."""
     print("[TEST] Negative coordinates...")
@@ -504,6 +587,10 @@ def test_negative_coordinates():
     print("  ✓ Negative coordinates handled correctly")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_invalid_state_indices
+# -------------------------------------------------------------- #
 def test_invalid_state_indices():
     """Test handling of out-of-range state indices."""
     print("[TEST] Invalid state indices...")
@@ -537,6 +624,10 @@ def test_invalid_state_indices():
     print("  ✓ Invalid state indices handled correctly")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_large_trajectory_optimization
+# -------------------------------------------------------------- #
 def test_large_trajectory_optimization():
     """Test auto-optimization for large trajectories."""
     print("[TEST] Large trajectory optimization...")
@@ -583,6 +674,10 @@ def test_large_trajectory_optimization():
     print(f"  ✓ All signals computed correctly")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_adaptive_parameter_scaling
+# -------------------------------------------------------------- #
 def test_adaptive_parameter_scaling():
     """Test that adaptive parameters scale correctly with trajectory size."""
     print("[TEST] Adaptive parameter scaling...")
@@ -621,6 +716,10 @@ def test_adaptive_parameter_scaling():
 # Main Test Runner
 # ============================================================================
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     """Run all edge case tests."""
     print("="*70)

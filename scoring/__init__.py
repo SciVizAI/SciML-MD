@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      scoring/__init__.py
+#  Description: Scoring package initialiser
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 """
 Enhanced anomaly scoring module with multi-signal fusion.
 """

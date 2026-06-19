@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      msm/__init__.py
+#  Description: MSM package initialiser
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 """
 MSM module for model selection and uncertainty quantification.
 """

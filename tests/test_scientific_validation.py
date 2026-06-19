@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      tests/test_scientific_validation.py
+#  Description: Scientific validation tests — Chapman-Kolmogorov, implied timescales
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Unit tests for scientific validation tools.
@@ -23,6 +30,10 @@ from msm.validation import (
 )
 
 
+
+# -------------------------------------------------------------- #
+# Function: create_synthetic_msm_data
+# -------------------------------------------------------------- #
 def create_synthetic_msm_data(n_states=10, T=1000, seed=42):
     """Create synthetic MSM data for testing."""
     np.random.seed(seed)
@@ -39,6 +50,10 @@ def create_synthetic_msm_data(n_states=10, T=1000, seed=42):
     return dtraj
 
 
+
+# -------------------------------------------------------------- #
+# Function: create_well_behaved_features
+# -------------------------------------------------------------- #
 def create_well_behaved_features(T=500, seed=42):
     """Create features with temporal structure (good for tICA)."""
     np.random.seed(seed)
@@ -55,6 +70,10 @@ def create_well_behaved_features(T=500, seed=42):
     return X
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_chapman_kolmogorov_basic
+# -------------------------------------------------------------- #
 def test_chapman_kolmogorov_basic():
     """Test Chapman-Kolmogorov test with synthetic data."""
     print("\n[TEST] Chapman-Kolmogorov test - basic functionality")
@@ -81,6 +100,10 @@ def test_chapman_kolmogorov_basic():
     assert mean_error < 0.5, "CK test error should be reasonable for synthetic data"
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_implied_timescales_convergence
+# -------------------------------------------------------------- #
 def test_implied_timescales_convergence():
     """Test implied timescales computation."""
     print("\n[TEST] Implied timescales convergence")
@@ -111,6 +134,10 @@ def test_implied_timescales_convergence():
     print(f"  ✓ Test completed")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_vamp2_cross_validation
+# -------------------------------------------------------------- #
 def test_vamp2_cross_validation():
     """Test VAMP-2 cross-validation."""
     print("\n[TEST] VAMP-2 cross-validation")
@@ -131,6 +158,10 @@ def test_vamp2_cross_validation():
     print(f"  ✓ Test completed")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_vamp2_cv_reproducibility
+# -------------------------------------------------------------- #
 def test_vamp2_cv_reproducibility():
     """Test that CV is reproducible with same seed."""
     print("\n[TEST] VAMP-2 CV reproducibility")
@@ -147,6 +178,10 @@ def test_vamp2_cv_reproducibility():
     print(f"  ✓ Reproducible")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_signal_correlation_analysis
+# -------------------------------------------------------------- #
 def test_signal_correlation_analysis():
     """Test signal correlation analysis."""
     print("\n[TEST] Signal correlation analysis")
@@ -181,6 +216,10 @@ def test_signal_correlation_analysis():
     print(f"  ✓ Test completed")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_stationary_distribution_validation_pass
+# -------------------------------------------------------------- #
 def test_stationary_distribution_validation_pass():
     """Test stationary distribution validation with good match."""
     print("\n[TEST] Stationary distribution validation - passing case")
@@ -207,6 +246,10 @@ def test_stationary_distribution_validation_pass():
     assert diagnostics['max_relative_error'] < 0.2
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_stationary_distribution_validation_fail
+# -------------------------------------------------------------- #
 def test_stationary_distribution_validation_fail():
     """Test stationary distribution validation with poor match."""
     print("\n[TEST] Stationary distribution validation - failing case")
@@ -227,6 +270,10 @@ def test_stationary_distribution_validation_fail():
     assert not is_valid, "Should fail validation with large error"
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_validation_report_generation
+# -------------------------------------------------------------- #
 def test_validation_report_generation():
     """Test validation report generation."""
     print("\n[TEST] Validation report generation")
@@ -274,6 +321,10 @@ def test_validation_report_generation():
         print(f"  ✓ Test completed")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_edge_case_short_trajectory
+# -------------------------------------------------------------- #
 def test_edge_case_short_trajectory():
     """Test validation with very short trajectory."""
     print("\n[TEST] Edge case - short trajectory")
@@ -293,6 +344,10 @@ def test_edge_case_short_trajectory():
         raise
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_edge_case_disconnected_states
+# -------------------------------------------------------------- #
 def test_edge_case_disconnected_states():
     """Test validation with disconnected MSM states."""
     print("\n[TEST] Edge case - disconnected states")
@@ -312,6 +367,10 @@ def test_edge_case_disconnected_states():
         # This is acceptable - disconnected states are a known limitation
 
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     """Run all tests."""
     print("="*70)

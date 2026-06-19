@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      msm/validation.py
+#  Description: MSM validation — Chapman-Kolmogorov test, implied timescale analysis
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Scientific validation tools for MSM and TICA models.
@@ -20,6 +27,10 @@ from deeptime.decomposition import TICA
 COVARIANCE_REGULARIZATION = 1e-6  # Small value added to diagonal for numerical stability
 
 
+
+# -------------------------------------------------------------- #
+# Function: chapman_kolmogorov_test
+# -------------------------------------------------------------- #
 def chapman_kolmogorov_test(dtraj: np.ndarray, 
                             msm_lag: int, 
                             n_lags: int = 5,
@@ -79,6 +90,10 @@ def chapman_kolmogorov_test(dtraj: np.ndarray,
     return test_lags, np.array(predicted_P), np.array(estimated_P)
 
 
+
+# -------------------------------------------------------------- #
+# Function: implied_timescales_convergence
+# -------------------------------------------------------------- #
 def implied_timescales_convergence(dtraj: np.ndarray,
                                    lag_range: Optional[List[int]] = None,
                                    n_its: int = 5) -> Tuple[np.ndarray, np.ndarray]:
@@ -132,6 +147,10 @@ def implied_timescales_convergence(dtraj: np.ndarray,
     return np.array(valid_lags), np.array(timescales_list)
 
 
+
+# -------------------------------------------------------------- #
+# Function: vamp2_cross_validation
+# -------------------------------------------------------------- #
 def vamp2_cross_validation(X: np.ndarray,
                            lag: int,
                            dim: int,
@@ -215,6 +234,10 @@ def vamp2_cross_validation(X: np.ndarray,
     return float(np.mean(scores)), float(np.std(scores))
 
 
+
+# -------------------------------------------------------------- #
+# Function: signal_correlation_analysis
+# -------------------------------------------------------------- #
 def signal_correlation_analysis(signals: Dict[str, np.ndarray]) -> pd.DataFrame:
     """
     Analyze correlation between anomaly detection signals.
@@ -237,6 +260,10 @@ def signal_correlation_analysis(signals: Dict[str, np.ndarray]) -> pd.DataFrame:
     return corr
 
 
+
+# -------------------------------------------------------------- #
+# Function: validate_stationary_distribution
+# -------------------------------------------------------------- #
 def validate_stationary_distribution(pi: np.ndarray,
                                      dtraj: np.ndarray,
                                      tolerance: float = 0.1) -> Tuple[bool, Dict]:
@@ -280,6 +307,10 @@ def validate_stationary_distribution(pi: np.ndarray,
     return is_valid, diagnostics
 
 
+
+# -------------------------------------------------------------- #
+# Function: plot_validation_summary
+# -------------------------------------------------------------- #
 def plot_validation_summary(output_dir: Path,
                            ck_test_data: Optional[Tuple] = None,
                            its_data: Optional[Tuple] = None,
@@ -362,6 +393,10 @@ def plot_validation_summary(output_dir: Path,
         print(f"  ✓ Saved signal correlation plot to {output_dir / 'signal_correlations.png'}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: generate_validation_report
+# -------------------------------------------------------------- #
 def generate_validation_report(output_file: Path,
                                ck_results: Optional[Dict] = None,
                                its_results: Optional[Dict] = None,

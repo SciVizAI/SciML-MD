@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      run_all_proteins.py
+#  Description: Batch ML pipeline orchestrator — runs all 5 steps for every protein in data/
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Batch ML pipeline runner for all protein datasets in data/.
@@ -52,6 +59,10 @@ TRAJ_NAMES = ("traj.xtc", "traj.dcd", "trajectory.xtc", "trajectory.dcd")
 # Discovery helpers
 # ---------------------------------------------------------------------------
 
+
+# -------------------------------------------------------------- #
+# Function: find_protein_dirs
+# -------------------------------------------------------------- #
 def find_protein_dirs(data_dir):
     """
     Return all sub-directories of *data_dir* that are valid protein datasets.
@@ -97,6 +108,10 @@ def find_protein_dirs(data_dir):
 # ML pipeline steps
 # ---------------------------------------------------------------------------
 
+
+# -------------------------------------------------------------- #
+# Function: compute_features
+# -------------------------------------------------------------- #
 def compute_features(topology_path, trajectory_path, stride=1):
     """
     Step 1 — Extract MD features from a trajectory.
@@ -122,6 +137,10 @@ def compute_features(topology_path, trajectory_path, stride=1):
     return X, traj
 
 
+
+# -------------------------------------------------------------- #
+# Function: run_tica
+# -------------------------------------------------------------- #
 def run_tica(X, lag=10, dim=5):
     """
     Step 2 — Time-lagged Independent Component Analysis.
@@ -146,6 +165,10 @@ def run_tica(X, lag=10, dim=5):
     return Y, tica_model
 
 
+
+# -------------------------------------------------------------- #
+# Function: cluster_states
+# -------------------------------------------------------------- #
 def cluster_states(Y, n_clusters=20, seed=42):
     """
     Step 3 — Cluster tICA coordinates into discrete conformational states.
@@ -174,6 +197,10 @@ def cluster_states(Y, n_clusters=20, seed=42):
     return dtraj, kmeans_model
 
 
+
+# -------------------------------------------------------------- #
+# Function: build_msm
+# -------------------------------------------------------------- #
 def build_msm(dtraj, lag=10):
     """
     Step 4 — Build a reversible Maximum Likelihood MSM.
@@ -199,6 +226,10 @@ def build_msm(dtraj, lag=10):
     return msm, P, pi
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_anomaly_signals
+# -------------------------------------------------------------- #
 def compute_anomaly_signals(msm, dtraj, Y, lag_msm=10, k_neighbors=10, window=5):
     """
     Step 5 — Compute per-frame anomaly scores using kinetic + density signals.
@@ -242,6 +273,10 @@ def compute_anomaly_signals(msm, dtraj, Y, lag_msm=10, k_neighbors=10, window=5)
     return frame_scores, components
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_residue_scores
+# -------------------------------------------------------------- #
 def compute_residue_scores(traj, frame_scores):
     """
     Aggregate per-frame anomaly scores to per-residue scores.
@@ -296,6 +331,10 @@ def compute_residue_scores(traj, frame_scores):
 # Per-protein pipeline orchestrator
 # ---------------------------------------------------------------------------
 
+
+# -------------------------------------------------------------- #
+# Function: run_pipeline
+# -------------------------------------------------------------- #
 def run_pipeline(
     pdb_id,
     topology_path,
@@ -424,6 +463,10 @@ def run_pipeline(
 # CLI
 # ---------------------------------------------------------------------------
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     parser = argparse.ArgumentParser(
         description="Run the full ML anomaly-detection pipeline for all proteins in data/",

@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      tests/test_statistical_validation.py
+#  Description: Statistical validation tests — bootstrap confidence intervals and signal stability
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Statistical validation tests for ML pipeline.
@@ -18,6 +25,10 @@ from scipy import stats
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 
+
+# -------------------------------------------------------------- #
+# Function: cohens_d
+# -------------------------------------------------------------- #
 def cohens_d(group1, group2):
     """
     Calculate Cohen's d effect size.
@@ -40,6 +51,10 @@ def cohens_d(group1, group2):
     return d
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_anomaly_detection_statistical_power
+# -------------------------------------------------------------- #
 def test_anomaly_detection_statistical_power():
     """
     Test that anomaly detection has sufficient statistical power.
@@ -77,6 +92,10 @@ def test_anomaly_detection_statistical_power():
     print(f"  ✓ Sufficient statistical power")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_multiple_testing_correction
+# -------------------------------------------------------------- #
 def test_multiple_testing_correction():
     """
     Test multiple testing correction (Benjamini-Hochberg).
@@ -125,6 +144,10 @@ def test_multiple_testing_correction():
     print(f"  ✓ Multiple testing properly controlled")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_bootstrap_confidence_intervals
+# -------------------------------------------------------------- #
 def test_bootstrap_confidence_intervals():
     """
     Test bootstrap confidence interval estimation.
@@ -175,6 +198,10 @@ def test_bootstrap_confidence_intervals():
     print(f"  ✓ Bootstrap CI computed successfully")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_normality_testing
+# -------------------------------------------------------------- #
 def test_normality_testing():
     """
     Test normality assumption using Shapiro-Wilk test.
@@ -202,6 +229,10 @@ def test_normality_testing():
     print(f"  ✓ Normality testing works correctly")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_correlation_significance
+# -------------------------------------------------------------- #
 def test_correlation_significance():
     """
     Test significance of correlations.
@@ -238,6 +269,10 @@ def test_correlation_significance():
     print(f"  ✓ Correlation testing works")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_distribution_comparison_ks
+# -------------------------------------------------------------- #
 def test_distribution_comparison_ks():
     """
     Test distribution comparison using Kolmogorov-Smirnov test.
@@ -267,6 +302,10 @@ def test_distribution_comparison_ks():
     print(f"  ✓ KS test works correctly")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_variance_homogeneity_levene
+# -------------------------------------------------------------- #
 def test_variance_homogeneity_levene():
     """
     Test variance homogeneity using Levene's test.
@@ -296,6 +335,10 @@ def test_variance_homogeneity_levene():
     print(f"  ✓ Levene's test works correctly")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_outlier_detection_mad
+# -------------------------------------------------------------- #
 def test_outlier_detection_mad():
     """
     Test outlier detection using Median Absolute Deviation (MAD).
@@ -333,6 +376,10 @@ def test_outlier_detection_mad():
     print(f"  ✓ Outlier detection working")
 
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     """Run all statistical validation tests."""
     print("="*70)

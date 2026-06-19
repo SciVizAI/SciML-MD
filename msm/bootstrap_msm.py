@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      msm/bootstrap_msm.py
+#  Description: Bootstrap uncertainty quantification for stationary distribution and transition matrix
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Bootstrap MSM for uncertainty quantification.
@@ -18,6 +25,10 @@ from deeptime.clustering import KMeans
 from deeptime.markov.msm import MaximumLikelihoodMSM
 
 
+
+# -------------------------------------------------------------- #
+# Function: load_config
+# -------------------------------------------------------------- #
 def load_config(config_path='configs/pipeline.yaml'):
     """Load configuration from YAML file."""
     config_path = Path(config_path)
@@ -27,6 +38,10 @@ def load_config(config_path='configs/pipeline.yaml'):
         return yaml.safe_load(f)
 
 
+
+# -------------------------------------------------------------- #
+# Function: bootstrap_resample
+# -------------------------------------------------------------- #
 def bootstrap_resample(X, method='frames', block_size=10, seed=None):
     """
     Create a bootstrap sample from trajectory.
@@ -67,6 +82,10 @@ def bootstrap_resample(X, method='frames', block_size=10, seed=None):
         raise ValueError(f"Unknown bootstrap method: {method}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: fit_msm_pipeline
+# -------------------------------------------------------------- #
 def fit_msm_pipeline(X, lag_tica, dim_tica, n_clusters, lag_msm, seed_kmeans):
     """
     Fit complete MSM pipeline: TICA -> KMeans -> MSM.
@@ -97,6 +116,10 @@ def fit_msm_pipeline(X, lag_tica, dim_tica, n_clusters, lag_msm, seed_kmeans):
     return msm, dtraj
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_mfpts
+# -------------------------------------------------------------- #
 def compute_mfpts(msm):
     """
     Compute mean first passage times between all state pairs.
@@ -135,6 +158,10 @@ def compute_mfpts(msm):
     return mfpts
 
 
+
+# -------------------------------------------------------------- #
+# Function: bootstrap_msm
+# -------------------------------------------------------------- #
 def bootstrap_msm(features_path, output_dir, config_path=None, 
                   lag_tica=None, dim_tica=None):
     """
@@ -321,6 +348,10 @@ def bootstrap_msm(features_path, output_dir, config_path=None,
     print(f"  Saved metadata to {meta_path}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     parser = argparse.ArgumentParser(
         description='Bootstrap MSM for uncertainty quantification'

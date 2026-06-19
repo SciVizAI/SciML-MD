@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      msm/select_lag_and_dim.py
+#  Description: VAMP-2 hyperparameter grid search — selects optimal tICA lag and dimension
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 VAMP-2 based model selection for TICA lag time and dimensionality.
@@ -17,6 +24,10 @@ from deeptime.decomposition import VAMP
 from deeptime.util.data import timeshifted_split
 
 
+
+# -------------------------------------------------------------- #
+# Function: load_config
+# -------------------------------------------------------------- #
 def load_config(config_path='configs/pipeline.yaml'):
     """Load configuration from YAML file."""
     config_path = Path(config_path)
@@ -26,6 +37,10 @@ def load_config(config_path='configs/pipeline.yaml'):
         return yaml.safe_load(f)
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_vamp2_score
+# -------------------------------------------------------------- #
 def compute_vamp2_score(X, lag, dim, validation_fraction=0.2, seed=42):
     """
     Compute VAMP-2 score for given lag and dimensionality.
@@ -87,6 +102,10 @@ def compute_vamp2_score(X, lag, dim, validation_fraction=0.2, seed=42):
         return -np.inf
 
 
+
+# -------------------------------------------------------------- #
+# Function: select_lag_and_dim
+# -------------------------------------------------------------- #
 def select_lag_and_dim(features_path, output_dir, config_path=None):
     """
     Perform grid search to select optimal TICA lag and dimensionality.
@@ -169,6 +188,10 @@ def select_lag_and_dim(features_path, output_dir, config_path=None):
     return best_params, best_score
 
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     parser = argparse.ArgumentParser(
         description='Select optimal TICA lag and dimensionality using VAMP-2'

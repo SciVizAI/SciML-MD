@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      scripts/download_pdb_dataset.py
+#  Description: RCSB PDB Search API client — filters and downloads protein structures
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Download small protein structures from the RCSB Protein Data Bank.
@@ -23,6 +30,10 @@ RCSB_SEARCH_API = "https://search.rcsb.org/rcsbsearch/v2/query"
 RCSB_DOWNLOAD_URL = "https://files.rcsb.org/download/{pdb_id}.pdb"
 
 
+
+# -------------------------------------------------------------- #
+# Function: build_search_query
+# -------------------------------------------------------------- #
 def build_search_query(max_residues=150, max_resolution=3.0, rows=200):
     """
     Build RCSB search query for small, single-chain protein structures.
@@ -86,6 +97,10 @@ def build_search_query(max_residues=150, max_resolution=3.0, rows=200):
     }
 
 
+
+# -------------------------------------------------------------- #
+# Function: search_pdb
+# -------------------------------------------------------------- #
 def search_pdb(max_residues=150, max_resolution=3.0, rows=200):
     """
     Query RCSB PDB search API and return a list of matching PDB IDs.
@@ -121,6 +136,10 @@ def search_pdb(max_residues=150, max_resolution=3.0, rows=200):
     return pdb_ids
 
 
+
+# -------------------------------------------------------------- #
+# Function: download_pdb
+# -------------------------------------------------------------- #
 def download_pdb(pdb_id, data_dir, retries=3, delay=1.0):
     """
     Download a single PDB structure and save it as topology.pdb.
@@ -171,6 +190,10 @@ def download_pdb(pdb_id, data_dir, retries=3, delay=1.0):
     return "failed"
 
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     parser = argparse.ArgumentParser(
         description="Download small protein structures from RCSB PDB",

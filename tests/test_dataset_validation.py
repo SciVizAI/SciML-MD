@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      tests/test_dataset_validation.py
+#  Description: Dataset validation tests — trajectory and topology integrity checks
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Dataset quality validation tests.
@@ -18,6 +25,10 @@ import tempfile
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_trajectory_completeness
+# -------------------------------------------------------------- #
 def test_trajectory_completeness():
     """
     Test that trajectory has sufficient frames for statistical analysis.
@@ -52,6 +63,10 @@ def test_trajectory_completeness():
     print(f"  ✓ Trajectory is complete and continuous")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_topology_consistency
+# -------------------------------------------------------------- #
 def test_topology_consistency():
     """
     Test topology file consistency.
@@ -85,6 +100,10 @@ def test_topology_consistency():
     print(f"  ✓ Topology is consistent")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_coordinate_validity
+# -------------------------------------------------------------- #
 def test_coordinate_validity():
     """
     Test that coordinates are physically reasonable.
@@ -123,6 +142,10 @@ def test_coordinate_validity():
     print(f"  ✓ Coordinates are valid")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_trajectory_rmsd_sanity
+# -------------------------------------------------------------- #
 def test_trajectory_rmsd_sanity():
     """
     Test that trajectory RMSD values are reasonable.
@@ -158,6 +181,10 @@ def test_trajectory_rmsd_sanity():
     print(f"  ✓ RMSD values are reasonable")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_feature_quality
+# -------------------------------------------------------------- #
 def test_feature_quality():
     """
     Test that extracted features are suitable for ML.
@@ -206,6 +233,10 @@ def test_feature_quality():
     print(f"  ✓ Features suitable for ML")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_dataset_citation_info
+# -------------------------------------------------------------- #
 def test_dataset_citation_info():
     """
     Test that dataset has proper citation information.
@@ -237,6 +268,10 @@ def test_dataset_citation_info():
     print(f"  ✓ Citation metadata present")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_reproducibility_metadata
+# -------------------------------------------------------------- #
 def test_reproducibility_metadata():
     """
     Test that analysis includes reproducibility metadata.
@@ -271,6 +306,10 @@ def test_reproducibility_metadata():
     print(f"  ✓ Reproducibility metadata complete")
 
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     """Run all dataset validation tests."""
     print("="*70)

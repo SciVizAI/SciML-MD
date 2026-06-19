@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      tools/export_for_asvs.py
+#  Description: ASVS-compatible JSON exporter — packages residue scores for SciViz visualisation
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Export ML pipeline outputs for the ASVS visualization tool.
@@ -28,6 +35,10 @@ DEFAULT_N_FRAMES = 100
 DEFAULT_N_RESIDUES = 374
 
 
+
+# -------------------------------------------------------------- #
+# Function: load_frame_scores
+# -------------------------------------------------------------- #
 def load_frame_scores(metrics_dir: Path) -> pd.DataFrame:
     """Load per-frame scores from CSV."""
     csv_path = metrics_dir / 'frame_scores_dynamic.csv'
@@ -36,6 +47,10 @@ def load_frame_scores(metrics_dir: Path) -> pd.DataFrame:
     return None
 
 
+
+# -------------------------------------------------------------- #
+# Function: load_residue_scores
+# -------------------------------------------------------------- #
 def load_residue_scores(metrics_dir: Path) -> dict:
     """Load per-residue scores from JSON files."""
     scores = {}
@@ -49,6 +64,10 @@ def load_residue_scores(metrics_dir: Path) -> dict:
     return scores
 
 
+
+# -------------------------------------------------------------- #
+# Function: create_per_frame_residue_json
+# -------------------------------------------------------------- #
 def create_per_frame_residue_json(
     frame_scores: pd.DataFrame, 
     residue_scores: dict, 
@@ -107,11 +126,19 @@ def create_per_frame_residue_json(
     return output
 
 
+
+# -------------------------------------------------------------- #
+# Function: create_hotspots_residue_json
+# -------------------------------------------------------------- #
 def create_hotspots_residue_json(frame_scores: pd.DataFrame, residue_scores: dict, n_residues: int) -> dict:
     """Create per-frame, per-residue hotspot scores in ASVS format."""
     return create_per_frame_residue_json(frame_scores, residue_scores, n_residues)
 
 
+
+# -------------------------------------------------------------- #
+# Function: create_anomaly_residue_json
+# -------------------------------------------------------------- #
 def create_anomaly_residue_json(frame_scores: pd.DataFrame, residue_scores: dict, n_residues: int) -> dict:
     """Create per-frame, per-residue anomaly scores in ASVS format."""
     return create_per_frame_residue_json(
@@ -122,6 +149,10 @@ def create_anomaly_residue_json(frame_scores: pd.DataFrame, residue_scores: dict
     )
 
 
+
+# -------------------------------------------------------------- #
+# Function: create_rmsf_json
+# -------------------------------------------------------------- #
 def create_rmsf_json(residue_scores: dict) -> dict:
     """
     Create RMSF data in ASVS format.
@@ -156,6 +187,10 @@ def create_rmsf_json(residue_scores: dict) -> dict:
     }
 
 
+
+# -------------------------------------------------------------- #
+# Function: create_tica_importance_json
+# -------------------------------------------------------------- #
 def create_tica_importance_json(residue_scores: dict) -> dict:
     """
     Create tICA importance data in ASVS format.
@@ -197,6 +232,10 @@ def create_tica_importance_json(residue_scores: dict) -> dict:
     }
 
 
+
+# -------------------------------------------------------------- #
+# Function: get_n_residues
+# -------------------------------------------------------------- #
 def get_n_residues(topology_path: str) -> int:
     """Get number of residues from topology file."""
     try:
@@ -214,6 +253,10 @@ def get_n_residues(topology_path: str) -> int:
         return DEFAULT_N_RESIDUES
 
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     parser = argparse.ArgumentParser(
         description='Export ML pipeline outputs for ASVS viewer',

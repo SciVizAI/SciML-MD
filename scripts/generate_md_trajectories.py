@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      scripts/generate_md_trajectories.py
+#  Description: OpenMM MD trajectory generator — solvate, minimise, NVT simulation → .xtc
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Generate short MD trajectories for protein structures using OpenMM.
@@ -40,6 +47,10 @@ log = logging.getLogger(__name__)
 TRAJ_NAMES = ("traj.xtc", "traj.dcd", "trajectory.xtc", "trajectory.dcd")
 
 
+
+# -------------------------------------------------------------- #
+# Function: _check_openmm
+# -------------------------------------------------------------- #
 def _check_openmm():
     """Raise ImportError with a helpful message if OpenMM is not installed."""
     try:
@@ -52,6 +63,10 @@ def _check_openmm():
         )
 
 
+
+# -------------------------------------------------------------- #
+# Function: find_protein_dirs
+# -------------------------------------------------------------- #
 def find_protein_dirs(data_dir):
     """
     Return all sub-directories of *data_dir* that contain topology.pdb.
@@ -70,12 +85,20 @@ def find_protein_dirs(data_dir):
     return dirs
 
 
+
+# -------------------------------------------------------------- #
+# Function: has_trajectory
+# -------------------------------------------------------------- #
 def has_trajectory(protein_dir):
     """Return True if a trajectory file already exists in *protein_dir*."""
     protein_dir = Path(protein_dir)
     return any((protein_dir / name).exists() for name in TRAJ_NAMES)
 
 
+
+# -------------------------------------------------------------- #
+# Function: generate_trajectory
+# -------------------------------------------------------------- #
 def generate_trajectory(
     protein_dir,
     n_steps=50_000,
@@ -203,6 +226,10 @@ def generate_trajectory(
     return dcd_path
 
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     parser = argparse.ArgumentParser(
         description="Generate MD trajectories for all proteins in data/",

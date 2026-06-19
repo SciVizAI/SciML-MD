@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      scoring/anomaly_v2.py
+#  Description: Multi-signal anomaly fusion — rarity + transition surprise + local density → [0-100]
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Enhanced anomaly scoring v2 with multi-signal fusion.
@@ -17,6 +24,10 @@ import json
 from scipy.ndimage import median_filter
 
 
+
+# -------------------------------------------------------------- #
+# Function: rank_normalize
+# -------------------------------------------------------------- #
 def rank_normalize(x):
     """
     Normalize to [0,1] using rank-based scaling.
@@ -42,6 +53,10 @@ def rank_normalize(x):
     return ranks / (len(x) - 1)
 
 
+
+# -------------------------------------------------------------- #
+# Function: quantile_normalize
+# -------------------------------------------------------------- #
 def quantile_normalize(x, lower=0.01, upper=0.99):
     """
     Normalize using quantiles (robust to outliers).
@@ -68,6 +83,10 @@ def quantile_normalize(x, lower=0.01, upper=0.99):
     return np.clip((x - q_low) / (q_high - q_low), 0, 1)
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_zscore
+# -------------------------------------------------------------- #
 def compute_zscore(x):
     """Compute z-score with robust handling."""
     x = np.asarray(x, dtype=np.float64)
@@ -80,6 +99,10 @@ def compute_zscore(x):
     return (x - mean) / std
 
 
+
+# -------------------------------------------------------------- #
+# Function: moving_median
+# -------------------------------------------------------------- #
 def moving_median(x, window=5):
     """
     Apply moving median filter for smoothing.
@@ -101,6 +124,10 @@ def moving_median(x, window=5):
     return median_filter(x, size=window, mode='nearest')
 
 
+
+# -------------------------------------------------------------- #
+# Function: load_signal_data
+# -------------------------------------------------------------- #
 def load_signal_data(features_path, vamp2_best_path, energy_path=None, 
                     pockets_path=None, soft_dtraj_path=None, 
                     state_entropy_path=None):
@@ -151,6 +178,10 @@ def load_signal_data(features_path, vamp2_best_path, energy_path=None,
     return data
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_kinetic_signals
+# -------------------------------------------------------------- #
 def compute_kinetic_signals(msm, dtraj, lag_msm):
     """
     Compute kinetic signals: rarity and transition surprise.
@@ -189,6 +220,10 @@ def compute_kinetic_signals(msm, dtraj, lag_msm):
     return rarity, surprise
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_local_density_signal
+# -------------------------------------------------------------- #
 def compute_local_density_signal(Y, k=20):
     """
     Compute local density signal using k-NN distance.
@@ -213,6 +248,10 @@ def compute_local_density_signal(Y, k=20):
     return -distances.mean(axis=1)
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_energy_stress
+# -------------------------------------------------------------- #
 def compute_energy_stress(energy_df, n_frames, method='sum', top_k=None):
     """
     Compute energetic stress signal from per-residue energies.
@@ -253,6 +292,10 @@ def compute_energy_stress(energy_df, n_frames, method='sum', top_k=None):
     return stress
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_pocket_volatility
+# -------------------------------------------------------------- #
 def compute_pocket_volatility(pockets_df, n_frames, lag=1, metric='volume'):
     """
     Compute pocket volatility: frame-to-frame changes in pocket metrics.
@@ -285,6 +328,10 @@ def compute_pocket_volatility(pockets_df, n_frames, lag=1, metric='volume'):
     return volatility
 
 
+
+# -------------------------------------------------------------- #
+# Function: fuse_signals
+# -------------------------------------------------------------- #
 def fuse_signals(signals, method='median', normalize_method='rank'):
     """
     Fuse multiple normalized signals into final score.
@@ -324,6 +371,10 @@ def fuse_signals(signals, method='median', normalize_method='rank'):
     return score_raw, normalized
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_anomaly_scores_v2
+# -------------------------------------------------------------- #
 def compute_anomaly_scores_v2(data, msm, dtraj, Y, 
                               config=None):
     """
@@ -425,6 +476,10 @@ def compute_anomaly_scores_v2(data, msm, dtraj, Y,
     return scores_df, summary
 
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     parser = argparse.ArgumentParser(
         description='Compute enhanced anomaly scores v2'

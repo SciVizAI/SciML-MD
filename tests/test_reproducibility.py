@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      tests/test_reproducibility.py
+#  Description: Reproducibility tests — deterministic output verification across runs
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Reproducibility and robustness tests for ML pipeline.
@@ -16,6 +23,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_random_seed_reproducibility
+# -------------------------------------------------------------- #
 def test_random_seed_reproducibility():
     """
     Test that setting random seed produces identical results.
@@ -52,6 +63,10 @@ def test_random_seed_reproducibility():
     print(f"  ✓ Reproducibility verified")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_noise_injection_robustness
+# -------------------------------------------------------------- #
 def test_noise_injection_robustness():
     """
     Test robustness to small amounts of noise.
@@ -89,6 +104,10 @@ def test_noise_injection_robustness():
     print(f"  ✓ Robust to noise")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_parameter_sensitivity_analysis
+# -------------------------------------------------------------- #
 def test_parameter_sensitivity_analysis():
     """
     Test sensitivity to hyperparameter changes.
@@ -138,6 +157,10 @@ def test_parameter_sensitivity_analysis():
     print(f"  ✓ Sensitivity analysis complete")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_cross_validation_stability
+# -------------------------------------------------------------- #
 def test_cross_validation_stability():
     """
     Test that cross-validation results are stable.
@@ -177,6 +200,10 @@ def test_cross_validation_stability():
     print(f"  ✓ Cross-validation stable")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_data_subset_consistency
+# -------------------------------------------------------------- #
 def test_data_subset_consistency():
     """
     Test that results are consistent across data subsets.
@@ -218,6 +245,10 @@ def test_data_subset_consistency():
     print(f"  ✓ Subsets consistent")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_computation_determinism
+# -------------------------------------------------------------- #
 def test_computation_determinism():
     """
     Test that computations are deterministic.
@@ -251,6 +282,10 @@ def test_computation_determinism():
     print(f"  ✓ Deterministic computation verified")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_missing_data_handling
+# -------------------------------------------------------------- #
 def test_missing_data_handling():
     """
     Test robustness to missing data.
@@ -284,6 +319,10 @@ def test_missing_data_handling():
     print(f"  ✓ Missing data handled correctly")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_extreme_parameter_values
+# -------------------------------------------------------------- #
 def test_extreme_parameter_values():
     """
     Test behavior with extreme parameter values.
@@ -322,6 +361,10 @@ def test_extreme_parameter_values():
     print(f"  ✓ Extreme values handled appropriately")
 
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     """Run all reproducibility and robustness tests."""
     print("="*70)

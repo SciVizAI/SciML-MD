@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      tests/test_integration.py
+#  Description: Integration tests — end-to-end pipeline regression checks
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Integration test for the new metrics computation pipeline.
@@ -20,6 +27,10 @@ from scoring.signals import (
 )
 
 
+
+# -------------------------------------------------------------- #
+# Function: create_synthetic_msm
+# -------------------------------------------------------------- #
 def create_synthetic_msm(n_states=5, seed=42):
     """Create a synthetic MSM for testing."""
     np.random.seed(seed)
@@ -62,6 +73,10 @@ def create_synthetic_msm(n_states=5, seed=42):
     return SyntheticMSM(n_states)
 
 
+
+# -------------------------------------------------------------- #
+# Function: create_synthetic_tica_coords
+# -------------------------------------------------------------- #
 def create_synthetic_tica_coords(n_frames, n_dims=3, seed=42):
     """Create synthetic tICA coordinates."""
     np.random.seed(seed)
@@ -78,6 +93,10 @@ def create_synthetic_tica_coords(n_frames, n_dims=3, seed=42):
     return coords
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_integration
+# -------------------------------------------------------------- #
 def test_integration():
     """Test full integration of metrics computation."""
     print("="*70)
@@ -288,6 +307,10 @@ def test_integration():
     return True
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_tica_model_persistence
+# -------------------------------------------------------------- #
 def test_tica_model_persistence():
     """
     Regression test: run_msm_tica must save tica_model.npz so that
@@ -369,6 +392,10 @@ def test_tica_model_persistence():
     print("  ✓ test_tica_model_persistence passed")
 
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     """Run integration test."""
     try:

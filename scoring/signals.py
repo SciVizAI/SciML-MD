@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      scoring/signals.py
+#  Description: Individual signal computation — RMSF, tICA importance, local density
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Signal computation module for dynamic hotspot detection.
@@ -16,6 +23,10 @@ from typing import Dict, Tuple, Optional, Union
 import warnings
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_rmsf_scores
+# -------------------------------------------------------------- #
 def compute_rmsf_scores(
     topology_path: Union[str, Path],
     trajectory_path: Union[str, Path],
@@ -107,6 +118,10 @@ def compute_rmsf_scores(
     return rmsf_residues
 
 
+
+# -------------------------------------------------------------- #
+# Function: _get_adaptive_parameters
+# -------------------------------------------------------------- #
 def _get_adaptive_parameters(n_frames: int, k_neighbors: int, lag_msm: int) -> tuple:
     """
     Get adaptive parameters based on trajectory size for optimal performance.
@@ -157,6 +172,10 @@ def _get_adaptive_parameters(n_frames: int, k_neighbors: int, lag_msm: int) -> t
     return adjusted_k, adjusted_lag, use_subsampling, subsample_size
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_dynamic_anomaly_scores
+# -------------------------------------------------------------- #
 def compute_dynamic_anomaly_scores(
     msm,
     dtraj: np.ndarray,
@@ -330,6 +349,10 @@ def compute_dynamic_anomaly_scores(
     return signals
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_tica_importance_scores
+# -------------------------------------------------------------- #
 def compute_tica_importance_scores(
     tica_model,
     feature_names: Optional[list] = None,
@@ -452,6 +475,10 @@ def compute_tica_importance_scores(
     return residue_contributions
 
 
+
+# -------------------------------------------------------------- #
+# Function: normalize_scores
+# -------------------------------------------------------------- #
 def normalize_scores(
     scores: np.ndarray,
     method: str = 'rank',
@@ -522,6 +549,10 @@ def normalize_scores(
         raise ValueError(f"Unknown normalization method: {method}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: aggregate_frame_to_residue
+# -------------------------------------------------------------- #
 def aggregate_frame_to_residue(
     frame_scores: np.ndarray,
     per_residue_contributions: np.ndarray,
@@ -574,6 +605,10 @@ def aggregate_frame_to_residue(
 # Helper functions (internal use)
 # ============================================================================
 
+
+# -------------------------------------------------------------- #
+# Function: _rank_normalize
+# -------------------------------------------------------------- #
 def _rank_normalize(x: np.ndarray) -> np.ndarray:
     """Rank-based normalization to [0,1]."""
     x = np.asarray(x, dtype=np.float64)
@@ -588,6 +623,10 @@ def _rank_normalize(x: np.ndarray) -> np.ndarray:
     return ranks / (len(x) - 1)
 
 
+
+# -------------------------------------------------------------- #
+# Function: _percentile_normalize
+# -------------------------------------------------------------- #
 def _percentile_normalize(
     x: np.ndarray,
     lower: float = 0.05,
@@ -608,6 +647,10 @@ def _percentile_normalize(
     return np.clip((x - q_low) / (q_high - q_low), 0, 1)
 
 
+
+# -------------------------------------------------------------- #
+# Function: _compute_zscore
+# -------------------------------------------------------------- #
 def _compute_zscore(x: np.ndarray) -> np.ndarray:
     """Compute z-scores."""
     x = np.asarray(x, dtype=np.float64)

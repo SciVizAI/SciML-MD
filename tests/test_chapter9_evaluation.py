@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      tests/test_chapter9_evaluation.py
+#  Description: Chapter 9 evaluation tests — results and case study validation
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Tests for experiments/chapter9_evaluation.py
@@ -37,6 +44,10 @@ from experiments.chapter9_evaluation import (
 # Synthetic data helpers
 # ---------------------------------------------------------------------------
 
+
+# -------------------------------------------------------------- #
+# Function: _make_features
+# -------------------------------------------------------------- #
 def _make_features(n_frames=150, n_features=7, seed=42):
     """Create a synthetic feature matrix with temporal correlation."""
     rng = np.random.default_rng(seed)
@@ -44,6 +55,10 @@ def _make_features(n_frames=150, n_features=7, seed=42):
     return X
 
 
+
+# -------------------------------------------------------------- #
+# Function: _write_minimal_pdb
+# -------------------------------------------------------------- #
 def _write_minimal_pdb(path, n_residues=20):
     """Write a minimal PDB file with Cα atoms on a straight line."""
     lines = []
@@ -61,6 +76,10 @@ def _write_minimal_pdb(path, n_residues=20):
 # Tests
 # ---------------------------------------------------------------------------
 
+
+# -------------------------------------------------------------- #
+# Function: test_fit_pipeline_returns_correct_types
+# -------------------------------------------------------------- #
 def test_fit_pipeline_returns_correct_types():
     """_fit_pipeline returns MSM, dtraj, Y with expected shapes."""
     print("[TEST] _fit_pipeline returns correct types...")
@@ -74,6 +93,10 @@ def test_fit_pipeline_returns_correct_types():
     print("  ✓ Pipeline returns correct types")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_fused_frame_scores_shape
+# -------------------------------------------------------------- #
 def test_fused_frame_scores_shape():
     """_fused_frame_scores returns array of length n_frames."""
     print("[TEST] _fused_frame_scores shape...")
@@ -86,6 +109,10 @@ def test_fused_frame_scores_shape():
     print(f"  ✓ Frame scores shape: {scores.shape}, range [{scores.min():.3f}, {scores.max():.3f}]")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_residue_fused_scores_no_nan
+# -------------------------------------------------------------- #
 def test_residue_fused_scores_no_nan():
     """_residue_fused_scores returns finite values."""
     print("[TEST] _residue_fused_scores no NaN...")
@@ -98,6 +125,10 @@ def test_residue_fused_scores_no_nan():
     print(f"  ✓ Residue scores: {len(fused)} values, all finite")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_jaccard_top10
+# -------------------------------------------------------------- #
 def test_jaccard_top10():
     """_jaccard_top10 computes correct Jaccard index."""
     print("[TEST] Jaccard top10...")
@@ -114,6 +145,10 @@ def test_jaccard_top10():
     print(f"  ✓ Jaccard identical=1.0, flipped={j:.3f}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_compute_implied_timescales
+# -------------------------------------------------------------- #
 def test_compute_implied_timescales(tmp_path):
     """compute_implied_timescales saves expected CSV files."""
     print("[TEST] compute_implied_timescales...")
@@ -136,6 +171,10 @@ def test_compute_implied_timescales(tmp_path):
     print(f"  ✓ ITS: {len(df_its)} rows; CV table: {len(df_cv)} modes")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_compute_ck_errors
+# -------------------------------------------------------------- #
 def test_compute_ck_errors(tmp_path):
     """compute_ck_errors saves ck_errors.csv with expected columns."""
     print("[TEST] compute_ck_errors...")
@@ -150,6 +189,10 @@ def test_compute_ck_errors(tmp_path):
     print(f"  ✓ CK errors: {len(df_ck)} rows")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_compute_vamp_comparison
+# -------------------------------------------------------------- #
 def test_compute_vamp_comparison(tmp_path):
     """compute_vamp_comparison saves vamp_comparison.csv with 3 models."""
     print("[TEST] compute_vamp_comparison...")
@@ -164,6 +207,10 @@ def test_compute_vamp_comparison(tmp_path):
     print(f"  ✓ VAMP-2: {df_vamp[['model_type', 'vamp2_score']].to_dict('records')}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_compute_residue_ranking
+# -------------------------------------------------------------- #
 def test_compute_residue_ranking(tmp_path):
     """compute_residue_ranking produces correct ranking files."""
     print("[TEST] compute_residue_ranking...")
@@ -183,6 +230,10 @@ def test_compute_residue_ranking(tmp_path):
     print(f"  ✓ Rankings: {len(df_rank)} residues; top-k subsets present")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_compute_transition_enrichment
+# -------------------------------------------------------------- #
 def test_compute_transition_enrichment(tmp_path):
     """compute_transition_enrichment produces transition_enrichment.csv."""
     print("[TEST] compute_transition_enrichment...")
@@ -199,6 +250,10 @@ def test_compute_transition_enrichment(tmp_path):
     print(f"  ✓ Transition enrichment: Cohen's d = {df_enrich['cohens_d'].iloc[0]:.4f}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_compute_spatial_clustering
+# -------------------------------------------------------------- #
 def test_compute_spatial_clustering(tmp_path):
     """compute_spatial_clustering produces spatial_clustering.csv."""
     print("[TEST] compute_spatial_clustering...")
@@ -220,6 +275,10 @@ def test_compute_spatial_clustering(tmp_path):
     print(f"  ✓ Spatial clustering Z = {df_spatial['z_score'].iloc[0]:.4f}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_full_pipeline_end_to_end
+# -------------------------------------------------------------- #
 def test_full_pipeline_end_to_end(tmp_path):
     """run_chapter9_evaluation completes and saves all 8 output files."""
     print("[TEST] Full end-to-end pipeline...")
@@ -278,6 +337,10 @@ def test_full_pipeline_end_to_end(tmp_path):
     print(f"  ✓ All {len(expected)} output files present")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_hotspot_slowmode_alignment_no_tica
+# -------------------------------------------------------------- #
 def test_hotspot_slowmode_alignment_no_tica(tmp_path):
     """compute_hotspot_slowmode_alignment_no_tica: new ρ differs from old ρ."""
     print("[TEST] hotspot_slowmode_alignment_no_tica...")
@@ -300,6 +363,10 @@ def test_hotspot_slowmode_alignment_no_tica(tmp_path):
           f"circularity={df['circularity_confirmed'].iloc[0]}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_compute_vamp_comparison_corrected
+# -------------------------------------------------------------- #
 def test_compute_vamp_comparison_corrected(tmp_path):
     """compute_vamp_comparison_corrected: tICA ≠ raw_features VAMP-2 score."""
     print("[TEST] compute_vamp_comparison_corrected...")
@@ -319,6 +386,10 @@ def test_compute_vamp_comparison_corrected(tmp_path):
     print(f"  ✓ VAMP corrected: tICA={score_tica:.4f}  raw={score_raw:.4f}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_compute_transition_enrichment_window_sweep
+# -------------------------------------------------------------- #
 def test_compute_transition_enrichment_window_sweep(tmp_path):
     """compute_transition_enrichment_window_sweep: produces 3 windows."""
     print("[TEST] compute_transition_enrichment_window_sweep...")
@@ -335,6 +406,10 @@ def test_compute_transition_enrichment_window_sweep(tmp_path):
     print(f"  ✓ Window sweep rows: {len(df)}, windows: {df['window_size'].tolist()}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_compute_ranking_stability_extended
+# -------------------------------------------------------------- #
 def test_compute_ranking_stability_extended(tmp_path):
     """compute_ranking_stability_extended: produces top-10/20/30% Jaccard rows."""
     print("[TEST] compute_ranking_stability_extended...")
@@ -365,6 +440,10 @@ def test_compute_ranking_stability_extended(tmp_path):
 # RQ1 — Signal Validity Tests
 # ---------------------------------------------------------------------------
 
+
+# -------------------------------------------------------------- #
+# Function: test_rq1_frame_scores_have_variance
+# -------------------------------------------------------------- #
 def test_rq1_frame_scores_have_variance():
     """RQ1: Fused frame scores are not constant — pipeline captures real variation."""
     print("[TEST] RQ1: frame scores have non-zero variance...")
@@ -376,6 +455,10 @@ def test_rq1_frame_scores_have_variance():
     print(f"  ✓ Frame score std={np.std(scores):.4f}, range=[{scores.min():.4f}, {scores.max():.4f}]")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_rq1_its_plateau_cv_finite
+# -------------------------------------------------------------- #
 def test_rq1_its_plateau_cv_finite(tmp_path):
     """RQ1: ITS plateau CV values are finite and non-negative (timescales are stable)."""
     print("[TEST] RQ1: ITS plateau CV is finite...")
@@ -389,6 +472,10 @@ def test_rq1_its_plateau_cv_finite(tmp_path):
     print(f"  ✓ ITS CV: {len(df_cv)} mode(s), all finite and non-negative")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_rq1_transition_enrichment_cohens_d_finite
+# -------------------------------------------------------------- #
 def test_rq1_transition_enrichment_cohens_d_finite():
     """RQ1: Transition enrichment Cohen's d is finite for data with clear state changes."""
     print("[TEST] RQ1: transition enrichment Cohen's d is finite...")
@@ -414,6 +501,10 @@ def test_rq1_transition_enrichment_cohens_d_finite():
     print(f"  ✓ Cohen's d = {cohens_d:.4f} (positive: transition frames more anomalous)")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_rq1_vamp2_corrected_scores_are_positive
+# -------------------------------------------------------------- #
 def test_rq1_vamp2_corrected_scores_are_positive(tmp_path):
     """RQ1: Corrected VAMP-2 scores are positive for all model types."""
     print("[TEST] RQ1: corrected VAMP-2 scores are positive...")
@@ -439,6 +530,10 @@ def test_rq1_vamp2_corrected_scores_are_positive(tmp_path):
 # RQ2 — Visualization as Validation Mechanism Tests
 # ---------------------------------------------------------------------------
 
+
+# -------------------------------------------------------------- #
+# Function: test_rq2_topk_sets_are_nested
+# -------------------------------------------------------------- #
 def test_rq2_topk_sets_are_nested(tmp_path):
     """RQ2: Top-k% residue sets are monotonically nested (top-5 ⊆ top-10 ⊆ top-20)."""
     print("[TEST] RQ2: top-k sets are nested...")
@@ -460,6 +555,10 @@ def test_rq2_topk_sets_are_nested(tmp_path):
           f"|top-20%|={len(ids_20)}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_rq2_residue_ranking_visualization_columns
+# -------------------------------------------------------------- #
 def test_rq2_residue_ranking_visualization_columns(tmp_path):
     """RQ2: Residue ranking CSV has all columns needed for visualization."""
     print("[TEST] RQ2: residue ranking has visualization columns...")
@@ -482,6 +581,10 @@ def test_rq2_residue_ranking_visualization_columns(tmp_path):
           f"residue IDs [0, {n_residues - 1}]")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_rq2_frame_score_length_matches_trajectory
+# -------------------------------------------------------------- #
 def test_rq2_frame_score_length_matches_trajectory():
     """RQ2: Frame scores have exactly the same length as the input trajectory."""
     print("[TEST] RQ2: frame score length matches trajectory...")
@@ -495,6 +598,10 @@ def test_rq2_frame_score_length_matches_trajectory():
     print(f"  ✓ Frame score length matches trajectory for n_frames in [80, 150, 200]")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_rq2_window_sweep_columns_for_visualization
+# -------------------------------------------------------------- #
 def test_rq2_window_sweep_columns_for_visualization(tmp_path):
     """RQ2: Window sweep CSV has columns enabling frame-resolved inspection."""
     print("[TEST] RQ2: window sweep columns for visualization...")
@@ -515,6 +622,10 @@ def test_rq2_window_sweep_columns_for_visualization(tmp_path):
 # RQ3 — Sensitivity and Robustness Tests
 # ---------------------------------------------------------------------------
 
+
+# -------------------------------------------------------------- #
+# Function: test_rq3_stability_metrics_bounded
+# -------------------------------------------------------------- #
 def test_rq3_stability_metrics_bounded(tmp_path):
     """RQ3: All Jaccard and Spearman values from ranking stability are in valid ranges."""
     print("[TEST] RQ3: stability metrics bounded correctly...")
@@ -539,6 +650,10 @@ def test_rq3_stability_metrics_bounded(tmp_path):
     print(f"  ✓ All {len(df)} Jaccard values in [0, 1] for k% ∈ {{10, 20, 30}}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_rq3_fusion_median_vs_mean_differ
+# -------------------------------------------------------------- #
 def test_rq3_fusion_median_vs_mean_differ():
     """RQ3: Median and mean signal fusion produce different frame scores."""
     print("[TEST] RQ3: median vs mean fusion differ...")
@@ -584,6 +699,10 @@ def test_rq3_fusion_median_vs_mean_differ():
     print(f"  ✓ Median vs mean fusion differ: mean |Δ| = {diff:.6f}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_rq3_lag_perturbation_changes_frame_scores
+# -------------------------------------------------------------- #
 def test_rq3_lag_perturbation_changes_frame_scores():
     """RQ3: Changing the MSM lag time produces different frame scores."""
     print("[TEST] RQ3: lag perturbation changes frame scores...")
@@ -603,6 +722,10 @@ def test_rq3_lag_perturbation_changes_frame_scores():
     print(f"  ✓ Lag 5 vs lag 3 frame scores differ: mean |Δ| = {diff:.6f}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: test_rq3_window_sweep_cohens_d_varies
+# -------------------------------------------------------------- #
 def test_rq3_window_sweep_cohens_d_varies():
     """RQ3: Window sweep Cohen's d values vary across window sizes (sensitivity check)."""
     print("[TEST] RQ3: window sweep Cohen's d varies across windows...")
@@ -629,6 +752,10 @@ def test_rq3_window_sweep_cohens_d_varies():
     print(f"  ✓ Cohen's d values: {dict(zip(df['window_size'].tolist(), cohens_vals.round(4).tolist()))}")
 
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     """Run all Chapter 9 evaluation tests."""
     print("=" * 70)

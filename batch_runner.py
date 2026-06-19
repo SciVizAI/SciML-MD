@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      batch_runner.py
+#  Description: End-to-end runner — download, MD generation, ML pipeline, ASVS export
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 End-to-end batch runner for ensemble-anomaly-maps.
@@ -91,6 +98,10 @@ DEFAULT_WINDOW = 3
 # Step 1 — Download PDB
 # ---------------------------------------------------------------------------
 
+
+# -------------------------------------------------------------- #
+# Function: download_pdb
+# -------------------------------------------------------------- #
 def download_pdb(pdb_id: str, dest_dir: Path) -> Path:
     """Download a PDB structure from RCSB and return the local path.
 
@@ -130,6 +141,10 @@ def download_pdb(pdb_id: str, dest_dir: Path) -> Path:
 # Step 2 — Generate toy MD trajectory with OpenMM
 # ---------------------------------------------------------------------------
 
+
+# -------------------------------------------------------------- #
+# Function: _fix_pdb_with_pdbfixer
+# -------------------------------------------------------------- #
 def _fix_pdb_with_pdbfixer(pdb_id: str, pdb_path: Path, out_dir: Path) -> Path:
     """
     Use PDBFixer to repair common PDB issues (missing atoms/residues, nonstandard residues,
@@ -170,6 +185,10 @@ def _fix_pdb_with_pdbfixer(pdb_id: str, pdb_path: Path, out_dir: Path) -> Path:
     return fixed_path
 
 
+
+# -------------------------------------------------------------- #
+# Function: generate_toy_trajectory
+# -------------------------------------------------------------- #
 def generate_toy_trajectory(
     pdb_id: str,
     pdb_path: Path,
@@ -311,6 +330,10 @@ def generate_toy_trajectory(
     return xtc_path
 
 
+
+# -------------------------------------------------------------- #
+# Function: _best_openmm_platform
+# -------------------------------------------------------------- #
 def _best_openmm_platform():
     """Return the fastest OpenMM Platform available (CUDA > OpenCL > CPU)."""
     try:
@@ -332,6 +355,10 @@ def _best_openmm_platform():
 # Step 3 — Run the anomaly-detection pipeline
 # ---------------------------------------------------------------------------
 
+
+# -------------------------------------------------------------- #
+# Function: run_pipeline
+# -------------------------------------------------------------- #
 def run_pipeline(
     pdb_id: str,
     topology_path: Path,
@@ -476,6 +503,10 @@ def run_pipeline(
 # Step 4 — Export ASVS-compatible JSON
 # ---------------------------------------------------------------------------
 
+
+# -------------------------------------------------------------- #
+# Function: export_for_asvs
+# -------------------------------------------------------------- #
 def export_for_asvs(
     pdb_id: str,
     topology_path: Path,
@@ -559,6 +590,10 @@ def export_for_asvs(
 # Main orchestrator
 # ---------------------------------------------------------------------------
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main() -> int:
     """Parse arguments, then run all four pipeline stages for each PDB ID."""
     parser = argparse.ArgumentParser(

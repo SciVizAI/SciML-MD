@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      msm/soft_states.py
+#  Description: HMM soft state assignments — probabilistic state membership per frame
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Soft state assignments using Hidden Markov Models.
@@ -11,6 +18,10 @@ from pathlib import Path
 from hmmlearn import hmm
 
 
+
+# -------------------------------------------------------------- #
+# Function: fit_hmm_from_msm
+# -------------------------------------------------------------- #
 def fit_hmm_from_msm(dtraj, n_states, n_iter=100, seed=42):
     """
     Fit HMM initialized from MSM discrete trajectory.
@@ -41,6 +52,10 @@ def fit_hmm_from_msm(dtraj, n_states, n_iter=100, seed=42):
     return model
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_soft_assignments
+# -------------------------------------------------------------- #
 def compute_soft_assignments(model, dtraj):
     """
     Compute soft state assignments (posterior probabilities).
@@ -57,6 +72,10 @@ def compute_soft_assignments(model, dtraj):
     return soft_dtraj
 
 
+
+# -------------------------------------------------------------- #
+# Function: compute_state_entropy
+# -------------------------------------------------------------- #
 def compute_state_entropy(soft_dtraj, epsilon=1e-12):
     """
     Compute per-frame state entropy.
@@ -75,6 +94,10 @@ def compute_state_entropy(soft_dtraj, epsilon=1e-12):
     return entropy
 
 
+
+# -------------------------------------------------------------- #
+# Function: main
+# -------------------------------------------------------------- #
 def main():
     parser = argparse.ArgumentParser(
         description='Compute soft state assignments using HMM'

@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      msm/input_validation.py
+#  Description: Input validation utilities for MSM pipeline inputs
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 #!/usr/bin/env python3
 """
 Input data validation utilities.
@@ -11,6 +18,10 @@ from pathlib import Path
 from typing import Tuple, Dict, List, Optional
 
 
+
+# -------------------------------------------------------------- #
+# Function: check_trajectory_quality
+# -------------------------------------------------------------- #
 def check_trajectory_quality(traj_path: str, top_path: str) -> Dict[str, any]:
     """
     Check quality of MD trajectory.
@@ -86,6 +97,10 @@ def check_trajectory_quality(traj_path: str, top_path: str) -> Dict[str, any]:
     return diagnostics
 
 
+
+# -------------------------------------------------------------- #
+# Function: check_feature_quality
+# -------------------------------------------------------------- #
 def check_feature_quality(features: np.ndarray) -> Dict[str, any]:
     """
     Check quality of extracted features.
@@ -161,6 +176,10 @@ def check_feature_quality(features: np.ndarray) -> Dict[str, any]:
     return diagnostics
 
 
+
+# -------------------------------------------------------------- #
+# Function: check_parameter_compatibility
+# -------------------------------------------------------------- #
 def check_parameter_compatibility(n_frames: int,
                                   lag_tica: int,
                                   lag_msm: int,
@@ -235,6 +254,10 @@ def check_parameter_compatibility(n_frames: int,
     return diagnostics
 
 
+
+# -------------------------------------------------------------- #
+# Function: validate_input_data
+# -------------------------------------------------------------- #
 def validate_input_data(features_path: Optional[str] = None,
                        traj_path: Optional[str] = None,
                        top_path: Optional[str] = None,
@@ -330,6 +353,10 @@ def validate_input_data(features_path: Optional[str] = None,
     return all_passed, report
 
 
+
+# -------------------------------------------------------------- #
+# Function: print_validation_summary
+# -------------------------------------------------------------- #
 def print_validation_summary(report: Dict):
     """Print a human-readable validation summary."""
     print("\n" + "="*70)

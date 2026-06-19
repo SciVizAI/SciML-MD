@@ -1,3 +1,10 @@
+# ============================================================== #
+#  Module:      msm/reproducibility.py
+#  Description: Reproducibility utilities — deterministic seed management across pipeline steps
+#  Author:      Siya Jethliya
+#  Copyright (c) 2026 SciVizAI — All rights reserved.
+# ============================================================== #
+
 """
 Reproducibility utilities for pipeline runs.
 
@@ -9,6 +16,10 @@ from pathlib import Path
 import numpy as np
 
 
+
+# -------------------------------------------------------------- #
+# Function: save_run_config
+# -------------------------------------------------------------- #
 def save_run_config(output_path, config_dict):
     """
     Save run configuration to JSON file.
@@ -30,6 +41,10 @@ def save_run_config(output_path, config_dict):
         json.dump(run_info, f, indent=2)
 
 
+
+# -------------------------------------------------------------- #
+# Function: load_run_config
+# -------------------------------------------------------------- #
 def load_run_config(config_path):
     """
     Load run configuration from JSON file.
@@ -45,6 +60,10 @@ def load_run_config(config_path):
     return run_info['config']
 
 
+
+# -------------------------------------------------------------- #
+# Function: set_global_seed
+# -------------------------------------------------------------- #
 def set_global_seed(seed):
     """
     Set random seeds for reproducibility.
@@ -61,6 +80,10 @@ def set_global_seed(seed):
         pass
 
 
+
+# -------------------------------------------------------------- #
+# Function: generate_seed_sequence
+# -------------------------------------------------------------- #
 def generate_seed_sequence(master_seed, n_seeds):
     """
     Generate a sequence of random seeds from a master seed.
