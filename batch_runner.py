@@ -282,7 +282,7 @@ def generate_toy_trajectory(
         modeller.topology,
         nonbondedMethod=omm_app.NoCutoff,
         constraints=omm_app.HBonds,
-        implicitSolvent=omm_app.GBn2,
+
     )
 
     # --- Integrator (Langevin, 300 K, 2 fs) ---
