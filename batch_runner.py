@@ -85,6 +85,12 @@ RCSB_PDB_URL = "https://files.rcsb.org/download/{pdb_id}.pdb"
 DEFAULT_MD_FRAMES = 100           # number of trajectory frames to save
 DEFAULT_MD_STEPS_PER_FRAME = 250  # integration steps between saved frames
 
+# Canonical topology filename — the single source of truth for atom identity.
+# Written once after PDBFixer + addHydrogens and used by EVERY downstream stage
+# (simulation, trajectory conversion, feature extraction). Nothing downstream
+# may reload the raw PDB again.
+CANONICAL_TOPOLOGY_NAME = "canonical_topology.pdb"
+
 # Pipeline hyper-parameters (kept small for fast toy runs)
 DEFAULT_LAG_TICA = 5
 DEFAULT_DIM_TICA = 3
@@ -262,7 +268,6 @@ def generate_toy_trajectory(
     modeller = omm_app.Modeller(pdb.topology, pdb.positions)
 
     # Try to add hydrogens; if it fails, fallback to PDBFixer and retry.
-    pdb_for_md = pdb_path
     try:
         modeller.addHydrogens(forcefield)
     except Exception as exc:
@@ -270,12 +275,26 @@ def generate_toy_trajectory(
         fixed_pdb = _fix_pdb_with_pdbfixer(pdb_id, pdb_path, out_dir)
         pdb_fixed = omm_app.PDBFile(str(fixed_pdb))
         modeller = omm_app.Modeller(pdb_fixed.topology, pdb_fixed.positions)
-        pdb_for_md = fixed_pdb
         try:
             modeller.addHydrogens(forcefield)
         except Exception as exc2:
             # At this point PDBFixer already added hydrogens; this is non-fatal.
             log.warning("[%s] addHydrogens still failed after PDBFixer (%s) — continuing.", pdb_id, exc2)
+
+    # ── Canonical topology: the ONLY topology valid downstream ──────────────
+    # Persist the exact atom set that is about to be simulated (post Fixer +
+    # hydrogens). The trajectory is written in this same atom order, and
+    # feature extraction loads THIS file — so their atoms are identical by
+    # construction. Never pair the trajectory with the raw H-less PDB again.
+    canonical_path = out_dir / CANONICAL_TOPOLOGY_NAME
+    with open(canonical_path, "w") as fh:
+        omm_app.PDBFile.writeFile(
+            modeller.topology, modeller.positions, fh, keepIds=True
+        )
+    log.info(
+        "[%s] Canonical topology written: %s (%d atoms)",
+        pdb_id, canonical_path, modeller.topology.getNumAtoms(),
+    )
 
     # Create system (IMPORTANT: use modeller.topology; don't proceed with broken raw PDB)
     system = forcefield.createSystem(
@@ -319,9 +338,17 @@ def generate_toy_trajectory(
         # Flush reporter
         simulation.reporters.clear()
 
-        # Convert DCD → XTC using MDTraj (MUST use the topology used for MD)
+        # Convert DCD → XTC using MDTraj against the CANONICAL topology only.
         log.info("[%s] Converting DCD → XTC …", pdb_id)
-        traj = md.load(str(dcd_path), top=str(pdb_for_md))
+        traj = md.load(str(dcd_path), top=str(canonical_path))
+
+        # Fail fast on any topology/trajectory atom drift.
+        n_top = modeller.topology.getNumAtoms()
+        if traj.n_atoms != n_top:
+            raise RuntimeError(
+                f"[{pdb_id}] Topology drift after MD: canonical topology has "
+                f"{n_top} atoms but trajectory has {traj.n_atoms}."
+            )
         traj.save_xtc(str(xtc_path))
     finally:
         dcd_path.unlink(missing_ok=True)
@@ -700,6 +727,7 @@ def main() -> int:
         pdb_id = pdb_id.upper()
         pdb_dir = work_dir / pdb_id
         topology_path = pdb_dir / "topology.pdb"
+        canonical_path = pdb_dir / CANONICAL_TOPOLOGY_NAME
         trajectory_path = pdb_dir / "traj.xtc"
 
         log.info("")
@@ -745,11 +773,23 @@ def main() -> int:
             )
             ok = False
 
+        # ── Topology-consistency contract ──────────────────────────────────
+        # Everything after MD uses the canonical topology written during
+        # simulation. Fall back to the raw PDB only if canonical is absent
+        # (e.g. legacy trajectory reuse) — and warn, because that risks drift.
+        downstream_topology = canonical_path if canonical_path.exists() else topology_path
+        if ok and downstream_topology is topology_path:
+            log.warning(
+                "[%s] %s not found — using raw topology.pdb, which may not match "
+                "the trajectory. Re-run MD to regenerate the canonical topology.",
+                pdb_id, CANONICAL_TOPOLOGY_NAME,
+            )
+
         # ── Stage 3: ML pipeline ───────────────────────────────────────────
         if ok and not args.skip_pipeline:
             ok = run_pipeline(
                 pdb_id=pdb_id,
-                topology_path=topology_path,
+                topology_path=downstream_topology,
                 trajectory_path=trajectory_path,
                 artifacts_dir=artifacts_dir,
                 results_dir=results_dir,
@@ -766,7 +806,7 @@ def main() -> int:
         if ok and not args.skip_export:
             ok = export_for_asvs(
                 pdb_id=pdb_id,
-                topology_path=topology_path,
+                topology_path=downstream_topology,
                 trajectory_path=trajectory_path,
                 results_dir=results_dir,
                 exports_dir=exports_dir,

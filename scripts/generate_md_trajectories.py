@@ -156,6 +156,19 @@ def generate_trajectory(
         modeller.topology.getNumAtoms(),
     )
 
+    # ── Canonical topology: the ONLY topology valid downstream ──────────────
+    # Persist the exact solvated+hydrogenated atom set that is about to be
+    # simulated. The trajectory is written in this atom order, and feature
+    # extraction loads THIS file — so their atoms match by construction. Never
+    # pair the trajectory with the raw PDB (no H, no water) again.
+    canonical_path = protein_dir / "canonical_topology.pdb"
+    with open(canonical_path, "w") as fh:
+        app.PDBFile.writeFile(modeller.topology, modeller.positions, fh, keepIds=True)
+    log.info(
+        "[%s] Canonical topology written: %s (%d atoms)",
+        pdb_id, canonical_path, modeller.topology.getNumAtoms(),
+    )
+
     # Build system
     system = forcefield.createSystem(
         modeller.topology,
@@ -204,23 +217,30 @@ def generate_trajectory(
     simulation.step(n_steps)
     log.info("[%s] Simulation complete.", pdb_id)
 
-    # Convert to XTC if mdtraj is available
+    # Convert to XTC if mdtraj is available. Load against the CANONICAL
+    # topology (not the raw PDB) so atom counts match, and fail fast on drift.
     if use_xtc:
         try:
             import mdtraj as md
-
-            traj = md.load_dcd(str(dcd_path), top=str(pdb_path))
-            xtc_path = protein_dir / "traj.xtc"
-            traj.save_xtc(str(xtc_path))
-            dcd_path.unlink()  # Remove intermediate DCD
-            log.info("[%s] Saved trajectory: %s", pdb_id, xtc_path)
-            return xtc_path
         except ImportError:
             log.warning(
                 "[%s] mdtraj not available; trajectory saved as DCD: %s",
                 pdb_id,
                 dcd_path,
             )
+        else:
+            traj = md.load_dcd(str(dcd_path), top=str(canonical_path))
+            n_top = modeller.topology.getNumAtoms()
+            if traj.n_atoms != n_top:
+                raise RuntimeError(
+                    f"[{pdb_id}] Topology drift after MD: canonical topology has "
+                    f"{n_top} atoms but trajectory has {traj.n_atoms}."
+                )
+            xtc_path = protein_dir / "traj.xtc"
+            traj.save_xtc(str(xtc_path))
+            dcd_path.unlink()  # Remove intermediate DCD
+            log.info("[%s] Saved trajectory: %s", pdb_id, xtc_path)
+            return xtc_path
 
     log.info("[%s] Saved trajectory: %s", pdb_id, dcd_path)
     return dcd_path

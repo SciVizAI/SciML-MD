@@ -37,8 +37,28 @@ def compute_features(topology_path, trajectory_path, stride=1, reference_frame=0
         features: Dictionary of feature arrays
         traj: MDTraj trajectory object
     """
-    # Load trajectory
-    traj = md.load(trajectory_path, top=topology_path, stride=stride)
+    # Load trajectory against the (canonical) topology. Fail fast with a clear,
+    # located message if the atom sets disagree — this is exactly where topology
+    # drift historically surfaced as the opaque MDTraj error
+    # "topology and trajectory files might not contain the same atoms".
+    try:
+        traj = md.load(trajectory_path, top=topology_path, stride=stride)
+    except (ValueError, IOError) as exc:
+        raise ValueError(
+            f"Topology/trajectory mismatch: could not load '{trajectory_path}' "
+            f"with topology '{topology_path}'. Feature extraction must use the "
+            f"SAME canonical topology produced during simulation "
+            f"(canonical_topology.pdb). Original error: {exc}"
+        ) from exc
+
+    # Explicit atom-count assertion (defensive; md.load also enforces equality).
+    top_only = md.load(topology_path)
+    if traj.n_atoms != top_only.n_atoms:
+        raise ValueError(
+            f"Topology drift detected: trajectory has {traj.n_atoms} atoms but "
+            f"topology '{topology_path}' has {top_only.n_atoms}. These must match."
+        )
+
     n_frames = len(traj)
     
     features = {}

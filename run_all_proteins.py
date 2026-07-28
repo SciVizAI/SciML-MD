@@ -84,7 +84,12 @@ def find_protein_dirs(data_dir):
         if not subdir.is_dir():
             continue
 
-        topology = subdir / "topology.pdb"
+        # Prefer the canonical topology written during simulation (post
+        # PDBFixer + addHydrogens); fall back to the raw PDB only if absent.
+        # The canonical file is the single source of truth for atom identity,
+        # so feature extraction stays consistent with the trajectory.
+        canonical = subdir / "canonical_topology.pdb"
+        topology = canonical if canonical.exists() else subdir / "topology.pdb"
         if not topology.exists():
             continue
 
