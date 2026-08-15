@@ -197,6 +197,87 @@ shows the fused score consistently beats its own geometric component, i.e.
 the MSM machinery earns its keep. (Rarity-channel = 1.0 rows omitted:
 circular with the state labels, see §3 footnote.)
 
+## 5c. Layer 2 — MSM statistical validity battery (EXECUTED on our systems)
+
+Script: `validation/layer2_msm_validity.py` · numbers: `layer2_results.json` ·
+figures: `validation/figures/{PID}_{its,ck,pi_ci,vamp2}.png` (15 figures).
+Run on 1VII, 8H0R, 1UBQ (100 frames each) and 1CRN (1001 frames), base lag 5.
+
+### 5c.1 Chapman–Kolmogorov test
+Correct active-set embedding was required: the repo's
+`msm/validation.py::chapman_kolmogorov_test` compares `P(kτ)` matrices
+estimated on *different* active sets without remapping — the same bug class
+fixed in the scoring path. Our implementation embeds each MSM into the full
+label space before comparison.
+
+| Protein | fraction of (state, k) points where prediction lies within the 95 % CI | max abs deviation |
+|---|---|---|
+| 8H0R | 0.94 | 0.24 |
+| 1VII | 0.75 | 0.22 |
+| 1UBQ | 0.75 | 0.25 |
+| 1CRN | 0.63 | 0.32 |
+
+**Interpretation — important:** the test is passed in the weak sense (most
+points fall inside the intervals), but the intervals are enormous (±0.3–0.5 in
+probability) because each state has only tens of observed transitions. The CK
+test therefore has almost **no statistical power** at this trajectory length;
+it cannot currently distinguish a Markovian model from a non-Markovian one.
+1CRN — the longest trajectory — has the *lowest* pass fraction, consistent
+with tighter intervals exposing real deviations.
+
+### 5c.2 Implied timescales
+Relative change of the slowest implied timescale over the final lag step:
+1VII **0.50**, 1UBQ 0.09, 1CRN 0.06, 8H0R 0.03. Only 8H0R/1CRN approach a
+plateau; **1VII does not converge at all** (t₂ rises from 10.7 → 19.8 frames
+across the tested lag range). Across all four systems the timescales continue
+to drift upward with lag rather than flattening — the classic signature of
+insufficient sampling, not of a well-chosen lag.
+
+### 5c.3 Bootstrap uncertainty on π (block bootstrap, n=200, block=10)
+Median 95 % CI width relative to π itself:
+1VII **1.55×**, 1UBQ **1.53×**, 8H0R **1.11×**, 1CRN **0.56×**.
+
+For the 100-frame systems the confidence interval on a state's stationary
+probability is **wider than the value being estimated**. Since rarity = 1−π is
+the pipeline's primary kinetic channel, per-state rarity values from
+100-frame trajectories should be treated as **unresolved**; only the
+rank-level conclusions (which frames are relatively rarer) survive. 1CRN is
+roughly 3× better and is the only system approaching usable precision.
+Bootstrap replicas also show states dropping in and out of the connected set
+(`state_survival_fraction` in the JSON), confirming the connectivity problem
+is a sampling artifact rather than genuine kinetic disconnection.
+
+### 5c.4 VAMP-2 model selection — **new defect found**
+`msm/select_lag_and_dim.py::compute_vamp2_score` is **numerically unstable on
+real MD features**: its Cholesky-inverse whitening with `reg=1e-6` on
+ill-conditioned covariances returned scores up to **2.5 × 10⁵**, where a valid
+VAMP-2 score is bounded by the dimension (≤ 5). It behaves correctly on
+well-conditioned random data, which is why the repo's mock-data tests never
+caught it. All hyper-parameter selection based on this function is invalid.
+
+We re-scored with deeptime's own cross-validated VAMP-2 (80/20 split):
+
+| Protein | best (lag, dim) | score | pipeline default (lag 5, dim 3) |
+|---|---|---|---|
+| 1VII | (15, 5) | 5.00 — **saturated at dim** | 1.76 |
+| 8H0R | (15, 5) | 5.00 — **saturated at dim** | 1.51 |
+| 1UBQ | (15, 5) | 5.00 — **saturated at dim** | 1.75 |
+
+Saturation at the dimension bound with only ~80 training frames indicates
+**overfitting**, not a genuinely better model — so the grid cannot currently
+justify hyper-parameters either. VAMP-2-based selection needs to be repeated
+on longer trajectories before it can be reported.
+
+### 5c.5 What Layer 2 establishes
+The battery is now **implemented, executed, and figured on our own systems**
+(no mock data) — that part is complete and reportable. Its scientific verdict,
+however, is that **100-frame trajectories cannot support MSM validity claims**:
+CK intervals too wide to be informative, timescales unconverged, π uncertain
+to ±100 %, VAMP-2 saturating. The Layer-1 correctness results and the Layer-3
+external correlations stand on their own; the *kinetic* claims require longer
+trajectories (the 50 000-step protocol in `scripts/generate_md_trajectories.py`,
+or a public long-trajectory dataset) before publication.
+
 ## 6. Known remaining limitations
 
 1. `anomaly_v2.py`'s CLI path reconstructs `MarkovStateModel(P, pi)` without

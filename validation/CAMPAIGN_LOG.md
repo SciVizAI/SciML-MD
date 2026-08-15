@@ -161,9 +161,36 @@ python3 validation/layer3_external.py     # → layer3_results.json
   kinetic anomalies are invisible to geometry-only methods.
 - Full tables in `VALIDATION_REPORT.md` §5b; raw JSON in `layer3_results.json`.
 
-Layer-2 status (for the record): CK / implied-timescales / VAMP-2 / bootstrap
-code exists in `msm/` but has not yet been executed against our systems — this
-is the next work package and is required for publication.
+## 5c. Phase 6 — Layer 2: MSM validity battery EXECUTED
+
+```bash
+python3 validation/layer2_msm_validity.py   # → layer2_results.json + figures/
+```
+Run on 1VII, 8H0R, 1UBQ (100 frames) and 1CRN (1001 frames) at base lag 5.
+15 figures produced (`validation/figures/`): implied timescales, CK panels,
+bootstrap π CIs, VAMP-2 heatmaps.
+
+Two implementation problems found in the existing `msm/` code and worked
+around in the runner:
+1. `validation.py::chapman_kolmogorov_test` compares transition matrices
+   estimated on different active sets without remapping (same bug class as the
+   scoring path) → our runner embeds each MSM into the full label space.
+2. `select_lag_and_dim.py::compute_vamp2_score` is numerically unstable on
+   real features (returned 2.5e5; valid VAMP-2 ≤ dim) → re-scored with
+   deeptime's cross-validated `VAMP.score(r=2)`.
+
+Verdict (details in `VALIDATION_REPORT.md` §5c): battery now genuinely run on
+our systems, but it shows 100-frame trajectories cannot support Markovianity
+claims — CK intervals ±0.3–0.5 (no power), implied timescales unconverged
+(1VII: +50 % at the last lag step), π CIs 1.1–1.6× the value itself, VAMP-2
+saturating at the dimension bound (overfitting on ~80 training frames).
+1CRN (1001 frames) is ~3× better on every metric — evidence that trajectory
+length, not the method, is the binding constraint.
+
+Practical note recorded for the team: MD generation is the bottleneck —
+9O6O/9UNN runs on the laptop take hours (9UNN is a 23k-atom heterotetramer),
+and the cloud sandbox (2 cores, implicit-solvent NoCutoff O(N²)) is slower
+still. Longer trajectories for publication will need GPU/HPC resources.
 
 ## 6. Deliverables inventory
 
