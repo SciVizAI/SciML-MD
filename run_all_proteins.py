@@ -286,20 +286,31 @@ def compute_residue_scores(traj, frame_scores):
     """
     Aggregate per-frame anomaly scores to per-residue scores.
 
-    Uses RMSF (root-mean-square fluctuation) as a proxy for structural
-    flexibility and combines it with the mean per-frame anomaly score to
-    produce a per-residue anomaly estimate.
+    Combines two per-residue channels:
+      1. rmsf_norm      — normalized RMSF (structural flexibility), and
+      2. participation  — per-frame anomaly scores aggregated to residues,
+                          weighting each frame's score by how far the residue
+                          is displaced from its mean position in that frame
+                          ("which residues move in the anomalous frames?").
+
+    The previous implementation blended rmsf_norm with the trajectory-mean
+    frame score — a single constant added to every residue — so the residue
+    ranking was exactly RMSF (validated: Pearson r = 1.0 on 1VII). It also
+    keyed residues by str(residue) (e.g. "MET41"), which collides across
+    chains and silently dropped half the residues of multi-chain proteins
+    (8H0R: 182 residues -> 91 entries).
 
     Args:
         traj: MDTraj trajectory object.
-        frame_scores: Per-frame anomaly scores (T,).
+        frame_scores: Per-frame anomaly scores (T,) in [0, 100].
 
     Returns:
-        residue_scores: Dict mapping residue index → score.
+        residue_scores: Dict mapping residue key → score in [0, 100].
+                        Keys are "NAMEnnn" (e.g. "MET41"); when the same
+                        name+number occurs in several chains, all copies are
+                        disambiguated as "NAMEnnn_chainK".
     """
     try:
-        import mdtraj as md
-
         ca_idx = traj.topology.select("name CA")
         if len(ca_idx) == 0:
             ca_idx = traj.topology.select("protein")
@@ -311,24 +322,72 @@ def compute_residue_scores(traj, frame_scores):
         ca_traj = traj.atom_slice(ca_idx)
         ca_traj = ca_traj.superpose(ca_traj)
         mean_xyz = ca_traj.xyz.mean(axis=0)
-        rmsf = np.sqrt(((ca_traj.xyz - mean_xyz) ** 2).sum(axis=-1).mean(axis=0))
+        # Per-frame per-residue displacement from mean position [T, R]
+        disp = np.sqrt(((ca_traj.xyz - mean_xyz) ** 2).sum(axis=-1))
+        rmsf = np.sqrt((disp ** 2).mean(axis=0))
         rmsf_norm = rmsf / (rmsf.max() + 1e-12)
 
-        # Mean frame score (already in [0,100])
-        mean_frame_score = frame_scores.mean() / 100.0
+        # Anomaly participation: frame scores aggregated to residues, weighted
+        # by that residue's displacement in each frame (same "weighted_mean"
+        # scheme as scoring.signals.aggregate_frame_to_residue).
+        fs = np.asarray(frame_scores, dtype=np.float64)
+        T = min(len(fs), disp.shape[0])
+        weighted = fs[:T, None] * disp[:T]
+        participation = weighted.sum(axis=0) / (disp[:T].sum(axis=0) + 1e-10)
+
+        # Collision-safe residue keys
+        residues = [traj.topology.atom(a).residue for a in ca_idx]
+        base_keys = [f"{r.name}{r.resSeq}" for r in residues]
+        from collections import Counter
+        dup = {k for k, c in Counter(base_keys).items() if c > 1}
+        keys = [
+            f"{k}_chain{r.chain.index}" if k in dup else k
+            for k, r in zip(base_keys, residues)
+        ]
 
         residue_scores = {}
-        for i, atom_idx in enumerate(ca_idx):
-            atom = traj.topology.atom(atom_idx)
-            res = atom.residue
-            # Blend RMSF weight with mean frame anomaly
-            combined = float(0.5 * rmsf_norm[i] + 0.5 * mean_frame_score) * 100.0
-            residue_scores[str(res)] = round(combined, 4)
+        for i, key in enumerate(keys):
+            combined = float(0.5 * rmsf_norm[i] * 100.0 + 0.5 * participation[i])
+            residue_scores[key] = round(combined, 4)
 
         return residue_scores
 
     except Exception as exc:
         log.warning("Residue score computation failed: %s", exc)
+        return {}
+
+
+# -------------------------------------------------------------- #
+# Function: compute_rmsf_residue_json
+# -------------------------------------------------------------- #
+def compute_rmsf_residue_json(traj):
+    """
+    Per-residue RMSF (Angstroms) keyed like compute_residue_scores.
+
+    Written to results/{PDB_ID}/residue_scores_rmsf.json so that
+    tools/export_for_asvs.py can populate rmsf_residue.json (previously the
+    file was never produced and the ASVS export was empty).
+    """
+    try:
+        ca_idx = traj.topology.select("name CA")
+        if len(ca_idx) == 0:
+            return {}
+        ca_traj = traj.atom_slice(ca_idx).superpose(traj.atom_slice(ca_idx))
+        mean_xyz = ca_traj.xyz.mean(axis=0)
+        rmsf_nm = np.sqrt(((ca_traj.xyz - mean_xyz) ** 2).sum(axis=-1).mean(axis=0))
+        rmsf_ang = rmsf_nm * 10.0
+
+        residues = [traj.topology.atom(a).residue for a in ca_idx]
+        base_keys = [f"{r.name}{r.resSeq}" for r in residues]
+        from collections import Counter
+        dup = {k for k, c in Counter(base_keys).items() if c > 1}
+        keys = [
+            f"{k}_chain{r.chain.index}" if k in dup else k
+            for k, r in zip(base_keys, residues)
+        ]
+        return {k: round(float(v), 4) for k, v in zip(keys, rmsf_ang)}
+    except Exception as exc:
+        log.warning("RMSF export failed: %s", exc)
         return {}
 
 
@@ -426,6 +485,28 @@ def run_pipeline(
     np.save(art_dir / "pi.npy", pi)
     log.info("[%s]   MSM states: %d", pdb_id, msm.n_states)
 
+    n_labels = int(dtraj.max()) + 1
+    if msm.n_states < n_labels:
+        try:
+            from scoring.anomaly_v2 import remap_dtraj_to_active_set
+
+            dtraj_active, _ = remap_dtraj_to_active_set(dtraj, msm)
+            n_dropped_frames = int((dtraj_active < 0).sum())
+        except Exception:
+            n_dropped_frames = -1
+        log.warning(
+            "[%s]   MSM active set covers %d of %d cluster states; %d frame(s) "
+            "lie in disconnected states (treated as maximally rare/surprising).",
+            pdb_id, msm.n_states, n_labels, n_dropped_frames,
+        )
+        # Persist the active-set mapping so downstream consumers of dtraj.npy
+        # can remap labels correctly.
+        try:
+            np.save(art_dir / "state_symbols.npy",
+                    np.asarray(msm.count_model.state_symbols))
+        except Exception:
+            pass
+
     log.info("[%s] ── Step 5/5: Anomaly scoring", pdb_id)
     try:
         frame_scores, components = compute_anomaly_signals(
@@ -455,6 +536,12 @@ def run_pipeline(
     with open(residue_json, "w") as fh:
         json.dump(residue_scores, fh, indent=2)
     log.info("[%s]   Residue scores → %s", pdb_id, residue_json)
+
+    # --- Save RMSF residue scores (consumed by tools/export_for_asvs.py) ---
+    rmsf_scores = compute_rmsf_residue_json(traj)
+    if rmsf_scores:
+        with open(res_dir / "residue_scores_rmsf.json", "w") as fh:
+            json.dump(rmsf_scores, fh, indent=2)
 
     log.info(
         "[%s] ✓ Pipeline complete. Mean score: %.1f",

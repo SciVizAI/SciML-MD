@@ -431,6 +431,7 @@ def run_pipeline(
             build_msm,
             compute_anomaly_signals,
             compute_residue_scores,
+            compute_rmsf_residue_json,
         )
     except ImportError as exc:
         log.error("[%s] Cannot import run_all_proteins: %s", pdb_id, exc)
@@ -518,6 +519,12 @@ def run_pipeline(
     with open(residue_json, "w") as fh:
         json.dump(residue_scores, fh, indent=2)
     log.info("[%s]   Residue scores → %s", pdb_id, residue_json)
+
+    # RMSF residue scores (consumed by tools/export_for_asvs.py)
+    rmsf_scores = compute_rmsf_residue_json(traj)
+    if rmsf_scores:
+        with open(res_dir / "residue_scores_rmsf.json", "w") as fh:
+            json.dump(rmsf_scores, fh, indent=2)
 
     log.info(
         "[%s] ✓ Pipeline complete — mean frame score: %.1f",

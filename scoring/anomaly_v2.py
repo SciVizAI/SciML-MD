@@ -40,17 +40,30 @@ def rank_normalize(x):
         Normalized array in [0,1]
     """
     x = np.asarray(x, dtype=np.float64)
-    
+
     if len(x) == 0:
         return x
-    
-    # Handle constant arrays
-    if np.all(x == x[0]):
-        return np.zeros_like(x)
-    
-    # Rank-based normalization
-    ranks = np.argsort(np.argsort(x))
-    return ranks / (len(x) - 1)
+
+    # NaN-aware: NaNs (e.g. undefined surprise in the last lag frames) stay NaN
+    # instead of being silently ranked.
+    finite = np.isfinite(x)
+    out = np.full_like(x, np.nan)
+
+    xv = x[finite]
+    if len(xv) == 0:
+        return out
+    if len(xv) == 1 or np.all(xv == xv[0]):
+        out[finite] = 0.0
+        return out
+
+    # Tie-aware rank normalization (average ranks). The previous
+    # argsort(argsort(x)) implementation assigned DISTINCT ranks to tied
+    # values in frame order, spreading e.g. all surprise==0 frames across
+    # tens of score points purely by frame index.
+    from scipy.stats import rankdata
+    ranks = rankdata(xv, method="average") - 1.0
+    out[finite] = ranks / (len(xv) - 1)
+    return out
 
 
 
@@ -180,43 +193,127 @@ def load_signal_data(features_path, vamp2_best_path, energy_path=None,
 
 
 # -------------------------------------------------------------- #
+# Function: remap_dtraj_to_active_set
+# -------------------------------------------------------------- #
+def remap_dtraj_to_active_set(dtraj, msm=None, state_symbols=None):
+    """
+    Map raw clustering labels onto the MSM's active-set indices.
+
+    deeptime's MaximumLikelihoodMSM estimates P and pi only over the largest
+    connected set of states ("Skipping state set [k]" warnings). The MSM's
+    row/column i therefore corresponds to ORIGINAL cluster label
+    state_symbols[i], NOT to label i. Indexing pi/P with raw KMeans labels
+    reads the wrong state whenever any state was dropped (the historical bug
+    validated in validation/baseline_numerical_results.json).
+
+    Args:
+        dtraj: Raw discrete trajectory (original cluster labels).
+        msm: Fitted deeptime MSM (used to obtain count_model.state_symbols).
+        state_symbols: Explicit active-set -> original-label array (overrides msm).
+
+    Returns:
+        dtraj_active: Same length as dtraj; active-set indices, with frames in
+                      disconnected/dropped states set to -1.
+        was_remapped: True if a non-identity mapping was applied.
+    """
+    dtraj = np.asarray(dtraj, dtype=np.int64)
+
+    if state_symbols is None and msm is not None:
+        try:
+            state_symbols = np.asarray(msm.count_model.state_symbols)
+        except AttributeError:
+            state_symbols = None
+
+    if state_symbols is None:
+        # No mapping information available (e.g. MSM rebuilt from bare P/pi).
+        # Assume identity but warn if labels exceed the state space.
+        n_states = getattr(msm, "n_states", None)
+        if n_states is not None and dtraj.max() >= n_states:
+            import warnings
+            warnings.warn(
+                f"dtraj contains labels up to {dtraj.max()} but the MSM has only "
+                f"{n_states} states and no state_symbols mapping is available. "
+                "Rarity/surprise will be WRONG for frames in dropped states. "
+                "Pass state_symbols or a deeptime MSM with count_model."
+            )
+        return dtraj, False
+
+    state_symbols = np.asarray(state_symbols, dtype=np.int64)
+    lookup = -np.ones(max(int(dtraj.max()), int(state_symbols.max())) + 1,
+                      dtype=np.int64)
+    lookup[state_symbols] = np.arange(len(state_symbols))
+    dtraj_active = lookup[np.clip(dtraj, 0, None)]
+    dtraj_active[dtraj < 0] = -1  # negative labels are invalid, not wrap-around
+    identity = bool(np.array_equal(state_symbols, np.arange(len(state_symbols)))
+                    and dtraj.max() < len(state_symbols))
+    return dtraj_active, not identity
+
+
+# -------------------------------------------------------------- #
 # Function: compute_kinetic_signals
 # -------------------------------------------------------------- #
-def compute_kinetic_signals(msm, dtraj, lag_msm):
+def compute_kinetic_signals(msm, dtraj, lag_msm, state_symbols=None):
     """
     Compute kinetic signals: rarity and transition surprise.
-    
+
+    The raw dtraj is remapped onto the MSM active set first (see
+    remap_dtraj_to_active_set). Frames in disconnected states are treated as
+    maximally rare (rarity = 1, i.e. pi -> 0) and transitions entering or
+    leaving a disconnected state are treated as maximally surprising (set to
+    the maximum finite surprise observed, not silently zero).
+
+    The last `lag_msm` frames have no defined transition; their surprise is
+    NaN so that downstream normalization/fusion can exclude them instead of
+    ranking artificial zeros.
+
     Args:
-        msm: Fitted MSM model
-        dtraj: Discrete trajectory (mapped to active set)
-        lag_msm: MSM lag time
-        
+        msm: Fitted MSM model (deeptime MLE MSM preferred; bare P/pi models
+             are supported when dtraj labels already match the state space).
+        dtraj: Discrete trajectory (raw cluster labels).
+        lag_msm: MSM lag time.
+        state_symbols: Optional explicit active-set mapping.
+
     Returns:
-        rarity: State rarity signal
-        surprise: Transition surprise signal
+        rarity: State rarity signal (1 - pi[state]).
+        surprise: Transition surprise signal (-log P), NaN for the tail frames.
     """
+    dtraj = np.asarray(dtraj, dtype=np.int64)
     n_frames = len(dtraj)
     pi = msm.stationary_distribution
     P = msm.transition_matrix
     n_states = msm.n_states
-    
-    # Rarity: 1 - π[state]
+    lag_msm = int(max(1, min(lag_msm, max(1, n_frames - 1))))
+
+    dtraj_active, _ = remap_dtraj_to_active_set(dtraj, msm, state_symbols)
+    valid = (dtraj_active >= 0) & (dtraj_active < n_states)
+
+    # Rarity: 1 - π[state]; disconnected states are maximally rare (π -> 0)
     rarity = np.ones(n_frames, dtype=np.float64)
-    for t in range(n_frames):
-        s = dtraj[t]
-        if 0 <= s < n_states:
-            rarity[t] = 1.0 - pi[s]
-    
+    rarity[valid] = 1.0 - pi[dtraj_active[valid]]
+
     # Transition surprise: -log(P[s_t -> s_{t+lag}])
-    surprise = np.zeros(n_frames, dtype=np.float64)
+    surprise = np.full(n_frames, np.nan, dtype=np.float64)
     epsilon = 1e-12
-    
-    for t in range(n_frames - lag_msm):
-        s1, s2 = dtraj[t], dtraj[t + lag_msm]
-        if 0 <= s1 < n_states and 0 <= s2 < n_states:
-            prob = max(P[s1, s2], epsilon)
-            surprise[t] = -np.log(prob)
-    
+
+    if n_frames > lag_msm:
+        s1 = dtraj_active[:-lag_msm]
+        s2 = dtraj_active[lag_msm:]
+        both_valid = valid[:-lag_msm] & valid[lag_msm:]
+
+        s1c = np.clip(s1, 0, n_states - 1)
+        s2c = np.clip(s2, 0, n_states - 1)
+        vals = -np.log(np.maximum(P[s1c, s2c], epsilon))
+
+        seg = np.zeros(n_frames - lag_msm, dtype=np.float64)
+        seg[both_valid] = vals[both_valid]
+
+        # Transitions touching a disconnected state: maximally surprising,
+        # capped at the largest finite surprise seen (avoids -log(eps) blowups).
+        if np.any(~both_valid):
+            cap = vals[both_valid].max() if np.any(both_valid) else -np.log(epsilon)
+            seg[~both_valid] = cap
+        surprise[:-lag_msm] = seg
+
     return rarity, surprise
 
 
@@ -359,15 +456,21 @@ def fuse_signals(signals, method='median', normalize_method='rank'):
     
     # Stack signals
     signal_matrix = np.column_stack([normalized[name] for name in signals.keys()])
-    
-    # Fuse
-    if method == 'median':
-        score_raw = np.median(signal_matrix, axis=1)
-    elif method == 'mean':
-        score_raw = np.mean(signal_matrix, axis=1)
-    else:
-        score_raw = np.median(signal_matrix, axis=1)
-    
+
+    # Fuse (NaN-aware: frames where a signal is undefined — e.g. transition
+    # surprise in the last lag frames — are fused over the remaining signals
+    # instead of ranking artificial zeros)
+    import warnings as _warnings
+    with _warnings.catch_warnings():
+        _warnings.simplefilter("ignore", category=RuntimeWarning)
+        if method == 'mean':
+            score_raw = np.nanmean(signal_matrix, axis=1)
+        else:
+            score_raw = np.nanmedian(signal_matrix, axis=1)
+
+    # A frame with NO valid signal at all gets a neutral 0.5
+    score_raw = np.nan_to_num(score_raw, nan=0.5)
+
     return score_raw, normalized
 
 

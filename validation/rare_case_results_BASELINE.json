@@ -1,0 +1,176 @@
+{
+  "1VII": {
+    "n_frames": 100,
+    "detection": {
+      "rare_state | fused (as-shipped)": {
+        "auroc": 0.8298,
+        "auprc": 0.5024,
+        "n_pos": 23,
+        "prevalence": 0.23
+      },
+      "rare_state | rarity channel (as-shipped)": {
+        "auroc": 0.8035,
+        "auprc": 0.4695,
+        "n_pos": 23,
+        "prevalence": 0.23
+      },
+      "rare_state | fused (corrected indexing)": {
+        "auroc": 0.9345,
+        "auprc": 0.8325,
+        "n_pos": 23,
+        "prevalence": 0.23
+      },
+      "rare_state | rarity channel (corrected)": {
+        "auroc": 1.0,
+        "auprc": 1.0,
+        "n_pos": 23,
+        "prevalence": 0.23
+      },
+      "rare_trans | fused (as-shipped)": {
+        "auroc": 0.6988,
+        "auprc": 0.3421,
+        "n_pos": 23,
+        "prevalence": 0.23
+      },
+      "rare_trans | surprise channel (as-shipped)": {
+        "auroc": 0.4449,
+        "auprc": 0.2357,
+        "n_pos": 23,
+        "prevalence": 0.23
+      },
+      "rare_trans | fused (corrected indexing)": {
+        "auroc": 0.7931,
+        "auprc": 0.6117,
+        "n_pos": 23,
+        "prevalence": 0.23
+      },
+      "rare_trans | surprise channel (corrected)": {
+        "auroc": 0.5556,
+        "auprc": 0.6035,
+        "n_pos": 23,
+        "prevalence": 0.23
+      }
+    },
+    "channel_correlations_corrected": {
+      "rarity_vs_surprise": -0.187,
+      "rarity_vs_density": 0.602,
+      "surprise_vs_density": -0.34
+    }
+  },
+  "8H0R": {
+    "n_frames": 100,
+    "detection": {
+      "rare_state | fused (as-shipped)": {
+        "auroc": 0.8641,
+        "auprc": 0.6945,
+        "n_pos": 33,
+        "prevalence": 0.33
+      },
+      "rare_state | rarity channel (as-shipped)": {
+        "auroc": 0.446,
+        "auprc": 0.3508,
+        "n_pos": 33,
+        "prevalence": 0.33
+      },
+      "rare_state | fused (corrected indexing)": {
+        "auroc": 0.9496,
+        "auprc": 0.9289,
+        "n_pos": 33,
+        "prevalence": 0.33
+      },
+      "rare_state | rarity channel (corrected)": {
+        "auroc": 1.0,
+        "auprc": 1.0,
+        "n_pos": 33,
+        "prevalence": 0.33
+      },
+      "rare_trans | fused (as-shipped)": {
+        "auroc": 0.7895,
+        "auprc": 0.5541,
+        "n_pos": 19,
+        "prevalence": 0.19
+      },
+      "rare_trans | surprise channel (as-shipped)": {
+        "auroc": 0.5893,
+        "auprc": 0.2482,
+        "n_pos": 19,
+        "prevalence": 0.19
+      },
+      "rare_trans | fused (corrected indexing)": {
+        "auroc": 0.8194,
+        "auprc": 0.6755,
+        "n_pos": 19,
+        "prevalence": 0.19
+      },
+      "rare_trans | surprise channel (corrected)": {
+        "auroc": 0.3915,
+        "auprc": 0.357,
+        "n_pos": 19,
+        "prevalence": 0.19
+      }
+    },
+    "channel_correlations_corrected": {
+      "rarity_vs_surprise": -0.22,
+      "rarity_vs_density": 0.447,
+      "surprise_vs_density": -0.381
+    }
+  },
+  "1CRN": {
+    "n_frames": 1001,
+    "detection": {
+      "rare_state | fused (as-shipped)": {
+        "auroc": 0.8368,
+        "auprc": 0.4839,
+        "n_pos": 187,
+        "prevalence": 0.187
+      },
+      "rare_state | rarity channel (as-shipped)": {
+        "auroc": 0.5382,
+        "auprc": 0.2322,
+        "n_pos": 187,
+        "prevalence": 0.187
+      },
+      "rare_state | fused (corrected indexing)": {
+        "auroc": 0.9513,
+        "auprc": 0.8756,
+        "n_pos": 187,
+        "prevalence": 0.187
+      },
+      "rare_state | rarity channel (corrected)": {
+        "auroc": 1.0,
+        "auprc": 1.0,
+        "n_pos": 187,
+        "prevalence": 0.187
+      },
+      "rare_trans | fused (as-shipped)": {
+        "auroc": 0.6541,
+        "auprc": 0.2108,
+        "n_pos": 54,
+        "prevalence": 0.054
+      },
+      "rare_trans | surprise channel (as-shipped)": {
+        "auroc": 0.5543,
+        "auprc": 0.0845,
+        "n_pos": 54,
+        "prevalence": 0.054
+      },
+      "rare_trans | fused (corrected indexing)": {
+        "auroc": 0.9906,
+        "auprc": 0.9069,
+        "n_pos": 54,
+        "prevalence": 0.054
+      },
+      "rare_trans | surprise channel (corrected)": {
+        "auroc": 0.0211,
+        "auprc": 0.0715,
+        "n_pos": 54,
+        "prevalence": 0.054
+      }
+    },
+    "channel_correlations_corrected": {
+      "rarity_vs_surprise": -0.576,
+      "rarity_vs_density": 0.715,
+      "surprise_vs_density": -0.378
+    }
+  }
+}

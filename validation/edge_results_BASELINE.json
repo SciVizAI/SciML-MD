@@ -1,0 +1,271 @@
+{
+  "short_trajectory_10_frames_full_chain": {
+    "status": "ok",
+    "detail": {
+      "n_frames": 10,
+      "n_labels": 5,
+      "n_msm_states": 3,
+      "state_space_mismatch": true,
+      "score_mean": 49.44444444444444,
+      "score_std": 16.933056282364632,
+      "finite": true,
+      "surprise_tail_frames_zero_raw": 5
+    }
+  },
+  "short_trajectory_12_frames_full_chain": {
+    "status": "ok",
+    "detail": {
+      "n_frames": 12,
+      "n_labels": 6,
+      "n_msm_states": 3,
+      "state_space_mismatch": true,
+      "score_mean": 49.526515151515156,
+      "score_std": 22.77673752215957,
+      "finite": true,
+      "surprise_tail_frames_zero_raw": 5
+    }
+  },
+  "short_trajectory_20_frames_full_chain": {
+    "status": "ok",
+    "detail": {
+      "n_frames": 20,
+      "n_labels": 10,
+      "n_msm_states": 2,
+      "state_space_mismatch": true,
+      "score_mean": 52.19924812030075,
+      "score_std": 24.06742576797194,
+      "finite": true,
+      "surprise_tail_frames_zero_raw": 5
+    }
+  },
+  "short_trajectory_50_frames_full_chain": {
+    "status": "ok",
+    "detail": {
+      "n_frames": 50,
+      "n_labels": 10,
+      "n_msm_states": 9,
+      "state_space_mismatch": true,
+      "score_mean": 48.95964749536178,
+      "score_std": 16.81452879846615,
+      "finite": true,
+      "surprise_tail_frames_zero_raw": 5
+    }
+  },
+  "9_frames_functions_only": {
+    "status": "ok",
+    "detail": {
+      "n_frames": 9,
+      "n_labels": 4,
+      "n_msm_states": 2,
+      "state_space_mismatch": true,
+      "score_mean": 41.666666666666664,
+      "score_std": 24.11632688081297,
+      "finite": true,
+      "surprise_tail_frames_zero_raw": 5
+    }
+  },
+  "tica_lag_larger_than_T": {
+    "status": "ok",
+    "detail": {
+      "n_frames": 24,
+      "n_labels": 10,
+      "n_msm_states": 6,
+      "state_space_mismatch": true,
+      "score_mean": 57.684178743961354,
+      "score_std": 15.966249522527457,
+      "finite": true,
+      "surprise_tail_frames_zero_raw": 5
+    }
+  },
+  "msm_lag_larger_than_T": {
+    "status": "ok",
+    "detail": {
+      "n_frames": 24,
+      "n_labels": 10,
+      "n_msm_states": 8,
+      "state_space_mismatch": true,
+      "score_mean": 50.18648763853366,
+      "score_std": 22.94565064366055,
+      "finite": true,
+      "surprise_tail_frames_zero_raw": 100
+    }
+  },
+  "scorer_called_with_lag_equal_T": {
+    "status": "ok",
+    "detail": {
+      "rarity_finite": true,
+      "surprise_all_zero": false,
+      "note": "scorer itself does NOT clamp lag; caller must"
+    }
+  },
+  "constant_features_tica": {
+    "status": "CRASH",
+    "detail": "ZeroRankError: All input features are constant in all time steps. No dimension would be left after dimension reduction.",
+    "trace_tail": [
+      "  File \"/usr/local/lib/python3.11/dist-packages/deeptime/decomposition/_tica.py\", line 148, in _decomposition",
+      "    raise ZeroRankError('All input features are constant in all time steps. '",
+      "deeptime.numeric._eigen.ZeroRankError: All input features are constant in all time steps. No dimension would be left after dimension reduction."
+    ]
+  },
+  "near_zero_variance_full_chain": {
+    "status": "CRASH",
+    "detail": "ZeroRankError: All input features are constant in all time steps. No dimension would be left after dimension reduction.",
+    "trace_tail": [
+      "  File \"/usr/local/lib/python3.11/dist-packages/deeptime/decomposition/_tica.py\", line 148, in _decomposition",
+      "    raise ZeroRankError('All input features are constant in all time steps. '",
+      "deeptime.numeric._eigen.ZeroRankError: All input features are constant in all time steps. No dimension would be left after dimension reduction."
+    ]
+  },
+  "single_state_dtraj": {
+    "status": "ok",
+    "detail": {
+      "n_states": 1,
+      "rarity_const": true,
+      "rarity_value": 0.0,
+      "surprise_max": NaN
+    }
+  },
+  "disconnected_two_blocks": {
+    "status": "ok",
+    "detail": {
+      "n_labels": 4,
+      "n_msm_states": 2,
+      "which_half_survives": "first",
+      "rarity_second_half_default_1.0": false,
+      "rarity_first_half_example": 1.0,
+      "note": "half the trajectory silently gets default rarity + zero surprise"
+    }
+  },
+  "clusters_gt_frames": {
+    "status": "ok",
+    "detail": {
+      "n_frames": 14,
+      "n_labels": 7,
+      "n_msm_states": 4,
+      "state_space_mismatch": true,
+      "score_mean": 45.6043956043956,
+      "score_std": 13.371531344657097,
+      "finite": true,
+      "surprise_tail_frames_zero_raw": 5
+    }
+  },
+  "k_neighbors_gt_frames": {
+    "status": "ok",
+    "detail": {
+      "n_frames": 20,
+      "n_labels": 10,
+      "n_msm_states": 2,
+      "state_space_mismatch": true,
+      "score_mean": 50.883458646616546,
+      "score_std": 23.092478216346194,
+      "finite": true,
+      "surprise_tail_frames_zero_raw": 5
+    }
+  },
+  "density_single_frame_k0": {
+    "status": "ok",
+    "detail": {
+      "len": 1,
+      "all_zero": true
+    }
+  },
+  "rank_normalize_empty": {
+    "status": "ok",
+    "detail": {
+      "len": 0
+    }
+  },
+  "rank_normalize_single": {
+    "status": "ok",
+    "detail": {
+      "val": [
+        0.0
+      ]
+    }
+  },
+  "rank_normalize_constant": {
+    "status": "ok",
+    "detail": {
+      "vals": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "rank_normalize_two_ties_of_two": {
+    "status": "ok",
+    "detail": {
+      "vals": [
+        16.666666666666664,
+        16.666666666666664,
+        83.33333333333334,
+        83.33333333333334
+      ],
+      "note": "tied values should get equal scores \u2014 they don't"
+    }
+  },
+  "quantile_normalize_constant": {
+    "status": "ok",
+    "detail": {
+      "vals": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "moving_median_window_gt_len": {
+    "status": "ok",
+    "detail": {
+      "vals_len": 5
+    }
+  },
+  "moving_median_even_window": {
+    "status": "ok",
+    "detail": {
+      "vals": [
+        0.0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0
+      ],
+      "note": "window bumped to 5"
+    }
+  },
+  "fuse_single_signal": {
+    "status": "ok",
+    "detail": {
+      "score_range": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  "invalid_labels_into_scorer": {
+    "status": "ok",
+    "detail": {
+      "finite": false,
+      "rarity_at_bad": [
+        1.0,
+        1.0
+      ],
+      "note": "bad labels silently become rarity=1.0 (max-anomalous default)"
+    }
+  },
+  "cross_machine_reproducibility_1VII_dtraj": {
+    "status": "ok",
+    "detail": {
+      "comparable": true,
+      "identical_dtraj": false,
+      "n_differing": 90,
+      "note": "same seed, same data, cross-machine determinism check"
+    }
+  }
+}
