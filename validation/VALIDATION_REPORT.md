@@ -142,6 +142,61 @@ Interface notes (downstream consumers):
   for the last `lag_msm` frames — by design.
 - New artifact: `artifacts/{ID}/state_symbols.npy` when states were pruned.
 
+## 5b. Layer 3 — external scientific validation (added same day)
+
+Terminology used with the team: Layer 1 = implementation correctness (§1–4),
+Layer 2 = MSM statistical validity (CK / implied timescales / VAMP-2 /
+bootstrap — code exists in `msm/` but has NOT yet been run on our systems),
+Layer 3 = external validity (below). Script: `validation/layer3_external.py`,
+raw numbers: `validation/layer3_results.json`.
+
+### 5b.1 Experimental B-factor comparison (non-circular ground truth)
+
+Per-residue CA B-factors parsed from the raw RCSB entries and compared
+against pipeline outputs from the fixed code (Spearman ρ):
+
+| Protein (method) | matched residues | ρ(B, dynamic score) | ρ(B, trajectory RMSF) |
+|---|---|---|---|
+| 8H0R — βB1-crystallin Y202X (X-ray 1.20 Å) | 178/182 | **0.595** | 0.642 |
+| 1UBQ — ubiquitin (X-ray 1.80 Å) | 76/76 | **0.573** | 0.656 |
+
+Reading: ρ ≈ 0.6 between crystallographic flexibility and scores derived from
+100-frame toy trajectories is in the range typically reported for MD-vs-B-factor
+comparisons, and is *external* evidence the per-residue outputs track real
+structural flexibility. The dynamic score correlates slightly below raw RMSF —
+expected and desirable: B-factors measure flexibility only, while the dynamic
+score deliberately mixes in kinetic-anomaly participation. 1VII is NMR (no
+meaningful B-factors) and is excluded by design. 9O6O (Siglec-10, X-ray 2.70 Å)
+and 9UNN (NMDA receptor, cryo-EM 3.29 Å) will be added when their runs finish.
+
+### 5b.2 Baseline method comparison (same tICA space, same labels)
+
+Off-the-shelf anomaly detectors vs the pipeline, AUROC on the operational
+kinetic labels (labels are MSM-derived, so the fair claim is: *geometric
+detectors cannot recover kinetic rarity; the pipeline's kinetic channels add
+real signal*):
+
+| Rare-STATE AUROC | 1VII | 8H0R | 1UBQ | 1CRN |
+|---|---|---|---|---|
+| **Pipeline fused (ours)** | **0.947** | **0.958** | **0.904** | **0.955** |
+| IsolationForest | 0.752 | 0.879 | 0.696 | 0.845 |
+| LocalOutlierFactor | 0.835 | 0.934 | 0.694 | 0.490 |
+| kNN distance only (density ablation) | 0.867 | 0.867 | 0.762 | 0.905 |
+
+| Rare-TRANSITION AUROC | 1VII | 8H0R | 1UBQ | 1CRN |
+|---|---|---|---|---|
+| **Pipeline fused (ours)** | 0.811 | 0.837 | **0.808** | **0.999** |
+| Surprise channel alone | **0.976** | **0.953** | **0.907** | **1.000** |
+| IsolationForest | 0.771 | 0.826 | 0.432 | 0.959 |
+| LocalOutlierFactor | 0.772 | 0.846 | 0.463 | 0.607 |
+
+Highlights: on 1UBQ rare transitions, geometric detectors are at chance
+(0.43–0.49) while the surprise channel reaches 0.91 — kinetic events are
+invisible to purely geometric outlier detection. The density-only ablation
+shows the fused score consistently beats its own geometric component, i.e.
+the MSM machinery earns its keep. (Rarity-channel = 1.0 rows omitted:
+circular with the state labels, see §3 footnote.)
+
 ## 6. Known remaining limitations
 
 1. `anomaly_v2.py`'s CLI path reconstructs `MarkovStateModel(P, pi)` without
