@@ -1,0 +1,34 @@
+{
+  "1VII": {
+    "state_w3": 0.947,
+    "state_w1": 0.944,
+    "trans_w3": 0.811,
+    "trans_w1": 0.866,
+    "state_auprc_w3": 0.856,
+    "state_auprc_w1": 0.893
+  },
+  "8H0R": {
+    "state_w3": 0.958,
+    "state_w1": 0.964,
+    "trans_w3": 0.837,
+    "trans_w1": 0.858,
+    "state_auprc_w3": 0.931,
+    "state_auprc_w1": 0.936
+  },
+  "1UBQ": {
+    "state_w3": 0.904,
+    "state_w1": 0.879,
+    "trans_w3": 0.808,
+    "trans_w1": 0.801,
+    "state_auprc_w3": 0.841,
+    "state_auprc_w1": 0.804
+  },
+  "1CRN": {
+    "state_w3": 0.955,
+    "state_w1": 0.938,
+    "trans_w3": 0.999,
+    "trans_w1": 1.0,
+    "state_auprc_w3": 0.895,
+    "state_auprc_w1": 0.842
+  }
+}

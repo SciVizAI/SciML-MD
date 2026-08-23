@@ -1,0 +1,395 @@
+{
+  "pool_check": {
+    "normal_rg_mean": 0.9918,
+    "hot_rg_mean": 1.0267,
+    "normal_rg_std": 0.0137,
+    "hot_rg_std": 0.0231
+  },
+  "n_hot_seeded": 20,
+  "replicates": 5,
+  "modes": {
+    "burst": {
+      "msm_info": {
+        "n_msm_states": 7,
+        "n_labels": 10
+      },
+      "methods": {
+        "pipeline_fused": {
+          "auroc_mean": 0.831,
+          "auroc_std": 0.101,
+          "auprc_mean": 0.296,
+          "auroc_per_replicate": [
+            0.646,
+            0.868,
+            0.951,
+            0.823,
+            0.865
+          ]
+        },
+        "pipeline_kinetic_only": {
+          "auroc_mean": 0.596,
+          "auroc_std": 0.073,
+          "auprc_mean": 0.129,
+          "auroc_per_replicate": [
+            0.595,
+            0.651,
+            0.578,
+            0.684,
+            0.471
+          ]
+        },
+        "rarity_only": {
+          "auroc_mean": 0.803,
+          "auroc_std": 0.091,
+          "auprc_mean": 0.279,
+          "auroc_per_replicate": [
+            0.663,
+            0.854,
+            0.9,
+            0.729,
+            0.868
+          ]
+        },
+        "surprise_only": {
+          "auroc_mean": 0.351,
+          "auroc_std": 0.123,
+          "auprc_mean": 0.078,
+          "auroc_per_replicate": [
+            0.433,
+            0.409,
+            0.211,
+            0.503,
+            0.199
+          ]
+        },
+        "density_only": {
+          "auroc_mean": 0.826,
+          "auroc_std": 0.122,
+          "auprc_mean": 0.263,
+          "auroc_per_replicate": [
+            0.588,
+            0.884,
+            0.931,
+            0.844,
+            0.881
+          ]
+        },
+        "rmsd_from_mean": {
+          "auroc_mean": 1.0,
+          "auroc_std": 0.0,
+          "auprc_mean": 1.0,
+          "auroc_per_replicate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "feature_zscore": {
+          "auroc_mean": 0.773,
+          "auroc_std": 0.16,
+          "auprc_mean": 0.288,
+          "auroc_per_replicate": [
+            0.529,
+            0.723,
+            0.954,
+            0.714,
+            0.944
+          ]
+        },
+        "isolation_forest": {
+          "auroc_mean": 0.855,
+          "auroc_std": 0.112,
+          "auprc_mean": 0.327,
+          "auroc_per_replicate": [
+            0.646,
+            0.871,
+            0.959,
+            0.851,
+            0.947
+          ]
+        },
+        "local_outlier_factor": {
+          "auroc_mean": 0.837,
+          "auroc_std": 0.108,
+          "auprc_mean": 0.261,
+          "auroc_per_replicate": [
+            0.641,
+            0.947,
+            0.889,
+            0.902,
+            0.805
+          ]
+        }
+      }
+    },
+    "scattered": {
+      "msm_info": {
+        "n_msm_states": 9,
+        "n_labels": 10
+      },
+      "methods": {
+        "pipeline_fused": {
+          "auroc_mean": 0.55,
+          "auroc_std": 0.052,
+          "auprc_mean": 0.088,
+          "auroc_per_replicate": [
+            0.599,
+            0.458,
+            0.596,
+            0.561,
+            0.536
+          ]
+        },
+        "pipeline_kinetic_only": {
+          "auroc_mean": 0.561,
+          "auroc_std": 0.038,
+          "auprc_mean": 0.094,
+          "auroc_per_replicate": [
+            0.61,
+            0.519,
+            0.55,
+            0.603,
+            0.525
+          ]
+        },
+        "rarity_only": {
+          "auroc_mean": 0.724,
+          "auroc_std": 0.098,
+          "auprc_mean": 0.195,
+          "auroc_per_replicate": [
+            0.72,
+            0.801,
+            0.749,
+            0.539,
+            0.81
+          ]
+        },
+        "surprise_only": {
+          "auroc_mean": 0.667,
+          "auroc_std": 0.087,
+          "auprc_mean": 0.146,
+          "auroc_per_replicate": [
+            0.806,
+            0.567,
+            0.603,
+            0.636,
+            0.725
+          ]
+        },
+        "density_only": {
+          "auroc_mean": 0.85,
+          "auroc_std": 0.042,
+          "auprc_mean": 0.329,
+          "auroc_per_replicate": [
+            0.863,
+            0.858,
+            0.786,
+            0.829,
+            0.912
+          ]
+        },
+        "rmsd_from_mean": {
+          "auroc_mean": 1.0,
+          "auroc_std": 0.0,
+          "auprc_mean": 1.0,
+          "auroc_per_replicate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "feature_zscore": {
+          "auroc_mean": 0.735,
+          "auroc_std": 0.026,
+          "auprc_mean": 0.285,
+          "auroc_per_replicate": [
+            0.742,
+            0.773,
+            0.72,
+            0.695,
+            0.746
+          ]
+        },
+        "isolation_forest": {
+          "auroc_mean": 0.826,
+          "auroc_std": 0.06,
+          "auprc_mean": 0.344,
+          "auroc_per_replicate": [
+            0.821,
+            0.836,
+            0.752,
+            0.79,
+            0.932
+          ]
+        },
+        "local_outlier_factor": {
+          "auroc_mean": 0.872,
+          "auroc_std": 0.056,
+          "auprc_mean": 0.394,
+          "auroc_per_replicate": [
+            0.911,
+            0.832,
+            0.797,
+            0.866,
+            0.954
+          ]
+        }
+      }
+    },
+    "null": {
+      "msm_info": {
+        "n_msm_states": 7,
+        "n_labels": 10
+      },
+      "methods": {
+        "pipeline_fused": {
+          "auroc_mean": 0.402,
+          "auroc_std": 0.155,
+          "auprc_mean": 0.077,
+          "auroc_per_replicate": [
+            0.576,
+            0.199,
+            0.34,
+            0.59,
+            0.306
+          ]
+        },
+        "pipeline_kinetic_only": {
+          "auroc_mean": 0.589,
+          "auroc_std": 0.094,
+          "auprc_mean": 0.113,
+          "auroc_per_replicate": [
+            0.66,
+            0.452,
+            0.581,
+            0.72,
+            0.532
+          ]
+        },
+        "rarity_only": {
+          "auroc_mean": 0.567,
+          "auroc_std": 0.272,
+          "auprc_mean": 0.168,
+          "auroc_per_replicate": [
+            0.905,
+            0.299,
+            0.398,
+            0.891,
+            0.34
+          ]
+        },
+        "surprise_only": {
+          "auroc_mean": 0.513,
+          "auroc_std": 0.117,
+          "auprc_mean": 0.089,
+          "auroc_per_replicate": [
+            0.363,
+            0.599,
+            0.615,
+            0.376,
+            0.612
+          ]
+        },
+        "density_only": {
+          "auroc_mean": 0.264,
+          "auroc_std": 0.136,
+          "auprc_mean": 0.054,
+          "auroc_per_replicate": [
+            0.367,
+            0.106,
+            0.243,
+            0.466,
+            0.139
+          ]
+        },
+        "rmsd_from_mean": {
+          "auroc_mean": 0.514,
+          "auroc_std": 0.114,
+          "auprc_mean": 0.079,
+          "auroc_per_replicate": [
+            0.662,
+            0.592,
+            0.36,
+            0.553,
+            0.404
+          ]
+        },
+        "feature_zscore": {
+          "auroc_mean": 0.522,
+          "auroc_std": 0.173,
+          "auprc_mean": 0.092,
+          "auroc_per_replicate": [
+            0.719,
+            0.346,
+            0.448,
+            0.738,
+            0.357
+          ]
+        },
+        "isolation_forest": {
+          "auroc_mean": 0.477,
+          "auroc_std": 0.214,
+          "auprc_mean": 0.087,
+          "auroc_per_replicate": [
+            0.748,
+            0.297,
+            0.346,
+            0.728,
+            0.268
+          ]
+        },
+        "local_outlier_factor": {
+          "auroc_mean": 0.357,
+          "auroc_std": 0.088,
+          "auprc_mean": 0.059,
+          "auroc_per_replicate": [
+            0.473,
+            0.254,
+            0.349,
+            0.44,
+            0.271
+          ]
+        }
+      }
+    }
+  },
+  "window_sweep_scattered": {
+    "window_1": {
+      "auroc_mean": 0.839,
+      "auroc_std": 0.057
+    },
+    "window_3": {
+      "auroc_mean": 0.55,
+      "auroc_std": 0.052
+    },
+    "window_5": {
+      "auroc_mean": 0.543,
+      "auroc_std": 0.056
+    },
+    "_verdict": "The default moving-median smoothing destroys isolated single-frame anomalies: AUROC 0.839 unsmoothed vs 0.550 at window=3. Smoothing must be optional and OFF when the target is transient rare events."
+  },
+  "acceptance": {
+    "A1_fused_burst_auroc_ge_0.80": {
+      "pass": true,
+      "value": 0.831
+    },
+    "A2_beats_naive_rmsd_baseline": {
+      "pass": false,
+      "fused": 0.831,
+      "rmsd_from_mean": 1.0
+    },
+    "A3_null_control_near_chance": {
+      "pass": true,
+      "value": 0.402,
+      "band": [
+        0.4,
+        0.6
+      ]
+    },
+    "overall_pass": false
+  }
+}

@@ -235,7 +235,7 @@ def build_msm(dtraj, lag=10):
 # -------------------------------------------------------------- #
 # Function: compute_anomaly_signals
 # -------------------------------------------------------------- #
-def compute_anomaly_signals(msm, dtraj, Y, lag_msm=10, k_neighbors=10, window=5):
+def compute_anomaly_signals(msm, dtraj, Y, lag_msm=10, k_neighbors=10, window=1):
     """
     Step 5 — Compute per-frame anomaly scores using kinetic + density signals.
 
@@ -245,7 +245,17 @@ def compute_anomaly_signals(msm, dtraj, Y, lag_msm=10, k_neighbors=10, window=5)
         Y: tICA coordinate matrix.
         lag_msm: MSM lag for transition surprise.
         k_neighbors: Neighbours for local density.
-        window: Window size for smoothing.
+        window: Moving-median smoothing window. DEFAULT 1 = OFF.
+
+            Smoothing is off by default because a moving median averages away
+            exactly the transient events this pipeline exists to find. Measured
+            in the Phase 1 seeded-anomaly test (validation/phase1_results.json,
+            defect D-09): on isolated single-frame anomalies the fused score
+            achieves AUROC 0.839 unsmoothed but only 0.550 at window=3 and
+            0.543 at window=5.
+
+            Set window >= 3 only when the target is a SUSTAINED rare state and
+            frame-to-frame noise is the dominant nuisance.
 
     Returns:
         frame_scores: Per-frame anomaly score in [0, 100].
@@ -273,7 +283,12 @@ def compute_anomaly_signals(msm, dtraj, Y, lag_msm=10, k_neighbors=10, window=5)
 
     score_raw, components = fuse_signals(signals, method="median", normalize_method="rank")
     score_100 = score_raw * 100.0
-    frame_scores = moving_median(score_100, window=window)
+
+    # D-09: smoothing is opt-in. window <= 1 leaves the score untouched.
+    if window and window > 1:
+        frame_scores = moving_median(score_100, window=window)
+    else:
+        frame_scores = score_100
 
     return frame_scores, components
 
@@ -411,7 +426,7 @@ def run_pipeline(
     n_clusters=20,
     lag_msm=10,
     k_neighbors=10,
-    window=5,
+    window=1,
     seed=42,
 ):
     """
@@ -429,7 +444,7 @@ def run_pipeline(
         n_clusters: KMeans clusters.
         lag_msm: MSM lag time.
         k_neighbors: k-NN for local density.
-        window: Smoothing window.
+        window: Moving-median smoothing window; 1 = OFF (default, see D-09).
         seed: Random seed.
 
     Returns:
@@ -519,10 +534,16 @@ def run_pipeline(
     # --- Save frame scores ---
     import pandas as pd
 
+    from scoring.anomaly_v2 import moving_median as _mm
+
     scores_df = pd.DataFrame(
         {
             "frame": np.arange(len(frame_scores)),
+            # Primary score. Unsmoothed unless --window >= 3 was requested.
             "score_dynamic": frame_scores,
+            # Reference smoothed track, always written so downstream consumers can
+            # compare. NEVER use this one to detect transient events (D-09).
+            "score_dynamic_smoothed_w5": _mm(np.asarray(frame_scores, float), window=5),
             **{f"component_{k}": v * 100.0 for k, v in components.items()},
         }
     )
@@ -599,7 +620,10 @@ def main():
         help="k for k-NN local density signal",
     )
     parser.add_argument(
-        "--window", type=int, default=5, help="Smoothing window for anomaly scores"
+        "--window", type=int, default=1,
+        help="Moving-median smoothing window for anomaly scores. 1 = OFF (default). "
+             "Smoothing suppresses isolated rare frames (defect D-09: AUROC 0.84 -> 0.55 "
+             "on single-frame anomalies). Use >= 3 only for sustained rare states."
     )
     parser.add_argument("--seed", type=int, default=42, help="Random seed")
     parser.add_argument(

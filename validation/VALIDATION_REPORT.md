@@ -6,6 +6,42 @@
 
 ---
 
+## 0. ERRATA — adversarial re-validation (added after first issue)
+
+The campaign's own conclusions were re-tested with the explicit goal of
+falsifying them (`validation/revalidation.py` → `revalidation_results.json`).
+The core Layer-1 findings survived; **three downstream claims did not and are
+corrected here. Read this section before citing §5b or §6.**
+
+| # | Original claim | Re-validation verdict |
+|---|---|---|
+| E-1 | §3.4 / D-04: per-residue scores no longer reduce to RMSF | **Overstated.** The constant-offset defect is fixed, but post-fix residue scores remain ~99 % collinear with RMSF (Pearson r = 0.996 / 0.990 / 0.992 on 1VII / 8H0R / 1UBQ). The anomaly channel still contributes almost no rank information. D-04 is **partially fixed**. |
+| E-2 | §5b.1: B-factor correlation (ρ ≈ 0.6) is external evidence for the pipeline's per-residue output | **Not supportable as stated.** Controlling for RMSF, the partial rank correlation between dynamic score and B-factors is −0.019 (8H0R) and −0.181 (1UBQ). The agreement is entirely attributable to the RMSF component; the anomaly component adds nothing. This validates RMSF, not the method. |
+| E-3 | §5b.2: the pipeline beats Isolation Forest and LOF on rare-state detection across all four proteins | **Circular.** Labels are defined from π and the rarity channel *is* 1 − π. Removing that channel from the fusion collapses the advantage: the pipeline then loses to LOF on 8H0R (0.83 vs 0.93) and to Isolation Forest on 1CRN (0.76 vs 0.85), and ties on 1UBQ (0.69 vs 0.70). It retains an edge only on 1VII (0.85 vs 0.75). |
+| E-4 | §5b.2: the 1UBQ rare-transition result is a candidate headline figure | **Also circular.** Surprise = −log P, and P is row-normalised from the same count matrix that defines the rare-transition labels (Spearman between surprise and negative transition count: 0.69 on 1UBQ, 0.87 on 1CRN). It cannot be presented as a benchmark win. |
+| E-5 | §5c.4: VAMP-2 saturating at the dimension bound indicates overfitting | **Correct conclusion, wrong mechanism.** With 100 frames the 20-frame held-out split leaves only 5 lagged pairs at lag 15. The score is degenerate rather than merely overfit. |
+| E-6 | §3.5: "twenty-one edge cases" | **Miscount.** The suite contains 25 cases. |
+
+**What survives unchanged.** D-01 was independently re-derived from first
+principles: 50 % (1VII), 28 % (8H0R) and 37.5 % (1CRN) of frames would read a
+different π value under the old code — matching the original figures exactly.
+Defects D-01, D-02, D-03, D-05, D-06, D-07 and D-08 are confirmed fixed, all
+12 regression tests pass, and every Layer-2 conclusion (§5c) stands, including
+the central finding that 100-frame trajectories cannot support MSM validity
+claims.
+
+**Consequence for publication.** The accuracy figures in §4 remain valid as
+*internal consistency* measurements — they demonstrate that the corrected code
+recovers the kinetic quantities it is designed to compute. They are **not**
+evidence that the method finds biologically meaningful anomalies, and the
+baseline comparison must not be presented as a benchmark win. Establishing
+external validity now requires ground truth that is independent of the MSM:
+literature-annotated functional sites, mutational or binding-site data, or
+long-trajectory datasets with characterised rare events. What can still be
+said honestly is narrower but true — geometric outlier detectors have no
+access to kinetic information by construction, so the kinetic channels measure
+something they cannot represent.
+
 ## 1. Executive summary
 
 The mathematical formulas of all three anomaly signals were verified correct

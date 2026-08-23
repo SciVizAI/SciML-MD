@@ -97,7 +97,7 @@ DEFAULT_DIM_TICA = 3
 DEFAULT_N_CLUSTERS = 10
 DEFAULT_LAG_MSM = 5
 DEFAULT_K_NEIGHBORS = 5
-DEFAULT_WINDOW = 3
+DEFAULT_WINDOW = 1  # D-09: smoothing OFF by default (suppresses isolated rare frames)
 
 
 # ---------------------------------------------------------------------------

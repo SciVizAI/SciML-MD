@@ -241,3 +241,37 @@ def test_asvs_export_not_constant():
     assert len(vals) > 1, "export must not be constant (0.25-everywhere regression)"
     # spot-check: frame 1 (score 0.9), residue 1 (0.8) -> 0.72
     assert abs(out["1"]["1"] - 0.72) < 1e-9
+
+
+# ---------------------------------------------------------------------------
+# D-09: smoothing must be opt-in (it suppresses isolated rare frames)
+# ---------------------------------------------------------------------------
+def test_smoothing_is_off_by_default():
+    """compute_anomaly_signals must not smooth unless explicitly asked.
+
+    Phase 1 measured AUROC 0.839 unsmoothed vs 0.550 at window=3 on isolated
+    single-frame anomalies (validation/phase1_results.json).
+    """
+    import inspect
+    from run_all_proteins import compute_anomaly_signals
+
+    sig = inspect.signature(compute_anomaly_signals)
+    assert sig.parameters["window"].default == 1, "smoothing must default to OFF"
+
+
+def test_isolated_spike_survives_default_scoring():
+    """A single anomalous frame must remain the top-ranked frame by default."""
+    from run_all_proteins import compute_anomaly_signals, cluster_states, build_msm
+
+    rng = np.random.default_rng(3)
+    Y = rng.normal(size=(120, 3))
+    Y[60] += 12.0  # one isolated outlier in tICA space
+    dtraj, _ = cluster_states(Y, n_clusters=8, seed=42)
+    msm, _, _ = build_msm(dtraj, lag=3)
+
+    scores, _ = compute_anomaly_signals(msm, dtraj, Y, lag_msm=3, k_neighbors=5)
+    assert int(np.argmax(scores)) == 60, "isolated anomaly must survive default settings"
+
+    smoothed, _ = compute_anomaly_signals(msm, dtraj, Y, lag_msm=3, k_neighbors=5,
+                                          window=5)
+    assert np.max(smoothed) <= np.max(scores), "smoothing should only attenuate"
