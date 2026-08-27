@@ -187,19 +187,27 @@ def cluster_states(Y, n_clusters=20, seed=42):
         dtraj: Discrete trajectory as integer array (T,).
         kmeans_model: Fitted deeptime KMeans model.
     """
-    from deeptime.clustering import KMeans
+    # O-10 FIX: deeptime KMeans is platform-dependent even with a fixed seed
+    # (measured ARI 0.43-0.51 between machines on identical input). We use
+    # sklearn's Lloyd implementation with an explicit n_init, then CANONICALLY
+    # RELABEL clusters by sorting their centres lexicographically. Canonical
+    # relabelling is what actually buys reproducibility: it removes the
+    # dependence on the order in which centres happen to be discovered.
+    from sklearn.cluster import KMeans as SkKMeans
 
-    # Clamp cluster count to number of unique frames
     n_clusters = min(n_clusters, len(Y) // 2)
     n_clusters = max(n_clusters, 2)
 
-    kmeans_model = (
-        KMeans(n_clusters=n_clusters, max_iter=100, n_jobs=1, fixed_seed=seed)
-        .fit(Y)
-        .fetch_model()
-    )
-    dtraj = kmeans_model.transform(Y).astype(np.int64)
-    return dtraj, kmeans_model
+    km = SkKMeans(n_clusters=n_clusters, n_init=10, max_iter=300,
+                  algorithm="lloyd", random_state=seed).fit(Y)
+
+    centers = km.cluster_centers_
+    order = np.lexsort(tuple(centers[:, i] for i in range(centers.shape[1] - 1, -1, -1)))
+    remap = np.empty(n_clusters, dtype=np.int64)
+    remap[order] = np.arange(n_clusters)
+    dtraj = remap[km.labels_].astype(np.int64)
+    km.cluster_centers_ = centers[order]
+    return dtraj, km
 
 
 
@@ -462,6 +470,32 @@ def run_pipeline(
         log.error("[%s] Feature extraction failed: %s", pdb_id, exc)
         return False
 
+    # --- D-10: discard equilibration frames before anything is scored ---
+    # Startup relaxation from the deposited structure is not a rare event. An
+    # external audit found frames 1-3 of ubiquitin scoring 99.7/100 purely from
+    # unrelaxed crystal coordinates.
+    try:
+        from msm.preflight import detect_equilibration, assess_suitability
+
+        eq_start, eq_info = detect_equilibration(traj)
+        if eq_start > 0:
+            log.warning("[%s]   Discarding %d equilibration frame(s) (%.1f%%); "
+                        "plateau RMSD %.2f A", pdb_id, eq_start,
+                        100 * eq_info.get("fraction_discarded", 0),
+                        eq_info.get("rmsd_plateau_ang", float("nan")))
+            traj = traj[eq_start:]
+            X = X[eq_start:]
+
+        suit = assess_suitability(traj)
+        if suit["verdict"] != "suitable":
+            log.warning("[%s]   SYSTEM SUITABILITY: %s", pdb_id, suit["verdict"].upper())
+            for reason in suit["reasons"]:
+                log.warning("[%s]     - %s", pdb_id, reason)
+        pre_info = {"equilibration": eq_info, "suitability": suit}
+    except Exception as exc:
+        log.warning("[%s]   Preflight checks failed: %s", pdb_id, exc)
+        pre_info = {"error": str(exc)}
+
     n_frames, n_feats = X.shape
     log.info("[%s]   %d frames × %d features", pdb_id, n_frames, n_feats)
 
@@ -557,6 +591,31 @@ def run_pipeline(
     with open(residue_json, "w") as fh:
         json.dump(residue_scores, fh, indent=2)
     log.info("[%s]   Residue scores → %s", pdb_id, residue_json)
+
+    # --- E-1 FIX: RMSF-orthogonal attribution (the reported residue score) ---
+    try:
+        from scoring.residue_attribution import compute_residue_attribution
+
+        attr = compute_residue_attribution(traj, frame_scores)
+        keys = list(residue_scores.keys())
+        vals = attr["score"]
+        if len(keys) == len(vals):
+            with open(res_dir / "residue_scores_kinetic.json", "w") as fh:
+                json.dump({k: round(float(v), 4) for k, v in zip(keys, vals)}, fh, indent=2)
+        with open(res_dir / "residue_attribution_diagnostics.json", "w") as fh:
+            json.dump(attr["diagnostics"], fh, indent=2)
+        log.info("[%s]   Kinetic residue attribution: Spearman vs RMSF %.3f "
+                 "(legacy score was ~0.94-0.98)", pdb_id,
+                 attr["diagnostics"]["spearman_final_vs_rmsf"])
+    except Exception as exc:
+        log.warning("[%s]   Kinetic residue attribution failed: %s", pdb_id, exc)
+
+    # --- Save preflight record ---
+    try:
+        with open(res_dir / "preflight.json", "w") as fh:
+            json.dump(pre_info, fh, indent=2, default=str)
+    except Exception:
+        pass
 
     # --- Save RMSF residue scores (consumed by tools/export_for_asvs.py) ---
     rmsf_scores = compute_rmsf_residue_json(traj)

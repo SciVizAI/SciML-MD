@@ -275,3 +275,93 @@ def test_isolated_spike_survives_default_scoring():
     smoothed, _ = compute_anomaly_signals(msm, dtraj, Y, lag_msm=3, k_neighbors=5,
                                           window=5)
     assert np.max(smoothed) <= np.max(scores), "smoothing should only attenuate"
+
+
+# ---------------------------------------------------------------------------
+# E-1 / D-10 / O-10: post-audit fixes
+# ---------------------------------------------------------------------------
+@pytest.fixture()
+def synthetic_traj(tmp_path):
+    """A 12-residue CA-only chain over 80 frames, with residue-dependent
+    amplitude so RMSF genuinely varies across the chain."""
+    md = pytest.importorskip("mdtraj")
+    n_res, n_frames = 12, 80
+    lines = ["MODEL        1"]
+    for i in range(n_res):
+        lines.append(f"ATOM  {i+1:5d}  CA  ALA A{i+1:4d}    "
+                     f"{i*3.8:8.3f}{0.0:8.3f}{0.0:8.3f}  1.00  0.00           C")
+    lines += ["TER", "ENDMDL", "END"]
+    p = tmp_path / "chain.pdb"
+    p.write_text("\n".join(lines))
+    base = md.load(str(p))
+
+    rng = np.random.default_rng(5)
+    xyz = np.repeat(base.xyz, n_frames, axis=0)
+    amp = np.linspace(0.01, 0.30, n_res)          # RMSF varies along the chain
+    xyz += (rng.normal(size=xyz.shape) * amp[None, :, None]).astype("float32")
+    return md.Trajectory(xyz, base.topology)
+
+
+def test_residue_attribution_is_orthogonal_to_rmsf(synthetic_traj):
+    """The reported residue score must not be a proxy for RMSF.
+
+    Legacy score: Spearman vs RMSF 0.94-0.98 (erratum E-1).
+    """
+    from scoring.residue_attribution import compute_residue_attribution
+
+    rng = np.random.default_rng(5)
+    scores = rng.random(len(synthetic_traj)) * 100
+    out = compute_residue_attribution(synthetic_traj, scores)
+    d = out["diagnostics"]
+    assert abs(d["spearman_final_vs_rmsf"]) < 0.7, (
+        f"attribution still collinear with RMSF: {d['spearman_final_vs_rmsf']}")
+    assert d["n_frames_anomalous"] >= 3 and d["n_frames_baseline"] >= 3
+
+
+def test_residue_attribution_rank_is_tie_aware():
+    """The external KSD-RA reference used argsort(argsort(x)) — defect D-02."""
+    from scoring.residue_attribution import _rank_norm
+
+    r = _rank_norm(np.array([5.0, 5.0, 5.0, 5.0, 9.0]))
+    assert r[0] == r[1] == r[2] == r[3], "tied values must receive equal scores"
+    assert r[4] > r[0]
+
+
+def test_equilibration_detection_discards_startup(synthetic_traj):
+    """A trajectory that relaxes away from its start must have those frames cut."""
+    md = pytest.importorskip("mdtraj")
+    from msm.preflight import detect_equilibration
+
+    rng = np.random.default_rng(11)
+    base = synthetic_traj
+    n = len(base)
+    xyz = base.xyz.copy()
+    drift = np.concatenate([np.linspace(0, 0.6, 12), np.full(n - 12, 0.6)])
+    xyz[:, :, 0] += drift[:, None].astype("float32")
+    traj = md.Trajectory(xyz, base.topology)
+
+    start, info = detect_equilibration(traj)
+    assert start > 0, "startup relaxation must be detected"
+    assert info["fraction_discarded"] <= 0.20
+
+
+def test_suitability_flags_single_basin(synthetic_traj):
+    """A single-basin ensemble must not be silently accepted."""
+    from msm.preflight import assess_suitability
+
+    s = assess_suitability(synthetic_traj)
+    assert s["verdict"] in ("unsuitable", "marginal")
+    assert s["reasons"]
+
+
+def test_clustering_is_deterministic():
+    """Same input + same seed must give identical labels, run to run."""
+    from run_all_proteins import cluster_states
+
+    rng = np.random.default_rng(9)
+    Y = rng.normal(size=(200, 3))
+    a, _ = cluster_states(Y, n_clusters=8, seed=42)
+    b, _ = cluster_states(Y, n_clusters=8, seed=42)
+    assert np.array_equal(a, b), "clustering must be reproducible"
+    # canonical relabelling: centres are sorted, so label 0 is the lowest centre
+    assert a.min() == 0 and a.max() == 7

@@ -42,6 +42,94 @@ said honestly is narrower but true — geometric outlier detectors have no
 access to kinetic information by construction, so the kinetic channels measure
 something they cannot represent.
 
+## 0b. POST-AUDIT ROUND (external scientific review, Aug 2026)
+
+Four independent audit reports were commissioned on a research-scientist
+platform, including a fresh 5 ns explicit-solvent GROMACS/AMBER99SB-ILDN
+simulation of ubiquitin. They corroborated the entire defect register (D-01 to
+D-06, E-1 to E-3) with matching numbers, and surfaced two findings we had
+missed. Both are now fixed. They also shipped a proposed replacement method
+(KSD-RA) whose implementation had defects of its own.
+
+### 0b.1 NEW DEFECT D-10 — equilibration frames were never discarded
+The external ubiquitin run traced frames 1-3, which scored 99.7/100 (the
+highest in the trajectory), to unrelaxed Cartesian coordinates falling out of
+the deposited crystal structure. Our pipeline recorded from step 0 and cut
+nothing, so simulation startup was being reported as rare-event biology.
+`msm/preflight.py::detect_equilibration` now finds the RMSD plateau and
+discards the relaxation phase (capped at 20% of the trajectory). Measured
+discards: 1UBQ 7 frames, 1VII 17, 8H0R 20.
+
+### 0b.2 NEW FINDING — every system we have run is UNSUITABLE for MSM anomaly detection
+The audit argued that Crambin, locked by three disulfides, has no macrostate
+switching and should never have been analysed with a multi-state MSM. We
+implemented that as a general screen (`assess_suitability`) and applied it to
+all our systems. **All of them fail**: 1VII, 8H0R and 1UBQ each have 100% of
+frames within 2 A of a single medoid. They are single-basin ensembles, so the
+MSM microstates partition thermal noise rather than conformational states.
+
+This is the deepest explanation yet for the Layer-2 results. Disconnected
+states, unresolved pi, powerless CK tests and unconverged timescales are not
+independent problems; they are symptoms of running a multi-state kinetic model
+on data containing one state. The screen now warns before scoring.
+
+### 0b.3 E-1 RESOLVED — residue attribution is now orthogonal to RMSF
+`scoring/residue_attribution.py` implements the audit's KSD-RA concept
+(anomaly-conditioned contact flux + dihedral divergence) with four corrections
+to their reference implementation, plus explicit RMSF orthogonalisation:
+
+| System | Legacy score vs RMSF | New score vs RMSF |
+|---|---|---|
+| 1VII | +0.983 | **-0.012** |
+| 8H0R | +0.940 | **+0.016** |
+| 1UBQ | +0.944 | **+0.021** |
+
+Rankings change completely: 1UBQ's legacy top-6 was the floppy C-terminal tail
+(GLY76, GLY75, ARG74, LEU73...), the new top-6 is interior (ARG42, LEU15,
+GLN62, LEU71...), with zero overlap. **Orthogonality is not validity** - that
+the score is no longer RMSF does not establish it identifies functional
+residues. OI-12 remains open.
+
+### 0b.4 Corrections to the audit's own deliverables
+- **KSD-RA reference code reintroduced defect D-02**: `argsort(argsort(x))` at
+  line 114. Verified: four identical inputs return 0/25/50/75 instead of 37.5
+  each. Fixed in our implementation with tie-aware ranks.
+- **KSD-RA was memory-infeasible**: a dense (n_frames, n_res, n_res) contact
+  array is 2.5 GB for 8H0R at ATLAS length and ~80 GB for 9UNN. Ours streams
+  the group means, so memory is O(n_res^2) regardless of trajectory length.
+- **KSD-RA dihedral indexing was misaligned**: mdtraj returns phi for residues
+  2..N and psi for 1..N-1; pairing them column-wise associates phi(i+1) with
+  psi(i). Ours resolves each angle's residue through the atom-index arrays.
+- **KSD-RA is unvalidated**: no functional-site enrichment, no RMSF baseline,
+  no significance test on the ensemble split, arbitrary 85th-percentile
+  threshold. We adopted the idea, not the evidence, and say so in the module.
+
+### 0b.5 CONTRADICTION RESOLVED — ubiquitin 52-60 is rigid, not flexible
+Two audit reports disagreed. One called residues 52-60 "intrinsically flexible"
+(RMSF 1.88-2.08 vs mean 1.3, sourced from the *thesis*); the other measured
+them as hyper-rigid (0.57 +/- 0.07 A, 100% of frames in one cluster, from *new
+MD*). We computed it independently on our own trajectory:
+
+| Region | Our RMSF (A) |
+|---|---|
+| Whole protein mean | 0.60 |
+| **Residues 52-60 (the candidate hotspot)** | **0.53 +/- 0.08** |
+| beta-sheet core | 0.47 |
+| Loop 1 (8-11) | 0.76 |
+| C-terminal tail (72-76) | 1.49 |
+
+Residues 52-60 sit at 1.13x the core and are 2.8x LESS mobile than the tail.
+Our 0.53 +/- 0.08 A matches the external 0.57 +/- 0.07 A closely despite
+entirely different solvent models, force fields and engines. **The rigidity
+finding is confirmed and the flexibility claim is wrong**, which also means the
+"general thermal flexibility" root cause stated in one report is incorrect; the
+methodological-artifact explanation is the right one.
+
+One open thread: our legacy RMSF-collinear score ranked the C-terminal TAIL
+highest, not 52-60. So the thesis's 52-60 claim is unlikely to come from E-1
+collinearity alone and more plausibly from D-01 active-set misindexing. We
+cannot reproduce the original thesis run to confirm this.
+
 ## 1. Executive summary
 
 The mathematical formulas of all three anomaly signals were verified correct

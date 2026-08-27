@@ -1,0 +1,204 @@
+{
+  "bar": 0.75,
+  "n_replicates_per_system": 5,
+  "per_system": {
+    "1g2r_A:1g2r_A_R1": {
+      "hyperparams": {
+        "n_clusters": 47,
+        "lag_msm": 5,
+        "lag_tica": 5,
+        "dim": 4,
+        "k": 15
+      },
+      "auroc": {
+        "surprise_only": 0.587,
+        "pipeline_fused": 0.867,
+        "rarity_only": 0.796,
+        "density_only": 0.836,
+        "frame_to_frame_rmsd": 0.416,
+        "rmsd_from_mean": 0.452,
+        "feature_zscore": 0.822,
+        "isolation_forest": 0.865,
+        "local_outlier_factor": 0.812
+      },
+      "auroc_null": {
+        "surprise_only": 0.493,
+        "pipeline_fused": 0.49,
+        "rarity_only": 0.483,
+        "density_only": 0.529,
+        "frame_to_frame_rmsd": 0.554,
+        "rmsd_from_mean": 0.562,
+        "feature_zscore": 0.51,
+        "isolation_forest": 0.564,
+        "local_outlier_factor": 0.534
+      },
+      "drift_rmsd_first_vs_last_decile": 0.4747
+    },
+    "1g2r_A:1g2r_A_R2": {
+      "hyperparams": {
+        "n_clusters": 47,
+        "lag_msm": 5,
+        "lag_tica": 5,
+        "dim": 4,
+        "k": 15
+      },
+      "auroc": {
+        "surprise_only": 0.805,
+        "pipeline_fused": 0.723,
+        "rarity_only": 0.636,
+        "density_only": 0.631,
+        "frame_to_frame_rmsd": 0.71,
+        "rmsd_from_mean": 0.789,
+        "feature_zscore": 0.473,
+        "isolation_forest": 0.525,
+        "local_outlier_factor": 0.526
+      },
+      "auroc_null": {
+        "surprise_only": 0.535,
+        "pipeline_fused": 0.509,
+        "rarity_only": 0.503,
+        "density_only": 0.503,
+        "frame_to_frame_rmsd": 0.533,
+        "rmsd_from_mean": 0.444,
+        "feature_zscore": 0.467,
+        "isolation_forest": 0.432,
+        "local_outlier_factor": 0.467
+      },
+      "drift_rmsd_first_vs_last_decile": 0.5494
+    },
+    "1g2r_A:1g2r_A_R3": {
+      "hyperparams": {
+        "n_clusters": 47,
+        "lag_msm": 5,
+        "lag_tica": 5,
+        "dim": 4,
+        "k": 15
+      },
+      "auroc": {
+        "surprise_only": 0.76,
+        "pipeline_fused": 0.492,
+        "rarity_only": 0.477,
+        "density_only": 0.394,
+        "frame_to_frame_rmsd": 0.664,
+        "rmsd_from_mean": 0.512,
+        "feature_zscore": 0.417,
+        "isolation_forest": 0.395,
+        "local_outlier_factor": 0.43
+      },
+      "auroc_null": {
+        "surprise_only": 0.502,
+        "pipeline_fused": 0.533,
+        "rarity_only": 0.524,
+        "density_only": 0.532,
+        "frame_to_frame_rmsd": 0.495,
+        "rmsd_from_mean": 0.486,
+        "feature_zscore": 0.498,
+        "isolation_forest": 0.542,
+        "local_outlier_factor": 0.548
+      },
+      "drift_rmsd_first_vs_last_decile": 0.4702
+    }
+  },
+  "failed": {},
+  "n_trajectories": 3,
+  "n_independent_proteins": 1,
+  "note": "statistics computed per PROTEIN; replicates averaged first to avoid pseudo-replication",
+  "distribution": {
+    "density_only": {
+      "median": 0.62,
+      "mean": 0.62,
+      "q25": 0.62,
+      "q75": 0.62,
+      "frac_ge_bar": 0.0
+    },
+    "feature_zscore": {
+      "median": 0.571,
+      "mean": 0.571,
+      "q25": 0.571,
+      "q75": 0.571,
+      "frac_ge_bar": 0.0
+    },
+    "frame_to_frame_rmsd": {
+      "median": 0.597,
+      "mean": 0.597,
+      "q25": 0.597,
+      "q75": 0.597,
+      "frac_ge_bar": 0.0
+    },
+    "isolation_forest": {
+      "median": 0.595,
+      "mean": 0.595,
+      "q25": 0.595,
+      "q75": 0.595,
+      "frac_ge_bar": 0.0
+    },
+    "local_outlier_factor": {
+      "median": 0.589,
+      "mean": 0.589,
+      "q25": 0.589,
+      "q75": 0.589,
+      "frac_ge_bar": 0.0
+    },
+    "pipeline_fused": {
+      "median": 0.694,
+      "mean": 0.694,
+      "q25": 0.694,
+      "q75": 0.694,
+      "frac_ge_bar": 0.0
+    },
+    "rarity_only": {
+      "median": 0.636,
+      "mean": 0.636,
+      "q25": 0.636,
+      "q75": 0.636,
+      "frac_ge_bar": 0.0
+    },
+    "rmsd_from_mean": {
+      "median": 0.584,
+      "mean": 0.584,
+      "q25": 0.584,
+      "q75": 0.584,
+      "frac_ge_bar": 0.0
+    },
+    "surprise_only": {
+      "median": 0.717,
+      "mean": 0.717,
+      "q25": 0.717,
+      "q75": 0.717,
+      "frac_ge_bar": 0.0
+    }
+  },
+  "null_control_median": {
+    "density_only": 0.521,
+    "feature_zscore": 0.492,
+    "frame_to_frame_rmsd": 0.527,
+    "isolation_forest": 0.513,
+    "local_outlier_factor": 0.516,
+    "pipeline_fused": 0.511,
+    "rarity_only": 0.503,
+    "rmsd_from_mean": 0.497,
+    "surprise_only": 0.51
+  },
+  "C5_null_control_at_chance": {
+    "pass": true,
+    "note": "MUST pass for any other criterion to be interpretable. An elevated null means block-position bias (e.g. slow drift), not anomaly detection."
+  },
+  "acceptance": {
+    "C1_median_surprise_ge_0.75": {
+      "pass": false,
+      "value": 0.717
+    },
+    "C2_beats_best_blind_on_80pct": {
+      "pass": true,
+      "win_fraction": 1.0
+    },
+    "C3_blind_medians_in_band": {
+      "pass": false
+    },
+    "C4_wilcoxon_p_lt_0.05": {
+      "pass": false,
+      "p_value": 0.5
+    },
+    "overall_pass": false
+  }
+}
