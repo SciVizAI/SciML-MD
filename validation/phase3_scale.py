@@ -94,13 +94,29 @@ def discover(root: Path):
     return out
 
 
-def load_traj(top, trj, max_frames=MAX_FRAMES):
+def load_traj(top, trj, max_frames=MAX_FRAMES, make_whole=False):
     import mdtraj as md
     t = md.load(str(trj), top=str(top))
     # protein heavy atoms only - ATLAS/mdCATH may carry solvent
     sel = t.topology.select("protein")
     if len(sel) and len(sel) != t.n_atoms:
         t = t.atom_slice(sel)
+    if make_whole:
+        # Reassemble molecules split across the periodic boundary. Without this
+        # a fragment that wraps round the box registers as a ~box-length
+        # displacement, which RMSD reads as a huge conformational change. See
+        # validation/phase3_diagnose_traj.py for how to tell the two apart.
+        box_ok = (t.unitcell_lengths is not None
+                  and float(np.median(t.unitcell_lengths)) * 10.0 >= 20.0)
+        if box_ok:
+            try:
+                t.image_molecules(inplace=True)
+            except Exception as exc:                       # noqa: BLE001
+                print(f"    ! image_molecules failed ({type(exc).__name__}); "
+                      f"using raw coordinates")
+        else:
+            print("    ! --make-whole requested but no usable unit cell; "
+                  "using raw coordinates")
     if len(t) > max_frames:
         t = t[:: max(1, len(t) // max_frames)][:max_frames]
     return t
@@ -283,6 +299,148 @@ def aggregate(per_system):
 
 
 # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# Suitability screen  (--screen-only)
+# ---------------------------------------------------------------------------
+def screen(systems, args):
+    """Preflight every discovered system and report which ones can carry an MSM.
+
+    This exists because every system validated so far (1UBQ, villin, the 9UNN /
+    9O6O pair) screened UNSUITABLE: >95% of frames sit within 2 A of a single
+    medoid. A single-basin ensemble has no conformational states to detect, so
+    disconnected microstates, an unresolved stationary distribution and a
+    powerless CK test are the expected consequence, not a bug in the estimator.
+
+    Nothing downstream of this is worth running until systems pass. Verdicts
+    come from msm.preflight.assess_suitability - the same advisory used inside
+    the production pipeline, so the screen and the run agree by construction.
+    """
+    import sys as _sys
+    _sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from msm.preflight import assess_suitability
+
+    rows, failed = [], {}
+    for i, (sid, top, trj, temp) in enumerate(systems, 1):
+        try:
+            traj = load_traj(top, trj, args.max_frames, args.make_whole)
+            a = assess_suitability(traj)
+            a["system"] = sid
+            a["temperature"] = temp
+            rows.append(a)
+            print(f"[{i}/{len(systems)}] {sid:28s} {a['verdict']:11s} "
+                  f"n={a['n_frames']:5d} res={a['n_residues']:4d} "
+                  f"maxRMSD={a['max_pairwise_ca_rmsd_ang']:6.2f} A  "
+                  f"basin={a['fraction_in_single_basin']*100:5.1f}%  "
+                  f"clusters={a.get('n_basins', 0):3d} "
+                  f"top={a.get('largest_basin_occupancy', 0)*100:5.1f}% "
+                  f"pop={a.get('n_basins_ge_5pct', 0):2d}", flush=True)
+        except Exception as exc:
+            failed[sid] = f"{type(exc).__name__}: {exc}"[:150]
+            print(f"[{i}/{len(systems)}] {sid:28s} FAILED: {failed[sid]}", flush=True)
+
+    if not rows:
+        print("\nNo system could be screened.")
+        return 1
+
+    by = {v: [r for r in rows if r["verdict"] == v]
+          for v in ("suitable", "marginal", "unsuitable")}
+    print("\n=== SCREEN ===")
+    for v in ("suitable", "marginal", "unsuitable"):
+        print(f"  {v:11s} {len(by[v]):4d}  ({len(by[v])/len(rows)*100:.0f}%)")
+
+    # ---- aggregate replicates to the protein ------------------------------
+    # ATLAS ships three independent runs per protein and the verdict disagrees
+    # between them often enough that a per-trajectory list is misleading:
+    # 2hnu_A is single-basin in R1 and eight-basin in R2. The decision unit for
+    # the sweep is the PROTEIN, and treating replicates as independent systems
+    # is the same pseudo-replication that inflated the earlier Wilcoxon test.
+    # A protein is usable if a majority of its replicates are.
+    prot = {}
+    for r in rows:
+        prot.setdefault(r["system"].split(":")[0], []).append(r)
+
+    protein_rows = []
+    for name, reps in sorted(prot.items()):
+        n_ok = sum(1 for r in reps if r["verdict"] in ("suitable", "marginal"))
+        protein_rows.append({
+            "protein": name,
+            "n_replicates": len(reps),
+            "n_usable_replicates": n_ok,
+            "verdicts": [r["verdict"] for r in reps],
+            "median_n_basins_ge_5pct": float(np.median(
+                [r.get("n_basins_ge_5pct", 0) for r in reps])),
+            "median_largest_basin_occupancy": float(np.median(
+                [r.get("largest_basin_occupancy", 0) for r in reps])),
+            "median_max_rmsd_ang": float(np.median(
+                [r["max_pairwise_ca_rmsd_ang"] for r in reps])),
+            "usable": n_ok * 2 >= len(reps),
+        })
+
+    n_usable_prot = sum(1 for p in protein_rows if p["usable"])
+    print(f"\n=== BY PROTEIN ({len(protein_rows)} proteins) ===")
+    print(f"  {n_usable_prot} usable (majority of replicates suitable/marginal), "
+          f"{len(protein_rows) - n_usable_prot} not")
+    disagree = [p for p in protein_rows
+                if 0 < p["n_usable_replicates"] < p["n_replicates"]]
+    if disagree:
+        print(f"  {len(disagree)} protein(s) DISAGREE across replicates - the "
+              f"ensemble is not converged at 100 ns:")
+        for p in disagree[:12]:
+            print(f"    {p['protein']:9s} {p['n_usable_replicates']}/"
+                  f"{p['n_replicates']} usable   {', '.join(p['verdicts'])}")
+
+    print(f"\n{'protein':9s} {'usable':>7s} {'basins':>7s} {'top%':>6s} "
+          f"{'maxRMSD':>8s}")
+    print("-" * 44)
+    for p in sorted(protein_rows, key=lambda p: (-p["usable"],
+                                                 -p["median_n_basins_ge_5pct"])):
+        print(f"{p['protein']:9s} {p['n_usable_replicates']}/{p['n_replicates']:<5d} "
+              f"{p['median_n_basins_ge_5pct']:7.1f} "
+              f"{p['median_largest_basin_occupancy']*100:6.1f} "
+              f"{p['median_max_rmsd_ang']:8.2f}")
+
+    usable = by["suitable"] + by["marginal"]
+    # rank by how MULTI-BASIN a system is, not by how far it travels. Widest
+    # spread was the old key and it promoted diffusive chains to the top.
+    usable.sort(key=lambda r: (-r.get("n_basins_ge_5pct", 0),
+                               -r.get("largest_basin_occupancy", 0)))
+    if usable:
+        print(f"\n  best candidates (most populated conformational basins first):")
+        for r in usable[:20]:
+            print(f"    {r['system']:28s} {r['verdict']:11s} "
+                  f"maxRMSD={r['max_pairwise_ca_rmsd_ang']:6.2f} A  "
+                  f"top cluster={r.get('largest_basin_occupancy', 0)*100:5.1f}%  "
+                  f"populated={r.get('n_basins_ge_5pct', 0)}")
+    else:
+        print("\n  *** No system is suitable or marginal. ***")
+        print("  The pipeline's premise - that the ensemble contains more than one")
+        print("  conformational basin - does not hold on this sample. Widen the")
+        print("  fetch (--select rmsf without --max-len, or --kind protein for the")
+        print("  10000-frame trajectories) before concluding anything about the")
+        print("  method itself.")
+
+    out = {"n_screened": len(rows),
+           "counts": {v: len(by[v]) for v in by},
+           "usable_systems": [r["system"] for r in usable],
+           "n_proteins": len(protein_rows),
+           "n_usable_proteins": n_usable_prot,
+           "usable_proteins": [p["protein"] for p in protein_rows if p["usable"]],
+           "proteins": protein_rows,
+           "rows": rows, "failed": failed}
+    Path(args.screen_out).write_text(json.dumps(out, indent=2))
+    print(f"\nsaved -> {args.screen_out}")
+
+    if n_usable_prot:
+        ranked = sorted((p for p in protein_rows if p["usable"]),
+                        key=lambda p: (-p["n_usable_replicates"],
+                                       -p["median_n_basins_ge_5pct"]))
+        ids = " ".join(p["protein"] for p in ranked)
+        print(f"\nNext - run the full harness on the {len(ranked)} usable protein(s):")
+        print(f"  python validation/phase3_scale.py --data_root {args.data_root} \\")
+        print(f"      --only {ids}")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -290,9 +448,20 @@ def main():
                     help="Directory of downloaded ATLAS / mdCATH systems")
     ap.add_argument("--limit", type=int, default=None,
                     help="Process only the first N systems (pilot run)")
+    ap.add_argument("--only", nargs="+", default=None,
+                    help="Process only these system ids (as printed by --screen-only)")
     ap.add_argument("--max_frames", type=int, default=MAX_FRAMES)
+    ap.add_argument("--make-whole", action="store_true",
+                    help="Reassemble molecules split across the periodic boundary "
+                         "before any analysis. Run phase3_diagnose_traj.py first "
+                         "to find out whether you need it.")
     ap.add_argument("--temperature-test", action="store_true",
                     help="Also run PART B (needs multi-temperature replicates)")
+    ap.add_argument("--screen-only", action="store_true",
+                    help="Run the suitability preflight on every discovered system "
+                         "and stop. Cheap. Use this to find multi-basin systems "
+                         "BEFORE spending hours on the full harness.")
+    ap.add_argument("--screen-out", default="validation/phase3_screen.json")
     ap.add_argument("--out", default="validation/phase3_results.json")
     args = ap.parse_args()
 
@@ -317,14 +486,24 @@ def main():
         print(f"No systems found under {root}.\n"
               "Expected <root>/<SYSTEM>/ containing a .pdb and a .xtc/.dcd.")
         return 1
+    if args.only:
+        want = set(args.only)
+        systems = [s for s in systems
+                   if s[0] in want or s[0].split(":")[0] in want]
+        if not systems:
+            print(f"None of {sorted(want)} were found under {root}.")
+            return 1
     if args.limit:
         systems = systems[: args.limit]
     print(f"discovered {len(systems)} system(s)\n")
 
+    if args.screen_only:
+        return screen(systems, args)
+
     per_system, failed = {}, {}
     for i, (sid, top, trj, temp) in enumerate(systems, 1):
         try:
-            traj = load_traj(top, trj, args.max_frames)
+            traj = load_traj(top, trj, args.max_frames, args.make_whole)
             if len(traj) < 200:
                 failed[sid] = f"too short ({len(traj)} frames)"
                 continue

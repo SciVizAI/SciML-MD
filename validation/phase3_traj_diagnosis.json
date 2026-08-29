@@ -1,0 +1,485 @@
+{
+  "1ef1_D:1ef1_D_R1": {
+    "n_frames": 1001,
+    "n_residues": 90,
+    "has_unitcell": true,
+    "box_median_ang": 68.75675201416016,
+    "raw": {
+      "rg_median": 18.276212908293253,
+      "rg_max": 23.225901885321395,
+      "rmax_median": 38.403648376464844,
+      "rmax_max": 60.30304718017578,
+      "rmax_max_single_frame_step": 12.036064147949219,
+      "max_pairwise_ca_rmsd_ang": 15.803701400756836,
+      "fraction_in_single_basin": 0.009950248756218905,
+      "rmsf_mean_ang": 5.46893310546875,
+      "rmsf_max_ang": 14.10896110534668
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 1446 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 5.47 A vs ATLAS 7.42 A (x0.7)"
+    ],
+    "atlas_avg_rmsf": 7.42
+  },
+  "1g2r_A:1g2r_A_R1": {
+    "n_frames": 1001,
+    "n_residues": 100,
+    "has_unitcell": true,
+    "box_median_ang": 60.98374366760254,
+    "raw": {
+      "rg_median": 14.671494004195047,
+      "rg_max": 15.670807273886268,
+      "rmax_median": 35.559356689453125,
+      "rmax_max": 44.081382751464844,
+      "rmax_max_single_frame_step": 9.938541412353516,
+      "max_pairwise_ca_rmsd_ang": 9.438450813293457,
+      "fraction_in_single_basin": 0.03980099502487562,
+      "rmsf_mean_ang": 2.3784596920013428,
+      "rmsf_max_ang": 13.982939720153809
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 1657 a",
+    "verdict": "GENUINE",
+    "notes": [
+      "our RMSF 2.38 A vs ATLAS 2.42 A (x1.0)"
+    ],
+    "atlas_avg_rmsf": 2.42
+  },
+  "1j5u_A:1j5u_A_R1": {
+    "n_frames": 1001,
+    "n_residues": 136,
+    "has_unitcell": true,
+    "box_median_ang": 91.93593978881836,
+    "raw": {
+      "rg_median": 17.67195364911323,
+      "rg_max": 22.951539638405304,
+      "rmax_median": 41.89600372314453,
+      "rmax_max": 67.66908264160156,
+      "rmax_max_single_frame_step": 10.687576293945312,
+      "max_pairwise_ca_rmsd_ang": 19.044179916381836,
+      "fraction_in_single_basin": 0.004975124378109453,
+      "rmsf_mean_ang": 6.037204742431641,
+      "rmsf_max_ang": 22.05674934387207
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 2255 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 6.04 A vs ATLAS 6.03 A (x1.0)"
+    ],
+    "atlas_avg_rmsf": 6.03
+  },
+  "1jyo_F:1jyo_F_R1": {
+    "n_frames": 1001,
+    "n_residues": 105,
+    "has_unitcell": true,
+    "box_median_ang": 81.87319755554199,
+    "raw": {
+      "rg_median": 16.41481471381262,
+      "rg_max": 28.618646916577404,
+      "rmax_median": 29.447755813598633,
+      "rmax_max": 55.02609634399414,
+      "rmax_max_single_frame_step": 8.69049072265625,
+      "max_pairwise_ca_rmsd_ang": 23.532466888427734,
+      "fraction_in_single_basin": 0.009950248756218905,
+      "rmsf_mean_ang": 5.050321578979492,
+      "rmsf_max_ang": 12.482844352722168
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 1710 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 5.05 A vs ATLAS 6.35 A (x0.8)"
+    ],
+    "atlas_avg_rmsf": 6.35
+  },
+  "1l2w_I:1l2w_I_R1": {
+    "n_frames": 1001,
+    "n_residues": 69,
+    "has_unitcell": true,
+    "box_median_ang": 68.89874935150146,
+    "raw": {
+      "rg_median": 13.064951512504784,
+      "rg_max": 30.35866909658564,
+      "rmax_median": 23.832130432128906,
+      "rmax_max": 48.47551727294922,
+      "rmax_max_single_frame_step": 8.368827819824219,
+      "max_pairwise_ca_rmsd_ang": 25.889585494995117,
+      "fraction_in_single_basin": 0.004975124378109453,
+      "rmsf_mean_ang": 9.492247581481934,
+      "rmsf_max_ang": 16.21599578857422
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 1004 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 9.49 A vs ATLAS 10.57 A (x0.9)"
+    ],
+    "atlas_avg_rmsf": 10.57
+  },
+  "1ocy_A:1ocy_A_R1": {
+    "n_frames": 1001,
+    "n_residues": 198,
+    "has_unitcell": true,
+    "box_median_ang": 69.5753288269043,
+    "raw": {
+      "rg_median": 22.133678656699725,
+      "rg_max": 28.580384963014115,
+      "rmax_median": 39.96757125854492,
+      "rmax_max": 52.87691116333008,
+      "rmax_max_single_frame_step": 5.4548187255859375,
+      "max_pairwise_ca_rmsd_ang": 18.769962310791016,
+      "fraction_in_single_basin": 0.004975124378109453,
+      "rmsf_mean_ang": 7.8905253410339355,
+      "rmsf_max_ang": 15.650796890258789
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 2995 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 7.89 A vs ATLAS 7.03 A (x1.1)"
+    ],
+    "atlas_avg_rmsf": 7.03
+  },
+  "2ad6_D:2ad6_D_R1": {
+    "n_frames": 1001,
+    "n_residues": 69,
+    "has_unitcell": true,
+    "box_median_ang": 60.03511428833008,
+    "raw": {
+      "rg_median": 20.169074743499408,
+      "rg_max": 28.69331001285869,
+      "rmax_median": 33.150543212890625,
+      "rmax_max": 45.61528778076172,
+      "rmax_max_single_frame_step": 6.238338470458984,
+      "max_pairwise_ca_rmsd_ang": 18.41008186340332,
+      "fraction_in_single_basin": 0.06965174129353234,
+      "rmsf_mean_ang": 5.178896427154541,
+      "rmsf_max_ang": 10.363350868225098
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 1067 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 5.18 A vs ATLAS 5.98 A (x0.9)"
+    ],
+    "atlas_avg_rmsf": 5.98
+  },
+  "2b1y_A:2b1y_A_R1": {
+    "n_frames": 1001,
+    "n_residues": 104,
+    "has_unitcell": true,
+    "box_median_ang": 74.44602966308594,
+    "raw": {
+      "rg_median": 18.19620821371199,
+      "rg_max": 23.390210847041168,
+      "rmax_median": 35.04674530029297,
+      "rmax_max": 52.06081771850586,
+      "rmax_max_single_frame_step": 9.943073272705078,
+      "max_pairwise_ca_rmsd_ang": 18.46495819091797,
+      "fraction_in_single_basin": 0.004975124378109453,
+      "rmsf_mean_ang": 7.2423810958862305,
+      "rmsf_max_ang": 18.13255500793457
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 1654 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 7.24 A vs ATLAS 7.31 A (x1.0)"
+    ],
+    "atlas_avg_rmsf": 7.31
+  },
+  "2pw8_I:2pw8_I_R1": {
+    "n_frames": 1001,
+    "n_residues": 65,
+    "has_unitcell": true,
+    "box_median_ang": 63.13939571380615,
+    "raw": {
+      "rg_median": 13.947330711021968,
+      "rg_max": 18.602900667152458,
+      "rmax_median": 26.772279739379883,
+      "rmax_max": 42.314788818359375,
+      "rmax_max_single_frame_step": 8.067312240600586,
+      "max_pairwise_ca_rmsd_ang": 15.982369422912598,
+      "fraction_in_single_basin": 0.004975124378109453,
+      "rmsf_mean_ang": 5.323800563812256,
+      "rmsf_max_ang": 16.058137893676758
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 915 at",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 5.32 A vs ATLAS 6.37 A (x0.8)"
+    ],
+    "atlas_avg_rmsf": 6.37
+  },
+  "2vnl_A:2vnl_A_R1": {
+    "n_frames": 1001,
+    "n_residues": 151,
+    "has_unitcell": true,
+    "box_median_ang": 63.985419273376465,
+    "raw": {
+      "rg_median": 20.27358456943451,
+      "rg_max": 28.44368922806368,
+      "rmax_median": 41.27533721923828,
+      "rmax_max": 70.18023681640625,
+      "rmax_max_single_frame_step": 9.591289520263672,
+      "max_pairwise_ca_rmsd_ang": 23.82376480102539,
+      "fraction_in_single_basin": 0.004975124378109453,
+      "rmsf_mean_ang": 7.164646148681641,
+      "rmsf_max_ang": 22.838735580444336
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 2391 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 7.16 A vs ATLAS 7.89 A (x0.9)"
+    ],
+    "atlas_avg_rmsf": 7.89
+  },
+  "2vrs_C:2vrs_C_R1": {
+    "n_frames": 1001,
+    "n_residues": 211,
+    "has_unitcell": true,
+    "box_median_ang": 75.30066967010498,
+    "raw": {
+      "rg_median": 27.088861577572633,
+      "rg_max": 37.44353387180289,
+      "rmax_median": 64.01434326171875,
+      "rmax_max": 93.50814819335938,
+      "rmax_max_single_frame_step": 8.1168212890625,
+      "max_pairwise_ca_rmsd_ang": 31.51303482055664,
+      "fraction_in_single_basin": 0.004975124378109453,
+      "rmsf_mean_ang": 12.239306449890137,
+      "rmsf_max_ang": 30.961101531982422
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 3117 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 12.24 A vs ATLAS 9.53 A (x1.3)"
+    ],
+    "atlas_avg_rmsf": 9.53
+  },
+  "3emi_A:3emi_A_R1": {
+    "n_frames": 1001,
+    "n_residues": 116,
+    "has_unitcell": true,
+    "box_median_ang": 71.63856983184814,
+    "raw": {
+      "rg_median": 21.431427360595656,
+      "rg_max": 24.348501503032622,
+      "rmax_median": 43.07558059692383,
+      "rmax_max": 59.14131546020508,
+      "rmax_max_single_frame_step": 9.702384948730469,
+      "max_pairwise_ca_rmsd_ang": 16.969314575195312,
+      "fraction_in_single_basin": 0.004975124378109453,
+      "rmsf_mean_ang": 6.0217976570129395,
+      "rmsf_max_ang": 16.473182678222656
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 1686 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 6.02 A vs ATLAS 7.74 A (x0.8)"
+    ],
+    "atlas_avg_rmsf": 7.74
+  },
+  "3qc7_A:3qc7_A_R1": {
+    "n_frames": 1001,
+    "n_residues": 179,
+    "has_unitcell": true,
+    "box_median_ang": 138.22338104248047,
+    "raw": {
+      "rg_median": 28.894147265062454,
+      "rg_max": 47.03627924278004,
+      "rmax_median": 56.01765441894531,
+      "rmax_max": 96.22314453125,
+      "rmax_max_single_frame_step": 10.091751098632812,
+      "max_pairwise_ca_rmsd_ang": 33.84868240356445,
+      "fraction_in_single_basin": 0.004975124378109453,
+      "rmsf_mean_ang": 13.094526290893555,
+      "rmsf_max_ang": 26.007282257080078
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 2697 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 13.09 A vs ATLAS 14.09 A (x0.9)"
+    ],
+    "atlas_avg_rmsf": 14.09
+  },
+  "4gip_A:4gip_A_R1": {
+    "n_frames": 1001,
+    "n_residues": 81,
+    "has_unitcell": true,
+    "box_median_ang": 76.98665618896484,
+    "raw": {
+      "rg_median": 15.405000466627152,
+      "rg_max": 27.23119847229644,
+      "rmax_median": 26.055938720703125,
+      "rmax_max": 47.30889129638672,
+      "rmax_max_single_frame_step": 6.153507232666016,
+      "max_pairwise_ca_rmsd_ang": 21.800186157226562,
+      "fraction_in_single_basin": 0.009950248756218905,
+      "rmsf_mean_ang": 4.1145710945129395,
+      "rmsf_max_ang": 13.01059627532959
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 1285 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 4.11 A vs ATLAS 6.91 A (x0.6)"
+    ],
+    "atlas_avg_rmsf": 6.91
+  },
+  "4tsh_A:4tsh_A_R1": {
+    "n_frames": 1001,
+    "n_residues": 121,
+    "has_unitcell": true,
+    "box_median_ang": 97.41467475891113,
+    "raw": {
+      "rg_median": 25.04374064721063,
+      "rg_max": 34.30768168422584,
+      "rmax_median": 52.87978744506836,
+      "rmax_max": 70.15839385986328,
+      "rmax_max_single_frame_step": 7.247821807861328,
+      "max_pairwise_ca_rmsd_ang": 23.09392738342285,
+      "fraction_in_single_basin": 0.004975124378109453,
+      "rmsf_mean_ang": 6.268906116485596,
+      "rmsf_max_ang": 15.492321014404297
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 1775 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 6.27 A vs ATLAS 8.68 A (x0.7)"
+    ],
+    "atlas_avg_rmsf": 8.68
+  },
+  "4ue8_B:4ue8_B_R1": {
+    "n_frames": 1001,
+    "n_residues": 38,
+    "has_unitcell": true,
+    "box_median_ang": 58.27671527862549,
+    "raw": {
+      "rg_median": 12.350863609122042,
+      "rg_max": 22.96948818942248,
+      "rmax_median": 22.899892807006836,
+      "rmax_max": 40.265380859375,
+      "rmax_max_single_frame_step": 9.904121398925781,
+      "max_pairwise_ca_rmsd_ang": 20.862438201904297,
+      "fraction_in_single_basin": 0.01990049751243781,
+      "rmsf_mean_ang": 7.714169979095459,
+      "rmsf_max_ang": 12.048954963684082
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 599 at",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 7.71 A vs ATLAS 6.97 A (x1.1)"
+    ],
+    "atlas_avg_rmsf": 6.97
+  },
+  "5exh_C:5exh_C_R1": {
+    "n_frames": 1001,
+    "n_residues": 47,
+    "has_unitcell": true,
+    "box_median_ang": 53.91560077667236,
+    "raw": {
+      "rg_median": 20.112980184158175,
+      "rg_max": 28.470613230967103,
+      "rmax_median": 32.21650314331055,
+      "rmax_max": 52.12162780761719,
+      "rmax_max_single_frame_step": 8.700468063354492,
+      "max_pairwise_ca_rmsd_ang": 24.046161651611328,
+      "fraction_in_single_basin": 0.004975124378109453,
+      "rmsf_mean_ang": 9.210987091064453,
+      "rmsf_max_ang": 16.43216323852539
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 782 at",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 9.21 A vs ATLAS 7.67 A (x1.2)"
+    ],
+    "atlas_avg_rmsf": 7.67
+  },
+  "5w82_E:5w82_E_R1": {
+    "n_frames": 1001,
+    "n_residues": 103,
+    "has_unitcell": true,
+    "box_median_ang": 71.07206344604492,
+    "raw": {
+      "rg_median": 26.74010894131972,
+      "rg_max": 48.81022988245824,
+      "rmax_median": 52.64518356323242,
+      "rmax_max": 93.16870880126953,
+      "rmax_max_single_frame_step": 12.599178314208984,
+      "max_pairwise_ca_rmsd_ang": 41.95169448852539,
+      "fraction_in_single_basin": 0.004975124378109453,
+      "rmsf_mean_ang": 13.20807933807373,
+      "rmsf_max_ang": 27.05392074584961
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 1637 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 13.21 A vs ATLAS 14.41 A (x0.9)"
+    ],
+    "atlas_avg_rmsf": 14.41
+  },
+  "5xct_B:5xct_B_R1": {
+    "n_frames": 1001,
+    "n_residues": 163,
+    "has_unitcell": true,
+    "box_median_ang": 71.65915966033936,
+    "raw": {
+      "rg_median": 23.145094693213046,
+      "rg_max": 27.19223433089518,
+      "rmax_median": 41.14332580566406,
+      "rmax_max": 57.92198944091797,
+      "rmax_max_single_frame_step": 5.752113342285156,
+      "max_pairwise_ca_rmsd_ang": 18.506038665771484,
+      "fraction_in_single_basin": 0.004975124378109453,
+      "rmsf_mean_ang": 6.25700044631958,
+      "rmsf_max_ang": 20.187070846557617
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 2516 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 6.26 A vs ATLAS 6.79 A (x0.9)"
+    ],
+    "atlas_avg_rmsf": 6.79
+  },
+  "6c62_C:6c62_C_R1": {
+    "n_frames": 1001,
+    "n_residues": 68,
+    "has_unitcell": true,
+    "box_median_ang": 63.039140701293945,
+    "raw": {
+      "rg_median": 25.317685536098043,
+      "rg_max": 28.05140103047981,
+      "rmax_median": 48.05818557739258,
+      "rmax_max": 61.40568161010742,
+      "rmax_max_single_frame_step": 11.46261215209961,
+      "max_pairwise_ca_rmsd_ang": 19.116832733154297,
+      "fraction_in_single_basin": 0.009950248756218905,
+      "rmsf_mean_ang": 5.858303546905518,
+      "rmsf_max_ang": 10.894084930419922
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 1042 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 5.86 A vs ATLAS 6.13 A (x1.0)"
+    ],
+    "atlas_avg_rmsf": 6.13
+  },
+  "6crk_G:6crk_G_R1": {
+    "n_frames": 1001,
+    "n_residues": 71,
+    "has_unitcell": true,
+    "box_median_ang": 80.73020935058594,
+    "raw": {
+      "rg_median": 23.086354680050093,
+      "rg_max": 36.404680036516915,
+      "rmax_median": 41.36690139770508,
+      "rmax_max": 66.47252655029297,
+      "rmax_max_single_frame_step": 9.812156677246094,
+      "max_pairwise_ca_rmsd_ang": 28.731273651123047,
+      "fraction_in_single_basin": 0.004975124378109453,
+      "rmsf_mean_ang": 10.002312660217285,
+      "rmsf_max_ang": 20.67012596130371
+    },
+    "imaged_error": "ValueError: Could not find any anchor molecules. Based on our heuristic, those should be molecules with more than 1112 a",
+    "verdict": "GENUINE_DISORDER",
+    "notes": [
+      "our RMSF 10.00 A vs ATLAS 9.47 A (x1.1)"
+    ],
+    "atlas_avg_rmsf": 9.47
+  }
+}

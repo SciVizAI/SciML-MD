@@ -354,6 +354,159 @@ def test_suitability_flags_single_basin(synthetic_traj):
     assert s["reasons"]
 
 
+def _basin_traj(synthetic_traj, kind, seed=3):
+    """Build a single-basin, two-basin or diffusive ensemble on the same chain."""
+    md = pytest.importorskip("mdtraj")
+    rng = np.random.default_rng(seed)
+    ref = synthetic_traj.xyz[0].copy()
+    n_at = ref.shape[0]
+
+    if kind == "two_basin":
+        alt = ref.copy()
+        alt[n_at // 2:] += np.array([0.8, 0.3, 0.0], dtype="float32")
+        frames, state = [], 0
+        for i in range(600):
+            if i % 60 == 0:
+                state ^= 1
+            frames.append((alt if state else ref)
+                          + rng.normal(0, 0.02, ref.shape))
+        xyz = np.stack(frames)
+    elif kind == "diffusive":
+        # unbounded random walk: nothing is ever revisited
+        xyz = ref[None] + np.cumsum(
+            rng.normal(0, 0.06, (600,) + ref.shape), axis=0)
+    else:
+        xyz = ref[None] + rng.normal(0, 0.02, (600,) + ref.shape)
+    return md.Trajectory(xyz.astype("float32"), synthetic_traj.topology)
+
+
+def test_suitability_rejects_diffusive_ensemble(synthetic_traj):
+    """An ensemble that never revisits a structure has no metastable states.
+
+    The screen was one-sided: it only caught ensembles that were too TIGHT.
+    An ATLAS screen of 63 trajectories returned 60 'suitable' at 15-44 A spread
+    with 0.5% medoid occupancy - one frame. Those are diffusive chains, and an
+    MSM has as little to find there as in a single basin.
+    """
+    from msm.preflight import assess_suitability
+
+    s = assess_suitability(_basin_traj(synthetic_traj, "diffusive"))
+    assert s["verdict"] == "unsuitable", s
+    assert s["largest_basin_occupancy"] < 0.10
+    assert s["n_basins_ge_5pct"] == 0
+    assert any("diffusive" in r for r in s["reasons"]), s["reasons"]
+
+
+def test_suitability_accepts_two_basin_ensemble(synthetic_traj):
+    """The guard must not reject everything: a genuine two-state ensemble passes."""
+    from msm.preflight import assess_suitability
+
+    s = assess_suitability(_basin_traj(synthetic_traj, "two_basin"))
+    assert s["verdict"] == "suitable", s
+    assert s["n_basins_ge_5pct"] >= 2
+    assert 0.20 <= s["largest_basin_occupancy"] <= 0.80
+
+
+def test_suitability_accepts_many_small_basins(synthetic_traj):
+    """Several modestly-populated basins is multi-basin, not diffusive.
+
+    Regression for a knife-edge in the first version of the guard: it vetoed on
+    largest_occupancy < 10%, which rejected 3dso_A_R2 (33 clusters, top 9.0%,
+    SIX clusters above 5%) as diffusive while accepting its own replicate at
+    18.4%. The veto now keys on the populated-cluster count instead.
+    """
+    md = pytest.importorskip("mdtraj")
+    from msm.preflight import assess_suitability
+
+    rng = np.random.default_rng(7)
+    ref = synthetic_traj.xyz[0].copy()
+    n_at = ref.shape[0]
+    centres = []
+    for k in range(8):                      # 8 basins -> none dominant
+        c = ref.copy()
+        c[n_at // 2:] += np.array([0.6 * np.cos(k), 0.6 * np.sin(k), 0.3 * k],
+                                  dtype="float32")
+        centres.append(c)
+    frames = []
+    for i in range(800):
+        frames.append(centres[(i // 40) % 8] + rng.normal(0, 0.02, ref.shape))
+    traj = md.Trajectory(np.stack(frames).astype("float32"),
+                         synthetic_traj.topology)
+
+    s = assess_suitability(traj)
+    assert s["n_basins_ge_5pct"] >= 4, s
+    assert s["largest_basin_occupancy"] < 0.60, s   # no basin dominates
+    assert s["verdict"] != "unsuitable", s
+    assert not any("diffusive" in r for r in s["reasons"]), s["reasons"]
+
+
+def test_functional_labels_exclude_solvent_and_find_partners(tmp_path):
+    """Phase 4 ground truth must come from the crystal, and must not count
+    waters or cryoprotectants as function."""
+    from validation.phase4_functional_enrichment import functional_labels
+
+    def at(rec, serial, name, res, ch, seq, x, y, z):
+        return (f"{rec:<6}{serial:5d} {name:^4} {res:>3} {ch}{seq:4d}    "
+                f"{x:8.3f}{y:8.3f}{z:8.3f}  1.00  0.00")
+
+    lines, n = [], 1
+    for i in range(5):
+        lines.append(at("ATOM  ", n, "CA", "ALA", "A", i + 1, i * 5.0, 0.0, 0.0))
+        n += 1
+    lines.append(at("HETATM", n, "C1", "ATP", "A", 101, 0.5, 2.0, 0.0)); n += 1
+    lines.append(at("HETATM", n, "O", "HOH", "A", 201, 20.0, 2.0, 0.0)); n += 1
+    lines.append(at("HETATM", n, "C1", "GOL", "A", 202, 10.0, 1.0, 0.0)); n += 1
+    lines.append(at("ATOM  ", n, "CA", "GLY", "B", 1, 20.0, 1.0, 0.0)); n += 1
+    lines.append("END")
+    p = tmp_path / "t.pdb"
+    p.write_text("\n".join(lines))
+
+    gt = functional_labels(p, "A", cutoff_ang=4.5)
+    lab, lig = gt["label_all"], gt["label_ligand"]
+    assert list(gt["resseq"]) == [1, 2, 3, 4, 5]
+    assert list(gt["resname"]) == ["ALA"] * 5
+    assert lab[0], "residue beside the ATP ligand must be labelled"
+    assert lab[4], "residue beside the partner chain must be labelled"
+    assert not lab[2], "residue with no partner must not be labelled"
+    assert not lab[1], "glycerol is a cryoprotectant, not function"
+    assert gt["breakdown"] == {"ligand": 1, "nucleic": 0, "chain": 1}
+    # the ligand-only label must exclude the interface contact
+    assert lig[0] and not lig[4], lig
+
+
+def test_phase4_alignment_survives_renumbering():
+    """ATLAS topologies may not carry the crystal's author numbering.
+
+    Matching on resSeq alone lost five proteins to '0 residues matched' -
+    1upt_D, 3bpj_B, 3bzl_D, 4eo1_A, 6l4p_B - a harness defect, not data.
+    """
+    from validation.phase4_functional_enrichment import align_md_to_crystal
+
+    cry_names = np.array(["MET", "ALA", "GLY", "SER", "LEU", "VAL", "THR"])
+    cry_seq = np.array([101, 102, 103, 104, 105, 106, 107])
+    md_names = np.array(["ALA", "GLY", "SER", "LEU", "VAL"])
+    md_seq = np.array([1, 2, 3, 4, 5])
+
+    idx, how = align_md_to_crystal(md_names, cry_names, cry_seq, md_seq)
+    assert idx is not None, how
+    assert list(idx) == [1, 2, 3, 4, 5], (idx, how)
+    assert "offset" in how
+
+    # exact numbering must still take the direct path
+    idx2, how2 = align_md_to_crystal(cry_names, cry_names, cry_seq, cry_seq)
+    assert how2.startswith("resSeq"), how2
+    assert list(idx2) == list(range(len(cry_names)))
+
+
+def test_phase4_label_validity_gate():
+    """An AUROC on 3 positives, or on 90% positives, is not interpretable."""
+    from validation.phase4_functional_enrichment import label_is_valid
+
+    assert label_is_valid(np.array([1, 1, 1] + [0] * 60, dtype=bool))   # 3dso_A
+    assert label_is_valid(np.array([1] * 77 + [0] * 9, dtype=bool))     # 4v1g_B
+    assert label_is_valid(np.array([1] * 16 + [0] * 86, dtype=bool)) is None
+
+
 def test_clustering_is_deterministic():
     """Same input + same seed must give identical labels, run to run."""
     from run_all_proteins import cluster_states

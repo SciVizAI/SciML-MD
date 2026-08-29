@@ -129,6 +129,37 @@ def assess_suitability(traj, rmsd_cluster_cutoff_ang=2.0):
     frac_in_basin = float((R[medoid] < rmsd_cluster_cutoff_ang).mean())
     ss = count_disulfides(traj)
 
+    # ---- basin census -------------------------------------------------- #
+    # The single-basin test below is one-sided: it only catches an ensemble
+    # that is too TIGHT. An ATLAS screen of 63 trajectories returned 60
+    # "suitable" at 15-44 A spread with 0.5% medoid occupancy - i.e. one frame.
+    # Those systems are not multi-basin, they are diffusive: no structure is
+    # revisited, so there is no metastable state to be in. An MSM has as little
+    # to find there as in a single basin, for the opposite reason.
+    #
+    # A leader-clustering census distinguishes the two. Frames are assigned in
+    # order to the first cluster whose representative lies within the cutoff.
+    # A multi-basin ensemble yields a few well-populated clusters; a single
+    # basin yields one holding nearly everything; a diffusive chain yields many
+    # clusters none of which holds anything. Order dependence is accepted here -
+    # this is an advisory screen, not an estimator.
+    leaders, assign = [], np.empty(m, dtype=np.int64)
+    for i in range(m):
+        placed = False
+        for c, lead in enumerate(leaders):
+            if R[i, lead] < rmsd_cluster_cutoff_ang:
+                assign[i] = c
+                placed = True
+                break
+        if not placed:
+            leaders.append(i)
+            assign[i] = len(leaders) - 1
+    occ = np.bincount(assign, minlength=len(leaders)) / m
+    occ_sorted = np.sort(occ)[::-1]
+    n_basins = int(len(leaders))
+    largest_occ = float(occ_sorted[0])
+    n_pop = int((occ >= 0.05).sum())
+
     reasons, verdict = [], "suitable"
     if frac_in_basin > 0.95:
         verdict = "unsuitable"
@@ -139,6 +170,27 @@ def assess_suitability(traj, rmsd_cluster_cutoff_ang=2.0):
     elif frac_in_basin > 0.85:
         verdict = "marginal"
         reasons.append(f"{frac_in_basin*100:.0f}% of frames in a single basin")
+
+    # Diffusive means NO cluster is populated - not merely that the largest one
+    # is small. An earlier version vetoed on largest_occ < 0.10, which rejected
+    # 3dso_A_R2 (33 clusters, top 9.0%, SIX clusters over 5%) as diffusive while
+    # accepting its own replicate R1 at top 18.4%. A system spreading population
+    # over six basins is the multi-basin case, not the structureless one. Keying
+    # the veto on the populated-cluster count removes that knife edge.
+    if n_pop == 0:
+        verdict = "unsuitable"
+        reasons.append(
+            f"no conformational cluster holds even 5% of frames (largest "
+            f"{largest_occ*100:.1f}%, {n_basins} clusters over {m} sampled frames) - "
+            "the ensemble is diffusive, not metastable. Nothing is revisited, so "
+            "there are no states for an MSM to resolve and transition "
+            "probabilities cannot be estimated from repeat visits")
+    elif n_pop < 2:
+        if verdict == "suitable":
+            verdict = "marginal"
+        reasons.append(
+            f"only {n_pop} cluster(s) hold >=5% of frames - the ensemble is close "
+            "to unimodal, so a multi-state model is unlikely to be identifiable")
 
     if max_rmsd < 1.5:
         verdict = "unsuitable"
@@ -161,4 +213,8 @@ def assess_suitability(traj, rmsd_cluster_cutoff_ang=2.0):
     return {"verdict": verdict, "reasons": reasons, "n_frames": int(n),
             "n_residues": int(n_res), "max_pairwise_ca_rmsd_ang": round(max_rmsd, 3),
             "fraction_in_single_basin": round(frac_in_basin, 3),
+            "n_basins": n_basins,
+            "largest_basin_occupancy": round(largest_occ, 3),
+            "n_basins_ge_5pct": n_pop,
+            "n_frames_sampled_for_clustering": int(m),
             "n_disulfides": ss}
