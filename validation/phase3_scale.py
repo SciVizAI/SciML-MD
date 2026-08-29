@@ -554,7 +554,12 @@ def main():
     print("\n=== NEAR MODE (median AUROC across proteins) ===")
     for n, v in sorted(out["distribution"].items(),
                        key=lambda kv: -kv[1]["median"]):
-        tag = "  (time-blind)" if n in TIME_BLIND else ""
+        if n == "rarity_only":
+            tag = "  (excluded from C3: pi inherits temporal info, P2-3)"
+        elif n in TIME_BLIND:
+            tag = "  (time-blind)"
+        else:
+            tag = ""
         print(f"  {n:22s} {v['median']:.3f}  [IQR {v['q25']:.3f}-{v['q75']:.3f}]"
               f"  {v['frac_ge_bar']*100:.0f}% >= bar{tag}")
     print("\nACCEPTANCE:", json.dumps(out["acceptance"], indent=2))
