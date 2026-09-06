@@ -39,9 +39,18 @@ Accepted layouts (auto-detected):
 
 PRE-REGISTERED CRITERIA (identical bar to Phase 2 - do NOT change these)
   C1  median surprise AUROC across systems >= 0.75
-  C2  surprise > best time-blind baseline on >= 80% of systems
-  C3  median of every time-blind baseline within 0.40-0.60
-  C4  Wilcoxon signed-rank p < 0.05, surprise vs best time-blind baseline
+  C2  surprise > best baseline on >= 80% of systems, where "best baseline" is
+      the max over (time-blind U trivial-temporal)   [widened 2026-08-30, OI-27]
+  C3  median of every TIME-BLIND baseline within 0.40-0.60
+  C4  Wilcoxon signed-rank p < 0.05, surprise vs that same best baseline
+  C5  identity-null control at chance
+  C6  random_score at chance                          [added 2026-08-29]
+  C7  surprise > best trivial temporal detector on PR-AUC, p < 0.05
+                                                      [added 2026-08-30, OI-27]
+
+C2/C4/C7 exist in this form because the 2026-08-30 retraction showed C1-C6 can
+all pass while a four-line abs(diff) detector beats the MSM. Every change here
+is a strict tightening; none of them can let a weaker result through.
 
 Usage
 -----
@@ -64,7 +73,8 @@ sys.path.insert(0, str(ROOT))
 warnings.filterwarnings("ignore")
 
 from validation.phase2_temporal_scramble import (  # noqa: E402
-    scramble, junction_labels, score_all, metrics, TIME_BLIND)
+    scramble, junction_labels, score_all, metrics, TIME_BLIND,
+    NULL_CHANNELS, TRIVIAL_TEMPORAL)
 
 MAX_FRAMES = 4000      # subsample long trajectories to keep MSM estimation sane
 N_REPLICATES = 5       # per system (Phase 2 used 12 on a single system)
@@ -152,8 +162,9 @@ def run_system(traj, seed_base=500):
         R[i] = md.rmsd(traj, traj, i)
 
     out = {"hyperparams": hp}
+    seam_rmsd, ordinary_rmsd = [], []
     for mode in ("near", "identity_null"):
-        per = {}
+        per, per_ap = {}, {}
         for rep in range(N_REPLICATES):
             rng = np.random.default_rng(seed_base + rep)
             order, junc = scramble(traj, mode, rng, R)
@@ -165,12 +176,41 @@ def run_system(traj, seed_base=500):
                            n_clusters=hp["n_clusters"], lag_msm=hp["lag_msm"],
                            k=hp["k"])
             for name, s in sc.items():
-                au, _ = metrics(y, s)
+                au, ap = metrics(y, s)
                 per.setdefault(name, []).append(au)
+                per_ap.setdefault(name, []).append(ap)
+
+            # Seam geometry: how big is the structural jump AT a junction,
+            # compared with an ordinary consecutive step? Near mode splices at
+            # geometrically matched endpoints on purpose, and that is the whole
+            # defence against the triviality critique (Wu & Keogh 2023) - a
+            # splice that is geometrically obvious makes "we beat geometric
+            # detectors" unfalsifiable in the wrong direction. Measure it rather
+            # than asserting it.
+            if mode == "near":
+                steps = R[order[:-1], order[1:]] * 10.0      # Angstrom
+                is_junc = np.zeros(len(order) - 1, dtype=bool)
+                is_junc[np.asarray(junc, dtype=int)] = True
+                seam_rmsd.extend(steps[is_junc].tolist())
+                ordinary_rmsd.extend(steps[~is_junc].tolist())
         if not per:
             return None
         key = "auroc" if mode == "near" else "auroc_null"
         out[key] = {n: round(float(np.mean(v)), 3) for n, v in per.items()}
+        out["auprc" if mode == "near" else "auprc_null"] = {
+            n: round(float(np.mean(v)), 3) for n, v in per_ap.items()}
+
+    if seam_rmsd and ordinary_rmsd:
+        sj, od = np.asarray(seam_rmsd), np.asarray(ordinary_rmsd)
+        out["seam_geometry"] = {
+            "junction_rmsd_median_ang": round(float(np.median(sj)), 3),
+            "ordinary_step_rmsd_median_ang": round(float(np.median(od)), 3),
+            "junction_over_ordinary": round(float(np.median(sj) /
+                                                  max(np.median(od), 1e-9)), 3),
+            "junction_percentile_in_ordinary": round(float(
+                (od < np.median(sj)).mean() * 100), 1),
+            "n_junctions": int(len(sj)),
+        }
 
     # drift diagnostic: how much does the structure change over the trajectory?
     n = len(traj)
@@ -245,6 +285,19 @@ def aggregate(per_system):
     dist = {n: np.array([v[n] for v in collapsed.values() if n in v])
             for n in names}
 
+    # PR-AUC, collapsed the same way. Junction frames are a small minority, and
+    # ROC-AUC flatters imbalanced problems; the anomaly-detection benchmarking
+    # literature treats PR as the honest measure. metrics() has always returned
+    # it - Phase 3 simply used to discard it.
+    by_prot_ap = {}
+    for sid, v in per_system.items():
+        if "auprc" in v:
+            by_prot_ap.setdefault(sid.split(":")[0], []).append(v["auprc"])
+    dist_ap = {n: np.array([float(np.mean([a[n] for a in lst if n in a]))
+                            for lst in by_prot_ap.values()
+                            if any(n in a for a in lst)])
+               for n in names} if by_prot_ap else {}
+
     collapsed_null = {prot: {n: float(np.mean([a[n] for a in lst if n in a]))
                              for n in names if any(n in a for a in lst)}
                       for prot, lst in by_protein_null.items()}
@@ -257,19 +310,109 @@ def aggregate(per_system):
     # so it inherits temporal information (Phase 2 finding P2-3).
     best_blind = np.max(np.vstack([dist[n] for n in blind_names]), axis=0)
 
+    # --- OI-27 -------------------------------------------------------------
+    # The trivial TEMPORAL family (abs_diff_oneliner, frame_to_frame_rmsd) is
+    # not time-blind and is NOT expected at chance - a splice really does move
+    # the coordinates, so these detectors legitimately fire. That is exactly
+    # why they belong in the comparison: the 2026-08-30 retraction happened
+    # because C2/C3 only ever raced the MSM against time-blind detectors, and
+    # a four-line abs(diff) detector beat it (0.839 vs 0.814, PR-AUC 0.227 vs
+    # 0.082, 17/25 proteins, p=0.0044) while all four criteria still "passed".
+    #
+    # Fix: C2 and C4 now race surprise against the best of
+    # (time-blind U trivial-temporal). This is a strict tightening - a max over
+    # a superset is >= the max over the subset - so it can only make the test
+    # harder, never looser, and applying it to already-registered criteria does
+    # not weaken the pre-registration (same argument used for C6).
+    # C3 is deliberately UNCHANGED: it is the in-distribution sanity check and
+    # only time-blind detectors are supposed to sit at chance.
+    trivial_names = [n for n in TRIVIAL_TEMPORAL if n in dist]
+    compare_names = blind_names + trivial_names
+    best_any = np.max(np.vstack([dist[n] for n in compare_names]), axis=0)
+
     c1 = float(np.median(sur)) >= BAR
-    win = float(np.mean(sur > best_blind))
+    win = float(np.mean(sur > best_any))
     c2 = win >= 0.80
     c3 = all(0.40 <= float(np.median(dist[n])) <= 0.60 for n in blind_names)
     try:
-        p = float(wilcoxon(sur, best_blind, alternative="greater").pvalue)
+        p = float(wilcoxon(sur, best_any, alternative="greater").pvalue)
     except Exception:
         p = float("nan")
     c4 = p < 0.05
 
+    # legacy (blind-only) values, reported for continuity with runs before
+    # 2026-08-30 so the retraction is auditable, NOT gated on.
+    win_blind = float(np.mean(sur > best_blind))
+    try:
+        p_blind = float(wilcoxon(sur, best_blind, alternative="greater").pvalue)
+    except Exception:
+        p_blind = float("nan")
+
+    # C7: PR-AUC is where the retraction actually showed up most starkly, and
+    # the benchmarking literature treats PR as the honest measure on a rare
+    # positive class. Surprise must beat the best trivial temporal detector on
+    # PR-AUC too, not just on ROC.
+    c7_detail = {"pass": False, "note": "PR-AUC not available"}
+    if dist_ap and "surprise_only" in dist_ap and trivial_names:
+        triv_ap = [n for n in trivial_names if n in dist_ap]
+        if triv_ap:
+            sur_ap = dist_ap["surprise_only"]
+            best_triv_ap = np.max(np.vstack([dist_ap[n] for n in triv_ap]), axis=0)
+            try:
+                p7 = float(wilcoxon(sur_ap, best_triv_ap,
+                                    alternative="greater").pvalue)
+            except Exception:
+                p7 = float("nan")
+            c7_detail = {
+                "pass": bool(float(np.median(sur_ap))
+                             > float(np.median(best_triv_ap)) and p7 < 0.05),
+                "surprise_prauc_median": round(float(np.median(sur_ap)), 3),
+                "best_trivial_prauc_median": round(float(np.median(best_triv_ap)), 3),
+                "p_value": p7,
+            }
+    c7 = bool(c7_detail["pass"])
+    c7_detail["note"] = (
+        "Added 2026-08-30 (OI-27). Surprise must beat the best trivial temporal "
+        "detector on PR-AUC, not only ROC-AUC. An additional gate, not a "
+        "relaxation.")
+
+    # C6: the random scorer must sit at chance under our exact protocol.
+    # Kim et al. (AAAI 2022) showed random scores can look excellent under
+    # common protocols, so this is now an expected control. It is an ADDITIONAL
+    # gate - it can only make the test stricter, never looser - so adding it
+    # after C1-C4 were fixed does not weaken the pre-registration.
+    rnd = dist.get("random_score")
+    c6 = bool(rnd is not None and len(rnd)
+              and 0.40 <= float(np.median(rnd)) <= 0.60)
+
+    seams = [v["seam_geometry"] for v in per_system.values()
+             if "seam_geometry" in v]
+    seam_summary = {}
+    if seams:
+        seam_summary = {
+            "junction_rmsd_median_ang": round(float(np.median(
+                [s["junction_rmsd_median_ang"] for s in seams])), 3),
+            "ordinary_step_rmsd_median_ang": round(float(np.median(
+                [s["ordinary_step_rmsd_median_ang"] for s in seams])), 3),
+            "junction_over_ordinary": round(float(np.median(
+                [s["junction_over_ordinary"] for s in seams])), 3),
+            "junction_percentile_in_ordinary": round(float(np.median(
+                [s["junction_percentile_in_ordinary"] for s in seams])), 1),
+            "note": ("Near-mode splices at geometrically matched endpoints. If "
+                     "the junction jump were far out in the tail of ordinary "
+                     "steps, a one-line abs(diff) detector would win and the "
+                     "kinetic claim would be unfalsifiable in the wrong "
+                     "direction (Wu & Keogh, IEEE TKDE 2023)."),
+        }
+
     return {
         "n_trajectories": len(per_system),
         "n_independent_proteins": len(collapsed),
+        "seam_geometry": seam_summary,
+        "auprc_distribution": {n: {"median": round(float(np.median(v)), 3),
+                                   "q25": round(float(np.percentile(v, 25)), 3),
+                                   "q75": round(float(np.percentile(v, 75)), 3)}
+                               for n, v in dist_ap.items() if len(v)},
         "note": ("statistics computed per PROTEIN; replicates averaged first to "
                  "avoid pseudo-replication"),
         "distribution": {n: {"median": round(float(np.median(v)), 3),
@@ -289,11 +432,30 @@ def aggregate(per_system):
         "acceptance": {
             "C1_median_surprise_ge_0.75": {"pass": bool(c1),
                                            "value": round(float(np.median(sur)), 3)},
-            "C2_beats_best_blind_on_80pct": {"pass": bool(c2),
-                                             "win_fraction": round(win, 3)},
-            "C3_blind_medians_in_band": {"pass": bool(c3)},
-            "C4_wilcoxon_p_lt_0.05": {"pass": bool(c4), "p_value": p},
-            "overall_pass": bool(c1 and c2 and c3 and c4),
+            "C2_beats_best_baseline_on_80pct": {
+                "pass": bool(c2),
+                "win_fraction": round(win, 3),
+                "compared_against": compare_names,
+                "legacy_blind_only_win_fraction": round(win_blind, 3),
+                "note": ("OI-27: comparison family widened on 2026-08-30 to "
+                         "include the trivial temporal detectors. Strictly "
+                         "stricter than the blind-only version.")},
+            "C3_blind_medians_in_band": {"pass": bool(c3),
+                                         "family": blind_names,
+                                         "note": ("time-blind only, by design - "
+                                                  "trivial temporal detectors "
+                                                  "are NOT expected at chance")},
+            "C4_wilcoxon_p_lt_0.05": {"pass": bool(c4), "p_value": p,
+                                      "legacy_blind_only_p_value": p_blind},
+            "C7_beats_trivial_temporal_on_prauc": c7_detail,
+            "C6_random_score_at_chance": {
+                "pass": c6,
+                "value": (round(float(np.median(rnd)), 3)
+                          if rnd is not None and len(rnd) else None),
+                "note": ("Added 2026-08-29 after the standards audit. An "
+                         "additional gate, not a relaxation: random scores must "
+                         "be at chance or nothing else is interpretable.")},
+            "overall_pass": bool(c1 and c2 and c3 and c4 and c6 and c7),
         },
     }
 
@@ -551,17 +713,39 @@ def main():
         print("  VERDICT: " + ("construction valid - junctions carry no positional bias"
                                if not bad else "INVALID - " + ", ".join(bad)))
 
+    sg = out.get("seam_geometry") or {}
+    if sg:
+        print("\n--- SEAM GEOMETRY (are the junctions geometrically visible?) ---")
+        print(f"  junction step RMSD   {sg['junction_rmsd_median_ang']:.3f} A")
+        print(f"  ordinary step RMSD   {sg['ordinary_step_rmsd_median_ang']:.3f} A")
+        print(f"  ratio                {sg['junction_over_ordinary']:.2f}x")
+        print(f"  a junction sits at the {sg['junction_percentile_in_ordinary']:.0f}th "
+              f"percentile of ordinary steps")
+        print("  VERDICT: " + ("junctions are geometrically ORDINARY - the "
+                               "kinetic claim is testable"
+                               if sg["junction_percentile_in_ordinary"] <= 90
+                               else "junctions are geometric OUTLIERS - a "
+                                    "one-line detector should win; the kinetic "
+                                    "claim is not falsifiable on this design"))
+
+    ap = out.get("auprc_distribution") or {}
     print("\n=== NEAR MODE (median AUROC across proteins) ===")
     for n, v in sorted(out["distribution"].items(),
                        key=lambda kv: -kv[1]["median"]):
         if n == "rarity_only":
             tag = "  (excluded from C3: pi inherits temporal info, P2-3)"
+        elif n in NULL_CHANNELS:
+            tag = "  (NULL - must be ~0.500)"
+        elif n in TRIVIAL_TEMPORAL:
+            tag = "  (trivial temporal baseline)"
         elif n in TIME_BLIND:
             tag = "  (time-blind)"
         else:
             tag = ""
+        apv = ap.get(n, {}).get("median")
+        aps = f"  PR {apv:.3f}" if apv is not None else ""
         print(f"  {n:22s} {v['median']:.3f}  [IQR {v['q25']:.3f}-{v['q75']:.3f}]"
-              f"  {v['frac_ge_bar']*100:.0f}% >= bar{tag}")
+              f"  {v['frac_ge_bar']*100:.0f}% >= bar{aps}{tag}")
     print("\nACCEPTANCE:", json.dumps(out["acceptance"], indent=2))
 
     Path(args.out).write_text(json.dumps(out, indent=2))

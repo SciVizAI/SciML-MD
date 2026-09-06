@@ -1,0 +1,2517 @@
+{
+  "ref_lag_ns": 1.0,
+  "min_gap_ns": 10.0,
+  "decision_rule": "download mdCATH in bulk only if it is constructible at P50 on BOTH the native and the matched reference; native-only means the splice hides behind the 1 ns save interval rather than behind the physics",
+  "groups": {
+    "ATLAS": {
+      "n": 25,
+      "A_native": {
+        "frac_constructible": {
+          "10": 0.0,
+          "25": 0.0,
+          "50": 0.04,
+          "75": 0.2,
+          "90": 0.4,
+          "99": 0.8
+        },
+        "closest_pair_percentile": {
+          "min": 8.0,
+          "median": 64.3,
+          "max": 98.3
+        }
+      },
+      "B_matched": {
+        "frac_constructible": {
+          "10": 0.0,
+          "25": 0.04,
+          "50": 0.2,
+          "75": 0.76,
+          "90": 0.96,
+          "99": 1.0
+        },
+        "closest_pair_percentile": {
+          "min": 3.0,
+          "median": 24.0,
+          "max": 81.0
+        }
+      }
+    }
+  },
+  "per_system": {
+    "ATLAS:1g2r_A": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.87,
+        "closest_distant_pair_ang": 1.979,
+        "closest_pair_percentile": 62.7,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.535,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.652,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.87,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.095,
+            "n_admissible": 3,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 2.338,
+            "n_admissible": 87,
+            "n_regions": 9,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 2.909,
+            "n_admissible": 7484,
+            "n_regions": 17,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 2.982,
+        "closest_distant_pair_ang": 2.318,
+        "closest_pair_percentile": 10.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 2.347,
+            "n_admissible": 1,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 2.575,
+            "n_admissible": 12,
+            "n_regions": 5,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.982,
+            "n_admissible": 104,
+            "n_regions": 13,
+            "constructible": true
+          },
+          "75": {
+            "threshold_ang": 3.689,
+            "n_admissible": 692,
+            "n_regions": 17,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 4.534,
+            "n_admissible": 1846,
+            "n_regions": 18,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 5.661,
+            "n_admissible": 3124,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 2.4,
+        "ref_step_median_ang": 2.973
+      }
+    },
+    "ATLAS:1j5u_A": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 2.031,
+        "closest_distant_pair_ang": 2.543,
+        "closest_pair_percentile": 83.5,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.58,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.779,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.031,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.355,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 2.67,
+            "n_admissible": 7,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 3.402,
+            "n_admissible": 464,
+            "n_regions": 10,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 4.153,
+        "closest_distant_pair_ang": 3.158,
+        "closest_pair_percentile": 26.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 2.568,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 3.119,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 4.153,
+            "n_admissible": 37,
+            "n_regions": 6,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 4.997,
+            "n_admissible": 154,
+            "n_regions": 14,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 6.144,
+            "n_admissible": 500,
+            "n_regions": 17,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 6.748,
+            "n_admissible": 714,
+            "n_regions": 18,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 7.6,
+        "ref_step_median_ang": 3.961
+      }
+    },
+    "ATLAS:1ois_A": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.567,
+        "closest_distant_pair_ang": 1.779,
+        "closest_pair_percentile": 86.5,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.377,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.455,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.567,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.689,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 1.815,
+            "n_admissible": 1,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 2.092,
+            "n_admissible": 1141,
+            "n_regions": 15,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 2.001,
+        "closest_distant_pair_ang": 1.939,
+        "closest_pair_percentile": 38.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.757,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.863,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.001,
+            "n_admissible": 2,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.215,
+            "n_admissible": 73,
+            "n_regions": 13,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 2.439,
+            "n_admissible": 315,
+            "n_regions": 16,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 2.661,
+            "n_admissible": 857,
+            "n_regions": 18,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 14.4,
+        "ref_step_median_ang": 1.986
+      }
+    },
+    "ATLAS:1upt_D": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.771,
+        "closest_distant_pair_ang": 1.823,
+        "closest_pair_percentile": 56.9,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.455,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.59,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.771,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.992,
+            "n_admissible": 74,
+            "n_regions": 9,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 2.234,
+            "n_admissible": 2422,
+            "n_regions": 13,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 2.802,
+            "n_admissible": 53118,
+            "n_regions": 17,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 2.32,
+        "closest_distant_pair_ang": 2.097,
+        "closest_pair_percentile": 30.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.874,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 2.028,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.32,
+            "n_admissible": 48,
+            "n_regions": 11,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.605,
+            "n_admissible": 286,
+            "n_regions": 16,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 3.221,
+            "n_admissible": 1091,
+            "n_regions": 19,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 4.183,
+            "n_admissible": 2678,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 7.0,
+        "ref_step_median_ang": 2.371
+      }
+    },
+    "ATLAS:2ad6_D": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 2.259,
+        "closest_distant_pair_ang": 2.228,
+        "closest_pair_percentile": 47.5,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.772,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.978,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.259,
+            "n_admissible": 2,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.602,
+            "n_admissible": 107,
+            "n_regions": 6,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 3.025,
+            "n_admissible": 1245,
+            "n_regions": 10,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 3.773,
+            "n_admissible": 13216,
+            "n_regions": 12,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 3.203,
+        "closest_distant_pair_ang": 2.684,
+        "closest_pair_percentile": 25.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 2.413,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 2.682,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 3.203,
+            "n_admissible": 26,
+            "n_regions": 6,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 4.186,
+            "n_admissible": 337,
+            "n_regions": 12,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 5.529,
+            "n_admissible": 1204,
+            "n_regions": 14,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 7.929,
+            "n_admissible": 1921,
+            "n_regions": 17,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 3.8,
+        "ref_step_median_ang": 3.213
+      }
+    },
+    "ATLAS:2hnu_A": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.304,
+        "closest_distant_pair_ang": 1.15,
+        "closest_pair_percentile": 13.3,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.124,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.209,
+            "n_admissible": 6,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.304,
+            "n_admissible": 52,
+            "n_regions": 4,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.411,
+            "n_admissible": 514,
+            "n_regions": 8,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 1.542,
+            "n_admissible": 3006,
+            "n_regions": 14,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 1.794,
+            "n_admissible": 21330,
+            "n_regions": 18,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 1.618,
+        "closest_distant_pair_ang": 1.323,
+        "closest_pair_percentile": 4.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.374,
+            "n_admissible": 2,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.487,
+            "n_admissible": 12,
+            "n_regions": 5,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.618,
+            "n_admissible": 47,
+            "n_regions": 9,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.817,
+            "n_admissible": 237,
+            "n_regions": 14,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 1.924,
+            "n_admissible": 462,
+            "n_regions": 18,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 2.186,
+            "n_admissible": 1684,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 0.2,
+        "ref_step_median_ang": 1.624
+      }
+    },
+    "ATLAS:2vnl_A": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 2.258,
+        "closest_distant_pair_ang": 2.276,
+        "closest_pair_percentile": 51.2,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.641,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.856,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.258,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.648,
+            "n_admissible": 64,
+            "n_regions": 3,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 3.043,
+            "n_admissible": 958,
+            "n_regions": 5,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 3.739,
+            "n_admissible": 9035,
+            "n_regions": 6,
+            "constructible": false
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 4.021,
+        "closest_distant_pair_ang": 2.582,
+        "closest_pair_percentile": 18.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 2.334,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 2.933,
+            "n_admissible": 8,
+            "n_regions": 3,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 4.021,
+            "n_admissible": 157,
+            "n_regions": 7,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 5.069,
+            "n_admissible": 306,
+            "n_regions": 9,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 6.286,
+            "n_admissible": 447,
+            "n_regions": 14,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 8.268,
+            "n_admissible": 923,
+            "n_regions": 18,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 10.9,
+        "ref_step_median_ang": 4.128
+      }
+    },
+    "ATLAS:2w56_A": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.396,
+        "closest_distant_pair_ang": 1.718,
+        "closest_pair_percentile": 98.3,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.253,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.317,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.396,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.487,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 1.566,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 1.778,
+            "n_admissible": 14,
+            "n_regions": 2,
+            "constructible": false
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 1.776,
+        "closest_distant_pair_ang": 1.921,
+        "closest_pair_percentile": 81.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.589,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.654,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.776,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.873,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 2.0,
+            "n_admissible": 10,
+            "n_regions": 5,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 2.659,
+            "n_admissible": 1673,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 33.5,
+        "ref_step_median_ang": 1.787
+      }
+    },
+    "ATLAS:3bpj_B": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.833,
+        "closest_distant_pair_ang": 1.892,
+        "closest_pair_percentile": 57.5,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.513,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.644,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.833,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.051,
+            "n_admissible": 33,
+            "n_regions": 3,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 2.289,
+            "n_admissible": 382,
+            "n_regions": 7,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 2.851,
+            "n_admissible": 10152,
+            "n_regions": 14,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 2.492,
+        "closest_distant_pair_ang": 2.044,
+        "closest_pair_percentile": 9.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 2.077,
+            "n_admissible": 1,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 2.242,
+            "n_admissible": 2,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.492,
+            "n_admissible": 19,
+            "n_regions": 5,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.869,
+            "n_admissible": 131,
+            "n_regions": 11,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 3.122,
+            "n_admissible": 364,
+            "n_regions": 13,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 5.87,
+            "n_admissible": 3790,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 5.3,
+        "ref_step_median_ang": 2.482
+      }
+    },
+    "ATLAS:3bzl_D": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.53,
+        "closest_distant_pair_ang": 1.782,
+        "closest_pair_percentile": 81.8,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.32,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.406,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.53,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.709,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 1.912,
+            "n_admissible": 25,
+            "n_regions": 6,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 2.312,
+            "n_admissible": 2953,
+            "n_regions": 16,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 2.209,
+        "closest_distant_pair_ang": 2.005,
+        "closest_pair_percentile": 34.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.81,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.924,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.209,
+            "n_admissible": 22,
+            "n_regions": 6,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.463,
+            "n_admissible": 108,
+            "n_regions": 15,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 2.82,
+            "n_admissible": 470,
+            "n_regions": 16,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 3.467,
+            "n_admissible": 1975,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 10.1,
+        "ref_step_median_ang": 2.182
+      }
+    },
+    "ATLAS:3dso_A": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.612,
+        "closest_distant_pair_ang": 1.731,
+        "closest_pair_percentile": 69.3,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.365,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.466,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.612,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.774,
+            "n_admissible": 1,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 1.951,
+            "n_admissible": 101,
+            "n_regions": 9,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 2.375,
+            "n_admissible": 12557,
+            "n_regions": 15,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 2.199,
+        "closest_distant_pair_ang": 1.917,
+        "closest_pair_percentile": 16.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.841,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 2.012,
+            "n_admissible": 6,
+            "n_regions": 3,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.199,
+            "n_admissible": 30,
+            "n_regions": 8,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.513,
+            "n_admissible": 271,
+            "n_regions": 12,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 3.2,
+            "n_admissible": 1388,
+            "n_regions": 18,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 4.006,
+            "n_admissible": 2961,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 5.0,
+        "ref_step_median_ang": 2.228
+      }
+    },
+    "ATLAS:3ig9_C": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.419,
+        "closest_distant_pair_ang": 1.669,
+        "closest_pair_percentile": 90.4,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.232,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.313,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.419,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.541,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 1.665,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 1.869,
+            "n_admissible": 173,
+            "n_regions": 7,
+            "constructible": false
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 1.873,
+        "closest_distant_pair_ang": 1.832,
+        "closest_pair_percentile": 42.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.603,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.724,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.873,
+            "n_admissible": 1,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.109,
+            "n_admissible": 35,
+            "n_regions": 10,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 2.258,
+            "n_admissible": 114,
+            "n_regions": 13,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 2.664,
+            "n_admissible": 735,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 19.2,
+        "ref_step_median_ang": 1.864
+      }
+    },
+    "ATLAS:3rmq_A": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.653,
+        "closest_distant_pair_ang": 1.746,
+        "closest_pair_percentile": 64.3,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.397,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.522,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.653,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.817,
+            "n_admissible": 1,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 1.957,
+            "n_admissible": 13,
+            "n_regions": 3,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 2.261,
+            "n_admissible": 936,
+            "n_regions": 13,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 2.372,
+        "closest_distant_pair_ang": 2.074,
+        "closest_pair_percentile": 23.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.87,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 2.099,
+            "n_admissible": 1,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.372,
+            "n_admissible": 24,
+            "n_regions": 10,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.607,
+            "n_admissible": 128,
+            "n_regions": 16,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 2.965,
+            "n_admissible": 642,
+            "n_regions": 17,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 3.619,
+            "n_admissible": 2446,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 3.8,
+        "ref_step_median_ang": 2.281
+      }
+    },
+    "ATLAS:4eo1_A": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.548,
+        "closest_distant_pair_ang": 1.274,
+        "closest_pair_percentile": 8.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.301,
+            "n_admissible": 1,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.406,
+            "n_admissible": 20,
+            "n_regions": 7,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.548,
+            "n_admissible": 641,
+            "n_regions": 16,
+            "constructible": true
+          },
+          "75": {
+            "threshold_ang": 1.717,
+            "n_admissible": 7146,
+            "n_regions": 19,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 1.907,
+            "n_admissible": 32513,
+            "n_regions": 19,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 2.318,
+            "n_admissible": 169462,
+            "n_regions": 19,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 1.884,
+        "closest_distant_pair_ang": 1.465,
+        "closest_pair_percentile": 3.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.562,
+            "n_admissible": 5,
+            "n_regions": 4,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.707,
+            "n_admissible": 86,
+            "n_regions": 14,
+            "constructible": true
+          },
+          "50": {
+            "threshold_ang": 1.884,
+            "n_admissible": 347,
+            "n_regions": 18,
+            "constructible": true
+          },
+          "75": {
+            "threshold_ang": 2.115,
+            "n_admissible": 991,
+            "n_regions": 19,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 2.374,
+            "n_admissible": 2168,
+            "n_regions": 19,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 2.872,
+            "n_admissible": 3840,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 0.4,
+        "ref_step_median_ang": 1.918
+      }
+    },
+    "ATLAS:4jgi_A": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.225,
+        "closest_distant_pair_ang": 1.522,
+        "closest_pair_percentile": 96.1,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.111,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.162,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.225,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.313,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 1.413,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 1.687,
+            "n_admissible": 993,
+            "n_regions": 14,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 1.582,
+        "closest_distant_pair_ang": 1.589,
+        "closest_pair_percentile": 51.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.393,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.458,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.582,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.697,
+            "n_admissible": 15,
+            "n_regions": 6,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 1.816,
+            "n_admissible": 124,
+            "n_regions": 16,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 2.17,
+            "n_admissible": 1987,
+            "n_regions": 17,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 37.4,
+        "ref_step_median_ang": 1.567
+      }
+    },
+    "ATLAS:4v1g_B": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.802,
+        "closest_distant_pair_ang": 1.781,
+        "closest_pair_percentile": 48.6,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.353,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.5,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.802,
+            "n_admissible": 1,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.159,
+            "n_admissible": 628,
+            "n_regions": 9,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 2.511,
+            "n_admissible": 7077,
+            "n_regions": 15,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 3.154,
+            "n_admissible": 54813,
+            "n_regions": 19,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 2.62,
+        "closest_distant_pair_ang": 1.973,
+        "closest_pair_percentile": 19.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.838,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 2.066,
+            "n_admissible": 5,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.62,
+            "n_admissible": 135,
+            "n_regions": 10,
+            "constructible": true
+          },
+          "75": {
+            "threshold_ang": 3.201,
+            "n_admissible": 580,
+            "n_regions": 16,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 3.773,
+            "n_admissible": 1362,
+            "n_regions": 19,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 5.003,
+            "n_admissible": 3266,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 7.4,
+        "ref_step_median_ang": 2.493
+      }
+    },
+    "ATLAS:4xo1_A": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.764,
+        "closest_distant_pair_ang": 2.0,
+        "closest_pair_percentile": 76.8,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.475,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.578,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.764,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.979,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 2.19,
+            "n_admissible": 61,
+            "n_regions": 8,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 2.661,
+            "n_admissible": 4715,
+            "n_regions": 14,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 2.487,
+        "closest_distant_pair_ang": 2.164,
+        "closest_pair_percentile": 24.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.974,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 2.169,
+            "n_admissible": 2,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.487,
+            "n_admissible": 18,
+            "n_regions": 5,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.849,
+            "n_admissible": 150,
+            "n_regions": 13,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 3.283,
+            "n_admissible": 354,
+            "n_regions": 17,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 4.003,
+            "n_admissible": 859,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 13.6,
+        "ref_step_median_ang": 2.425
+      }
+    },
+    "ATLAS:4zya_A": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.62,
+        "closest_distant_pair_ang": 1.673,
+        "closest_pair_percentile": 60.1,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.385,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.49,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.62,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.772,
+            "n_admissible": 23,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 1.93,
+            "n_admissible": 275,
+            "n_regions": 10,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 2.277,
+            "n_admissible": 9494,
+            "n_regions": 17,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 2.158,
+        "closest_distant_pair_ang": 1.84,
+        "closest_pair_percentile": 18.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.8,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.926,
+            "n_admissible": 2,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.158,
+            "n_admissible": 38,
+            "n_regions": 8,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.499,
+            "n_admissible": 384,
+            "n_regions": 17,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 2.633,
+            "n_admissible": 721,
+            "n_regions": 18,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 2.907,
+            "n_admissible": 1808,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 2.4,
+        "ref_step_median_ang": 2.151
+      }
+    },
+    "ATLAS:5cyz_C": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.76,
+        "closest_distant_pair_ang": 2.389,
+        "closest_pair_percentile": 96.6,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.485,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.596,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.76,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.943,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 2.153,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 2.501,
+            "n_admissible": 7,
+            "n_regions": 3,
+            "constructible": false
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 2.534,
+        "closest_distant_pair_ang": 2.553,
+        "closest_pair_percentile": 52.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 2.074,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 2.296,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.534,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.923,
+            "n_admissible": 11,
+            "n_regions": 4,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 3.369,
+            "n_admissible": 127,
+            "n_regions": 13,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 4.177,
+            "n_admissible": 762,
+            "n_regions": 16,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 36.2,
+        "ref_step_median_ang": 2.548
+      }
+    },
+    "ATLAS:5xct_B": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 2.057,
+        "closest_distant_pair_ang": 2.049,
+        "closest_pair_percentile": 48.8,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.63,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.812,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.057,
+            "n_admissible": 1,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.39,
+            "n_admissible": 26,
+            "n_regions": 4,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 2.713,
+            "n_admissible": 208,
+            "n_regions": 4,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 3.362,
+            "n_admissible": 1876,
+            "n_regions": 10,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 3.248,
+        "closest_distant_pair_ang": 2.734,
+        "closest_pair_percentile": 28.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 2.319,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 2.717,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 3.248,
+            "n_admissible": 28,
+            "n_regions": 4,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 4.402,
+            "n_admissible": 119,
+            "n_regions": 13,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 5.515,
+            "n_admissible": 281,
+            "n_regions": 17,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 6.477,
+            "n_admissible": 481,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 2.3,
+        "ref_step_median_ang": 3.451
+      }
+    },
+    "ATLAS:5z42_A": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.565,
+        "closest_distant_pair_ang": 1.762,
+        "closest_pair_percentile": 80.7,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.348,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.445,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.565,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.716,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 1.878,
+            "n_admissible": 30,
+            "n_regions": 3,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 2.278,
+            "n_admissible": 3635,
+            "n_regions": 12,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 2.081,
+        "closest_distant_pair_ang": 1.769,
+        "closest_pair_percentile": 18.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.704,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.857,
+            "n_admissible": 1,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.081,
+            "n_admissible": 16,
+            "n_regions": 3,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.357,
+            "n_admissible": 89,
+            "n_regions": 7,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 2.73,
+            "n_admissible": 303,
+            "n_regions": 15,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 3.661,
+            "n_admissible": 2032,
+            "n_regions": 18,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 11.0,
+        "ref_step_median_ang": 2.116
+      }
+    },
+    "ATLAS:6c62_C": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 2.645,
+        "closest_distant_pair_ang": 2.39,
+        "closest_pair_percentile": 32.1,
+        "levels": {
+          "10": {
+            "threshold_ang": 2.003,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 2.276,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.645,
+            "n_admissible": 18,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 3.029,
+            "n_admissible": 113,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 3.513,
+            "n_admissible": 461,
+            "n_regions": 6,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 4.461,
+            "n_admissible": 5705,
+            "n_regions": 14,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 4.377,
+        "closest_distant_pair_ang": 2.802,
+        "closest_pair_percentile": 8.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 3.015,
+            "n_admissible": 3,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 3.522,
+            "n_admissible": 9,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 4.377,
+            "n_admissible": 57,
+            "n_regions": 9,
+            "constructible": true
+          },
+          "75": {
+            "threshold_ang": 5.294,
+            "n_admissible": 318,
+            "n_regions": 13,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 6.139,
+            "n_admissible": 725,
+            "n_regions": 14,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 7.994,
+            "n_admissible": 1826,
+            "n_regions": 17,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 0.9,
+        "ref_step_median_ang": 4.479
+      }
+    },
+    "ATLAS:6kty_A": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.781,
+        "closest_distant_pair_ang": 1.729,
+        "closest_pair_percentile": 42.1,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.467,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.616,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.781,
+            "n_admissible": 9,
+            "n_regions": 3,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.012,
+            "n_admissible": 372,
+            "n_regions": 8,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 2.262,
+            "n_admissible": 2453,
+            "n_regions": 15,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 2.837,
+            "n_admissible": 33534,
+            "n_regions": 18,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 2.564,
+        "closest_distant_pair_ang": 1.882,
+        "closest_pair_percentile": 9.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.926,
+            "n_admissible": 3,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 2.171,
+            "n_admissible": 14,
+            "n_regions": 5,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.564,
+            "n_admissible": 107,
+            "n_regions": 15,
+            "constructible": true
+          },
+          "75": {
+            "threshold_ang": 3.07,
+            "n_admissible": 617,
+            "n_regions": 18,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 3.492,
+            "n_admissible": 1472,
+            "n_regions": 18,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 5.115,
+            "n_admissible": 3912,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 1.6,
+        "ref_step_median_ang": 2.544
+      }
+    },
+    "ATLAS:6l4p_B": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.548,
+        "closest_distant_pair_ang": 1.853,
+        "closest_pair_percentile": 91.5,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.352,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.442,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.548,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.688,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 1.826,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 2.071,
+            "n_admissible": 69,
+            "n_regions": 4,
+            "constructible": false
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 2.187,
+        "closest_distant_pair_ang": 2.037,
+        "closest_pair_percentile": 36.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.785,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.966,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 2.187,
+            "n_admissible": 2,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 2.524,
+            "n_admissible": 103,
+            "n_regions": 12,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 2.85,
+            "n_admissible": 463,
+            "n_regions": 14,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 3.332,
+            "n_admissible": 1403,
+            "n_regions": 18,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 14.0,
+        "ref_step_median_ang": 2.151
+      }
+    },
+    "ATLAS:6ypi_A": {
+      "n_frames": 1001,
+      "stride_ns": 0.1,
+      "total_ns": 100.1,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 1.301,
+        "closest_distant_pair_ang": 1.439,
+        "closest_pair_percentile": 82.6,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.156,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.219,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.301,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.388,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 1.501,
+            "n_admissible": 12,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "99": {
+            "threshold_ang": 1.743,
+            "n_admissible": 753,
+            "n_regions": 13,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (101 frames retained)",
+        "ref_step_median_ang": 1.689,
+        "closest_distant_pair_ang": 1.563,
+        "closest_pair_percentile": 29.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 1.433,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 1.544,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 1.689,
+            "n_admissible": 6,
+            "n_regions": 3,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 1.823,
+            "n_admissible": 45,
+            "n_regions": 9,
+            "constructible": false
+          },
+          "90": {
+            "threshold_ang": 1.952,
+            "n_admissible": 173,
+            "n_regions": 15,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 2.841,
+            "n_admissible": 3386,
+            "n_regions": 19,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 101
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 7.7,
+        "ref_step_median_ang": 1.699
+      }
+    }
+  }
+}

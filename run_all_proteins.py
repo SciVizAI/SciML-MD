@@ -475,7 +475,8 @@ def run_pipeline(
     # external audit found frames 1-3 of ubiquitin scoring 99.7/100 purely from
     # unrelaxed crystal coordinates.
     try:
-        from msm.preflight import detect_equilibration, assess_suitability
+        from msm.preflight import (detect_equilibration, assess_suitability,
+                                   assess_recurrence)
 
         eq_start, eq_info = detect_equilibration(traj)
         if eq_start > 0:
@@ -491,10 +492,20 @@ def run_pipeline(
             log.warning("[%s]   SYSTEM SUITABILITY: %s", pdb_id, suit["verdict"].upper())
             for reason in suit["reasons"]:
                 log.warning("[%s]     - %s", pdb_id, reason)
-        pre_info = {"equilibration": eq_info, "suitability": suit}
+        # S-1b: does this trajectory ever revisit a conformation? The basin
+        # census asks whether states exist; this asks whether they recur, and
+        # an MSM needs both (report sections 18-19).
+        rec = assess_recurrence(traj)
+        if rec.get("verdict") in ("non_recurrent", "weak", "unknown"):
+            log.warning("[%s]   RECURRENCE: %s - %s", pdb_id,
+                        rec["verdict"].upper(), rec.get("reason", ""))
+        pre_info = {"equilibration": eq_info, "suitability": suit,
+                    "recurrence": rec}
     except Exception as exc:
         log.warning("[%s]   Preflight checks failed: %s", pdb_id, exc)
         pre_info = {"error": str(exc)}
+    suit = pre_info.get("suitability")
+    rec = pre_info.get("recurrence")
 
     n_frames, n_feats = X.shape
     log.info("[%s]   %d frames × %d features", pdb_id, n_frames, n_feats)
@@ -563,6 +574,38 @@ def run_pipeline(
         )
     except Exception as exc:
         log.error("[%s] Anomaly scoring failed: %s", pdb_id, exc)
+        return False
+
+    # --- OI-34: enforce the trust contract BEFORE anything is written ------
+    # CLAIMS.md says pi-derived quantities are meaningless without repeat
+    # visits. Until 2026-08-31 the pipeline emitted them anyway. It no longer
+    # does: withheld channels are written as NaN and declared in trust.json.
+    try:
+        from msm.preflight import assess_estimability
+        from msm.trust import build_contract, gate_components, WITHHELD
+
+        _tot = (rec or {}).get("total_ns")
+        est = assess_estimability(dtraj, lag_msm, total_ns=_tot)
+        contract = build_contract(pdb_id, suitability=suit, recurrence=rec,
+                                  estimability=est, n_frames=int(len(traj)))
+        components, gated = gate_components(components, contract)
+        if gated:
+            log.warning("[%s]   WITHHELD (trust contract): %s",
+                        pdb_id, ", ".join(sorted(gated)))
+            # the fused score inherits the gap: recompute it from what survived
+            live = [v for k, v in components.items()
+                    if contract["channels"].get(k, {}).get("status") != WITHHELD]
+            if live:
+                frame_scores = np.nanmedian(np.vstack(live), axis=0) * 100.0
+            else:
+                frame_scores = np.full(len(frame_scores), np.nan)
+        with open(res_dir / "trust.json", "w") as fh:
+            json.dump(contract, fh, indent=2, default=str)
+        log.info("[%s]   Trust contract → %s  (%s)", pdb_id,
+                 res_dir / "trust.json", contract["headline"])
+    except Exception as exc:
+        log.error("[%s]   Trust contract FAILED: %s - refusing to write "
+                  "ungated scores", pdb_id, exc)
         return False
 
     # --- Save frame scores ---

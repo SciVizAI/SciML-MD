@@ -2,9 +2,29 @@
 
 # Ensemble-Anomaly-Maps
 
-**Dynamic Hotspot Detection in Molecular Dynamics Trajectories Using Machine Learning**
+**Applicability-domain screening and descriptive analysis for Markov state models of protein trajectories**
 
-Ensemble-Anomaly-Maps is a computational biology pipeline that downloads protein structures from the RCSB PDB, generates short MD trajectories, and applies an unsupervised ML pipeline (tICA → KMeans → Markov State Model → anomaly scoring) to detect dynamic hotspot residues across an entire dataset of proteins — automatically, in a single command.
+Ensemble-Anomaly-Maps is a computational biology pipeline that downloads protein structures from the RCSB PDB, generates short MD trajectories, and applies an unsupervised pipeline (tICA → KMeans → Markov State Model → multi-channel scoring) across an entire dataset of proteins — automatically, in a single command.
+
+> ### ⚠️ Scientific status — read before citing any output
+>
+> This pipeline was originally documented as a **dynamic hotspot detector**.
+> That claim has been **withdrawn**. Four independent experimental designs
+> (validation Phases 3, 5, 6 and 7) agree that at the sampling used here
+> (≤100 ns), the multi-signal score does not detect conformational anomalies
+> better than a four-line `abs(diff)` baseline, and the MSM stationary
+> distribution π does not generalise across replicates of the same protein.
+>
+> **What is supported:** the MSM applicability-domain screen (45% of ATLAS
+> trajectories fail it), the per-residue flexibility profile (externally
+> verified against published ATLAS values, r = 0.892, slope = 0.966), and the
+> non-redundancy of the three scoring channels.
+>
+> **[`CLAIMS.md`](CLAIMS.md) is the authoritative list of what this software may
+> and may not be said to do.** Full evidence:
+> [`validation/VALIDATION_REPORT.md`](validation/VALIDATION_REPORT.md).
+> Sections of this README written before 2026-08-30 still contain withdrawn
+> language and are being revised; `CLAIMS.md` overrides them wherever they conflict.
 
 ---
 
@@ -361,9 +381,9 @@ frame,score_dynamic,component_rarity,component_transition_surprise,component_loc
 | Column | Description |
 |---|---|
 | `frame` | Frame index (0-based) |
-| `score_dynamic` | Final fused anomaly score, range [0, 100] |
-| `component_rarity` | Contribution from state rarity signal |
-| `component_transition_surprise` | Contribution from transition surprise signal |
+| `score_dynamic` | Fused multi-channel score, range [0, 100]. **Descriptive only** — see CLAIMS.md W-2 |
+| `component_rarity` | Contribution from state rarity (pi). **Unresolved at <=100 ns** — see CLAIMS.md W-3 |
+| `component_transition_surprise` | Contribution from transition surprise. **Carries no timing information** — see CLAIMS.md W-4 |
 | `component_local_density` | Contribution from local density signal |
 
 ### residue_scores_dynamic.json
@@ -377,7 +397,13 @@ frame,score_dynamic,component_rarity,component_transition_surprise,component_loc
 }
 ```
 
-Each key is a residue identifier. Values are anomaly scores in [0, 100] — higher means more anomalous / dynamic.
+Each key is a residue identifier. Values are scores in [0, 100].
+
+> **Interpretation warning (CLAIMS.md W-1, W-5).** These are *descriptive* scores.
+> A high value does NOT mean the residue is a functional hotspot, an allosteric
+> node, or a hinge — that claim was withdrawn on 2026-08-30 and the residue-level
+> correspondence to functional sites is an open question (CLAIMS.md O-1), not a
+> result. Do not rank, threshold, or publish these as detections.
 
 ---
 

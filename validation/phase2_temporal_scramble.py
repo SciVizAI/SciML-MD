@@ -37,7 +37,9 @@ beats the MSM, the honest conclusion is that an MSM is unnecessary for this task
 
 PRE-REGISTERED ACCEPTANCE CRITERIA (fixed before running)
   B1  surprise AUROC >= 0.75 on NEAR-mode junctions
-  B2  surprise > frame_to_frame_rmsd on NEAR mode (beats the naive temporal baseline)
+  B2  surprise > the BEST trivial temporal detector on NEAR mode, on ROC-AUC
+      AND on PR-AUC. The family is TRIVIAL_TEMPORAL = {abs_diff_oneliner,
+      frame_to_frame_rmsd}.  [widened 2026-08-30, OI-27 - strictly stricter]
   B3  every time-blind baseline within 0.40-0.60 on NEAR mode
       (sanity check: confirms the frames really are in-distribution)
 
@@ -45,6 +47,7 @@ Outputs: validation/phase2_results.json
 """
 import json
 import sys
+import zlib
 import warnings
 from pathlib import Path
 
@@ -65,6 +68,12 @@ LAG_MSM = 5
 N_REPLICATES = 12
 TIME_BLIND = ["rmsd_from_mean", "feature_zscore", "isolation_forest",
               "local_outlier_factor", "density_only", "rarity_only"]
+# Reported and gated, but NOT part of the time-blind family used for C2/C3:
+#   random_score      is a null, not a baseline - it defines chance
+#   abs_diff_oneliner is a TEMPORAL detector (it reads frame order), so it
+#                     belongs with frame_to_frame_rmsd, not with the static set
+NULL_CHANNELS = ["random_score"]
+TRIVIAL_TEMPORAL = ["abs_diff_oneliner", "frame_to_frame_rmsd"]
 ACCEPT = {"B1_min_surprise_auroc": 0.75, "B3_band": (0.40, 0.60)}
 
 
@@ -188,6 +197,15 @@ def score_all(traj, lag_tica=5, dim=3, n_clusters=10, lag_msm=LAG_MSM, k=5, seed
     for t in range(len(traj) - lag_msm):
         jump_lagged[t] = step[t:t + lag_msm].max()
 
+    # literal abs(diff) one-liner on the standardised feature matrix, max over
+    # features, aligned to the same lag window the surprise channel uses
+    Xz = (X - X.mean(0)) / (X.std(0) + 1e-12)
+    step_feat = np.zeros(len(traj))
+    step_feat[:-1] = np.abs(np.diff(Xz, axis=0)).max(axis=1)
+    abs_diff_oneliner = np.zeros(len(traj))
+    for t in range(len(traj) - lag_msm):
+        abs_diff_oneliner[t] = step_feat[t:t + lag_msm].max()
+
     iso = -IsolationForest(random_state=seed, n_estimators=200).fit(Y).score_samples(Y)
     lof = -LocalOutlierFactor(n_neighbors=min(20, len(Y) - 1)).fit(Y).negative_outlier_factor_
 
@@ -201,6 +219,31 @@ def score_all(traj, lag_tica=5, dim=3, n_clusters=10, lag_msm=LAG_MSM, k=5, seed
         "feature_zscore": z,
         "isolation_forest": iso,
         "local_outlier_factor": lof,
+        # --- baselines demanded by the anomaly-detection benchmarking
+        # --- literature (added 2026-08-29 after the standards audit)
+        #
+        # NULL. Seeded from the COORDINATES, not from `seed` alone. The first
+        # version used default_rng(seed) with seed fixed at 42, so every
+        # replicate and every protein received the IDENTICAL vector - one
+        # arbitrary fixed ranking, not a random baseline. It duly picked up
+        # positional structure (0.614 at Phase 5 D=1). crc32 of a coordinate
+        # subsample varies with the permutation and stays reproducible.
+        #
+        # Kim et al. (AAAI 2022) proved that under common evaluation
+        # protocols uniformly random scores can reach near-perfect F1. Reporting
+        # what chance looks like under OUR exact protocol is now expected, and
+        # its absence reads as an oversight. This must sit at ~0.500; if it does
+        # not, the harness is broken and no other number means anything.
+        "random_score": np.random.default_rng(
+            seed ^ zlib.crc32(traj.xyz[::max(1, len(traj) // 8)].tobytes())
+        ).random(len(traj)),
+        # TRIVIAL. Wu & Keogh (IEEE TKDE 2023) showed 86% of the Yahoo benchmark
+        # and over half of several others are solved by one-line expressions,
+        # `abs(diff(x)) > b` chief among them. frame_to_frame_rmsd is close but
+        # is RMSD-based and lag-windowed; this is the literal one-liner applied
+        # to the feature series the pipeline itself consumes, so it is the
+        # cheapest possible competitor on exactly our inputs.
+        "abs_diff_oneliner": abs_diff_oneliner,
     }
 
 
@@ -260,7 +303,17 @@ def main():
 
     near = results["modes"]["near"]["methods"]
     b1 = near["surprise_only"]["auroc_mean"] >= ACCEPT["B1_min_surprise_auroc"]
-    b2 = near["surprise_only"]["auroc_mean"] > near["frame_to_frame_rmsd"]["auroc_mean"]
+    # OI-27: B2 used to race only frame_to_frame_rmsd. It now races the best of
+    # the whole trivial temporal family, on ROC AND on PR-AUC. Strictly
+    # stricter (max over a superset), so it cannot let a weaker result through.
+    triv = {n: near[n] for n in TRIVIAL_TEMPORAL if n in near}
+    best_triv = max(triv, key=lambda n: triv[n]["auroc_mean"]) if triv else None
+    best_triv_ap = (max(triv, key=lambda n: triv[n].get("auprc_mean", 0.0))
+                    if triv else None)
+    b2 = bool(best_triv is not None
+              and near["surprise_only"]["auroc_mean"] > triv[best_triv]["auroc_mean"]
+              and near["surprise_only"].get("auprc_mean", 0.0)
+              > triv[best_triv_ap].get("auprc_mean", 0.0))
     lo, hi = ACCEPT["B3_band"]
     blind = {n: near[n]["auroc_mean"] for n in TIME_BLIND if n in near}
     b3 = all(lo <= v <= hi for v in blind.values())
@@ -271,9 +324,16 @@ def main():
                                        "surprise": nullm["surprise_only"]["auroc_mean"]},
         "B1_surprise_near_auroc_ge_0.75": {"pass": bool(b1),
                                            "value": near["surprise_only"]["auroc_mean"]},
-        "B2_beats_naive_frame_jump": {"pass": bool(b2),
-                                      "surprise": near["surprise_only"]["auroc_mean"],
-                                      "frame_to_frame_rmsd": near["frame_to_frame_rmsd"]["auroc_mean"]},
+        "B2_beats_best_trivial_temporal": {
+            "pass": bool(b2),
+            "surprise_auroc": near["surprise_only"]["auroc_mean"],
+            "surprise_prauc": near["surprise_only"].get("auprc_mean"),
+            "trivial_family": {n: {"auroc": triv[n]["auroc_mean"],
+                                   "prauc": triv[n].get("auprc_mean")}
+                               for n in triv},
+            "note": ("OI-27, 2026-08-30: widened from frame_to_frame_rmsd alone "
+                     "to the whole trivial temporal family, and now requires a "
+                     "win on PR-AUC as well as ROC-AUC.")},
         "B3_time_blind_at_chance": {"pass": bool(b3), "values": blind, "band": [lo, hi]},
         "overall_pass": bool(b1 and b2 and b3 and b4),
     }

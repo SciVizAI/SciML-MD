@@ -1,4 +1,23 @@
-# Pipeline Overview: Dynamic Hotspot Detection in MD Simulations
+# Pipeline Overview: MSM Applicability Screening and Descriptive Analysis of MD Trajectories
+
+> ### ⚠️ This document predates the validation campaign
+>
+> It was written while the pipeline was believed to be a **dynamic hotspot
+> detector**. That claim was **withdrawn on 2026-08-30**. This file is retained
+> as an accurate description of *what the code computes and how*, which is
+> unchanged and still correct. Its **interpretive** statements — that these
+> quantities identify hotspots, rare conformations, kinetically rare events,
+> hinges, allosteric nodes or cryptic pockets — are withdrawn.
+>
+> Specifically withdrawn here: the framing in this heading and in Section 1;
+> the claims that pi "directly identifies thermodynamically rare conformations"
+> and that transition surprise "identifies kinetically rare events"; the
+> "often identifies: hinge residues, allosteric nodes, domain linkers" claim;
+> the Prime/Rigid hotspot interpretation table; "fusion provides comprehensive
+> detection"; and the cryptic-pocket framing.
+>
+> **See [`CLAIMS.md`](CLAIMS.md) (rows W-1 through W-9) for each one and why.**
+> CLAIMS.md overrides this document wherever they conflict.
 
 ## Table of Contents
 1. [Executive Summary](#executive-summary)

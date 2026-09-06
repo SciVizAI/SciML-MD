@@ -518,3 +518,148 @@ def test_clustering_is_deterministic():
     assert np.array_equal(a, b), "clustering must be reproducible"
     # canonical relabelling: centres are sorted, so label 0 is the lowest centre
     assert a.min() == 0 and a.max() == 7
+
+
+def _fake_run(surprise, oneliner, n=25, seed=0):
+    """Build a per_system dict for aggregate(): n proteins, 1 replicate each.
+
+    `surprise` and `oneliner` are mean AUROCs; time-blind channels sit at
+    chance so C3/C5/C6 pass and only the trivial-temporal comparison is
+    under test.
+    """
+    rng = np.random.default_rng(seed)
+    per = {}
+    for i in range(n):
+        auroc = {"surprise_only": float(np.clip(surprise + rng.normal(0, .03), 0, 1)),
+                 "abs_diff_oneliner": float(np.clip(oneliner + rng.normal(0, .03), 0, 1)),
+                 "frame_to_frame_rmsd": 0.55,
+                 "random_score": 0.50,
+                 "rmsd_from_mean": 0.50, "feature_zscore": 0.50,
+                 "isolation_forest": 0.50, "local_outlier_factor": 0.50,
+                 "density_only": 0.50, "rarity_only": 0.50}
+        per[f"p{i}:R1"] = {
+            "auroc": auroc,
+            "auprc": {k: v * 0.3 for k, v in auroc.items()},
+            "auroc_null": {k: 0.50 for k in auroc},
+        }
+    return per
+
+
+def test_oi27_run_cannot_pass_while_losing_to_the_oneliner():
+    """OI-27 regression. The 2026-08-30 retraction: surprise 0.814 vs a
+    four-line abs(diff) detector at 0.839, and C1-C6 all still passed because
+    the comparison family was time-blind only. That must now fail."""
+    from validation.phase3_scale import aggregate
+
+    out = aggregate(_fake_run(surprise=0.814, oneliner=0.839))
+    acc = out["acceptance"]
+    assert acc["C1_median_surprise_ge_0.75"]["pass"], "C1 should still pass"
+    assert not acc["C2_beats_best_baseline_on_80pct"]["pass"], \
+        "C2 must fail when a one-liner wins"
+    assert not acc["C7_beats_trivial_temporal_on_prauc"]["pass"]
+    assert not acc["overall_pass"], "the retracted result must not pass again"
+    # the widening is what did it: blind-only would have waved this through
+    assert acc["C2_beats_best_baseline_on_80pct"]["legacy_blind_only_win_fraction"] >= 0.80
+
+
+def test_oi27_genuine_win_still_passes():
+    """The tightened gate must not reject a real result: if surprise really
+    does beat the one-liner, C1-C7 should all pass."""
+    from validation.phase3_scale import aggregate
+
+    acc = aggregate(_fake_run(surprise=0.88, oneliner=0.60, seed=3))["acceptance"]
+    for k in ("C1_median_surprise_ge_0.75", "C2_beats_best_baseline_on_80pct",
+              "C3_blind_medians_in_band", "C4_wilcoxon_p_lt_0.05",
+              "C6_random_score_at_chance",
+              "C7_beats_trivial_temporal_on_prauc"):
+        assert acc[k]["pass"], f"{k} should pass on a genuine win: {acc[k]}"
+    assert acc["overall_pass"]
+
+
+def test_oi27_phase2_b2_family_includes_the_oneliner():
+    """Phase 2's B2 must race the whole trivial temporal family, not just
+    frame_to_frame_rmsd."""
+    from validation.phase2_temporal_scramble import TRIVIAL_TEMPORAL, TIME_BLIND
+
+    assert "abs_diff_oneliner" in TRIVIAL_TEMPORAL
+    assert "frame_to_frame_rmsd" in TRIVIAL_TEMPORAL
+    # and it must NOT leak into the time-blind family (C3 would then be wrong)
+    assert not set(TRIVIAL_TEMPORAL) & set(TIME_BLIND)
+
+
+# --- OI-34 / trust contract -------------------------------------------------
+
+def test_estimability_flags_singleton_dominated_transitions():
+    """A dtraj where nothing repeats must report pi as UNRESOLVED."""
+    from msm.preflight import assess_estimability
+
+    # every transition distinct: 0->1->2->...  nothing is ever revisited
+    never = assess_estimability(np.arange(60), lag=1, total_ns=10_000)
+    assert never["verdict"] == "unresolved", never
+    assert never["singleton_mass"] > 0.9
+
+    # a two-state chain flipping repeatedly: every transition seen many times
+    often = assess_estimability(np.tile([0, 1], 60), lag=1, total_ns=10_000)
+    assert often["verdict"] == "estimable", often
+    assert often["n_states_revisited"] == 2
+
+    # THE case singleton mass alone cannot catch: heavy within-run repetition,
+    # but only 100 ns of sampling. Report section 15 measured pi failing to
+    # generalise on exactly this. It must come back UNRESOLVED.
+    short = assess_estimability(np.tile([0, 1], 60), lag=1, total_ns=100)
+    assert short["verdict"] == "unresolved", short
+    assert short["singleton_mass"] < 0.1          # (1) passes ...
+    assert short["shortfall_factor"] == 40.0      # ... (2) is what fires
+
+    # unknown length must fail closed, never open
+    assert assess_estimability(np.tile([0, 1], 60), lag=1)["verdict"] == "unresolved"
+
+
+def test_trust_contract_withholds_rarity_when_pi_unresolved():
+    """The whole point of OI-34: an unresolved pi must not reach a consumer."""
+    from msm.trust import build_contract, WITHHELD, DESCRIPTIVE
+
+    c = build_contract(
+        "X", suitability={"verdict": "suitable"},
+        recurrence={"verdict": "non_recurrent", "reason": "never returns"},
+        estimability={"verdict": "unresolved", "reason": "97% singleton mass"})
+    assert c["channels"]["rarity"]["status"] == WITHHELD
+    assert c["channels"]["transition_surprise"]["status"] == WITHHELD
+    # the geometric channel is untouched by a kinetic failure
+    assert c["channels"]["local_density"]["status"] == DESCRIPTIVE
+    assert c["channels"]["score_dynamic"]["channels_used"] == ["local_density"]
+
+
+def test_trust_contract_never_promotes_above_descriptive():
+    """Even a perfect trajectory cannot earn a detection claim (CLAIMS.md W-1)."""
+    from msm.trust import build_contract, DESCRIPTIVE
+
+    c = build_contract("X", suitability={"verdict": "suitable"},
+                       recurrence={"verdict": "recurrent"},
+                       estimability={"verdict": "estimable"})
+    assert all(v["status"] == DESCRIPTIVE for v in c["channels"].values())
+    assert c["displayable"] is True
+
+
+def test_trust_contract_fails_closed_on_missing_diagnostics():
+    """A missing diagnostic must never be read as a pass."""
+    from msm.trust import build_contract, WITHHELD
+
+    c = build_contract("X")
+    assert c["channels"]["rarity"]["status"] == WITHHELD
+    assert c["verdict"] == "unknown"
+
+
+def test_gate_components_blanks_withheld_to_nan():
+    from msm.trust import build_contract, gate_components
+
+    c = build_contract("X", suitability={"verdict": "suitable"},
+                       recurrence={"verdict": "non_recurrent"},
+                       estimability={"verdict": "unresolved"})
+    comps = {"rarity": np.ones(10), "transition_surprise": np.ones(10),
+             "local_density": np.ones(10)}
+    out, gated = gate_components(comps, c)
+    assert set(gated) == {"rarity", "transition_surprise"}
+    assert np.isnan(out["rarity"]).all()
+    assert not np.isnan(out["local_density"]).any()
+    assert len(out["rarity"]) == 10          # shape preserved for consumers

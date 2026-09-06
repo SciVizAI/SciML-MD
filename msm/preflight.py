@@ -218,3 +218,204 @@ def assess_suitability(traj, rmsd_cluster_cutoff_ang=2.0):
             "n_basins_ge_5pct": n_pop,
             "n_frames_sampled_for_clustering": int(m),
             "n_disulfides": ss}
+
+
+# ---------------------------------------------------------------------------
+# S-1b - recurrence.  Added 2026-08-31 (OI-34 / Phase 8b, report sections 18-19)
+# ---------------------------------------------------------------------------
+# The basin census above asks whether conformational states EXIST. It cannot
+# tell you whether they are ever REVISITED, and an MSM needs both: transition
+# probabilities are estimated from repeat visits, and a stationary distribution
+# is meaningless without them. Phase 7 found ATLAS replicates ANTI-occupying
+# each other's states (rho = -0.515 against a +0.620 control); Phase 8 found the
+# reason - at 100 ns these trajectories are too short for recurrence to be
+# usable. This check surfaces that before any model is fitted.
+RECURRENCE_BANDS = {"recurrent": 25.0, "weak": 60.0}   # see docstring: DESCRIPTIVE
+SINGLETON_MASS_LIMIT = 0.50
+# Sampling required before a stationary distribution means anything. Kozlowski &
+# Grubmuller put the convergence "tipping point" at 4-8 us for 50-112 residue
+# proteins; we take the LOWER bound and still fail almost everything, which is
+# the honest reading of report section 15 (ATLAS replicates ANTI-occupy at
+# rho = -0.515 against a +0.620 control). See the note in assess_estimability
+# about why singleton mass alone cannot catch this.
+PI_CONVERGENCE_NS = 4000.0
+
+
+def assess_recurrence(traj, min_gap_ns=10.0, max_frames=400, selection="name CA"):
+    """Does this trajectory ever return to a conformation it already visited?
+
+    Model-free: no clustering, no tICA, no MSM. Compares the closest pair of
+    frames that are at least `min_gap_ns` apart in time against the distribution
+    of ordinary consecutive-frame steps, and reports where it falls as a
+    percentile.
+
+      low percentile  -> the trajectory revisits conformations
+      high percentile -> it never comes back; every frame is new territory
+
+    ALWAYS REPORTED WITH ITS STRIDE. The percentile is confounded by the frame
+    save interval - a coarser stride inflates ordinary steps and flatters the
+    number by up to 8x (report section 19.1). A percentile quoted without a
+    stride is uninterpretable.
+
+    The bands in RECURRENCE_BANDS are DESCRIPTIVE, anchored to the measured
+    ATLAS distribution (median 64.3 at 100 ps delivery, n=25). They are NOT
+    calibrated against a ground-truth sampling-adequacy label, because no such
+    label exists. Treat the number as the finding and the band as a label on it.
+    """
+    import mdtraj as md
+
+    # ATOM SELECTION CHANGES THE ANSWER and must always be reported with the
+    # number. On 1g2r_A this check returns the 0.6th percentile on CA atoms and
+    # the 62.7th on all atoms (report section 18.3, which used all atoms): side
+    # chains dominate all-atom RMSD and never repeat, while the backbone fold
+    # does recur. CA is used here because conformational STATE identity is a
+    # backbone property and it is the space the MSM is meant to resolve - but a
+    # percentile quoted without its atom selection is as meaningless as one
+    # quoted without its stride.
+    sel = traj.topology.select(selection)
+    ct = traj.atom_slice(sel).superpose(traj.atom_slice(sel))
+    n_full = len(ct)
+
+    # physical stride, from the trajectory's own clock where available
+    stride_ns = None
+    if getattr(traj, "time", None) is not None and n_full > 1:
+        dt = float(np.median(np.diff(np.asarray(traj.time, dtype=float))))
+        if np.isfinite(dt) and dt > 0:
+            stride_ns = dt / 1000.0                      # mdtraj time is in ps
+
+    step = max(1, n_full // max_frames)
+    sub = ct[::step]
+    m = len(sub)
+    eff_stride = stride_ns * step if stride_ns else None
+
+    out = {"n_frames_sampled": int(m),
+           "atom_selection": selection,
+           "n_atoms": int(len(sel)),
+           "subsample_step": int(step),
+           "stride_ns": round(eff_stride, 4) if eff_stride else None,
+           "total_ns": round(n_full * stride_ns, 1) if stride_ns else None}
+
+    if eff_stride is None:
+        return {**out, "verdict": "unknown",
+                "reason": ("trajectory carries no usable time axis, so the "
+                           "percentile cannot be reported with its stride and "
+                           "is therefore uninterpretable")}
+
+    gap = max(1, int(round(min_gap_ns / eff_stride)))
+    if m <= gap + 2:
+        return {**out, "verdict": "unknown",
+                "reason": (f"only {m} sampled frames at {eff_stride:.3f} ns; "
+                           f"need more than {gap + 2} for a {min_gap_ns} ns gap")}
+
+    R = np.zeros((m, m))
+    for i in range(m):
+        R[i] = md.rmsd(sub, sub, i) * 10.0
+
+    ii, jj = np.triu_indices(m, k=gap)
+    closest = float(R[ii, jj].min())
+    ref = np.array([R[t, t + 1] for t in range(m - 1)])
+    pct = float((ref < closest).mean() * 100)
+
+    if pct <= RECURRENCE_BANDS["recurrent"]:
+        verdict, why = "recurrent", "the trajectory returns to visited conformations"
+    elif pct <= RECURRENCE_BANDS["weak"]:
+        verdict, why = "weak", "it returns only loosely; repeat visits will be thin"
+    else:
+        verdict, why = "non_recurrent", (
+            "it never returns - the closest pair separated by "
+            f"{min_gap_ns:g} ns is further apart than {pct:.0f}% of ordinary steps, "
+            "so there are no repeat visits for transition probabilities or a "
+            "stationary distribution to be estimated from")
+
+    return {**out,
+            "verdict": verdict,
+            "closest_distant_pair_ang": round(closest, 3),
+            "ordinary_step_median_ang": round(float(np.median(ref)), 3),
+            "closest_pair_percentile": round(pct, 1),
+            "min_gap_ns": min_gap_ns,
+            "reason": why,
+            "bands_are_descriptive": True}
+
+
+def assess_estimability(dtraj, lag, total_ns=None):
+    """Is there enough REPEATED evidence to estimate P and pi?
+
+    TWO conditions, and the second is the one that actually bites.
+
+    (1) Within-trajectory repetition: are transition counts dominated by cells
+        seen exactly once? This catches a trajectory chopped into so many
+        microstates that nothing repeats.
+
+    (2) Total sampling: is the trajectory long enough for a stationary
+        distribution to have converged at all?
+
+    Condition (1) alone is NOT sufficient and must never be used alone. With 20
+    states over ~1000 frames every state is revisited ~50 times and singleton
+    mass sits near 4%, so (1) passes comfortably on exactly the ATLAS data where
+    Phase 7 measured pi FAILING to generalise across replicates (rho = -0.515,
+    control +0.620). Plenty of within-trajectory repetition and no reproducible
+    stationary distribution are entirely compatible: coarse states are revisited
+    inside one run while their populations mean nothing across runs. Only (2)
+    reflects that finding, because cross-replicate generalisation cannot be
+    measured from a single trajectory.
+
+    This is the direct, non-arbitrary form of the recurrence question, asked of
+    the discrete trajectory the MSM is actually fitted to. If most observed
+    transitions occurred exactly once, then P is fitted to unrepeated events and
+    pi is a normalisation of noise - which is precisely what Phase 7 measured
+    when ATLAS replicates anti-occupied each other's states.
+
+    `singleton_mass` is the fraction of all transition counts sitting in cells
+    observed exactly once. Above SINGLETON_MASS_LIMIT the stationary
+    distribution is reported as UNRESOLVED and every pi-derived quantity is
+    withheld downstream (CLAIMS.md W-3).
+    """
+    d = np.asarray(dtraj, dtype=int)
+    n_obs = len(d) - lag
+    if n_obs < 2:
+        return {"verdict": "unknown", "reason": f"only {max(n_obs,0)} transitions"}
+
+    k = int(d.max()) + 1
+    C = np.zeros((k, k), dtype=np.int64)
+    np.add.at(C, (d[:-lag], d[lag:]), 1)
+    total = int(C.sum())
+    singleton_mass = float(C[C == 1].sum()) / total if total else 1.0
+
+    visits = np.bincount(d, minlength=k)
+    occupied = int((visits > 0).sum())
+    revisited = int((visits > 1).sum())
+
+    reasons = []
+    if singleton_mass > SINGLETON_MASS_LIMIT:
+        reasons.append(
+            f"{singleton_mass*100:.0f}% of transition counts were observed exactly "
+            "once, so the transition matrix is fitted to unrepeated events")
+    ratio = None
+    if total_ns is None:
+        reasons.append(
+            "trajectory length unknown, so convergence of pi cannot be checked - "
+            "failing closed")
+    else:
+        ratio = PI_CONVERGENCE_NS / float(total_ns) if total_ns > 0 else float("inf")
+        if float(total_ns) < PI_CONVERGENCE_NS:
+            reasons.append(
+                f"{total_ns:.0f} ns of sampling is {ratio:.0f}x below the "
+                f"{PI_CONVERGENCE_NS:.0f} ns convergence threshold (Kozlowski & "
+                "Grubmuller, lower bound), so the stationary distribution has not "
+                "converged - measured directly in report section 15, where ATLAS "
+                "replicates anti-occupy each other's states")
+    unresolved = bool(reasons)
+    return {
+        "verdict": "unresolved" if unresolved else "estimable",
+        "total_ns": round(float(total_ns), 1) if total_ns else None,
+        "pi_convergence_ns": PI_CONVERGENCE_NS,
+        "shortfall_factor": round(ratio, 1) if ratio else None,
+        "n_transitions": total,
+        "n_states_occupied": occupied,
+        "n_states_revisited": revisited,
+        "singleton_mass": round(singleton_mass, 3),
+        "singleton_mass_limit": SINGLETON_MASS_LIMIT,
+        "reason": ("; ".join(reasons) + " (CLAIMS.md W-3)") if unresolved else
+                  (f"{singleton_mass*100:.0f}% singleton mass; {revisited}/{occupied} "
+                   f"states revisited; {total_ns:.0f} ns sampling"),
+    }

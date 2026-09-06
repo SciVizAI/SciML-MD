@@ -1,0 +1,1210 @@
+{
+  "min_gap_frames": 100,
+  "decision_rule": "proceed iff >= 50% of trajectories are constructible at P50, where constructible means >= 50 admissible pairs spread over >= 8 distinct source regions, admissible in BOTH RMSD and feature space",
+  "verdict": "ABANDON",
+  "lowest_majority_percentile": 99,
+  "summary": {
+    "10": {
+      "frac_constructible": 0.0,
+      "median_admissible_pairs": 0.0
+    },
+    "25": {
+      "frac_constructible": 0.0,
+      "median_admissible_pairs": 0.0
+    },
+    "50": {
+      "frac_constructible": 0.04,
+      "median_admissible_pairs": 0.0
+    },
+    "75": {
+      "frac_constructible": 0.12,
+      "median_admissible_pairs": 1.0
+    },
+    "90": {
+      "frac_constructible": 0.32,
+      "median_admissible_pairs": 59.0
+    },
+    "99": {
+      "frac_constructible": 0.8,
+      "median_admissible_pairs": 4289.0
+    }
+  },
+  "per_system": {
+    "1g2r_A": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.87,
+      "ordinary_feat_median": 1.239,
+      "min_candidate_rmsd_ang": 1.979,
+      "candidate_rmsd_median_ang": 4.746,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.535,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.652,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.87,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 2.095,
+          "n_admissible_pairs": 2,
+          "n_distinct_source_regions": 1,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 2.338,
+          "n_admissible_pairs": 59,
+          "n_distinct_source_regions": 7,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 2.909,
+          "n_admissible_pairs": 7131,
+          "n_distinct_source_regions": 17,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 62.7
+    },
+    "1j5u_A": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 2.031,
+      "ordinary_feat_median": 1.106,
+      "min_candidate_rmsd_ang": 2.543,
+      "candidate_rmsd_median_ang": 10.508,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.58,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.779,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 2.031,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 2.355,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 2.67,
+          "n_admissible_pairs": 6,
+          "n_distinct_source_regions": 2,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 3.402,
+          "n_admissible_pairs": 428,
+          "n_distinct_source_regions": 9,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 83.5
+    },
+    "1ois_A": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.567,
+      "ordinary_feat_median": 1.625,
+      "min_candidate_rmsd_ang": 1.779,
+      "candidate_rmsd_median_ang": 3.036,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.377,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.455,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.567,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.689,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 1.815,
+          "n_admissible_pairs": 1,
+          "n_distinct_source_regions": 1,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 2.092,
+          "n_admissible_pairs": 1090,
+          "n_distinct_source_regions": 15,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 86.5
+    },
+    "1upt_D": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.771,
+      "ordinary_feat_median": 1.397,
+      "min_candidate_rmsd_ang": 1.823,
+      "candidate_rmsd_median_ang": 3.794,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.455,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.59,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.771,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.992,
+          "n_admissible_pairs": 50,
+          "n_distinct_source_regions": 8,
+          "constructible": true
+        },
+        "90": {
+          "rmsd_threshold_ang": 2.234,
+          "n_admissible_pairs": 1946,
+          "n_distinct_source_regions": 13,
+          "constructible": true
+        },
+        "99": {
+          "rmsd_threshold_ang": 2.802,
+          "n_admissible_pairs": 51065,
+          "n_distinct_source_regions": 17,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 56.9
+    },
+    "2ad6_D": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 2.259,
+      "ordinary_feat_median": 1.133,
+      "min_candidate_rmsd_ang": 2.228,
+      "candidate_rmsd_median_ang": 8.886,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.772,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.978,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 2.259,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 2.602,
+          "n_admissible_pairs": 32,
+          "n_distinct_source_regions": 4,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 3.025,
+          "n_admissible_pairs": 784,
+          "n_distinct_source_regions": 10,
+          "constructible": true
+        },
+        "99": {
+          "rmsd_threshold_ang": 3.773,
+          "n_admissible_pairs": 10767,
+          "n_distinct_source_regions": 12,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 47.5
+    },
+    "2hnu_A": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.304,
+      "ordinary_feat_median": 1.673,
+      "min_candidate_rmsd_ang": 1.15,
+      "candidate_rmsd_median_ang": 2.241,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.124,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.209,
+          "n_admissible_pairs": 2,
+          "n_distinct_source_regions": 1,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.304,
+          "n_admissible_pairs": 29,
+          "n_distinct_source_regions": 4,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.411,
+          "n_admissible_pairs": 414,
+          "n_distinct_source_regions": 7,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 1.542,
+          "n_admissible_pairs": 2780,
+          "n_distinct_source_regions": 14,
+          "constructible": true
+        },
+        "99": {
+          "rmsd_threshold_ang": 1.794,
+          "n_admissible_pairs": 20966,
+          "n_distinct_source_regions": 18,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 13.3
+    },
+    "2vnl_A": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 2.258,
+      "ordinary_feat_median": 1.067,
+      "min_candidate_rmsd_ang": 2.276,
+      "candidate_rmsd_median_ang": 12.232,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.641,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.856,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 2.258,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 2.648,
+          "n_admissible_pairs": 31,
+          "n_distinct_source_regions": 3,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 3.043,
+          "n_admissible_pairs": 648,
+          "n_distinct_source_regions": 4,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 3.739,
+          "n_admissible_pairs": 8054,
+          "n_distinct_source_regions": 6,
+          "constructible": false
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 51.2
+    },
+    "2w56_A": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.396,
+      "ordinary_feat_median": 1.394,
+      "min_candidate_rmsd_ang": 1.718,
+      "candidate_rmsd_median_ang": 2.717,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.253,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.317,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.396,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.487,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 1.566,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 1.778,
+          "n_admissible_pairs": 13,
+          "n_distinct_source_regions": 2,
+          "constructible": false
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 98.3
+    },
+    "3bpj_B": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.833,
+      "ordinary_feat_median": 1.198,
+      "min_candidate_rmsd_ang": 1.892,
+      "candidate_rmsd_median_ang": 4.324,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.513,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.644,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.833,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 2.051,
+          "n_admissible_pairs": 24,
+          "n_distinct_source_regions": 3,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 2.289,
+          "n_admissible_pairs": 298,
+          "n_distinct_source_regions": 6,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 2.851,
+          "n_admissible_pairs": 8625,
+          "n_distinct_source_regions": 14,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 57.5
+    },
+    "3bzl_D": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.53,
+      "ordinary_feat_median": 1.355,
+      "min_candidate_rmsd_ang": 1.782,
+      "candidate_rmsd_median_ang": 3.552,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.32,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.406,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.53,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.709,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 1.912,
+          "n_admissible_pairs": 25,
+          "n_distinct_source_regions": 6,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 2.312,
+          "n_admissible_pairs": 2843,
+          "n_distinct_source_regions": 16,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 81.8
+    },
+    "3dso_A": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.612,
+      "ordinary_feat_median": 1.335,
+      "min_candidate_rmsd_ang": 1.731,
+      "candidate_rmsd_median_ang": 3.575,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.365,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.466,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.612,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.774,
+          "n_admissible_pairs": 1,
+          "n_distinct_source_regions": 1,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 1.951,
+          "n_admissible_pairs": 87,
+          "n_distinct_source_regions": 9,
+          "constructible": true
+        },
+        "99": {
+          "rmsd_threshold_ang": 2.375,
+          "n_admissible_pairs": 12164,
+          "n_distinct_source_regions": 15,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 69.3
+    },
+    "3ig9_C": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.419,
+      "ordinary_feat_median": 1.366,
+      "min_candidate_rmsd_ang": 1.669,
+      "candidate_rmsd_median_ang": 3.001,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.232,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.313,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.419,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.541,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 1.665,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 1.869,
+          "n_admissible_pairs": 163,
+          "n_distinct_source_regions": 7,
+          "constructible": false
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 90.4
+    },
+    "3rmq_A": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.653,
+      "ordinary_feat_median": 1.379,
+      "min_candidate_rmsd_ang": 1.746,
+      "candidate_rmsd_median_ang": 3.463,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.397,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.522,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.653,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.817,
+          "n_admissible_pairs": 1,
+          "n_distinct_source_regions": 1,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 1.957,
+          "n_admissible_pairs": 12,
+          "n_distinct_source_regions": 3,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 2.261,
+          "n_admissible_pairs": 907,
+          "n_distinct_source_regions": 13,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 64.3
+    },
+    "4eo1_A": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.548,
+      "ordinary_feat_median": 1.724,
+      "min_candidate_rmsd_ang": 1.274,
+      "candidate_rmsd_median_ang": 2.389,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.301,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.406,
+          "n_admissible_pairs": 8,
+          "n_distinct_source_regions": 3,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.548,
+          "n_admissible_pairs": 332,
+          "n_distinct_source_regions": 16,
+          "constructible": true
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.717,
+          "n_admissible_pairs": 4890,
+          "n_distinct_source_regions": 19,
+          "constructible": true
+        },
+        "90": {
+          "rmsd_threshold_ang": 1.907,
+          "n_admissible_pairs": 27546,
+          "n_distinct_source_regions": 19,
+          "constructible": true
+        },
+        "99": {
+          "rmsd_threshold_ang": 2.318,
+          "n_admissible_pairs": 166420,
+          "n_distinct_source_regions": 19,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 8.0
+    },
+    "4jgi_A": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.225,
+      "ordinary_feat_median": 1.528,
+      "min_candidate_rmsd_ang": 1.522,
+      "candidate_rmsd_median_ang": 2.18,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.111,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.162,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.225,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.313,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 1.413,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 1.687,
+          "n_admissible_pairs": 970,
+          "n_distinct_source_regions": 14,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 96.1
+    },
+    "4v1g_B": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.802,
+      "ordinary_feat_median": 1.298,
+      "min_candidate_rmsd_ang": 1.781,
+      "candidate_rmsd_median_ang": 4.205,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.353,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.5,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.802,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 2.159,
+          "n_admissible_pairs": 369,
+          "n_distinct_source_regions": 9,
+          "constructible": true
+        },
+        "90": {
+          "rmsd_threshold_ang": 2.511,
+          "n_admissible_pairs": 5256,
+          "n_distinct_source_regions": 15,
+          "constructible": true
+        },
+        "99": {
+          "rmsd_threshold_ang": 3.154,
+          "n_admissible_pairs": 51156,
+          "n_distinct_source_regions": 19,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 48.6
+    },
+    "4xo1_A": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.764,
+      "ordinary_feat_median": 1.132,
+      "min_candidate_rmsd_ang": 2.0,
+      "candidate_rmsd_median_ang": 5.149,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.475,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.578,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.764,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.979,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 2.19,
+          "n_admissible_pairs": 43,
+          "n_distinct_source_regions": 7,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 2.661,
+          "n_admissible_pairs": 4289,
+          "n_distinct_source_regions": 14,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 76.8
+    },
+    "4zya_A": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.62,
+      "ordinary_feat_median": 1.424,
+      "min_candidate_rmsd_ang": 1.673,
+      "candidate_rmsd_median_ang": 2.946,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.385,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.49,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.62,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.772,
+          "n_admissible_pairs": 15,
+          "n_distinct_source_regions": 2,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 1.93,
+          "n_admissible_pairs": 237,
+          "n_distinct_source_regions": 10,
+          "constructible": true
+        },
+        "99": {
+          "rmsd_threshold_ang": 2.277,
+          "n_admissible_pairs": 9223,
+          "n_distinct_source_regions": 17,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 60.1
+    },
+    "5cyz_C": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.76,
+      "ordinary_feat_median": 1.225,
+      "min_candidate_rmsd_ang": 2.389,
+      "candidate_rmsd_median_ang": 5.838,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.485,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.596,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.76,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.943,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 2.153,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 2.501,
+          "n_admissible_pairs": 7,
+          "n_distinct_source_regions": 3,
+          "constructible": false
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 96.6
+    },
+    "5xct_B": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 2.057,
+      "ordinary_feat_median": 1.282,
+      "min_candidate_rmsd_ang": 2.049,
+      "candidate_rmsd_median_ang": 10.516,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.63,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.812,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 2.057,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 2.39,
+          "n_admissible_pairs": 13,
+          "n_distinct_source_regions": 4,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 2.713,
+          "n_admissible_pairs": 138,
+          "n_distinct_source_regions": 4,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 3.362,
+          "n_admissible_pairs": 1712,
+          "n_distinct_source_regions": 10,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 48.8
+    },
+    "5z42_A": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.565,
+      "ordinary_feat_median": 1.326,
+      "min_candidate_rmsd_ang": 1.762,
+      "candidate_rmsd_median_ang": 3.66,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.348,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.445,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.565,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.716,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 1.878,
+          "n_admissible_pairs": 25,
+          "n_distinct_source_regions": 3,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 2.278,
+          "n_admissible_pairs": 3358,
+          "n_distinct_source_regions": 12,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 80.7
+    },
+    "6c62_C": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 2.645,
+      "ordinary_feat_median": 1.249,
+      "min_candidate_rmsd_ang": 2.39,
+      "candidate_rmsd_median_ang": 8.541,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 2.003,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 2.276,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 2.645,
+          "n_admissible_pairs": 6,
+          "n_distinct_source_regions": 2,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 3.029,
+          "n_admissible_pairs": 57,
+          "n_distinct_source_regions": 2,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 3.513,
+          "n_admissible_pairs": 357,
+          "n_distinct_source_regions": 6,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 4.461,
+          "n_admissible_pairs": 5499,
+          "n_distinct_source_regions": 14,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 32.1
+    },
+    "6kty_A": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.781,
+      "ordinary_feat_median": 1.51,
+      "min_candidate_rmsd_ang": 1.729,
+      "candidate_rmsd_median_ang": 3.682,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.467,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.616,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.781,
+          "n_admissible_pairs": 1,
+          "n_distinct_source_regions": 1,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 2.012,
+          "n_admissible_pairs": 248,
+          "n_distinct_source_regions": 7,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 2.262,
+          "n_admissible_pairs": 1964,
+          "n_distinct_source_regions": 15,
+          "constructible": true
+        },
+        "99": {
+          "rmsd_threshold_ang": 2.837,
+          "n_admissible_pairs": 31586,
+          "n_distinct_source_regions": 18,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 42.1
+    },
+    "6l4p_B": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.548,
+      "ordinary_feat_median": 1.272,
+      "min_candidate_rmsd_ang": 1.853,
+      "candidate_rmsd_median_ang": 3.722,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.352,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.442,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.548,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.688,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 1.826,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 2.071,
+          "n_admissible_pairs": 69,
+          "n_distinct_source_regions": 4,
+          "constructible": false
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 91.5
+    },
+    "6ypi_A": {
+      "n_frames": 1001,
+      "n_candidate_pairs": 406351,
+      "ordinary_rmsd_median_ang": 1.301,
+      "ordinary_feat_median": 1.388,
+      "min_candidate_rmsd_ang": 1.439,
+      "candidate_rmsd_median_ang": 2.432,
+      "levels": {
+        "10": {
+          "rmsd_threshold_ang": 1.156,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "25": {
+          "rmsd_threshold_ang": 1.219,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "50": {
+          "rmsd_threshold_ang": 1.301,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "75": {
+          "rmsd_threshold_ang": 1.388,
+          "n_admissible_pairs": 0,
+          "n_distinct_source_regions": 0,
+          "constructible": false
+        },
+        "90": {
+          "rmsd_threshold_ang": 1.501,
+          "n_admissible_pairs": 12,
+          "n_distinct_source_regions": 1,
+          "constructible": false
+        },
+        "99": {
+          "rmsd_threshold_ang": 1.743,
+          "n_admissible_pairs": 732,
+          "n_distinct_source_regions": 13,
+          "constructible": true
+        }
+      },
+      "min_candidate_percentile_in_ordinary": 82.6
+    }
+  },
+  "failed": []
+}
