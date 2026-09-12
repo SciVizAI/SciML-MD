@@ -25,3 +25,6 @@ __pycache__/
 
 # Keep pre-computed case study
 !sample_data/**/*.npy
+
+# macOS
+.DS_Store

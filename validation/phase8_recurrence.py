@@ -252,6 +252,14 @@ def main():
 
     if args.mdcath:
         files = sorted(glob.glob(str(Path(args.mdcath).expanduser())))
+        # D-29: this used to fall through silently on an empty glob and still
+        # write a results file with empty groups - an ABANDON-shaped artifact
+        # produced by measuring nothing at all. A probe that reports a verdict
+        # it did not compute is worse than one that crashes.
+        if not files:
+            sys.exit(f"ERROR: --mdcath matched no files: {args.mdcath}\n"
+                     "       quote the glob so the shell does not expand it, and "
+                     "check the download completed.")
         if args.limit:
             files = files[: args.limit]
         for fp in files:
@@ -263,6 +271,11 @@ def main():
                     _line(sid, results[sid])
                 except Exception as e:
                     print(f"  {sid:34s} FAILED {e}")
+
+    if not results:
+        sys.exit("ERROR: no trajectory was successfully measured; refusing to "
+                 "write a results file. Every input failed to load - see the "
+                 "FAILED lines above.")
 
     groups = {}
     for sid, r in results.items():
