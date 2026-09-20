@@ -44,6 +44,15 @@ CEILING = {
     "transition_surprise": DESCRIPTIVE,
     "rarity": DESCRIPTIVE,
     "score_dynamic": DESCRIPTIVE,
+    # Residue-level outputs. Added 2026-09-20: they were reaching consumers with
+    # no machine-readable rule at all, covered only by prose in INTEGRATION.md.
+    # residue_scores is DERIVED from the fused frame score, so it inherits every
+    # gate applied upstream and can never be safer than its source.
+    "residue_scores": DESCRIPTIVE,
+    # The one exception in the whole pipeline. RMSF is externally verified
+    # against published ATLAS values (r = 0.892, slope 0.966) - CLAIMS.md S-2 -
+    # so it is the only channel that may be displayed without hedging.
+    "residue_rmsf": OK,
 }
 
 CLAIM_REFS = {
@@ -51,6 +60,8 @@ CLAIM_REFS = {
     "transition_surprise": "S-3, S-5; W-2, W-4 (carries no timing information)",
     "rarity": "W-3 (pi unresolved at <=100 ns); S-3",
     "score_dynamic": "W-2 (fused score is descriptive, not a detection)",
+    "residue_scores": "W-1, W-5 (no validated correspondence to functional sites; O-1 open)",
+    "residue_rmsf": "S-2 (externally verified: r = 0.892, slope 0.966, median |err| 10.6%, max 40.5%)",
 }
 
 
@@ -103,7 +114,7 @@ def build_contract(system_id, suitability=None, recurrence=None,
         "local_density")
 
     # --- the fused score is only as good as what went into it ---------------
-    live = [c for c, v in channels.items() if v["status"] != WITHHELD]
+    live = [c for c, v in channels.items() if v["status"] != WITHHELD]  # frame channels only
     if not live:
         f_status, f_why = WITHHELD, "every input channel is withheld"
     else:
@@ -113,6 +124,24 @@ def build_contract(system_id, suitability=None, recurrence=None,
                  "detection")
     channels["score_dynamic"] = _chan(f_status, f_why, "score_dynamic")
     channels["score_dynamic"]["channels_used"] = sorted(live)
+
+    # --- residue level ------------------------------------------------------
+    # Derived from the fused frame score: whatever gated that, gates this.
+    channels["residue_scores"] = _chan(
+        f_status if f_status == WITHHELD else CEILING["residue_scores"],
+        ("derived from score_dynamic, so it inherits its gating. Never rank "
+         "into a 'top hotspot' list: the correspondence between these scores "
+         "and functional sites is an OPEN question (CLAIMS.md O-1), not a "
+         "result"),
+        "residue_scores")
+
+    # RMSF is measured from the coordinates directly - no model, no gate.
+    channels["residue_rmsf"] = _chan(
+        CEILING["residue_rmsf"],
+        ("externally verified against published ATLAS values; the only quantity "
+         "here with an external check, and the only one displayable without a "
+         "caveat. Quote r, slope and median error when reporting it"),
+        "residue_rmsf")
 
     displayable = suit_v != "unsuitable" and f_status != WITHHELD
 
@@ -137,7 +166,11 @@ def build_contract(system_id, suitability=None, recurrence=None,
             "'hotspots', or coloured on a severity scale.",
             "Always show sampling context: total ns and the frame stride. A "
             "recurrence percentile without its stride is uninterpretable.",
-            "The word 'anomaly' must not appear in the interface (CLAIMS.md 4).",
+            "The word 'anomaly' must not appear in the interface (CLAIMS.md 4). "
+            "Replacement vocabulary: conformational landscape, state occupancy, "
+            "transition irregularity.",
+            "residue_rmsf is the ONLY channel displayable without a caveat. "
+            "Everything else is descriptive at best.",
         ],
     }
 

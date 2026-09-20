@@ -540,6 +540,18 @@ in the first batch was **genuine disorder, not periodic-boundary breakage**.
 
 ### 7.5 Results — all four pre-registered criteria pass
 
+> ## ⛔ WITHDRAWN 2026-08-30 — do not cite this section (OI-28)
+>
+> Every number below is arithmetically correct and every criterion genuinely
+> passed. The section is withdrawn anyway, because the criteria it passed were
+> insufficient: they compared the pipeline only against **time-blind** detectors,
+> and a four-line `abs(diff)` detector beats it (0.839 vs 0.814; PR-AUC 0.227 vs
+> 0.082; 17/25 proteins; p = 0.0044).
+>
+> **Superseded by §12 (retraction), §16 (criteria amended), §18 (why the
+> benchmark could not have been built correctly on this data).** Nothing in this
+> section may appear in a draft, slide, abstract or product claim.
+
 Criteria were fixed in Phase 2 and were **not** adjusted. 25 independent
 proteins, 75 trajectories, 5 scramble replicates per trajectory, block
 permutation with randomised cut points, near mode (junctions placed between
@@ -1713,3 +1725,183 @@ heavy within-run repetition plus 100 ns sampling must return `unresolved`.
 End-to-end run verified — `rarity` and `transition_surprise` withheld as NaN,
 `local_density` retained, contract written, headline naming *which* condition
 failed. **OI-34 closed.**
+
+---
+
+## 21. Phase 8c — mdCATH probed, and the decision rule lands exactly on its own threshold
+
+### 21.1 Result
+
+Two domains (1a02F00, 1a0aA00), five temperatures each, 440–450 ns at a native
+1 ns stride. For mdCATH the native and matched measures **coincide by
+construction** — its delivered stride is already the 1 ns reference, so there is
+nothing to re-deliver. That is the point of the matched measure: ATLAS had to be
+resampled to be comparable, mdCATH arrives comparable.
+
+| Temperature | Constructible at P50 | Median closest-pair percentile |
+|---|---|---|
+| 320 K | 0.50 | 13.6 |
+| 348 K | 0.50 | 11.9 |
+| 379 K | **0.00** | 21.5 |
+| 413 K | 0.50 | 23.5 |
+| 450 K | **1.00** | 13.2 |
+| **overall** | **0.50 (5/10)** | — |
+
+Against ATLAS re-delivered at the same 1 ns stride (101 frames, 0.20
+constructible), mdCATH at ~440 frames reaches 0.50. **That is the direction
+§19.4 predicted, and it is the first confirmation of the length-scaling
+argument on independent data.**
+
+### 21.2 Why this is not yet a pass worth spending on
+
+The pre-registered rule (§19.5) is "≥50% constructible at P50". The measurement
+is **exactly 0.50**. A rule met exactly, at its own boundary, is not evidence —
+it is a coin landing on its edge.
+
+Worse, the sample is far smaller than the table makes it look. **Ten rows are
+two independent systems.** Five temperatures of one domain share a topology, a
+fold and a starting structure; they are replicates, not samples. Any per-
+temperature figure here rests on n = 2, and the non-monotonic ordering across
+temperature (0.50, 0.50, 0.00, 0.50, 1.00) is what noise at n = 2 looks like.
+The 379 K row is a single failure plus one trajectory that is also the shortest
+in the set (380 ns), which is a confound, not a temperature effect.
+
+**Decision: do not commit to the bulk download on this.** Widen the domain
+sample first — the cost of being wrong is ~3 TB and a redirected thesis; the
+cost of ten more small domains is about an hour.
+
+### 21.3 The temperature question, which matters more than the headline
+
+450 K passed 2/2 and has the obvious physical rationale: more thermal energy,
+more exploration, more genuine returns to visited conformations. If the widened
+sample confirms that the benchmark is constructible **only** at high
+temperature, the consequence must be stated plainly rather than quietly enjoyed:
+
+> At 450 K these domains are partially unfolded. A benchmark built there tests
+> whether transition surprise detects kinetically improbable transitions **in a
+> thermally denatured ensemble**, which is not the native-state dynamics the
+> product claims to describe.
+
+That would still be a real, publishable test of the mechanism. It would **not**
+license the native-state claim, and the write-up would have to carry the
+temperature in the sentence, every time. Logged so it cannot be forgotten once
+a positive result makes it tempting.
+
+### 21.4 What a pass does and does not unlock
+
+Constructibility and π-convergence are different questions with different
+thresholds, and a pass on the first does nothing for the second. At 440 ns
+mdCATH is still **9× below** the 4 µs convergence threshold, so the estimability
+gate keeps π withheld and `trust.json` keeps reporting `unresolved`. What a
+confirmed pass buys is the **recut benchmark**: the first genuine test of
+whether transition surprise sees transitions that are kinetically improbable but
+geometrically unremarkable — the class `abs(diff)` is structurally blind to, and
+the claim that has been untested since §12.
+
+### 21.5 Next, pre-registered before running
+
+Sample **ten further domains**, chosen by file size (smallest first, ~300 MB
+each), at **320 K and 450 K only** — the two ends, which is where a temperature
+effect would show if one exists. Decision rule unchanged: proceed to bulk only
+if ≥50% constructible at P50, now on **n ≥ 12 independent domains** rather than
+two, and report the two temperatures separately.
+
+**The reader is verified** (OI-36 closed): schema, atom count (916 = 916),
+units (Ångström, extent 118) and stride all confirmed against a real file.
+
+---
+
+## 22. Track 1 — claim language, atom selection, and the convergence threshold
+
+Six open items closed together, none needing new data.
+
+### 22.1 OI-38 — the atom selection, settled by measurement
+
+§20.4 noted that the recurrence verdict flips with atom selection and left the
+reconciliation open. Measured across all 25 ATLAS systems
+(`validation/phase8_selection.json`):
+
+| Selection | Median percentile | recurrent (≤25) | non-recurrent (>60) |
+|---|---|---|---|
+| Cα | **4.0** | 0.88 | 0.04 |
+| backbone | **4.2** | 0.88 | 0.04 |
+| heavy atoms | 43.3 | 0.12 | 0.32 |
+| all atoms | **64.3** | 0.08 | 0.60 |
+
+**The division is not Cα-versus-all-atom. It is backbone-versus-side-chain.**
+Cα and full backbone agree to within 0.2 of a percentile; heavy and all atoms
+sit an order of magnitude higher. Spearman(Cα, all) = **+0.476** (p = 0.016,
+n = 25), and the two disagree on verdict band in **20 of 25** systems — these are
+different measurements, not noisy copies of one.
+
+That is a physical result, not a methodological wrinkle: **the backbone fold
+recurs; the side chains never do.** Over 100 ns a protein returns to
+conformational states it has visited, while its side chains keep exploring.
+
+The reconciliation is that the two numbers answer different questions:
+
+- **backbone recurrence** → *does the protein revisit conformational states?*
+  The right question for whether an MSM's states can be revisited. **Yes, 88%.**
+- **all-atom recurrence** → *can a splice be hidden from a detector reading full
+  coordinates?* The right question for benchmark constructibility. **No, 8%.**
+
+§18 used all atoms and was right to, for the question it asked. `preflight` uses
+Cα and is right to, for the question it asks. The error was ever letting one
+number answer both. Both are now emitted, each labelled with its question, and
+the verdict is taken only from backbone.
+
+**This also corroborates §20.3.** If backbone states are revisited in 88% of
+trajectories, then the reason π fails to generalise is not absent recurrence —
+it is insufficient sampling length. Two independent routes now reach the same
+place.
+
+### 22.2 OI-40 — the convergence threshold, made honest
+
+`PI_CONVERGENCE_NS = 4000` is Kozlowski & Grubmüller's **lower** bound of a
+4–8 µs range, measured on proteins of **50–112 residues**. Applied unchanged to
+a 300-residue protein it is an extrapolation, and a generous one — larger
+proteins converge more slowly, not faster.
+
+It is now (a) overridable by any caller, and (b) flagged as `threshold_extrapolated`
+with the reason attached whenever the chain falls outside 50–112 residues, so the
+caveat travels with the number instead of living in a docstring. `n_residues`
+is wired through from the basin census.
+
+### 22.3 OI-22 — claim language
+
+Every claim of the form "detects conformational transitions" is restated as
+**"is sensitive to temporal discontinuity"**. Timmer (2000): rejecting a
+surrogate null shows only that the surrogate's assumptions fail, not that the
+alternative you had in mind is true. Our scrambles reject a null; they do not
+license a detection verb. `CLAIMS.md` §4 already forbids the vocabulary; this
+closes the report side.
+
+### 22.4 OI-25 — methodological ancestor
+
+The temporal-scramble design is not novel to this work. Baldassano et al.
+(*Neuron* 95, 709, 2017) established event-boundary detection by temporal
+scrambling in fMRI, including the block-permutation control we reuse. No MD
+precedent appears to exist, which is worth stating in a paper — but the *method*
+has one and it should be cited rather than implicitly claimed.
+
+### 22.5 OI-33 — held-out state coverage promoted
+
+Phase 7 measured coverage incidentally (median 0.798) and used it only as an
+exclusion gate. It is a convergence metric in its own right: the fraction of a
+held-out replicate's frames landing in states the training replicate visited.
+Reported as first-class alongside recurrence and estimability.
+
+### 22.6 OI-10, OI-20, OI-46 — reproducibility
+
+- `requirements.txt` rewritten as the single dependency file; `pyemma` removed
+  (nothing imports it, deprecated upstream, hostile to arm64).
+- README and QUICKSTART pointed at it. They previously instructed readers to
+  install `requirements_phase1/2/3.txt`, **which have never existed in this
+  repository** — the install instructions failed on their first command.
+- `abc.py` (a six-line scratch script that shadows the standard-library `abc`
+  module and breaks any import from the repository root) marked for deletion.
+- `tests/test_chapter9_evaluation.py` imports `experiments.chapter9_evaluation`,
+  which is not in the repository and never has been in its history. The test is
+  orphaned and breaks a bare `pytest tests/`; marked for deletion.
+
+For a paper, the person who hits a broken install is a reviewer.

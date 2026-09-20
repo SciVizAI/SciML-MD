@@ -631,13 +631,21 @@ def test_trust_contract_withholds_rarity_when_pi_unresolved():
 
 
 def test_trust_contract_never_promotes_above_descriptive():
-    """Even a perfect trajectory cannot earn a detection claim (CLAIMS.md W-1)."""
-    from msm.trust import build_contract, DESCRIPTIVE
+    """Even a perfect trajectory cannot earn a detection claim (CLAIMS.md W-1).
+
+    residue_rmsf is the single documented exception: it is externally verified
+    against published ATLAS values, so it is the only channel that may be shown
+    without a caveat. Every SCORING channel stays descriptive no matter how good
+    the trajectory is, because that ceiling is not a per-trajectory question.
+    """
+    from msm.trust import build_contract, DESCRIPTIVE, OK
 
     c = build_contract("X", suitability={"verdict": "suitable"},
                        recurrence={"verdict": "recurrent"},
                        estimability={"verdict": "estimable"})
-    assert all(v["status"] == DESCRIPTIVE for v in c["channels"].values())
+    scoring = {k: v for k, v in c["channels"].items() if k != "residue_rmsf"}
+    assert all(v["status"] == DESCRIPTIVE for v in scoring.values()), scoring
+    assert c["channels"]["residue_rmsf"]["status"] == OK
     assert c["displayable"] is True
 
 
@@ -663,3 +671,137 @@ def test_gate_components_blanks_withheld_to_nan():
     assert np.isnan(out["rarity"]).all()
     assert not np.isnan(out["local_density"]).any()
     assert len(out["rarity"]) == 10          # shape preserved for consumers
+
+
+# --- OI-38 / OI-40 ----------------------------------------------------------
+
+def test_oi40_threshold_is_overridable_and_flags_extrapolation():
+    """The convergence threshold is a literature figure measured on 50-112
+    residue proteins. It must be overridable, and the caveat must travel with
+    the number rather than living in a docstring."""
+    from msm.preflight import assess_estimability, PI_CONVERGENCE_RESIDUE_RANGE
+
+    d = np.tile([0, 1], 60)
+
+    # inside the measured range: no extrapolation flag
+    inside = assess_estimability(d, lag=1, total_ns=100, n_residues=80)
+    assert inside["threshold_extrapolated"] is False
+    assert inside["threshold_caveat"] is None
+    assert inside["verdict"] == "unresolved"
+
+    # outside it: flagged, with the reason attached
+    outside = assess_estimability(d, lag=1, total_ns=100, n_residues=400)
+    assert outside["threshold_extrapolated"] is True
+    assert "400 residues" in outside["threshold_caveat"]
+
+    # a caller may override the threshold; 100 ns then clears a 50 ns bar
+    loose = assess_estimability(d, lag=1, total_ns=100, n_residues=80,
+                                convergence_ns=50)
+    assert loose["verdict"] == "estimable", loose
+    assert loose["pi_convergence_ns"] == 50
+
+    lo, hi = PI_CONVERGENCE_RESIDUE_RANGE
+    assert lo < hi
+
+
+def test_oi38_recurrence_reports_the_question_and_a_comparison():
+    """Backbone and all-atom recurrence answer different questions (report
+    section 22). Both must be emitted, and the verdict must come from backbone."""
+    import mdtraj as md
+    from msm.preflight import assess_recurrence
+
+    top = Path(__file__).resolve().parents[1] / "sample_data/8H0R/topology_fixed.pdb"
+    xtc = Path(__file__).resolve().parents[1] / "sample_data/8H0R/traj.xtc"
+    if not (top.exists() and xtc.exists()):
+        return                                    # sample data not present
+    traj = md.load(str(xtc), top=str(top))
+    r = assess_recurrence(traj, min_gap_ns=0.1, max_frames=120)
+    if r["verdict"] == "unknown":
+        return                                    # too short / no time axis
+    assert r["atom_selection"] == "name CA"
+    assert "STATES" in r["question"]
+    assert "all" in r.get("comparison_selections", {})
+    assert "different question" in r["comparison_note"]
+
+
+# --- handoff: the governed export -------------------------------------------
+
+def test_viewer_export_omits_withheld_channels_entirely():
+    """The gate that survives contact with a deadline: a withheld channel is
+    ABSENT from the bundle, not null and not flagged. A viewer cannot render
+    what it was never given."""
+    import json, tempfile, os
+    from pathlib import Path as P
+    import pandas as pd
+    sys.path.insert(0, str(P(__file__).resolve().parents[1]))
+    from msm.trust import build_contract
+    from tools.export_for_viewer import build_bundle
+
+    with tempfile.TemporaryDirectory() as d:
+        rd = P(d) / "SYS"
+        rd.mkdir()
+        contract = build_contract(
+            "SYS", suitability={"verdict": "suitable", "reasons": []},
+            recurrence={"verdict": "recurrent", "total_ns": 100, "stride_ns": 0.1},
+            estimability={"verdict": "unresolved", "reason": "40x too short",
+                          "shortfall_factor": 40.0, "pi_convergence_ns": 4000.0},
+            n_frames=5)
+        (rd / "trust.json").write_text(json.dumps(contract))
+        pd.DataFrame({"frame": range(5),
+                      "score_dynamic": [1.0] * 5,
+                      "component_rarity": [float("nan")] * 5,
+                      "component_transition_surprise": [float("nan")] * 5,
+                      "component_local_density": [2.0] * 5}).to_csv(
+            rd / "frame_scores_dynamic.csv", index=False)
+        (rd / "residue_scores_rmsf.json").write_text(json.dumps({"MET1": 1.2}))
+
+        b = build_bundle("SYS", rd, rd)
+
+    assert "rarity" not in b["frames"]["channels"]
+    assert "transition_surprise" not in b["frames"]["channels"]
+    assert "local_density" in b["frames"]["channels"]
+    assert "rarity" in b["omitted"] and b["omitted"]["rarity"]
+    # RMSF is the one unhedged channel
+    assert b["residues"]["rmsf_ang"]["status"] == "ok"
+    assert "40x" in b["sampling"]["caption"] or "40" in b["sampling"]["caption"]
+
+
+def test_viewer_export_withholds_everything_for_unsuitable_systems():
+    """An unsuitable trajectory supports no model-derived quantity, so none is
+    exported - handing data over and trusting a boolean check is how gates get
+    lost. RMSF survives: it needs no model."""
+    import json, tempfile
+    from pathlib import Path as P
+    import pandas as pd
+    from msm.trust import build_contract
+    from tools.export_for_viewer import build_bundle
+
+    with tempfile.TemporaryDirectory() as d:
+        rd = P(d) / "SYS"
+        rd.mkdir()
+        c = build_contract("SYS", suitability={"verdict": "unsuitable",
+                                               "reasons": ["single basin"]},
+                           recurrence={"verdict": "unknown"},
+                           estimability={"verdict": "unknown"})
+        (rd / "trust.json").write_text(json.dumps(c))
+        pd.DataFrame({"frame": [0], "score_dynamic": [1.0],
+                      "component_local_density": [1.0]}).to_csv(
+            rd / "frame_scores_dynamic.csv", index=False)
+        (rd / "residue_scores_rmsf.json").write_text(json.dumps({"MET1": 1.2}))
+        b = build_bundle("SYS", rd, rd)
+
+    assert b["frames"]["channels"] == {}
+    assert "score_dynamic" in b["omitted"] and "local_density" in b["omitted"]
+    assert b["residues"]["rmsf_ang"]["values"] == [1.2]
+    assert b["verdict"]["displayable"] is False
+
+
+def test_viewer_export_fails_closed_without_a_contract():
+    import tempfile
+    from pathlib import Path as P
+    from tools.export_for_viewer import build_bundle
+    import pytest as _pt
+
+    with tempfile.TemporaryDirectory() as d:
+        with _pt.raises(SystemExit):
+            build_bundle("SYS", P(d), P(d))

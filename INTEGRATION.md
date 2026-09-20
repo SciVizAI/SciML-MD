@@ -1,5 +1,12 @@
 # INTEGRATION.md — the contract between the pipeline and the visualiser
 
+> **New engineers: read [`HANDOFF.md`](HANDOFF.md) first.** The simplest path is
+> `tools/export_for_viewer.py`, which collapses everything below into one
+> self-describing bundle per system at `viewer/{SYSTEM}.json`, with withheld
+> channels **omitted entirely**. Three worked examples are committed. This
+> document describes the raw outputs underneath, for anyone who would rather
+> read them directly.
+
 The visualiser should never need to read `CLAIMS.md` or the validation report.
 Everything it needs to decide what to render is in one file per system:
 
@@ -9,6 +16,11 @@ results/{SYSTEM}/trust.json
 
 Read that file **first**, before touching any scores. It is authoritative.
 
+**Do not use `tools/export_unified.py` / `exports/{SYS}/hotspots_unified.json`.**
+It carries no trust information and its field names (`anomaly_score`, `hotspot`)
+assert claims withdrawn in `CLAIMS.md` (W-1, W-2, W-5, W-6). It is deprecated and
+refuses to run without an override flag.
+
 ---
 
 ## 1. Files the pipeline writes
@@ -17,8 +29,8 @@ Read that file **first**, before touching any scores. It is authoritative.
 |---|---|
 | `trust.json` | **The contract.** Verdict, diagnostics, per-channel status, display rules |
 | `frame_scores_dynamic.csv` | Per-frame scores. Withheld channels are `NaN` **by design** |
-| `residue_scores_dynamic.json` | Per-residue scores, `[0, 100]` |
-| `residue_scores_rmsf.json` | Per-residue RMSF (Å) — the externally verified quantity |
+| `residue_scores_dynamic.json` | Per-residue scores, `[0, 100]`. Derived from `score_dynamic`, so it inherits its gating — status is in `channels.residue_scores` |
+| `residue_scores_rmsf.json` | Per-residue RMSF (Å) — the externally verified quantity; status in `channels.residue_rmsf` |
 | `preflight.json` | Raw diagnostic output (equilibration, suitability, recurrence) |
 | `artifacts/{SYSTEM}/*.npy` | tICA coords, discrete trajectory, transition matrix, π |
 
@@ -51,7 +63,7 @@ Read that file **first**, before touching any scores. It is authoritative.
 
 | Status | What the UI must do |
 |---|---|
-| `ok` | Display freely. *(No channel currently reaches this.)* |
+| `ok` | Display freely. **Only `residue_rmsf` reaches this** — it is externally verified (r = 0.892, slope 0.966). |
 | `descriptive_only` | Display as a **track over time**. Never rank into a top-N list, never threshold into "hotspots", never colour on a severity scale. |
 | `withheld` | **Do not display.** Values in the CSV are `NaN`. |
 

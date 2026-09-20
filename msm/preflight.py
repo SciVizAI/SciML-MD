@@ -239,9 +239,18 @@ SINGLETON_MASS_LIMIT = 0.50
 # rho = -0.515 against a +0.620 control). See the note in assess_estimability
 # about why singleton mass alone cannot catch this.
 PI_CONVERGENCE_NS = 4000.0
+# The figure above is Kozlowski & Grubmuller's LOWER bound (they report 4-8 us)
+# and it was measured on proteins of 50-112 residues. Applying it unchanged to a
+# 300-residue protein is an extrapolation, and a generous one - larger proteins
+# converge more slowly, not less. OI-40: the threshold is therefore (a) a module
+# constant any caller may override, and (b) flagged as extrapolated whenever the
+# chain falls outside the range it was measured on, so the caveat travels with
+# the number instead of living in a docstring.
+PI_CONVERGENCE_RESIDUE_RANGE = (50, 112)
 
 
-def assess_recurrence(traj, min_gap_ns=10.0, max_frames=400, selection="name CA"):
+def assess_recurrence(traj, min_gap_ns=10.0, max_frames=400, selection="name CA",
+                      also=("all",)):
     """Does this trajectory ever return to a conformation it already visited?
 
     Model-free: no clustering, no tICA, no MSM. Compares the closest pair of
@@ -264,14 +273,33 @@ def assess_recurrence(traj, min_gap_ns=10.0, max_frames=400, selection="name CA"
     """
     import mdtraj as md
 
-    # ATOM SELECTION CHANGES THE ANSWER and must always be reported with the
-    # number. On 1g2r_A this check returns the 0.6th percentile on CA atoms and
-    # the 62.7th on all atoms (report section 18.3, which used all atoms): side
-    # chains dominate all-atom RMSD and never repeat, while the backbone fold
-    # does recur. CA is used here because conformational STATE identity is a
-    # backbone property and it is the space the MSM is meant to resolve - but a
-    # percentile quoted without its atom selection is as meaningless as one
-    # quoted without its stride.
+    # OI-38, settled 2026-09-12 by measurement across all 25 ATLAS systems
+    # (report section 22, validation/phase8_selection.json):
+    #
+    #   selection   median pct   recurrent(<=25)   non_recurrent(>60)
+    #   CA               4.0          0.88               0.04
+    #   backbone         4.2          0.88               0.04
+    #   heavy           43.3          0.12               0.32
+    #   all             64.3          0.08               0.60
+    #
+    # The division is NOT CA-versus-all-atom, it is BACKBONE-versus-SIDE-CHAIN:
+    # CA and full backbone agree to within 0.2 percentile, while heavy atoms and
+    # all atoms sit an order of magnitude higher. Spearman(CA, all) = +0.476,
+    # and the two disagree on verdict band in 20 of 25 systems - they are
+    # different measurements, not noisy copies of one.
+    #
+    # They also answer different questions, which is the whole reconciliation:
+    #   backbone recurrence -> "does the protein revisit conformational STATES?"
+    #                          the right question for whether an MSM's states
+    #                          can be revisited.                    YES, 88%
+    #   all-atom recurrence -> "can a splice be hidden from a detector reading
+    #                          full coordinates?" the right question for
+    #                          benchmark constructibility.           NO, 8%
+    #
+    # Section 18 used all atoms and was right to, for the question it asked.
+    # This function uses CA and is right to, for the question it asks. The error
+    # was ever letting one number answer both. Both are now reported, each
+    # labelled with the question it answers.
     sel = traj.topology.select(selection)
     ct = traj.atom_slice(sel).superpose(traj.atom_slice(sel))
     n_full = len(ct)
@@ -327,8 +355,38 @@ def assess_recurrence(traj, min_gap_ns=10.0, max_frames=400, selection="name CA"
             "so there are no repeat visits for transition probabilities or a "
             "stationary distribution to be estimated from")
 
+    # the other selections, reported but never used for the verdict
+    comparison = {}
+    for alt in (also or ()):
+        try:
+            asel = traj.topology.select(alt)
+            at = traj.atom_slice(asel).superpose(traj.atom_slice(asel))[::step]
+            am = len(at)
+            if am <= gap + 2:
+                continue
+            AR = np.zeros((am, am))
+            for i in range(am):
+                AR[i] = md.rmsd(at, at, i) * 10.0
+            ai, aj = np.triu_indices(am, k=gap)
+            acl = float(AR[ai, aj].min())
+            aref = np.array([AR[t, t + 1] for t in range(am - 1)])
+            comparison[alt] = {
+                "n_atoms": int(len(asel)),
+                "closest_pair_percentile": round(
+                    float((aref < acl).mean() * 100), 1)}
+        except Exception:
+            continue
+
     return {**out,
             "verdict": verdict,
+            "question": ("does the protein revisit conformational STATES? "
+                         "backbone geometry, because state identity is a "
+                         "backbone property (OI-38, report section 22)"),
+            "comparison_selections": comparison,
+            "comparison_note": ("all-atom answers a DIFFERENT question - whether "
+                                "a splice could be hidden from a detector reading "
+                                "full coordinates - and is expected to be much "
+                                "higher. Do not read it as this verdict."),
             "closest_distant_pair_ang": round(closest, 3),
             "ordinary_step_median_ang": round(float(np.median(ref)), 3),
             "closest_pair_percentile": round(pct, 1),
@@ -337,7 +395,8 @@ def assess_recurrence(traj, min_gap_ns=10.0, max_frames=400, selection="name CA"
             "bands_are_descriptive": True}
 
 
-def assess_estimability(dtraj, lag, total_ns=None):
+def assess_estimability(dtraj, lag, total_ns=None, n_residues=None,
+                        convergence_ns=None):
     """Is there enough REPEATED evidence to estimate P and pi?
 
     TWO conditions, and the second is the one that actually bites.
@@ -390,17 +449,20 @@ def assess_estimability(dtraj, lag, total_ns=None):
         reasons.append(
             f"{singleton_mass*100:.0f}% of transition counts were observed exactly "
             "once, so the transition matrix is fitted to unrepeated events")
+    threshold = float(convergence_ns if convergence_ns else PI_CONVERGENCE_NS)
+    lo, hi = PI_CONVERGENCE_RESIDUE_RANGE
+    extrapolated = bool(n_residues is not None and not (lo <= n_residues <= hi))
     ratio = None
     if total_ns is None:
         reasons.append(
             "trajectory length unknown, so convergence of pi cannot be checked - "
             "failing closed")
     else:
-        ratio = PI_CONVERGENCE_NS / float(total_ns) if total_ns > 0 else float("inf")
-        if float(total_ns) < PI_CONVERGENCE_NS:
+        ratio = threshold / float(total_ns) if total_ns > 0 else float("inf")
+        if float(total_ns) < threshold:
             reasons.append(
                 f"{total_ns:.0f} ns of sampling is {ratio:.0f}x below the "
-                f"{PI_CONVERGENCE_NS:.0f} ns convergence threshold (Kozlowski & "
+                f"{threshold:.0f} ns convergence threshold (Kozlowski & "
                 "Grubmuller, lower bound), so the stationary distribution has not "
                 "converged - measured directly in report section 15, where ATLAS "
                 "replicates anti-occupy each other's states")
@@ -408,7 +470,17 @@ def assess_estimability(dtraj, lag, total_ns=None):
     return {
         "verdict": "unresolved" if unresolved else "estimable",
         "total_ns": round(float(total_ns), 1) if total_ns else None,
-        "pi_convergence_ns": PI_CONVERGENCE_NS,
+        "pi_convergence_ns": threshold,
+        "pi_convergence_source": ("Kozlowski & Grubmuller, lower bound of a "
+                                  f"4000-8000 ns range measured on {lo}-{hi} "
+                                  "residue proteins"),
+        "n_residues": n_residues,
+        "threshold_extrapolated": extrapolated,
+        "threshold_caveat": (
+            f"chain has {n_residues} residues, outside the {lo}-{hi} range the "
+            "threshold was measured on; larger proteins converge more slowly, so "
+            "this threshold is if anything too generous"
+            if extrapolated else None),
         "shortfall_factor": round(ratio, 1) if ratio else None,
         "n_transitions": total,
         "n_states_occupied": occupied,

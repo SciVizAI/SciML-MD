@@ -1,0 +1,50 @@
+{
+  "equilibration": {
+    "n_frames": 1001,
+    "equilibration_frames_discarded": 92,
+    "fraction_discarded": 0.0919,
+    "rmsd_initial_ang": 0.0,
+    "rmsd_plateau_ang": 2.4788,
+    "rmsd_plateau_std_ang": 0.1961,
+    "detection_capped_at_max_fraction": false
+  },
+  "suitability": {
+    "verdict": "unsuitable",
+    "reasons": [
+      "100% of frames lie within 2.0 A of a single medoid - the ensemble is one basin, so MSM microstates will partition noise rather than conformational states",
+      "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+    ],
+    "n_frames": 909,
+    "n_residues": 81,
+    "max_pairwise_ca_rmsd_ang": 2.776,
+    "fraction_in_single_basin": 1.0,
+    "n_basins": 1,
+    "largest_basin_occupancy": 1.0,
+    "n_basins_ge_5pct": 1,
+    "n_frames_sampled_for_clustering": 228,
+    "n_disulfides": 7
+  },
+  "recurrence": {
+    "n_frames_sampled": 455,
+    "atom_selection": "name CA",
+    "n_atoms": 81,
+    "subsample_step": 2,
+    "stride_ns": 0.2,
+    "total_ns": 90.9,
+    "verdict": "recurrent",
+    "question": "does the protein revisit conformational STATES? backbone geometry, because state identity is a backbone property (OI-38, report section 22)",
+    "comparison_selections": {
+      "all": {
+        "n_atoms": 1062,
+        "closest_pair_percentile": 9.7
+      }
+    },
+    "comparison_note": "all-atom answers a DIFFERENT question - whether a splice could be hidden from a detector reading full coordinates - and is expected to be much higher. Do not read it as this verdict.",
+    "closest_distant_pair_ang": 0.57,
+    "ordinary_step_median_ang": 0.941,
+    "closest_pair_percentile": 0.2,
+    "min_gap_ns": 10.0,
+    "reason": "the trajectory returns to visited conformations",
+    "bands_are_descriptive": true
+  }
+}

@@ -1,36 +1,33 @@
+# SciML-MD dependencies.
+#
+# ONE file. The README used to send people to requirements_phase1/2/3.txt,
+# which have never existed in this repository (OI-46) - a reader following the
+# install instructions failed on the first command.
+#
+# pyemma was pinned here until 2026-09-12 and is now removed: nothing in the
+# codebase imports it, it is deprecated upstream, and it fights arm64 installs.
+# The MSM machinery is deeptime throughout.
 
-# Additional for future enhancements
-# Additional scipy for signal processing
-# Already have from Phase 1-2:
-# Already have from Phase 1:
-# Configuration
 # Core scientific computing
-# Data formats
-# HMM for soft states
-# Install with: pip install -r requirements_phase1.txt
-# Install with: pip install -r requirements_phase2.txt
-# Install with: pip install -r requirements_phase3.txt
-# MD analysis (essential for Phase 2)
-# ML and MSM libraries
-# Optional: Performance monitoring (already have profiler.py)
-# Phase 1 Dependencies
-# Phase 2 Additional Dependencies
-# Phase 3 Additional Dependencies
-# Spatial algorithms
-# biopython>=1.79  # For PDB parsing (optional)
-# networkx>=2.6  # For graph-based pocket analysis (optional)
-# numpy, scipy, pandas, scikit-learn, deeptime, pyemma, pyyaml, pyarrow
-# numpy, scipy, pandas, scikit-learn, deeptime, pyemma, pyyaml, pyarrow, mdtraj
-# psutil>=5.8.0  # Already in existing optimizations
-# scipy>=1.7.0  # Already in Phase 1
-deeptime>=0.4.0
-hmmlearn>=0.2.7
-mdtraj>=1.9.0
 numpy>=1.20.0
-pandas>=1.3.0
-pyarrow>=6.0.0  # For parquet support
-pyemma>=2.5.0
-pyyaml>=5.4.0
-scikit-learn>=1.0.0
 scipy>=1.7.0
-scipy>=1.7.0  # Already in Phase 1, but needed for spatial functions
+pandas>=1.3.0
+scikit-learn>=1.0.0
+
+# MSM estimation (tICA, clustering, reversible MLE, CK tests)
+deeptime>=0.4.0
+
+# MD trajectory I/O and geometry
+mdtraj>=1.9.0
+
+# Data formats
+h5py>=3.0.0          # mdCATH per-domain archives
+pyarrow>=6.0.0       # parquet, used by msm/bootstrap_msm.py and scoring/anomaly_v2.py
+openpyxl>=3.0.0      # validation tracker
+pyyaml>=5.4.0
+
+# Optional: hidden-Markov soft states (msm/soft_states.py only)
+hmmlearn>=0.2.7
+
+# Tests
+pytest>=7.0.0

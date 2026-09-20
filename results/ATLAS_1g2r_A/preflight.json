@@ -1,0 +1,47 @@
+{
+  "equilibration": {
+    "n_frames": 1001,
+    "equilibration_frames_discarded": 14,
+    "fraction_discarded": 0.014,
+    "rmsd_initial_ang": 0.0,
+    "rmsd_plateau_ang": 5.3836,
+    "rmsd_plateau_std_ang": 1.172,
+    "detection_capped_at_max_fraction": false
+  },
+  "suitability": {
+    "verdict": "suitable",
+    "reasons": [],
+    "n_frames": 987,
+    "n_residues": 100,
+    "max_pairwise_ca_rmsd_ang": 9.991,
+    "fraction_in_single_basin": 0.093,
+    "n_basins": 53,
+    "largest_basin_occupancy": 0.073,
+    "n_basins_ge_5pct": 5,
+    "n_frames_sampled_for_clustering": 247,
+    "n_disulfides": 0
+  },
+  "recurrence": {
+    "n_frames_sampled": 494,
+    "atom_selection": "name CA",
+    "n_atoms": 100,
+    "subsample_step": 2,
+    "stride_ns": 0.2,
+    "total_ns": 98.7,
+    "verdict": "recurrent",
+    "question": "does the protein revisit conformational STATES? backbone geometry, because state identity is a backbone property (OI-38, report section 22)",
+    "comparison_selections": {
+      "all": {
+        "n_atoms": 1657,
+        "closest_pair_percentile": 32.3
+      }
+    },
+    "comparison_note": "all-atom answers a DIFFERENT question - whether a splice could be hidden from a detector reading full coordinates - and is expected to be much higher. Do not read it as this verdict.",
+    "closest_distant_pair_ang": 0.921,
+    "ordinary_step_median_ang": 1.673,
+    "closest_pair_percentile": 0.6,
+    "min_gap_ns": 10.0,
+    "reason": "the trajectory returns to visited conformations",
+    "bands_are_descriptive": true
+  }
+}

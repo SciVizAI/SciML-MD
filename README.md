@@ -20,6 +20,9 @@ Ensemble-Anomaly-Maps is a computational biology pipeline that downloads protein
 > verified against published ATLAS values, r = 0.892, slope = 0.966), and the
 > non-redundancy of the three scoring channels.
 >
+> **Building on this pipeline?** Start at [`HANDOFF.md`](HANDOFF.md), then
+> [`PIPELINE.md`](PIPELINE.md) for what each stage computes.
+>
 > **[`CLAIMS.md`](CLAIMS.md) is the authoritative list of what this software may
 > and may not be said to do.** Full evidence:
 > [`validation/VALIDATION_REPORT.md`](validation/VALIDATION_REPORT.md).
@@ -125,13 +128,7 @@ source .venv/bin/activate
 
 ```bash
 # Core ML libraries (tICA, MSM, clustering, anomaly scoring)
-pip install -r requirements_phase1.txt
-
-# MD trajectory analysis (mdtraj)
-pip install -r requirements_phase2.txt
-
-# Optional: Hidden Markov Model soft states
-pip install -r requirements_phase3.txt
+pip install -r requirements.txt
 ```
 
 ### 3.4 Install OpenMM for trajectory generation
@@ -553,9 +550,7 @@ ensemble-anomaly-maps/
 ├── artifacts/                   ← Numpy model outputs (created at runtime)
 ├── results/                     ← CSV/JSON scores (created at runtime)
 │
-├── requirements_phase1.txt      ← Core ML dependencies
-├── requirements_phase2.txt      ← MD analysis (mdtraj)
-└── requirements_phase3.txt      ← HMM soft states
+├── requirements.txt             ← All dependencies
 ```
 
 ---

@@ -585,7 +585,8 @@ def run_pipeline(
         from msm.trust import build_contract, gate_components, WITHHELD
 
         _tot = (rec or {}).get("total_ns")
-        est = assess_estimability(dtraj, lag_msm, total_ns=_tot)
+        _nres = (suit or {}).get("n_residues")
+        est = assess_estimability(dtraj, lag_msm, total_ns=_tot, n_residues=_nres)
         contract = build_contract(pdb_id, suitability=suit, recurrence=rec,
                                   estimability=est, n_frames=int(len(traj)))
         components, gated = gate_components(components, contract)

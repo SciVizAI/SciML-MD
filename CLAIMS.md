@@ -69,15 +69,27 @@ reference step distribution. Report it at the delivered stride **and** at a
 fixed 1 ns physical lag — the two answer different questions and the stride-only
 version is confounded by the save interval (§19.1).
 
-On ATLAS: **64.3rd** percentile at the delivered 100 ps stride (1/25 systems
-admit an invisible splice), **24.0th** re-delivered at 1 ns (5/25), and
-**7.4th** against a 1 ns physical lag. Constructibility rises monotonically with
-trajectory length at fixed stride (§19.4), so the binding constraint is length.
+**Backbone and all-atom recurrence answer different questions and must never be
+quoted as one number** (§22.1, measured across all 25 ATLAS systems):
+
+| Selection | Median percentile | Question it answers |
+|---|---|---|
+| Ca / backbone | **4.0 / 4.2** | does the protein revisit conformational STATES? **yes, 88%** |
+| heavy / all atoms | 43.3 / **64.3** | could a splice hide from a full-coordinate detector? **no, 8%** |
+
+Spearman(Ca, all) = +0.476; they disagree on verdict band in 20 of 25 systems.
+The backbone fold recurs; the side chains never do. The pipeline verdict is
+taken from **backbone**; all-atom is reported alongside, labelled.
+
+Constructibility rises monotonically with trajectory length at fixed stride
+(§19.4), so the binding constraint is length, not physics — corroborated by the
+backbone result above, since states ARE revisited.
 
 - **Evidence:** §18.3–18.4, §19.3–19.4; `validation/phase8_feasibility.py`,
   `validation/phase8_recurrence.py`.
-- **Must be reported with its stride.** A single percentile with no stride
-  attached is uninterpretable and can be inflated 8x by the save interval alone.
+- **Must be reported with its stride AND its atom selection.** A percentile
+  carrying neither is uninterpretable: the save interval alone moves it ~8x and
+  the atom selection ~16x.
 - **Why it matters:** S-1 (the basin census) asks whether states *exist*.
   This asks whether they are ever *revisited*. Both are required before an MSM
   means anything, and neither is published elsewhere as a gate. It requires no
@@ -111,6 +123,19 @@ relocation effect of **exactly +0.000** while transition surprise shows **+0.149
   informative rather than three views of one number.
 - **Not permitted:** that fusing them detects more anomalies. Dissociation is
   not detection (§13.4).
+
+### S-3b · Held-out state coverage as a convergence metric
+
+> "The fraction of a held-out replicate's frames that land in states the
+> training replicate visited."
+
+Median **0.798** on ATLAS (§15). Promoted from an incidental exclusion gate to a
+first-class convergence metric (OI-33): unlike a CK test it needs no lag sweep,
+and unlike an ITS plot it gives a single number a non-specialist can read.
+
+- **Evidence:** §15.3, §22.5.
+- **Not permitted:** presenting it as validated against a convergence
+  ground truth. It is a measurement, reported with its n.
 
 ### S-4 · Determinism and reproducibility
 
@@ -224,5 +249,19 @@ line by line, which the other never was.
   O-2 is genuinely open and overclaiming a negative is the same failure as
   overclaiming a positive, pointed the other way.
 
+### Required vocabulary (OI-22)
+
+Claims take the form **"is sensitive to temporal discontinuity"**, never
+"detects conformational transitions". Timmer (2000): rejecting a surrogate null
+shows that the surrogate's assumptions fail, not that your alternative is true.
+Our scrambles reject a null; they do not license a detection verb.
+
+### Attribution (OI-25)
+
+The temporal-scramble design is **not novel to this work.** Baldassano et al.,
+*Neuron* 95, 709 (2017), established event-boundary detection by temporal
+scrambling, including the block-permutation control reused here. No MD precedent
+appears to exist — that is worth claiming; the method is not.
+
 *Related: D-24 (reported-but-ungated baselines, §16), OI-34 (gate π in code),
-OI-16 (O-1), OI-15/OI-18 (O-2).*
+OI-16 (O-1), OI-18 (O-2), OI-38/OI-40 (§22.1-22.2).*
