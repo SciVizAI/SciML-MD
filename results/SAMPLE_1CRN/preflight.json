@@ -1,0 +1,39 @@
+{
+  "equilibration": {
+    "n_frames": 1001,
+    "equilibration_frames_discarded": 200,
+    "fraction_discarded": 0.1998,
+    "rmsd_initial_ang": 0.0,
+    "rmsd_plateau_ang": 35.5233,
+    "rmsd_plateau_std_ang": 0.3229,
+    "detection_capped_at_max_fraction": true
+  },
+  "suitability": {
+    "verdict": "unsuitable",
+    "reasons": [
+      "100% of frames lie within 2.0 A of a single medoid - the ensemble is one basin, so MSM microstates will partition noise rather than conformational states",
+      "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable",
+      "max pairwise CA RMSD is only 1.32 A - no resolvable conformational change",
+      "3 disulfide bonds in a 46-residue chain - covalently constrained scaffold, large-scale state switching is unlikely at 300 K"
+    ],
+    "n_frames": 801,
+    "n_residues": 46,
+    "max_pairwise_ca_rmsd_ang": 1.324,
+    "fraction_in_single_basin": 1.0,
+    "n_basins": 1,
+    "largest_basin_occupancy": 1.0,
+    "n_basins_ge_5pct": 1,
+    "n_frames_sampled_for_clustering": 201,
+    "n_disulfides": 3
+  },
+  "recurrence": {
+    "n_frames_sampled": 401,
+    "atom_selection": "name CA",
+    "n_atoms": 46,
+    "subsample_step": 2,
+    "stride_ns": 0.001,
+    "total_ns": 0.4,
+    "verdict": "unknown",
+    "reason": "only 401 sampled frames at 0.001 ns; need more than 10002 for a 10.0 ns gap"
+  }
+}

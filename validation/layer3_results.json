@@ -1,0 +1,182 @@
+{
+  "part_A_bfactor": {
+    "8H0R": {
+      "method": "X-ray 1.20 A",
+      "n_matched": 178,
+      "n_unmatched": 4,
+      "spearman_B_vs_dynamic_score": 0.595,
+      "spearman_B_vs_traj_RMSF": 0.642
+    },
+    "1UBQ": {
+      "method": "X-ray 1.80 A",
+      "n_matched": 76,
+      "n_unmatched": 0,
+      "spearman_B_vs_dynamic_score": 0.573,
+      "spearman_B_vs_traj_RMSF": 0.656
+    },
+    "9O6O": {
+      "skipped": "no pipeline results yet"
+    },
+    "9UNN": {
+      "skipped": "no pipeline results yet"
+    }
+  },
+  "part_B_baselines": {
+    "1VII": {
+      "n_frames": 100,
+      "pipeline_fused (ours)": {
+        "rare_state_AUROC": 0.947,
+        "rare_state_AUPRC": 0.856,
+        "rare_trans_AUROC": 0.811,
+        "rare_trans_AUPRC": 0.69
+      },
+      "IsolationForest": {
+        "rare_state_AUROC": 0.752,
+        "rare_state_AUPRC": 0.534,
+        "rare_trans_AUROC": 0.771,
+        "rare_trans_AUPRC": 0.53
+      },
+      "LocalOutlierFactor": {
+        "rare_state_AUROC": 0.835,
+        "rare_state_AUPRC": 0.571,
+        "rare_trans_AUROC": 0.772,
+        "rare_trans_AUPRC": 0.549
+      },
+      "kNN_distance_only (density ablation)": {
+        "rare_state_AUROC": 0.867,
+        "rare_state_AUPRC": 0.633,
+        "rare_trans_AUROC": 0.718,
+        "rare_trans_AUPRC": 0.495
+      },
+      "rarity_channel_only": {
+        "rare_state_AUROC": 1.0,
+        "rare_state_AUPRC": 1.0,
+        "rare_trans_AUROC": 0.823,
+        "rare_trans_AUPRC": 0.68
+      },
+      "surprise_channel_only": {
+        "rare_state_AUROC": 0.7,
+        "rare_state_AUPRC": 0.599,
+        "rare_trans_AUROC": 0.976,
+        "rare_trans_AUPRC": 0.955
+      }
+    },
+    "8H0R": {
+      "n_frames": 100,
+      "pipeline_fused (ours)": {
+        "rare_state_AUROC": 0.958,
+        "rare_state_AUPRC": 0.931,
+        "rare_trans_AUROC": 0.837,
+        "rare_trans_AUPRC": 0.756
+      },
+      "IsolationForest": {
+        "rare_state_AUROC": 0.879,
+        "rare_state_AUPRC": 0.712,
+        "rare_trans_AUROC": 0.826,
+        "rare_trans_AUPRC": 0.578
+      },
+      "LocalOutlierFactor": {
+        "rare_state_AUROC": 0.934,
+        "rare_state_AUPRC": 0.834,
+        "rare_trans_AUROC": 0.846,
+        "rare_trans_AUPRC": 0.774
+      },
+      "kNN_distance_only (density ablation)": {
+        "rare_state_AUROC": 0.867,
+        "rare_state_AUPRC": 0.715,
+        "rare_trans_AUROC": 0.806,
+        "rare_trans_AUPRC": 0.592
+      },
+      "rarity_channel_only": {
+        "rare_state_AUROC": 1.0,
+        "rare_state_AUPRC": 1.0,
+        "rare_trans_AUROC": 0.753,
+        "rare_trans_AUPRC": 0.689
+      },
+      "surprise_channel_only": {
+        "rare_state_AUROC": 0.643,
+        "rare_state_AUPRC": 0.594,
+        "rare_trans_AUROC": 0.953,
+        "rare_trans_AUPRC": 0.89
+      }
+    },
+    "1UBQ": {
+      "n_frames": 100,
+      "pipeline_fused (ours)": {
+        "rare_state_AUROC": 0.904,
+        "rare_state_AUPRC": 0.841,
+        "rare_trans_AUROC": 0.808,
+        "rare_trans_AUPRC": 0.37
+      },
+      "IsolationForest": {
+        "rare_state_AUROC": 0.696,
+        "rare_state_AUPRC": 0.489,
+        "rare_trans_AUROC": 0.432,
+        "rare_trans_AUPRC": 0.219
+      },
+      "LocalOutlierFactor": {
+        "rare_state_AUROC": 0.694,
+        "rare_state_AUPRC": 0.505,
+        "rare_trans_AUROC": 0.463,
+        "rare_trans_AUPRC": 0.209
+      },
+      "kNN_distance_only (density ablation)": {
+        "rare_state_AUROC": 0.762,
+        "rare_state_AUPRC": 0.573,
+        "rare_trans_AUROC": 0.487,
+        "rare_trans_AUPRC": 0.213
+      },
+      "rarity_channel_only": {
+        "rare_state_AUROC": 1.0,
+        "rare_state_AUPRC": 1.0,
+        "rare_trans_AUROC": 0.793,
+        "rare_trans_AUPRC": 0.358
+      },
+      "surprise_channel_only": {
+        "rare_state_AUROC": 0.462,
+        "rare_state_AUPRC": 0.292,
+        "rare_trans_AUROC": 0.907,
+        "rare_trans_AUPRC": 0.654
+      }
+    },
+    "1CRN": {
+      "n_frames": 1001,
+      "pipeline_fused (ours)": {
+        "rare_state_AUROC": 0.955,
+        "rare_state_AUPRC": 0.895,
+        "rare_trans_AUROC": 0.999,
+        "rare_trans_AUPRC": 0.99
+      },
+      "IsolationForest": {
+        "rare_state_AUROC": 0.845,
+        "rare_state_AUPRC": 0.578,
+        "rare_trans_AUROC": 0.959,
+        "rare_trans_AUPRC": 0.593
+      },
+      "LocalOutlierFactor": {
+        "rare_state_AUROC": 0.49,
+        "rare_state_AUPRC": 0.224,
+        "rare_trans_AUROC": 0.607,
+        "rare_trans_AUPRC": 0.158
+      },
+      "kNN_distance_only (density ablation)": {
+        "rare_state_AUROC": 0.905,
+        "rare_state_AUPRC": 0.689,
+        "rare_trans_AUROC": 0.965,
+        "rare_trans_AUPRC": 0.605
+      },
+      "rarity_channel_only": {
+        "rare_state_AUROC": 1.0,
+        "rare_state_AUPRC": 1.0,
+        "rare_trans_AUROC": 0.996,
+        "rare_trans_AUPRC": 0.984
+      },
+      "surprise_channel_only": {
+        "rare_state_AUROC": 0.488,
+        "rare_state_AUPRC": 0.458,
+        "rare_trans_AUROC": 1.0,
+        "rare_trans_AUPRC": 1.0
+      }
+    }
+  }
+}

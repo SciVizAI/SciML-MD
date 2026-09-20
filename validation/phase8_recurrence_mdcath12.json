@@ -1,0 +1,471 @@
+{
+  "ref_lag_ns": 1.0,
+  "min_gap_ns": 10.0,
+  "decision_rule": "download mdCATH in bulk only if it is constructible at P50 on BOTH the native and the matched reference; native-only means the splice hides behind the 1 ns save interval rather than behind the physics",
+  "groups": {
+    "mdCATH@320K": {
+      "n": 2,
+      "A_native": {
+        "frac_constructible": {
+          "10": 0.0,
+          "25": 0.0,
+          "50": 0.5,
+          "75": 1.0,
+          "90": 1.0,
+          "99": 1.0
+        },
+        "closest_pair_percentile": {
+          "min": 7.1,
+          "median": 13.6,
+          "max": 20.0
+        }
+      },
+      "B_matched": {
+        "frac_constructible": {
+          "10": 0.0,
+          "25": 0.0,
+          "50": 0.5,
+          "75": 1.0,
+          "90": 1.0,
+          "99": 1.0
+        },
+        "closest_pair_percentile": {
+          "min": 7.1,
+          "median": 13.6,
+          "max": 20.0
+        }
+      }
+    },
+    "mdCATH@450K": {
+      "n": 2,
+      "A_native": {
+        "frac_constructible": {
+          "10": 0.0,
+          "25": 0.5,
+          "50": 1.0,
+          "75": 1.0,
+          "90": 1.0,
+          "99": 1.0
+        },
+        "closest_pair_percentile": {
+          "min": 11.8,
+          "median": 13.2,
+          "max": 14.6
+        }
+      },
+      "B_matched": {
+        "frac_constructible": {
+          "10": 0.0,
+          "25": 0.5,
+          "50": 1.0,
+          "75": 1.0,
+          "90": 1.0,
+          "99": 1.0
+        },
+        "closest_pair_percentile": {
+          "min": 11.8,
+          "median": 13.2,
+          "max": 14.6
+        }
+      }
+    }
+  },
+  "per_system": {
+    "mdCATH:mdcath_dataset_1a02F00@320K": {
+      "n_frames": 440,
+      "stride_ns": 1.0,
+      "total_ns": 440.0,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 4.532,
+        "closest_distant_pair_ang": 3.388,
+        "closest_pair_percentile": 20.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 2.898,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 3.543,
+            "n_admissible": 5,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 4.532,
+            "n_admissible": 107,
+            "n_regions": 7,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 5.969,
+            "n_admissible": 1018,
+            "n_regions": 14,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 8.084,
+            "n_admissible": 5122,
+            "n_regions": 18,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 11.392,
+            "n_admissible": 24404,
+            "n_regions": 20,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (440 frames retained)",
+        "ref_step_median_ang": 4.532,
+        "closest_distant_pair_ang": 3.388,
+        "closest_pair_percentile": 20.0,
+        "levels": {
+          "10": {
+            "threshold_ang": 2.898,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 3.543,
+            "n_admissible": 5,
+            "n_regions": 2,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 4.532,
+            "n_admissible": 107,
+            "n_regions": 7,
+            "constructible": false
+          },
+          "75": {
+            "threshold_ang": 5.969,
+            "n_admissible": 1018,
+            "n_regions": 14,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 8.084,
+            "n_admissible": 5122,
+            "n_regions": 18,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 11.392,
+            "n_admissible": 24404,
+            "n_regions": 20,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 440
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 20.0,
+        "ref_step_median_ang": 4.532
+      }
+    },
+    "mdCATH:mdcath_dataset_1a02F00@450K": {
+      "n_frames": 440,
+      "stride_ns": 1.0,
+      "total_ns": 440.0,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 9.559,
+        "closest_distant_pair_ang": 7.586,
+        "closest_pair_percentile": 14.6,
+        "levels": {
+          "10": {
+            "threshold_ang": 7.114,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 8.346,
+            "n_admissible": 14,
+            "n_regions": 7,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 9.559,
+            "n_admissible": 477,
+            "n_regions": 19,
+            "constructible": true
+          },
+          "75": {
+            "threshold_ang": 10.98,
+            "n_admissible": 4192,
+            "n_regions": 20,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 12.399,
+            "n_admissible": 17128,
+            "n_regions": 20,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 15.383,
+            "n_admissible": 64977,
+            "n_regions": 20,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (440 frames retained)",
+        "ref_step_median_ang": 9.559,
+        "closest_distant_pair_ang": 7.586,
+        "closest_pair_percentile": 14.6,
+        "levels": {
+          "10": {
+            "threshold_ang": 7.114,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 8.346,
+            "n_admissible": 14,
+            "n_regions": 7,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 9.559,
+            "n_admissible": 477,
+            "n_regions": 19,
+            "constructible": true
+          },
+          "75": {
+            "threshold_ang": 10.98,
+            "n_admissible": 4192,
+            "n_regions": 20,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 12.399,
+            "n_admissible": 17128,
+            "n_regions": 20,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 15.383,
+            "n_admissible": 64977,
+            "n_regions": 20,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 440
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 14.6,
+        "ref_step_median_ang": 9.559
+      }
+    },
+    "mdCATH:mdcath_dataset_1a0aA00@320K": {
+      "n_frames": 440,
+      "stride_ns": 1.0,
+      "total_ns": 440.0,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 4.066,
+        "closest_distant_pair_ang": 2.681,
+        "closest_pair_percentile": 7.1,
+        "levels": {
+          "10": {
+            "threshold_ang": 2.807,
+            "n_admissible": 2,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 3.376,
+            "n_admissible": 17,
+            "n_regions": 5,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 4.066,
+            "n_admissible": 132,
+            "n_regions": 11,
+            "constructible": true
+          },
+          "75": {
+            "threshold_ang": 5.11,
+            "n_admissible": 860,
+            "n_regions": 15,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 6.036,
+            "n_admissible": 2233,
+            "n_regions": 20,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 7.437,
+            "n_admissible": 9238,
+            "n_regions": 20,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (440 frames retained)",
+        "ref_step_median_ang": 4.066,
+        "closest_distant_pair_ang": 2.681,
+        "closest_pair_percentile": 7.1,
+        "levels": {
+          "10": {
+            "threshold_ang": 2.807,
+            "n_admissible": 2,
+            "n_regions": 1,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 3.376,
+            "n_admissible": 17,
+            "n_regions": 5,
+            "constructible": false
+          },
+          "50": {
+            "threshold_ang": 4.066,
+            "n_admissible": 132,
+            "n_regions": 11,
+            "constructible": true
+          },
+          "75": {
+            "threshold_ang": 5.11,
+            "n_admissible": 860,
+            "n_regions": 15,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 6.036,
+            "n_admissible": 2233,
+            "n_regions": 20,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 7.437,
+            "n_admissible": 9238,
+            "n_regions": 20,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 440
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 7.1,
+        "ref_step_median_ang": 4.066
+      }
+    },
+    "mdCATH:mdcath_dataset_1a0aA00@450K": {
+      "n_frames": 450,
+      "stride_ns": 1.0,
+      "total_ns": 450.0,
+      "A_native": {
+        "reference": "native (consecutive frames)",
+        "ref_step_median_ang": 10.969,
+        "closest_distant_pair_ang": 8.499,
+        "closest_pair_percentile": 11.8,
+        "levels": {
+          "10": {
+            "threshold_ang": 8.291,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 9.591,
+            "n_admissible": 57,
+            "n_regions": 14,
+            "constructible": true
+          },
+          "50": {
+            "threshold_ang": 10.969,
+            "n_admissible": 887,
+            "n_regions": 20,
+            "constructible": true
+          },
+          "75": {
+            "threshold_ang": 12.437,
+            "n_admissible": 6249,
+            "n_regions": 20,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 13.949,
+            "n_admissible": 22854,
+            "n_regions": 20,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 17.042,
+            "n_admissible": 70834,
+            "n_regions": 20,
+            "constructible": true
+          }
+        }
+      },
+      "B_matched": {
+        "reference": "re-delivered at 1.0 ns (450 frames retained)",
+        "ref_step_median_ang": 10.969,
+        "closest_distant_pair_ang": 8.499,
+        "closest_pair_percentile": 11.8,
+        "levels": {
+          "10": {
+            "threshold_ang": 8.291,
+            "n_admissible": 0,
+            "n_regions": 0,
+            "constructible": false
+          },
+          "25": {
+            "threshold_ang": 9.591,
+            "n_admissible": 57,
+            "n_regions": 14,
+            "constructible": true
+          },
+          "50": {
+            "threshold_ang": 10.969,
+            "n_admissible": 887,
+            "n_regions": 20,
+            "constructible": true
+          },
+          "75": {
+            "threshold_ang": 12.437,
+            "n_admissible": 6249,
+            "n_regions": 20,
+            "constructible": true
+          },
+          "90": {
+            "threshold_ang": 13.949,
+            "n_admissible": 22854,
+            "n_regions": 20,
+            "constructible": true
+          },
+          "99": {
+            "threshold_ang": 17.042,
+            "n_admissible": 70834,
+            "n_regions": 20,
+            "constructible": true
+          }
+        },
+        "n_frames_retained": 450
+      },
+      "C_physical_recurrence": {
+        "note": "closest full-resolution distant pair vs a 1 ns-lag step distribution. Physical recurrence only - does NOT imply a benchmark can be built. See B.",
+        "closest_pair_percentile": 11.8,
+        "ref_step_median_ang": 10.969
+      }
+    }
+  }
+}

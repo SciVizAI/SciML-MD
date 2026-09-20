@@ -1,0 +1,2952 @@
+{
+  "n_screened": 135,
+  "counts": {
+    "suitable": 52,
+    "marginal": 22,
+    "unsuitable": 61
+  },
+  "usable_systems": [
+    "6kty_A:6kty_A_R3",
+    "2hnu_A:2hnu_A_R2",
+    "3bzl_D:3bzl_D_R1",
+    "4jgi_A:4jgi_A_R2",
+    "3dso_A:3dso_A_R1",
+    "3bzl_D:3bzl_D_R3",
+    "5z42_A:5z42_A_R1",
+    "1upt_D:1upt_D_R3",
+    "4xo1_A:4xo1_A_R1",
+    "1upt_D:1upt_D_R2",
+    "3bpj_B:3bpj_B_R1",
+    "6kty_A:6kty_A_R2",
+    "6l4p_B:6l4p_B_R3",
+    "3dso_A:3dso_A_R2",
+    "1ois_A:1ois_A_R2",
+    "2w56_A:2w56_A_R2",
+    "3ig9_C:3ig9_C_R2",
+    "4zya_A:4zya_A_R1",
+    "5z42_A:5z42_A_R2",
+    "2w56_A:2w56_A_R3",
+    "1q2h_A:1q2h_A_R3",
+    "4jgi_A:4jgi_A_R3",
+    "4v1g_B:4v1g_B_R2",
+    "4eo1_A:4eo1_A_R2",
+    "3ig9_C:3ig9_C_R3",
+    "5z42_A:5z42_A_R3",
+    "2hnu_A:2hnu_A_R3",
+    "4zya_A:4zya_A_R2",
+    "4eo1_A:4eo1_A_R3",
+    "5iqj_C:5iqj_C_R2",
+    "3rmq_A:3rmq_A_R1",
+    "3bpj_B:3bpj_B_R3",
+    "4v1g_B:4v1g_B_R1",
+    "6l4p_B:6l4p_B_R1",
+    "3bpj_B:3bpj_B_R2",
+    "1g2r_A:1g2r_A_R3",
+    "6kty_A:6kty_A_R1",
+    "4v1g_B:4v1g_B_R3",
+    "6ypi_A:6ypi_A_R3",
+    "4jgi_A:4jgi_A_R1",
+    "2p58_A:2p58_A_R3",
+    "3bzl_D:3bzl_D_R2",
+    "6ypi_A:6ypi_A_R2",
+    "1ois_A:1ois_A_R1",
+    "3ig9_C:3ig9_C_R1",
+    "4xo1_A:4xo1_A_R2",
+    "6l4p_B:6l4p_B_R2",
+    "3dso_A:3dso_A_R3",
+    "3rmq_A:3rmq_A_R3",
+    "5cyz_C:5cyz_C_R1",
+    "3rmq_A:3rmq_A_R2",
+    "1g2r_A:1g2r_A_R1",
+    "6c62_C:6c62_C_R3",
+    "1ois_A:1ois_A_R3",
+    "6ypi_A:6ypi_A_R1",
+    "4eo1_A:4eo1_A_R1",
+    "1upt_D:1upt_D_R1",
+    "4xo1_A:4xo1_A_R3",
+    "1j5u_A:1j5u_A_R2",
+    "4gip_A:4gip_A_R1",
+    "1j5u_A:1j5u_A_R3",
+    "2pw8_I:2pw8_I_R2",
+    "5cyz_C:5cyz_C_R2",
+    "1jyo_F:1jyo_F_R3",
+    "2ad6_D:2ad6_D_R2",
+    "1g2r_A:1g2r_A_R2",
+    "6c62_C:6c62_C_R2",
+    "2ad6_D:2ad6_D_R1",
+    "2vnl_A:2vnl_A_R1",
+    "1ef1_D:1ef1_D_R2",
+    "5xct_B:5xct_B_R2",
+    "2vnl_A:2vnl_A_R3",
+    "2vrs_C:2vrs_C_R2",
+    "5xct_B:5xct_B_R3"
+  ],
+  "n_proteins": 45,
+  "n_usable_proteins": 25,
+  "usable_proteins": [
+    "1g2r_A",
+    "1j5u_A",
+    "1ois_A",
+    "1upt_D",
+    "2ad6_D",
+    "2hnu_A",
+    "2vnl_A",
+    "2w56_A",
+    "3bpj_B",
+    "3bzl_D",
+    "3dso_A",
+    "3ig9_C",
+    "3rmq_A",
+    "4eo1_A",
+    "4jgi_A",
+    "4v1g_B",
+    "4xo1_A",
+    "4zya_A",
+    "5cyz_C",
+    "5xct_B",
+    "5z42_A",
+    "6c62_C",
+    "6kty_A",
+    "6l4p_B",
+    "6ypi_A"
+  ],
+  "proteins": [
+    {
+      "protein": "1ef1_D",
+      "n_replicates": 3,
+      "n_usable_replicates": 1,
+      "verdicts": [
+        "unsuitable",
+        "marginal",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.015,
+      "median_max_rmsd_ang": 18.873,
+      "usable": false
+    },
+    {
+      "protein": "1g2r_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "suitable",
+        "marginal",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 3.0,
+      "median_largest_basin_occupancy": 0.095,
+      "median_max_rmsd_ang": 9.05,
+      "usable": true
+    },
+    {
+      "protein": "1j5u_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 2,
+      "verdicts": [
+        "unsuitable",
+        "suitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 2.0,
+      "median_largest_basin_occupancy": 0.104,
+      "median_max_rmsd_ang": 19.044,
+      "usable": true
+    },
+    {
+      "protein": "1jyo_F",
+      "n_replicates": 3,
+      "n_usable_replicates": 1,
+      "verdicts": [
+        "unsuitable",
+        "unsuitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.05,
+      "median_max_rmsd_ang": 22.158,
+      "usable": false
+    },
+    {
+      "protein": "1l2w_I",
+      "n_replicates": 3,
+      "n_usable_replicates": 0,
+      "verdicts": [
+        "unsuitable",
+        "unsuitable",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.025,
+      "median_max_rmsd_ang": 25.89,
+      "usable": false
+    },
+    {
+      "protein": "1o4k_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 0,
+      "verdicts": [
+        "unsuitable",
+        "unsuitable",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 1.0,
+      "median_largest_basin_occupancy": 0.881,
+      "median_max_rmsd_ang": 2.604,
+      "usable": false
+    },
+    {
+      "protein": "1ocy_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 0,
+      "verdicts": [
+        "unsuitable",
+        "unsuitable",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.03,
+      "median_max_rmsd_ang": 18.77,
+      "usable": false
+    },
+    {
+      "protein": "1ois_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "suitable",
+        "suitable",
+        "marginal"
+      ],
+      "median_n_basins_ge_5pct": 3.0,
+      "median_largest_basin_occupancy": 0.577,
+      "median_max_rmsd_ang": 4.372,
+      "usable": true
+    },
+    {
+      "protein": "1q2h_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 1,
+      "verdicts": [
+        "unsuitable",
+        "unsuitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.04,
+      "median_max_rmsd_ang": 13.602,
+      "usable": false
+    },
+    {
+      "protein": "1upt_D",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "suitable",
+        "suitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 6.0,
+      "median_largest_basin_occupancy": 0.284,
+      "median_max_rmsd_ang": 7.004,
+      "usable": true
+    },
+    {
+      "protein": "2ad6_D",
+      "n_replicates": 3,
+      "n_usable_replicates": 2,
+      "verdicts": [
+        "marginal",
+        "suitable",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 1.0,
+      "median_largest_basin_occupancy": 0.065,
+      "median_max_rmsd_ang": 18.41,
+      "usable": true
+    },
+    {
+      "protein": "2b1y_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 0,
+      "verdicts": [
+        "unsuitable",
+        "unsuitable",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.01,
+      "median_max_rmsd_ang": 18.465,
+      "usable": false
+    },
+    {
+      "protein": "2hnu_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 2,
+      "verdicts": [
+        "unsuitable",
+        "suitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 4.0,
+      "median_largest_basin_occupancy": 0.438,
+      "median_max_rmsd_ang": 5.593,
+      "usable": true
+    },
+    {
+      "protein": "2p58_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 1,
+      "verdicts": [
+        "unsuitable",
+        "unsuitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 1.0,
+      "median_largest_basin_occupancy": 0.94,
+      "median_max_rmsd_ang": 4.05,
+      "usable": false
+    },
+    {
+      "protein": "2pw8_I",
+      "n_replicates": 3,
+      "n_usable_replicates": 1,
+      "verdicts": [
+        "unsuitable",
+        "marginal",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.045,
+      "median_max_rmsd_ang": 15.982,
+      "usable": false
+    },
+    {
+      "protein": "2vnl_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 2,
+      "verdicts": [
+        "marginal",
+        "unsuitable",
+        "marginal"
+      ],
+      "median_n_basins_ge_5pct": 1.0,
+      "median_largest_basin_occupancy": 0.06,
+      "median_max_rmsd_ang": 23.824,
+      "usable": true
+    },
+    {
+      "protein": "2vrs_C",
+      "n_replicates": 3,
+      "n_usable_replicates": 1,
+      "verdicts": [
+        "unsuitable",
+        "marginal",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.03,
+      "median_max_rmsd_ang": 31.513,
+      "usable": false
+    },
+    {
+      "protein": "2w56_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 2,
+      "verdicts": [
+        "unsuitable",
+        "suitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 5.0,
+      "median_largest_basin_occupancy": 0.473,
+      "median_max_rmsd_ang": 3.635,
+      "usable": true
+    },
+    {
+      "protein": "3bpj_B",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "suitable",
+        "suitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 4.0,
+      "median_largest_basin_occupancy": 0.169,
+      "median_max_rmsd_ang": 9.849,
+      "usable": true
+    },
+    {
+      "protein": "3bzl_D",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "suitable",
+        "marginal",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 6.0,
+      "median_largest_basin_occupancy": 0.313,
+      "median_max_rmsd_ang": 4.468,
+      "usable": true
+    },
+    {
+      "protein": "3dso_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "suitable",
+        "suitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 6.0,
+      "median_largest_basin_occupancy": 0.179,
+      "median_max_rmsd_ang": 6.747,
+      "usable": true
+    },
+    {
+      "protein": "3emi_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 0,
+      "verdicts": [
+        "unsuitable",
+        "unsuitable",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.01,
+      "median_max_rmsd_ang": 18.93,
+      "usable": false
+    },
+    {
+      "protein": "3ig9_C",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "marginal",
+        "marginal",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 4.0,
+      "median_largest_basin_occupancy": 0.473,
+      "median_max_rmsd_ang": 3.527,
+      "usable": true
+    },
+    {
+      "protein": "3qc7_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 0,
+      "verdicts": [
+        "unsuitable",
+        "unsuitable",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.005,
+      "median_max_rmsd_ang": 36.962,
+      "usable": false
+    },
+    {
+      "protein": "3rmq_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "suitable",
+        "suitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 3.0,
+      "median_largest_basin_occupancy": 0.114,
+      "median_max_rmsd_ang": 6.05,
+      "usable": true
+    },
+    {
+      "protein": "4eo1_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "marginal",
+        "marginal",
+        "marginal"
+      ],
+      "median_n_basins_ge_5pct": 4.0,
+      "median_largest_basin_occupancy": 0.592,
+      "median_max_rmsd_ang": 4.424,
+      "usable": true
+    },
+    {
+      "protein": "4gip_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 1,
+      "verdicts": [
+        "suitable",
+        "unsuitable",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.04,
+      "median_max_rmsd_ang": 21.8,
+      "usable": false
+    },
+    {
+      "protein": "4jgi_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "marginal",
+        "suitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 5.0,
+      "median_largest_basin_occupancy": 0.269,
+      "median_max_rmsd_ang": 4.928,
+      "usable": true
+    },
+    {
+      "protein": "4tsh_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 0,
+      "verdicts": [
+        "unsuitable",
+        "unsuitable",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.015,
+      "median_max_rmsd_ang": 24.977,
+      "usable": false
+    },
+    {
+      "protein": "4ue8_B",
+      "n_replicates": 3,
+      "n_usable_replicates": 0,
+      "verdicts": [
+        "unsuitable",
+        "unsuitable",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.025,
+      "median_max_rmsd_ang": 17.6,
+      "usable": false
+    },
+    {
+      "protein": "4v1g_B",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "suitable",
+        "suitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 4.0,
+      "median_largest_basin_occupancy": 0.144,
+      "median_max_rmsd_ang": 7.973,
+      "usable": true
+    },
+    {
+      "protein": "4xo1_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "suitable",
+        "suitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 3.0,
+      "median_largest_basin_occupancy": 0.219,
+      "median_max_rmsd_ang": 8.24,
+      "usable": true
+    },
+    {
+      "protein": "4zmk_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 0,
+      "verdicts": [
+        "unsuitable",
+        "unsuitable",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 1.0,
+      "median_largest_basin_occupancy": 0.945,
+      "median_max_rmsd_ang": 2.868,
+      "usable": false
+    },
+    {
+      "protein": "4zya_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 2,
+      "verdicts": [
+        "marginal",
+        "marginal",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 4.0,
+      "median_largest_basin_occupancy": 0.403,
+      "median_max_rmsd_ang": 3.602,
+      "usable": true
+    },
+    {
+      "protein": "5cyz_C",
+      "n_replicates": 3,
+      "n_usable_replicates": 2,
+      "verdicts": [
+        "suitable",
+        "suitable",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 2.0,
+      "median_largest_basin_occupancy": 0.085,
+      "median_max_rmsd_ang": 8.994,
+      "usable": true
+    },
+    {
+      "protein": "5exh_C",
+      "n_replicates": 3,
+      "n_usable_replicates": 0,
+      "verdicts": [
+        "unsuitable",
+        "unsuitable",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.015,
+      "median_max_rmsd_ang": 16.15,
+      "usable": false
+    },
+    {
+      "protein": "5iqj_C",
+      "n_replicates": 3,
+      "n_usable_replicates": 1,
+      "verdicts": [
+        "unsuitable",
+        "marginal",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 3.0,
+      "median_largest_basin_occupancy": 0.458,
+      "median_max_rmsd_ang": 3.148,
+      "usable": false
+    },
+    {
+      "protein": "5w82_E",
+      "n_replicates": 3,
+      "n_usable_replicates": 0,
+      "verdicts": [
+        "unsuitable",
+        "unsuitable",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.01,
+      "median_max_rmsd_ang": 41.952,
+      "usable": false
+    },
+    {
+      "protein": "5xct_B",
+      "n_replicates": 3,
+      "n_usable_replicates": 2,
+      "verdicts": [
+        "unsuitable",
+        "marginal",
+        "marginal"
+      ],
+      "median_n_basins_ge_5pct": 1.0,
+      "median_largest_basin_occupancy": 0.055,
+      "median_max_rmsd_ang": 18.506,
+      "usable": true
+    },
+    {
+      "protein": "5z42_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "suitable",
+        "suitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 5.0,
+      "median_largest_basin_occupancy": 0.368,
+      "median_max_rmsd_ang": 4.431,
+      "usable": true
+    },
+    {
+      "protein": "6c62_C",
+      "n_replicates": 3,
+      "n_usable_replicates": 2,
+      "verdicts": [
+        "unsuitable",
+        "marginal",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 1.0,
+      "median_largest_basin_occupancy": 0.09,
+      "median_max_rmsd_ang": 19.117,
+      "usable": true
+    },
+    {
+      "protein": "6crk_G",
+      "n_replicates": 3,
+      "n_usable_replicates": 0,
+      "verdicts": [
+        "unsuitable",
+        "unsuitable",
+        "unsuitable"
+      ],
+      "median_n_basins_ge_5pct": 0.0,
+      "median_largest_basin_occupancy": 0.02,
+      "median_max_rmsd_ang": 26.557,
+      "usable": false
+    },
+    {
+      "protein": "6kty_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "suitable",
+        "suitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 6.0,
+      "median_largest_basin_occupancy": 0.134,
+      "median_max_rmsd_ang": 7.334,
+      "usable": true
+    },
+    {
+      "protein": "6l4p_B",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "suitable",
+        "suitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 4.0,
+      "median_largest_basin_occupancy": 0.164,
+      "median_max_rmsd_ang": 5.461,
+      "usable": true
+    },
+    {
+      "protein": "6ypi_A",
+      "n_replicates": 3,
+      "n_usable_replicates": 3,
+      "verdicts": [
+        "marginal",
+        "suitable",
+        "suitable"
+      ],
+      "median_n_basins_ge_5pct": 3.0,
+      "median_largest_basin_occupancy": 0.711,
+      "median_max_rmsd_ang": 3.924,
+      "usable": true
+    }
+  ],
+  "rows": [
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.5%, 187 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 90,
+      "max_pairwise_ca_rmsd_ang": 15.804,
+      "fraction_in_single_basin": 0.01,
+      "n_basins": 187,
+      "largest_basin_occupancy": 0.015,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1ef1_D:1ef1_D_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 90,
+      "max_pairwise_ca_rmsd_ang": 18.873,
+      "fraction_in_single_basin": 0.01,
+      "n_basins": 167,
+      "largest_basin_occupancy": 0.065,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1ef1_D:1ef1_D_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.0%, 194 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 90,
+      "max_pairwise_ca_rmsd_ang": 21.606,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 194,
+      "largest_basin_occupancy": 0.01,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1ef1_D:1ef1_D_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 100,
+      "max_pairwise_ca_rmsd_ang": 9.438,
+      "fraction_in_single_basin": 0.04,
+      "n_basins": 53,
+      "largest_basin_occupancy": 0.09,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1g2r_A:1g2r_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 100,
+      "max_pairwise_ca_rmsd_ang": 9.05,
+      "fraction_in_single_basin": 0.035,
+      "n_basins": 59,
+      "largest_basin_occupancy": 0.134,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1g2r_A:1g2r_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 100,
+      "max_pairwise_ca_rmsd_ang": 8.711,
+      "fraction_in_single_basin": 0.164,
+      "n_basins": 48,
+      "largest_basin_occupancy": 0.095,
+      "n_basins_ge_5pct": 4,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1g2r_A:1g2r_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 3.0%, 162 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 136,
+      "max_pairwise_ca_rmsd_ang": 19.044,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 162,
+      "largest_basin_occupancy": 0.03,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1j5u_A:1j5u_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 136,
+      "max_pairwise_ca_rmsd_ang": 19.064,
+      "fraction_in_single_basin": 0.259,
+      "n_basins": 88,
+      "largest_basin_occupancy": 0.144,
+      "n_basins_ge_5pct": 2,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1j5u_A:1j5u_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 136,
+      "max_pairwise_ca_rmsd_ang": 16.852,
+      "fraction_in_single_basin": 0.1,
+      "n_basins": 129,
+      "largest_basin_occupancy": 0.104,
+      "n_basins_ge_5pct": 2,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1j5u_A:1j5u_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 5.0%, 120 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 105,
+      "max_pairwise_ca_rmsd_ang": 23.532,
+      "fraction_in_single_basin": 0.01,
+      "n_basins": 120,
+      "largest_basin_occupancy": 0.05,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1jyo_F:1jyo_F_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.0%, 196 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 105,
+      "max_pairwise_ca_rmsd_ang": 19.204,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 196,
+      "largest_basin_occupancy": 0.01,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1jyo_F:1jyo_F_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 105,
+      "max_pairwise_ca_rmsd_ang": 22.158,
+      "fraction_in_single_basin": 0.244,
+      "n_basins": 82,
+      "largest_basin_occupancy": 0.07,
+      "n_basins_ge_5pct": 2,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1jyo_F:1jyo_F_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 2.5%, 167 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 69,
+      "max_pairwise_ca_rmsd_ang": 25.89,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 167,
+      "largest_basin_occupancy": 0.025,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1l2w_I:1l2w_I_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 4.0%, 181 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 69,
+      "max_pairwise_ca_rmsd_ang": 31.3,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 181,
+      "largest_basin_occupancy": 0.04,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1l2w_I:1l2w_I_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.0%, 200 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 69,
+      "max_pairwise_ca_rmsd_ang": 21.695,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 200,
+      "largest_basin_occupancy": 0.01,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1l2w_I:1l2w_I_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "100% of frames lie within 2.0 A of a single medoid - the ensemble is one basin, so MSM microstates will partition noise rather than conformational states",
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 108,
+      "max_pairwise_ca_rmsd_ang": 2.523,
+      "fraction_in_single_basin": 1.0,
+      "n_basins": 1,
+      "largest_basin_occupancy": 1.0,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1o4k_A:1o4k_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "100% of frames lie within 2.0 A of a single medoid - the ensemble is one basin, so MSM microstates will partition noise rather than conformational states"
+      ],
+      "n_frames": 1001,
+      "n_residues": 108,
+      "max_pairwise_ca_rmsd_ang": 2.967,
+      "fraction_in_single_basin": 0.995,
+      "n_basins": 5,
+      "largest_basin_occupancy": 0.871,
+      "n_basins_ge_5pct": 2,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1o4k_A:1o4k_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "100% of frames lie within 2.0 A of a single medoid - the ensemble is one basin, so MSM microstates will partition noise rather than conformational states",
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 108,
+      "max_pairwise_ca_rmsd_ang": 2.604,
+      "fraction_in_single_basin": 1.0,
+      "n_basins": 4,
+      "largest_basin_occupancy": 0.881,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1o4k_A:1o4k_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 2.5%, 176 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 198,
+      "max_pairwise_ca_rmsd_ang": 18.77,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 176,
+      "largest_basin_occupancy": 0.025,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1ocy_A:1ocy_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 3.5%, 146 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 198,
+      "max_pairwise_ca_rmsd_ang": 21.95,
+      "fraction_in_single_basin": 0.015,
+      "n_basins": 146,
+      "largest_basin_occupancy": 0.035,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1ocy_A:1ocy_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 3.0%, 149 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 198,
+      "max_pairwise_ca_rmsd_ang": 16.236,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 149,
+      "largest_basin_occupancy": 0.03,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1ocy_A:1ocy_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 223,
+      "max_pairwise_ca_rmsd_ang": 4.372,
+      "fraction_in_single_basin": 0.647,
+      "n_basins": 8,
+      "largest_basin_occupancy": 0.577,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1ois_A:1ois_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 223,
+      "max_pairwise_ca_rmsd_ang": 4.587,
+      "fraction_in_single_basin": 0.796,
+      "n_basins": 8,
+      "largest_basin_occupancy": 0.502,
+      "n_basins_ge_5pct": 5,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1ois_A:1ois_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "89% of frames in a single basin"
+      ],
+      "n_frames": 1001,
+      "n_residues": 223,
+      "max_pairwise_ca_rmsd_ang": 4.325,
+      "fraction_in_single_basin": 0.891,
+      "n_basins": 8,
+      "largest_basin_occupancy": 0.781,
+      "n_basins_ge_5pct": 2,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1ois_A:1ois_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 4.0%, 131 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 69,
+      "max_pairwise_ca_rmsd_ang": 15.001,
+      "fraction_in_single_basin": 0.03,
+      "n_basins": 131,
+      "largest_basin_occupancy": 0.04,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1q2h_A:1q2h_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 3.0%, 121 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 69,
+      "max_pairwise_ca_rmsd_ang": 13.602,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 121,
+      "largest_basin_occupancy": 0.03,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1q2h_A:1q2h_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 69,
+      "max_pairwise_ca_rmsd_ang": 9.58,
+      "fraction_in_single_basin": 0.617,
+      "n_basins": 33,
+      "largest_basin_occupancy": 0.269,
+      "n_basins_ge_5pct": 5,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1q2h_A:1q2h_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 60,
+      "max_pairwise_ca_rmsd_ang": 7.004,
+      "fraction_in_single_basin": 0.448,
+      "n_basins": 29,
+      "largest_basin_occupancy": 0.408,
+      "n_basins_ge_5pct": 2,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1upt_D:1upt_D_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 60,
+      "max_pairwise_ca_rmsd_ang": 7.188,
+      "fraction_in_single_basin": 0.323,
+      "n_basins": 36,
+      "largest_basin_occupancy": 0.169,
+      "n_basins_ge_5pct": 6,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1upt_D:1upt_D_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 60,
+      "max_pairwise_ca_rmsd_ang": 5.304,
+      "fraction_in_single_basin": 0.353,
+      "n_basins": 15,
+      "largest_basin_occupancy": 0.284,
+      "n_basins_ge_5pct": 6,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "1upt_D:1upt_D_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 69,
+      "max_pairwise_ca_rmsd_ang": 18.41,
+      "fraction_in_single_basin": 0.07,
+      "n_basins": 110,
+      "largest_basin_occupancy": 0.07,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 1,
+      "system": "2ad6_D:2ad6_D_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 69,
+      "max_pairwise_ca_rmsd_ang": 17.5,
+      "fraction_in_single_basin": 0.055,
+      "n_basins": 118,
+      "largest_basin_occupancy": 0.065,
+      "n_basins_ge_5pct": 2,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 1,
+      "system": "2ad6_D:2ad6_D_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.5%, 199 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 69,
+      "max_pairwise_ca_rmsd_ang": 28.896,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 199,
+      "largest_basin_occupancy": 0.015,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 1,
+      "system": "2ad6_D:2ad6_D_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.0%, 196 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 104,
+      "max_pairwise_ca_rmsd_ang": 18.465,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 196,
+      "largest_basin_occupancy": 0.01,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "2b1y_A:2b1y_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.5%, 182 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 104,
+      "max_pairwise_ca_rmsd_ang": 18.186,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 182,
+      "largest_basin_occupancy": 0.015,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "2b1y_A:2b1y_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.0%, 193 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 104,
+      "max_pairwise_ca_rmsd_ang": 19.872,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 193,
+      "largest_basin_occupancy": 0.01,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "2b1y_A:2b1y_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "100% of frames lie within 2.0 A of a single medoid - the ensemble is one basin, so MSM microstates will partition noise rather than conformational states",
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 81,
+      "max_pairwise_ca_rmsd_ang": 2.453,
+      "fraction_in_single_basin": 1.0,
+      "n_basins": 2,
+      "largest_basin_occupancy": 0.965,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 7,
+      "system": "2hnu_A:2hnu_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 81,
+      "max_pairwise_ca_rmsd_ang": 5.593,
+      "fraction_in_single_basin": 0.473,
+      "n_basins": 12,
+      "largest_basin_occupancy": 0.323,
+      "n_basins_ge_5pct": 8,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 7,
+      "system": "2hnu_A:2hnu_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 81,
+      "max_pairwise_ca_rmsd_ang": 6.283,
+      "fraction_in_single_basin": 0.677,
+      "n_basins": 12,
+      "largest_basin_occupancy": 0.438,
+      "n_basins_ge_5pct": 4,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 7,
+      "system": "2hnu_A:2hnu_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "100% of frames lie within 2.0 A of a single medoid - the ensemble is one basin, so MSM microstates will partition noise rather than conformational states",
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 65,
+      "max_pairwise_ca_rmsd_ang": 3.392,
+      "fraction_in_single_basin": 0.995,
+      "n_basins": 3,
+      "largest_basin_occupancy": 0.97,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "2p58_A:2p58_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "99% of frames lie within 2.0 A of a single medoid - the ensemble is one basin, so MSM microstates will partition noise rather than conformational states",
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 65,
+      "max_pairwise_ca_rmsd_ang": 4.05,
+      "fraction_in_single_basin": 0.985,
+      "n_basins": 3,
+      "largest_basin_occupancy": 0.94,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "2p58_A:2p58_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 65,
+      "max_pairwise_ca_rmsd_ang": 4.454,
+      "fraction_in_single_basin": 0.721,
+      "n_basins": 10,
+      "largest_basin_occupancy": 0.741,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "2p58_A:2p58_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 4.5%, 145 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits",
+        "3 disulfide bonds in a 65-residue chain - covalently constrained scaffold, large-scale state switching is unlikely at 300 K"
+      ],
+      "n_frames": 1001,
+      "n_residues": 65,
+      "max_pairwise_ca_rmsd_ang": 15.982,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 145,
+      "largest_basin_occupancy": 0.045,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 3,
+      "system": "2pw8_I:2pw8_I_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "3 disulfide bonds in a 65-residue chain - covalently constrained scaffold, large-scale state switching is unlikely at 300 K"
+      ],
+      "n_frames": 1001,
+      "n_residues": 65,
+      "max_pairwise_ca_rmsd_ang": 13.706,
+      "fraction_in_single_basin": 0.05,
+      "n_basins": 127,
+      "largest_basin_occupancy": 0.095,
+      "n_basins_ge_5pct": 2,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 3,
+      "system": "2pw8_I:2pw8_I_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.5%, 194 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits",
+        "3 disulfide bonds in a 65-residue chain - covalently constrained scaffold, large-scale state switching is unlikely at 300 K"
+      ],
+      "n_frames": 1001,
+      "n_residues": 65,
+      "max_pairwise_ca_rmsd_ang": 17.99,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 194,
+      "largest_basin_occupancy": 0.015,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 3,
+      "system": "2pw8_I:2pw8_I_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 151,
+      "max_pairwise_ca_rmsd_ang": 23.824,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 147,
+      "largest_basin_occupancy": 0.07,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "2vnl_A:2vnl_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 2.0%, 177 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 151,
+      "max_pairwise_ca_rmsd_ang": 24.096,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 177,
+      "largest_basin_occupancy": 0.02,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "2vnl_A:2vnl_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 151,
+      "max_pairwise_ca_rmsd_ang": 19.035,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 138,
+      "largest_basin_occupancy": 0.06,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "2vnl_A:2vnl_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.5%, 181 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 211,
+      "max_pairwise_ca_rmsd_ang": 31.513,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 181,
+      "largest_basin_occupancy": 0.015,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "2vrs_C:2vrs_C_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 211,
+      "max_pairwise_ca_rmsd_ang": 25.561,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 141,
+      "largest_basin_occupancy": 0.055,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "2vrs_C:2vrs_C_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 3.0%, 156 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 211,
+      "max_pairwise_ca_rmsd_ang": 32.774,
+      "fraction_in_single_basin": 0.01,
+      "n_basins": 156,
+      "largest_basin_occupancy": 0.03,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "2vrs_C:2vrs_C_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "98% of frames lie within 2.0 A of a single medoid - the ensemble is one basin, so MSM microstates will partition noise rather than conformational states"
+      ],
+      "n_frames": 1001,
+      "n_residues": 147,
+      "max_pairwise_ca_rmsd_ang": 3.223,
+      "fraction_in_single_basin": 0.98,
+      "n_basins": 6,
+      "largest_basin_occupancy": 0.851,
+      "n_basins_ge_5pct": 2,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "2w56_A:2w56_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 147,
+      "max_pairwise_ca_rmsd_ang": 3.635,
+      "fraction_in_single_basin": 0.552,
+      "n_basins": 7,
+      "largest_basin_occupancy": 0.473,
+      "n_basins_ge_5pct": 5,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "2w56_A:2w56_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 147,
+      "max_pairwise_ca_rmsd_ang": 4.121,
+      "fraction_in_single_basin": 0.736,
+      "n_basins": 9,
+      "largest_basin_occupancy": 0.363,
+      "n_basins_ge_5pct": 5,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "2w56_A:2w56_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 80,
+      "max_pairwise_ca_rmsd_ang": 10.643,
+      "fraction_in_single_basin": 0.363,
+      "n_basins": 41,
+      "largest_basin_occupancy": 0.169,
+      "n_basins_ge_5pct": 6,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3bpj_B:3bpj_B_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 80,
+      "max_pairwise_ca_rmsd_ang": 9.849,
+      "fraction_in_single_basin": 0.209,
+      "n_basins": 60,
+      "largest_basin_occupancy": 0.114,
+      "n_basins_ge_5pct": 4,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3bpj_B:3bpj_B_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 80,
+      "max_pairwise_ca_rmsd_ang": 6.623,
+      "fraction_in_single_basin": 0.308,
+      "n_basins": 41,
+      "largest_basin_occupancy": 0.194,
+      "n_basins_ge_5pct": 4,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3bpj_B:3bpj_B_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 83,
+      "max_pairwise_ca_rmsd_ang": 6.345,
+      "fraction_in_single_basin": 0.483,
+      "n_basins": 16,
+      "largest_basin_occupancy": 0.294,
+      "n_basins_ge_5pct": 7,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3bzl_D:3bzl_D_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "87% of frames in a single basin"
+      ],
+      "n_frames": 1001,
+      "n_residues": 83,
+      "max_pairwise_ca_rmsd_ang": 3.463,
+      "fraction_in_single_basin": 0.866,
+      "n_basins": 4,
+      "largest_basin_occupancy": 0.692,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3bzl_D:3bzl_D_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 83,
+      "max_pairwise_ca_rmsd_ang": 4.468,
+      "fraction_in_single_basin": 0.428,
+      "n_basins": 11,
+      "largest_basin_occupancy": 0.313,
+      "n_basins_ge_5pct": 6,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3bzl_D:3bzl_D_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 74,
+      "max_pairwise_ca_rmsd_ang": 6.747,
+      "fraction_in_single_basin": 0.413,
+      "n_basins": 31,
+      "largest_basin_occupancy": 0.184,
+      "n_basins_ge_5pct": 7,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3dso_A:3dso_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 74,
+      "max_pairwise_ca_rmsd_ang": 6.738,
+      "fraction_in_single_basin": 0.363,
+      "n_basins": 33,
+      "largest_basin_occupancy": 0.09,
+      "n_basins_ge_5pct": 6,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3dso_A:3dso_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 74,
+      "max_pairwise_ca_rmsd_ang": 8.309,
+      "fraction_in_single_basin": 0.124,
+      "n_basins": 50,
+      "largest_basin_occupancy": 0.179,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3dso_A:3dso_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.0%, 200 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 116,
+      "max_pairwise_ca_rmsd_ang": 16.969,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 200,
+      "largest_basin_occupancy": 0.01,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3emi_A:3emi_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 2.0%, 191 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 116,
+      "max_pairwise_ca_rmsd_ang": 23.698,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 191,
+      "largest_basin_occupancy": 0.02,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3emi_A:3emi_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.0%, 197 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 116,
+      "max_pairwise_ca_rmsd_ang": 18.93,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 197,
+      "largest_basin_occupancy": 0.01,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3emi_A:3emi_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "85% of frames in a single basin"
+      ],
+      "n_frames": 1001,
+      "n_residues": 78,
+      "max_pairwise_ca_rmsd_ang": 3.527,
+      "fraction_in_single_basin": 0.851,
+      "n_basins": 4,
+      "largest_basin_occupancy": 0.478,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3ig9_C:3ig9_C_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "94% of frames in a single basin"
+      ],
+      "n_frames": 1001,
+      "n_residues": 78,
+      "max_pairwise_ca_rmsd_ang": 3.452,
+      "fraction_in_single_basin": 0.935,
+      "n_basins": 9,
+      "largest_basin_occupancy": 0.418,
+      "n_basins_ge_5pct": 5,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3ig9_C:3ig9_C_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 78,
+      "max_pairwise_ca_rmsd_ang": 4.137,
+      "fraction_in_single_basin": 0.751,
+      "n_basins": 11,
+      "largest_basin_occupancy": 0.473,
+      "n_basins_ge_5pct": 4,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3ig9_C:3ig9_C_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 0.5%, 201 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 179,
+      "max_pairwise_ca_rmsd_ang": 33.849,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 201,
+      "largest_basin_occupancy": 0.005,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3qc7_A:3qc7_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.0%, 200 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 179,
+      "max_pairwise_ca_rmsd_ang": 36.962,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 200,
+      "largest_basin_occupancy": 0.01,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3qc7_A:3qc7_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 0.5%, 201 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 179,
+      "max_pairwise_ca_rmsd_ang": 40.588,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 201,
+      "largest_basin_occupancy": 0.005,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3qc7_A:3qc7_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 116,
+      "max_pairwise_ca_rmsd_ang": 5.609,
+      "fraction_in_single_basin": 0.388,
+      "n_basins": 27,
+      "largest_basin_occupancy": 0.303,
+      "n_basins_ge_5pct": 4,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3rmq_A:3rmq_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 116,
+      "max_pairwise_ca_rmsd_ang": 6.05,
+      "fraction_in_single_basin": 0.1,
+      "n_basins": 46,
+      "largest_basin_occupancy": 0.095,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3rmq_A:3rmq_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 116,
+      "max_pairwise_ca_rmsd_ang": 6.132,
+      "fraction_in_single_basin": 0.119,
+      "n_basins": 42,
+      "largest_basin_occupancy": 0.114,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "3rmq_A:3rmq_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "90% of frames in a single basin",
+        "2 disulfide bonds in a 70-residue chain - covalently constrained scaffold, large-scale state switching is unlikely at 300 K"
+      ],
+      "n_frames": 1001,
+      "n_residues": 70,
+      "max_pairwise_ca_rmsd_ang": 4.424,
+      "fraction_in_single_basin": 0.896,
+      "n_basins": 9,
+      "largest_basin_occupancy": 0.667,
+      "n_basins_ge_5pct": 2,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 2,
+      "system": "4eo1_A:4eo1_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "88% of frames in a single basin",
+        "2 disulfide bonds in a 70-residue chain - covalently constrained scaffold, large-scale state switching is unlikely at 300 K"
+      ],
+      "n_frames": 1001,
+      "n_residues": 70,
+      "max_pairwise_ca_rmsd_ang": 5.054,
+      "fraction_in_single_basin": 0.881,
+      "n_basins": 13,
+      "largest_basin_occupancy": 0.592,
+      "n_basins_ge_5pct": 4,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 2,
+      "system": "4eo1_A:4eo1_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "92% of frames in a single basin",
+        "2 disulfide bonds in a 70-residue chain - covalently constrained scaffold, large-scale state switching is unlikely at 300 K"
+      ],
+      "n_frames": 1001,
+      "n_residues": 70,
+      "max_pairwise_ca_rmsd_ang": 3.618,
+      "fraction_in_single_basin": 0.915,
+      "n_basins": 8,
+      "largest_basin_occupancy": 0.373,
+      "n_basins_ge_5pct": 4,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 2,
+      "system": "4eo1_A:4eo1_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 81,
+      "max_pairwise_ca_rmsd_ang": 21.8,
+      "fraction_in_single_basin": 0.01,
+      "n_basins": 92,
+      "largest_basin_occupancy": 0.134,
+      "n_basins_ge_5pct": 2,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4gip_A:4gip_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.5%, 188 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 81,
+      "max_pairwise_ca_rmsd_ang": 23.887,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 188,
+      "largest_basin_occupancy": 0.015,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4gip_A:4gip_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 4.0%, 155 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 81,
+      "max_pairwise_ca_rmsd_ang": 21.292,
+      "fraction_in_single_basin": 0.03,
+      "n_basins": 155,
+      "largest_basin_occupancy": 0.04,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4gip_A:4gip_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "90% of frames in a single basin"
+      ],
+      "n_frames": 1001,
+      "n_residues": 211,
+      "max_pairwise_ca_rmsd_ang": 4.928,
+      "fraction_in_single_basin": 0.9,
+      "n_basins": 4,
+      "largest_basin_occupancy": 0.766,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4jgi_A:4jgi_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 211,
+      "max_pairwise_ca_rmsd_ang": 4.891,
+      "fraction_in_single_basin": 0.711,
+      "n_basins": 8,
+      "largest_basin_occupancy": 0.189,
+      "n_basins_ge_5pct": 7,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4jgi_A:4jgi_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 211,
+      "max_pairwise_ca_rmsd_ang": 5.114,
+      "fraction_in_single_basin": 0.602,
+      "n_basins": 7,
+      "largest_basin_occupancy": 0.269,
+      "n_basins_ge_5pct": 5,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4jgi_A:4jgi_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 2.0%, 191 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 121,
+      "max_pairwise_ca_rmsd_ang": 23.094,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 191,
+      "largest_basin_occupancy": 0.02,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4tsh_A:4tsh_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.5%, 196 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 121,
+      "max_pairwise_ca_rmsd_ang": 27.78,
+      "fraction_in_single_basin": 0.015,
+      "n_basins": 196,
+      "largest_basin_occupancy": 0.015,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4tsh_A:4tsh_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 0.5%, 201 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 121,
+      "max_pairwise_ca_rmsd_ang": 24.977,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 201,
+      "largest_basin_occupancy": 0.005,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4tsh_A:4tsh_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 4.0%, 168 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 38,
+      "max_pairwise_ca_rmsd_ang": 20.862,
+      "fraction_in_single_basin": 0.02,
+      "n_basins": 168,
+      "largest_basin_occupancy": 0.04,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4ue8_B:4ue8_B_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 2.5%, 165 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 38,
+      "max_pairwise_ca_rmsd_ang": 17.6,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 165,
+      "largest_basin_occupancy": 0.025,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4ue8_B:4ue8_B_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 2.5%, 157 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 38,
+      "max_pairwise_ca_rmsd_ang": 14.67,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 157,
+      "largest_basin_occupancy": 0.025,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4ue8_B:4ue8_B_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 86,
+      "max_pairwise_ca_rmsd_ang": 7.791,
+      "fraction_in_single_basin": 0.279,
+      "n_basins": 53,
+      "largest_basin_occupancy": 0.179,
+      "n_basins_ge_5pct": 4,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4v1g_B:4v1g_B_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 86,
+      "max_pairwise_ca_rmsd_ang": 7.973,
+      "fraction_in_single_basin": 0.234,
+      "n_basins": 43,
+      "largest_basin_occupancy": 0.144,
+      "n_basins_ge_5pct": 5,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4v1g_B:4v1g_B_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 86,
+      "max_pairwise_ca_rmsd_ang": 10.746,
+      "fraction_in_single_basin": 0.055,
+      "n_basins": 58,
+      "largest_basin_occupancy": 0.085,
+      "n_basins_ge_5pct": 4,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4v1g_B:4v1g_B_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 60,
+      "max_pairwise_ca_rmsd_ang": 8.24,
+      "fraction_in_single_basin": 0.114,
+      "n_basins": 28,
+      "largest_basin_occupancy": 0.199,
+      "n_basins_ge_5pct": 6,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4xo1_A:4xo1_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 60,
+      "max_pairwise_ca_rmsd_ang": 8.567,
+      "fraction_in_single_basin": 0.373,
+      "n_basins": 34,
+      "largest_basin_occupancy": 0.368,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4xo1_A:4xo1_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 60,
+      "max_pairwise_ca_rmsd_ang": 7.481,
+      "fraction_in_single_basin": 0.398,
+      "n_basins": 42,
+      "largest_basin_occupancy": 0.219,
+      "n_basins_ge_5pct": 2,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4xo1_A:4xo1_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "96% of frames lie within 2.0 A of a single medoid - the ensemble is one basin, so MSM microstates will partition noise rather than conformational states",
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 71,
+      "max_pairwise_ca_rmsd_ang": 3.776,
+      "fraction_in_single_basin": 0.96,
+      "n_basins": 5,
+      "largest_basin_occupancy": 0.945,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4zmk_A:4zmk_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "100% of frames lie within 2.0 A of a single medoid - the ensemble is one basin, so MSM microstates will partition noise rather than conformational states",
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 71,
+      "max_pairwise_ca_rmsd_ang": 2.868,
+      "fraction_in_single_basin": 1.0,
+      "n_basins": 4,
+      "largest_basin_occupancy": 0.905,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4zmk_A:4zmk_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "100% of frames lie within 2.0 A of a single medoid - the ensemble is one basin, so MSM microstates will partition noise rather than conformational states",
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 71,
+      "max_pairwise_ca_rmsd_ang": 2.669,
+      "fraction_in_single_basin": 1.0,
+      "n_basins": 2,
+      "largest_basin_occupancy": 0.99,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4zmk_A:4zmk_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "86% of frames in a single basin"
+      ],
+      "n_frames": 1001,
+      "n_residues": 77,
+      "max_pairwise_ca_rmsd_ang": 4.624,
+      "fraction_in_single_basin": 0.861,
+      "n_basins": 12,
+      "largest_basin_occupancy": 0.373,
+      "n_basins_ge_5pct": 5,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4zya_A:4zya_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "90% of frames in a single basin"
+      ],
+      "n_frames": 1001,
+      "n_residues": 77,
+      "max_pairwise_ca_rmsd_ang": 3.602,
+      "fraction_in_single_basin": 0.9,
+      "n_basins": 6,
+      "largest_basin_occupancy": 0.403,
+      "n_basins_ge_5pct": 4,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4zya_A:4zya_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "97% of frames lie within 2.0 A of a single medoid - the ensemble is one basin, so MSM microstates will partition noise rather than conformational states"
+      ],
+      "n_frames": 1001,
+      "n_residues": 77,
+      "max_pairwise_ca_rmsd_ang": 3.356,
+      "fraction_in_single_basin": 0.97,
+      "n_basins": 5,
+      "largest_basin_occupancy": 0.796,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "4zya_A:4zya_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 105,
+      "max_pairwise_ca_rmsd_ang": 8.471,
+      "fraction_in_single_basin": 0.065,
+      "n_basins": 69,
+      "largest_basin_occupancy": 0.109,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "5cyz_C:5cyz_C_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 105,
+      "max_pairwise_ca_rmsd_ang": 8.994,
+      "fraction_in_single_basin": 0.045,
+      "n_basins": 63,
+      "largest_basin_occupancy": 0.085,
+      "n_basins_ge_5pct": 2,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "5cyz_C:5cyz_C_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 4.5%, 127 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 105,
+      "max_pairwise_ca_rmsd_ang": 10.403,
+      "fraction_in_single_basin": 0.01,
+      "n_basins": 127,
+      "largest_basin_occupancy": 0.045,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "5cyz_C:5cyz_C_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 0.5%, 201 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 47,
+      "max_pairwise_ca_rmsd_ang": 24.046,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 201,
+      "largest_basin_occupancy": 0.005,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "5exh_C:5exh_C_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 2.0%, 179 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 47,
+      "max_pairwise_ca_rmsd_ang": 16.15,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 179,
+      "largest_basin_occupancy": 0.02,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "5exh_C:5exh_C_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.5%, 159 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 47,
+      "max_pairwise_ca_rmsd_ang": 13.912,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 159,
+      "largest_basin_occupancy": 0.015,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "5exh_C:5exh_C_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "96% of frames lie within 2.0 A of a single medoid - the ensemble is one basin, so MSM microstates will partition noise rather than conformational states"
+      ],
+      "n_frames": 1001,
+      "n_residues": 134,
+      "max_pairwise_ca_rmsd_ang": 3.148,
+      "fraction_in_single_basin": 0.955,
+      "n_basins": 4,
+      "largest_basin_occupancy": 0.458,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "5iqj_C:5iqj_C_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "94% of frames in a single basin"
+      ],
+      "n_frames": 1001,
+      "n_residues": 134,
+      "max_pairwise_ca_rmsd_ang": 4.188,
+      "fraction_in_single_basin": 0.935,
+      "n_basins": 7,
+      "largest_basin_occupancy": 0.338,
+      "n_basins_ge_5pct": 4,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "5iqj_C:5iqj_C_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "99% of frames lie within 2.0 A of a single medoid - the ensemble is one basin, so MSM microstates will partition noise rather than conformational states"
+      ],
+      "n_frames": 1001,
+      "n_residues": 134,
+      "max_pairwise_ca_rmsd_ang": 2.954,
+      "fraction_in_single_basin": 0.99,
+      "n_basins": 3,
+      "largest_basin_occupancy": 0.92,
+      "n_basins_ge_5pct": 2,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "5iqj_C:5iqj_C_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 0.5%, 201 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 103,
+      "max_pairwise_ca_rmsd_ang": 41.952,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 201,
+      "largest_basin_occupancy": 0.005,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "5w82_E:5w82_E_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.5%, 193 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 103,
+      "max_pairwise_ca_rmsd_ang": 39.892,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 193,
+      "largest_basin_occupancy": 0.015,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "5w82_E:5w82_E_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.0%, 200 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 103,
+      "max_pairwise_ca_rmsd_ang": 44.241,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 200,
+      "largest_basin_occupancy": 0.01,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "5w82_E:5w82_E_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 4.0%, 135 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 163,
+      "max_pairwise_ca_rmsd_ang": 18.506,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 135,
+      "largest_basin_occupancy": 0.04,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 1,
+      "system": "5xct_B:5xct_B_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 163,
+      "max_pairwise_ca_rmsd_ang": 23.703,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 140,
+      "largest_basin_occupancy": 0.065,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 1,
+      "system": "5xct_B:5xct_B_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 163,
+      "max_pairwise_ca_rmsd_ang": 14.837,
+      "fraction_in_single_basin": 0.03,
+      "n_basins": 100,
+      "largest_basin_occupancy": 0.055,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 1,
+      "system": "5xct_B:5xct_B_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 102,
+      "max_pairwise_ca_rmsd_ang": 5.076,
+      "fraction_in_single_basin": 0.542,
+      "n_basins": 18,
+      "largest_basin_occupancy": 0.289,
+      "n_basins_ge_5pct": 6,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "5z42_A:5z42_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 102,
+      "max_pairwise_ca_rmsd_ang": 4.431,
+      "fraction_in_single_basin": 0.448,
+      "n_basins": 13,
+      "largest_basin_occupancy": 0.368,
+      "n_basins_ge_5pct": 5,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "5z42_A:5z42_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 102,
+      "max_pairwise_ca_rmsd_ang": 4.275,
+      "fraction_in_single_basin": 0.711,
+      "n_basins": 11,
+      "largest_basin_occupancy": 0.453,
+      "n_basins_ge_5pct": 4,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "5z42_A:5z42_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.5%, 175 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 68,
+      "max_pairwise_ca_rmsd_ang": 19.117,
+      "fraction_in_single_basin": 0.01,
+      "n_basins": 175,
+      "largest_basin_occupancy": 0.015,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "6c62_C:6c62_C_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "only 1 cluster(s) hold >=5% of frames - the ensemble is close to unimodal, so a multi-state model is unlikely to be identifiable"
+      ],
+      "n_frames": 1001,
+      "n_residues": 68,
+      "max_pairwise_ca_rmsd_ang": 23.613,
+      "fraction_in_single_basin": 0.05,
+      "n_basins": 125,
+      "largest_basin_occupancy": 0.09,
+      "n_basins_ge_5pct": 1,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "6c62_C:6c62_C_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 68,
+      "max_pairwise_ca_rmsd_ang": 16.742,
+      "fraction_in_single_basin": 0.06,
+      "n_basins": 102,
+      "largest_basin_occupancy": 0.09,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "6c62_C:6c62_C_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 3.5%, 177 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 71,
+      "max_pairwise_ca_rmsd_ang": 28.731,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 177,
+      "largest_basin_occupancy": 0.035,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "6crk_G:6crk_G_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 1.5%, 194 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 71,
+      "max_pairwise_ca_rmsd_ang": 22.023,
+      "fraction_in_single_basin": 0.01,
+      "n_basins": 194,
+      "largest_basin_occupancy": 0.015,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "6crk_G:6crk_G_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "unsuitable",
+      "reasons": [
+        "no conformational cluster holds even 5% of frames (largest 2.0%, 191 clusters over 201 sampled frames) - the ensemble is diffusive, not metastable. Nothing is revisited, so there are no states for an MSM to resolve and transition probabilities cannot be estimated from repeat visits"
+      ],
+      "n_frames": 1001,
+      "n_residues": 71,
+      "max_pairwise_ca_rmsd_ang": 26.557,
+      "fraction_in_single_basin": 0.005,
+      "n_basins": 191,
+      "largest_basin_occupancy": 0.02,
+      "n_basins_ge_5pct": 0,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "6crk_G:6crk_G_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 196,
+      "max_pairwise_ca_rmsd_ang": 7.334,
+      "fraction_in_single_basin": 0.189,
+      "n_basins": 48,
+      "largest_basin_occupancy": 0.095,
+      "n_basins_ge_5pct": 4,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "6kty_A:6kty_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 196,
+      "max_pairwise_ca_rmsd_ang": 5.807,
+      "fraction_in_single_basin": 0.333,
+      "n_basins": 26,
+      "largest_basin_occupancy": 0.159,
+      "n_basins_ge_5pct": 6,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "6kty_A:6kty_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 196,
+      "max_pairwise_ca_rmsd_ang": 7.604,
+      "fraction_in_single_basin": 0.289,
+      "n_basins": 36,
+      "largest_basin_occupancy": 0.134,
+      "n_basins_ge_5pct": 9,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "6kty_A:6kty_A_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 145,
+      "max_pairwise_ca_rmsd_ang": 5.669,
+      "fraction_in_single_basin": 0.373,
+      "n_basins": 33,
+      "largest_basin_occupancy": 0.164,
+      "n_basins_ge_5pct": 4,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "6l4p_B:6l4p_B_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 145,
+      "max_pairwise_ca_rmsd_ang": 4.514,
+      "fraction_in_single_basin": 0.488,
+      "n_basins": 20,
+      "largest_basin_occupancy": 0.333,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "6l4p_B:6l4p_B_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 145,
+      "max_pairwise_ca_rmsd_ang": 5.461,
+      "fraction_in_single_basin": 0.214,
+      "n_basins": 33,
+      "largest_basin_occupancy": 0.104,
+      "n_basins_ge_5pct": 6,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "6l4p_B:6l4p_B_R3",
+      "temperature": null
+    },
+    {
+      "verdict": "marginal",
+      "reasons": [
+        "90% of frames in a single basin"
+      ],
+      "n_frames": 1001,
+      "n_residues": 97,
+      "max_pairwise_ca_rmsd_ang": 3.679,
+      "fraction_in_single_basin": 0.896,
+      "n_basins": 5,
+      "largest_basin_occupancy": 0.711,
+      "n_basins_ge_5pct": 2,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "6ypi_A:6ypi_A_R1",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 97,
+      "max_pairwise_ca_rmsd_ang": 3.924,
+      "fraction_in_single_basin": 0.637,
+      "n_basins": 14,
+      "largest_basin_occupancy": 0.597,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "6ypi_A:6ypi_A_R2",
+      "temperature": null
+    },
+    {
+      "verdict": "suitable",
+      "reasons": [],
+      "n_frames": 1001,
+      "n_residues": 97,
+      "max_pairwise_ca_rmsd_ang": 3.934,
+      "fraction_in_single_basin": 0.841,
+      "n_basins": 10,
+      "largest_basin_occupancy": 0.796,
+      "n_basins_ge_5pct": 3,
+      "n_frames_sampled_for_clustering": 201,
+      "n_disulfides": 0,
+      "system": "6ypi_A:6ypi_A_R3",
+      "temperature": null
+    }
+  ],
+  "failed": {}
+}

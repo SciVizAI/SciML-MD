@@ -1,0 +1,823 @@
+{
+  "cutoff_ang": 4.5,
+  "n_proteins": 16,
+  "acceptance": {
+    "F1_median_auroc_ge_0.65": {
+      "value": 0.556,
+      "pass": false
+    },
+    "F2_beats_rmsf_on_70pct": {
+      "value": 0.625,
+      "pass": false
+    },
+    "F3_null_within_0.45_0.55": {
+      "value": 0.499,
+      "pass": true
+    },
+    "F4_wilcoxon_p_lt_0.05": {
+      "value": 0.89993,
+      "pass": false
+    }
+  },
+  "rows": [
+    {
+      "protein": "1j5u_A",
+      "pdb": "1j5u",
+      "chain": "A",
+      "n_replicates": 3,
+      "n_residues_compared": 85,
+      "alignment": "sequence offset -11 (85/136 names agree)",
+      "label_breakdown": {
+        "ligand": 16,
+        "nucleic": 0,
+        "chain": 0
+      },
+      "attribution_diagnostics": {
+        "n_residues": 136,
+        "n_frames_anomalous": 381,
+        "n_frames_baseline": 620,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": 0.6045,
+        "spearman_final_vs_rmsf": 0.0529,
+        "spearman_contact_vs_rmsf": 0.3525,
+        "spearman_dihedral_vs_rmsf": 0.6962,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 8,
+        "prevalence": 0.094,
+        "auroc": 0.428,
+        "auroc_per_replicate": [
+          0.369,
+          0.354,
+          0.562
+        ],
+        "auprc": 0.095,
+        "rmsf_auroc": 0.75,
+        "auroc_shuffled": 0.497,
+        "delta_auroc": -0.322
+      },
+      "ligand_only": {
+        "n_functional": 8,
+        "prevalence": 0.094,
+        "auroc": 0.428,
+        "auroc_per_replicate": [
+          0.369,
+          0.354,
+          0.562
+        ],
+        "auprc": 0.095,
+        "rmsf_auroc": 0.75,
+        "auroc_shuffled": 0.54,
+        "delta_auroc": -0.322
+      },
+      "spearman_attribution_vs_rmsf": -0.028
+    },
+    {
+      "protein": "2ad6_D",
+      "pdb": "2ad6",
+      "chain": "D",
+      "n_replicates": 3,
+      "n_residues_compared": 69,
+      "alignment": "resSeq (69/69 names agree)",
+      "label_breakdown": {
+        "ligand": 0,
+        "nucleic": 0,
+        "chain": 34
+      },
+      "attribution_diagnostics": {
+        "n_residues": 69,
+        "n_frames_anomalous": 151,
+        "n_frames_baseline": 850,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": 0.4525,
+        "spearman_final_vs_rmsf": 0.013,
+        "spearman_contact_vs_rmsf": 0.2963,
+        "spearman_dihedral_vs_rmsf": 0.4873,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 34,
+        "prevalence": 0.493,
+        "auroc": 0.582,
+        "auroc_per_replicate": [
+          0.509,
+          0.666,
+          0.571
+        ],
+        "auprc": 0.602,
+        "rmsf_auroc": 0.449,
+        "auroc_shuffled": 0.464,
+        "delta_auroc": 0.133
+      },
+      "ligand_only": {
+        "skipped": "only 0 functional residue(s) (need 5)",
+        "n_functional": 0
+      },
+      "spearman_attribution_vs_rmsf": 0.013
+    },
+    {
+      "protein": "2hnu_A",
+      "pdb": "2hnu",
+      "chain": "A",
+      "n_replicates": 3,
+      "n_residues_compared": 81,
+      "alignment": "sequence offset +0 (81/81 names agree)",
+      "label_breakdown": {
+        "ligand": 16,
+        "nucleic": 0,
+        "chain": 20
+      },
+      "attribution_diagnostics": {
+        "n_residues": 81,
+        "n_frames_anomalous": 155,
+        "n_frames_baseline": 846,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": 0.3785,
+        "spearman_final_vs_rmsf": 0.022,
+        "spearman_contact_vs_rmsf": -0.0157,
+        "spearman_dihedral_vs_rmsf": 0.4955,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 32,
+        "prevalence": 0.395,
+        "auroc": 0.67,
+        "auroc_per_replicate": [
+          0.622,
+          0.696,
+          0.694
+        ],
+        "auprc": 0.553,
+        "rmsf_auroc": 0.582,
+        "auroc_shuffled": 0.504,
+        "delta_auroc": 0.088
+      },
+      "ligand_only": {
+        "n_functional": 16,
+        "prevalence": 0.198,
+        "auroc": 0.642,
+        "auroc_per_replicate": [
+          0.493,
+          0.737,
+          0.697
+        ],
+        "auprc": 0.352,
+        "rmsf_auroc": 0.529,
+        "auroc_shuffled": 0.499,
+        "delta_auroc": 0.113
+      },
+      "spearman_attribution_vs_rmsf": 0.022
+    },
+    {
+      "protein": "2w56_A",
+      "pdb": "2w56",
+      "chain": "A",
+      "n_replicates": 3,
+      "n_residues_compared": 143,
+      "alignment": "resSeq (143/147 names agree)",
+      "label_breakdown": {
+        "ligand": 0,
+        "nucleic": 0,
+        "chain": 15
+      },
+      "attribution_diagnostics": {
+        "n_residues": 147,
+        "n_frames_anomalous": 155,
+        "n_frames_baseline": 846,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": 0.6822,
+        "spearman_final_vs_rmsf": 0.0675,
+        "spearman_contact_vs_rmsf": 0.4895,
+        "spearman_dihedral_vs_rmsf": 0.672,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 15,
+        "prevalence": 0.105,
+        "auroc": 0.526,
+        "auroc_per_replicate": [
+          0.458,
+          0.518,
+          0.601
+        ],
+        "auprc": 0.161,
+        "rmsf_auroc": 0.452,
+        "auroc_shuffled": 0.418,
+        "delta_auroc": 0.074
+      },
+      "ligand_only": {
+        "skipped": "only 0 functional residue(s) (need 5)",
+        "n_functional": 0
+      },
+      "spearman_attribution_vs_rmsf": 0.067
+    },
+    {
+      "protein": "3bpj_B",
+      "pdb": "3bpj",
+      "chain": "B",
+      "n_replicates": 3,
+      "n_residues_compared": 71,
+      "alignment": "sequence offset +0 (71/80 names agree)",
+      "label_breakdown": {
+        "ligand": 10,
+        "nucleic": 0,
+        "chain": 54
+      },
+      "attribution_diagnostics": {
+        "n_residues": 80,
+        "n_frames_anomalous": 151,
+        "n_frames_baseline": 850,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": 0.5308,
+        "spearman_final_vs_rmsf": 0.0261,
+        "spearman_contact_vs_rmsf": 0.1966,
+        "spearman_dihedral_vs_rmsf": 0.7119,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 55,
+        "prevalence": 0.775,
+        "auroc": 0.748,
+        "auroc_per_replicate": [
+          0.785,
+          0.692,
+          0.766
+        ],
+        "auprc": 0.909,
+        "rmsf_auroc": 0.516,
+        "auroc_shuffled": 0.498,
+        "delta_auroc": 0.232
+      },
+      "ligand_only": {
+        "n_functional": 10,
+        "prevalence": 0.141,
+        "auroc": 0.798,
+        "auroc_per_replicate": [
+          0.803,
+          0.728,
+          0.864
+        ],
+        "auprc": 0.447,
+        "rmsf_auroc": 0.614,
+        "auroc_shuffled": 0.557,
+        "delta_auroc": 0.184
+      },
+      "spearman_attribution_vs_rmsf": 0.018
+    },
+    {
+      "protein": "3bzl_D",
+      "pdb": "3bzl",
+      "chain": "D",
+      "n_replicates": 3,
+      "n_residues_compared": 82,
+      "alignment": "sequence offset +0 (82/83 names agree)",
+      "label_breakdown": {
+        "ligand": 0,
+        "nucleic": 0,
+        "chain": 42
+      },
+      "attribution_diagnostics": {
+        "n_residues": 83,
+        "n_frames_anomalous": 151,
+        "n_frames_baseline": 850,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": 0.3857,
+        "spearman_final_vs_rmsf": 0.0275,
+        "spearman_contact_vs_rmsf": 0.2528,
+        "spearman_dihedral_vs_rmsf": 0.3961,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 42,
+        "prevalence": 0.512,
+        "auroc": 0.647,
+        "auroc_per_replicate": [
+          0.655,
+          0.676,
+          0.611
+        ],
+        "auprc": 0.723,
+        "rmsf_auroc": 0.614,
+        "auroc_shuffled": 0.495,
+        "delta_auroc": 0.033
+      },
+      "ligand_only": {
+        "skipped": "only 0 functional residue(s) (need 5)",
+        "n_functional": 0
+      },
+      "spearman_attribution_vs_rmsf": 0.035
+    },
+    {
+      "protein": "3ig9_C",
+      "pdb": "3ig9",
+      "chain": "C",
+      "n_replicates": 3,
+      "n_residues_compared": 75,
+      "alignment": "resSeq (75/78 names agree)",
+      "label_breakdown": {
+        "ligand": 9,
+        "nucleic": 0,
+        "chain": 5
+      },
+      "attribution_diagnostics": {
+        "n_residues": 78,
+        "n_frames_anomalous": 151,
+        "n_frames_baseline": 850,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": 0.5763,
+        "spearman_final_vs_rmsf": 0.0475,
+        "spearman_contact_vs_rmsf": 0.2832,
+        "spearman_dihedral_vs_rmsf": 0.5781,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 14,
+        "prevalence": 0.187,
+        "auroc": 0.619,
+        "auroc_per_replicate": [
+          0.66,
+          0.559,
+          0.638
+        ],
+        "auprc": 0.255,
+        "rmsf_auroc": 0.639,
+        "auroc_shuffled": 0.508,
+        "delta_auroc": -0.02
+      },
+      "ligand_only": {
+        "n_functional": 9,
+        "prevalence": 0.12,
+        "auroc": 0.666,
+        "auroc_per_replicate": [
+          0.695,
+          0.599,
+          0.702
+        ],
+        "auprc": 0.204,
+        "rmsf_auroc": 0.57,
+        "auroc_shuffled": 0.543,
+        "delta_auroc": 0.096
+      },
+      "spearman_attribution_vs_rmsf": 0.064
+    },
+    {
+      "protein": "3rmq_A",
+      "pdb": "3rmq",
+      "chain": "A",
+      "n_replicates": 3,
+      "n_residues_compared": 70,
+      "alignment": "sequence offset -4 (70/116 names agree)",
+      "label_breakdown": {
+        "ligand": 26,
+        "nucleic": 0,
+        "chain": 0
+      },
+      "attribution_diagnostics": {
+        "n_residues": 116,
+        "n_frames_anomalous": 151,
+        "n_frames_baseline": 850,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": 0.3208,
+        "spearman_final_vs_rmsf": 0.0211,
+        "spearman_contact_vs_rmsf": 0.024,
+        "spearman_dihedral_vs_rmsf": 0.5003,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 14,
+        "prevalence": 0.2,
+        "auroc": 0.55,
+        "auroc_per_replicate": [
+          0.561,
+          0.579,
+          0.51
+        ],
+        "auprc": 0.285,
+        "rmsf_auroc": 0.411,
+        "auroc_shuffled": 0.506,
+        "delta_auroc": 0.139
+      },
+      "ligand_only": {
+        "n_functional": 14,
+        "prevalence": 0.2,
+        "auroc": 0.55,
+        "auroc_per_replicate": [
+          0.561,
+          0.579,
+          0.51
+        ],
+        "auprc": 0.285,
+        "rmsf_auroc": 0.411,
+        "auroc_shuffled": 0.584,
+        "delta_auroc": 0.139
+      },
+      "spearman_attribution_vs_rmsf": 0.057
+    },
+    {
+      "protein": "4jgi_A",
+      "pdb": "4jgi",
+      "chain": "A",
+      "n_replicates": 3,
+      "n_residues_compared": 205,
+      "alignment": "resSeq (205/211 names agree)",
+      "label_breakdown": {
+        "ligand": 27,
+        "nucleic": 0,
+        "chain": 9
+      },
+      "attribution_diagnostics": {
+        "n_residues": 211,
+        "n_frames_anomalous": 151,
+        "n_frames_baseline": 850,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": 0.402,
+        "spearman_final_vs_rmsf": 0.0498,
+        "spearman_contact_vs_rmsf": 0.2379,
+        "spearman_dihedral_vs_rmsf": 0.3402,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 36,
+        "prevalence": 0.176,
+        "auroc": 0.719,
+        "auroc_per_replicate": [
+          0.694,
+          0.751,
+          0.71
+        ],
+        "auprc": 0.387,
+        "rmsf_auroc": 0.427,
+        "auroc_shuffled": 0.501,
+        "delta_auroc": 0.292
+      },
+      "ligand_only": {
+        "n_functional": 27,
+        "prevalence": 0.132,
+        "auroc": 0.795,
+        "auroc_per_replicate": [
+          0.756,
+          0.836,
+          0.793
+        ],
+        "auprc": 0.401,
+        "rmsf_auroc": 0.461,
+        "auroc_shuffled": 0.516,
+        "delta_auroc": 0.334
+      },
+      "spearman_attribution_vs_rmsf": 0.016
+    },
+    {
+      "protein": "4xo1_A",
+      "pdb": "4xo1",
+      "chain": "A",
+      "n_replicates": 3,
+      "n_residues_compared": 55,
+      "alignment": "resSeq (55/60 names agree)",
+      "label_breakdown": {
+        "ligand": 30,
+        "nucleic": 0,
+        "chain": 0
+      },
+      "attribution_diagnostics": {
+        "n_residues": 60,
+        "n_frames_anomalous": 152,
+        "n_frames_baseline": 849,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": 0.4004,
+        "spearman_final_vs_rmsf": 0.0168,
+        "spearman_contact_vs_rmsf": 0.2497,
+        "spearman_dihedral_vs_rmsf": 0.4185,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 30,
+        "prevalence": 0.545,
+        "auroc": 0.555,
+        "auroc_per_replicate": [
+          0.583,
+          0.48,
+          0.603
+        ],
+        "auprc": 0.603,
+        "rmsf_auroc": 0.445,
+        "auroc_shuffled": 0.524,
+        "delta_auroc": 0.11
+      },
+      "ligand_only": {
+        "n_functional": 30,
+        "prevalence": 0.545,
+        "auroc": 0.555,
+        "auroc_per_replicate": [
+          0.583,
+          0.48,
+          0.603
+        ],
+        "auprc": 0.603,
+        "rmsf_auroc": 0.445,
+        "auroc_shuffled": 0.473,
+        "delta_auroc": 0.11
+      },
+      "spearman_attribution_vs_rmsf": -0.042
+    },
+    {
+      "protein": "4zya_A",
+      "pdb": "4zya",
+      "chain": "A",
+      "n_replicates": 3,
+      "n_residues_compared": 65,
+      "alignment": "resSeq (65/77 names agree)",
+      "label_breakdown": {
+        "ligand": 23,
+        "nucleic": 0,
+        "chain": 11
+      },
+      "attribution_diagnostics": {
+        "n_residues": 77,
+        "n_frames_anomalous": 152,
+        "n_frames_baseline": 849,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": 0.4937,
+        "spearman_final_vs_rmsf": 0.0281,
+        "spearman_contact_vs_rmsf": 0.3033,
+        "spearman_dihedral_vs_rmsf": 0.4547,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 28,
+        "prevalence": 0.431,
+        "auroc": 0.556,
+        "auroc_per_replicate": [
+          0.497,
+          0.585,
+          0.585
+        ],
+        "auprc": 0.505,
+        "rmsf_auroc": 0.722,
+        "auroc_shuffled": 0.483,
+        "delta_auroc": -0.166
+      },
+      "ligand_only": {
+        "n_functional": 23,
+        "prevalence": 0.354,
+        "auroc": 0.574,
+        "auroc_per_replicate": [
+          0.545,
+          0.577,
+          0.601
+        ],
+        "auprc": 0.434,
+        "rmsf_auroc": 0.697,
+        "auroc_shuffled": 0.518,
+        "delta_auroc": -0.123
+      },
+      "spearman_attribution_vs_rmsf": -0.016
+    },
+    {
+      "protein": "5cyz_C",
+      "pdb": "5cyz",
+      "chain": "C",
+      "n_replicates": 3,
+      "n_residues_compared": 58,
+      "alignment": "sequence offset -4 (58/105 names agree)",
+      "label_breakdown": {
+        "ligand": 26,
+        "nucleic": 0,
+        "chain": 59
+      },
+      "attribution_diagnostics": {
+        "n_residues": 105,
+        "n_frames_anomalous": 151,
+        "n_frames_baseline": 850,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": 0.3785,
+        "spearman_final_vs_rmsf": 0.0176,
+        "spearman_contact_vs_rmsf": 0.1529,
+        "spearman_dihedral_vs_rmsf": 0.499,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 36,
+        "prevalence": 0.621,
+        "auroc": 0.34,
+        "auroc_per_replicate": [
+          0.415,
+          0.269,
+          0.336
+        ],
+        "auprc": 0.545,
+        "rmsf_auroc": 0.304,
+        "auroc_shuffled": 0.503,
+        "delta_auroc": 0.036
+      },
+      "ligand_only": {
+        "n_functional": 15,
+        "prevalence": 0.259,
+        "auroc": 0.374,
+        "auroc_per_replicate": [
+          0.476,
+          0.336,
+          0.31
+        ],
+        "auprc": 0.257,
+        "rmsf_auroc": 0.276,
+        "auroc_shuffled": 0.49,
+        "delta_auroc": 0.098
+      },
+      "spearman_attribution_vs_rmsf": 0.088
+    },
+    {
+      "protein": "5xct_B",
+      "pdb": "5xct",
+      "chain": "B",
+      "n_replicates": 3,
+      "n_residues_compared": 161,
+      "alignment": "sequence offset -2 (161/163 names agree)",
+      "label_breakdown": {
+        "ligand": 0,
+        "nucleic": 0,
+        "chain": 58
+      },
+      "attribution_diagnostics": {
+        "n_residues": 163,
+        "n_frames_anomalous": 156,
+        "n_frames_baseline": 845,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": -0.1467,
+        "spearman_final_vs_rmsf": -0.0153,
+        "spearman_contact_vs_rmsf": -0.2743,
+        "spearman_dihedral_vs_rmsf": 0.0186,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 58,
+        "prevalence": 0.36,
+        "auroc": 0.405,
+        "auroc_per_replicate": [
+          0.421,
+          0.402,
+          0.393
+        ],
+        "auprc": 0.343,
+        "rmsf_auroc": 0.711,
+        "auroc_shuffled": 0.546,
+        "delta_auroc": -0.306
+      },
+      "ligand_only": {
+        "skipped": "only 0 functional residue(s) (need 5)",
+        "n_functional": 0
+      },
+      "spearman_attribution_vs_rmsf": -0.025
+    },
+    {
+      "protein": "5z42_A",
+      "pdb": "5z42",
+      "chain": "A",
+      "n_replicates": 3,
+      "n_residues_compared": 102,
+      "alignment": "resSeq (102/102 names agree)",
+      "label_breakdown": {
+        "ligand": 16,
+        "nucleic": 0,
+        "chain": 0
+      },
+      "attribution_diagnostics": {
+        "n_residues": 102,
+        "n_frames_anomalous": 155,
+        "n_frames_baseline": 846,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": 0.5066,
+        "spearman_final_vs_rmsf": 0.0182,
+        "spearman_contact_vs_rmsf": 0.2148,
+        "spearman_dihedral_vs_rmsf": 0.601,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 16,
+        "prevalence": 0.157,
+        "auroc": 0.398,
+        "auroc_per_replicate": [
+          0.384,
+          0.435,
+          0.374
+        ],
+        "auprc": 0.147,
+        "rmsf_auroc": 0.556,
+        "auroc_shuffled": 0.569,
+        "delta_auroc": -0.158
+      },
+      "ligand_only": {
+        "n_functional": 16,
+        "prevalence": 0.157,
+        "auroc": 0.398,
+        "auroc_per_replicate": [
+          0.384,
+          0.435,
+          0.374
+        ],
+        "auprc": 0.147,
+        "rmsf_auroc": 0.556,
+        "auroc_shuffled": 0.503,
+        "delta_auroc": -0.158
+      },
+      "spearman_attribution_vs_rmsf": 0.018
+    },
+    {
+      "protein": "6c62_C",
+      "pdb": "6c62",
+      "chain": "C",
+      "n_replicates": 3,
+      "n_residues_compared": 66,
+      "alignment": "resSeq (66/68 names agree)",
+      "label_breakdown": {
+        "ligand": 0,
+        "nucleic": 0,
+        "chain": 36
+      },
+      "attribution_diagnostics": {
+        "n_residues": 68,
+        "n_frames_anomalous": 158,
+        "n_frames_baseline": 843,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": 0.6566,
+        "spearman_final_vs_rmsf": 0.0193,
+        "spearman_contact_vs_rmsf": 0.1941,
+        "spearman_dihedral_vs_rmsf": 0.8466,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 36,
+        "prevalence": 0.545,
+        "auroc": 0.601,
+        "auroc_per_replicate": [
+          0.616,
+          0.616,
+          0.571
+        ],
+        "auprc": 0.64,
+        "rmsf_auroc": 0.462,
+        "auroc_shuffled": 0.443,
+        "delta_auroc": 0.139
+      },
+      "ligand_only": {
+        "skipped": "only 0 functional residue(s) (need 5)",
+        "n_functional": 0
+      },
+      "spearman_attribution_vs_rmsf": 0.106
+    },
+    {
+      "protein": "6l4p_B",
+      "pdb": "6l4p",
+      "chain": "B",
+      "n_replicates": 3,
+      "n_residues_compared": 138,
+      "alignment": "sequence offset -4 (138/145 names agree)",
+      "label_breakdown": {
+        "ligand": 0,
+        "nucleic": 0,
+        "chain": 23
+      },
+      "attribution_diagnostics": {
+        "n_residues": 145,
+        "n_frames_anomalous": 157,
+        "n_frames_baseline": 844,
+        "percentile": 85.0,
+        "spearman_raw_vs_rmsf": 0.4208,
+        "spearman_final_vs_rmsf": 0.0073,
+        "spearman_contact_vs_rmsf": 0.0016,
+        "spearman_dihedral_vs_rmsf": 0.6425,
+        "orthogonalized": true
+      },
+      "primary": {
+        "n_functional": 23,
+        "prevalence": 0.167,
+        "auroc": 0.385,
+        "auroc_per_replicate": [
+          0.456,
+          0.357,
+          0.343
+        ],
+        "auprc": 0.139,
+        "rmsf_auroc": 0.581,
+        "auroc_shuffled": 0.491,
+        "delta_auroc": -0.196
+      },
+      "ligand_only": {
+        "skipped": "only 0 functional residue(s) (need 5)",
+        "n_functional": 0
+      },
+      "spearman_attribution_vs_rmsf": -0.017
+    }
+  ],
+  "failed": {
+    "1g2r_A": "ValueError: only 0 functional residue(s) (need 5)",
+    "1ois_A": "ValueError: only 0 functional residue(s) (need 5)",
+    "1upt_D": "ValueError: sequence alignment failed (best 27/60 at offset -4)",
+    "2vnl_A": "ValueError: only 0 functional residue(s) (need 5)",
+    "3dso_A": "ValueError: only 3 functional residue(s) (need 5)",
+    "4eo1_A": "ValueError: only 3 functional residue(s) (need 5)",
+    "4v1g_B": "ValueError: prevalence 90% outside 5%-80%",
+    "6kty_A": "ValueError: only 0 functional residue(s) (need 5)",
+    "6ypi_A": "ValueError: sequence alignment failed (best 47/97 at offset -9)"
+  }
+}

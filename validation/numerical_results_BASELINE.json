@@ -1,0 +1,134 @@
+{
+  "1VII": {
+    "active_set": {
+      "n_frames": 100,
+      "n_clusters_labels": 10,
+      "n_msm_states": 8,
+      "dropped_original_labels": [
+        2,
+        4
+      ],
+      "identity_mapping": false,
+      "frames_in_dropped_states": 10,
+      "frames_wrong_pi_row (survivors misindexed)": 50,
+      "dropped_frames_reading_valid_but_wrong_pi": 10,
+      "dropped_frames_hitting_default": 0,
+      "rarity_spearman": 0.6755692087430545,
+      "surprise_spearman": 0.21455127259931225,
+      "rarity_top10_overlap": 0.0,
+      "surprise_top10_overlap": 0.1,
+      "fused_spearman": 0.7558612988320292,
+      "fused_top10_overlap": 0.3,
+      "fused_mean_bug": 48.15151515151514,
+      "fused_mean_correct": 50.36363636363636
+    },
+    "ties": {
+      "rarity_largest_tie_group_size": 21,
+      "rarity_tied_raw_value": 0.886056083364,
+      "rarity_score_spread_within_tie_group": 20.202020202020194,
+      "rarity_fair_spread_within_tie_group": 0.0,
+      "surprise_largest_tie_group_size": 31,
+      "surprise_tied_raw_value": 0.0,
+      "surprise_score_spread_within_tie_group": 30.303030303030305,
+      "surprise_fair_spread_within_tie_group": 0.0
+    },
+    "residue_vs_rmsf": {
+      "pearson_r_residue_score_vs_rmsf": 0.9999999999947738,
+      "n_residues": 36,
+      "score_min": 32.256,
+      "score_max": 74.0758
+    },
+    "mean_fused_score": 48.15151515151514
+  },
+  "8H0R": {
+    "active_set": {
+      "n_frames": 100,
+      "n_clusters_labels": 10,
+      "n_msm_states": 7,
+      "dropped_original_labels": [
+        2,
+        4,
+        6
+      ],
+      "identity_mapping": false,
+      "frames_in_dropped_states": 11,
+      "frames_wrong_pi_row (survivors misindexed)": 28,
+      "dropped_frames_reading_valid_but_wrong_pi": 11,
+      "dropped_frames_hitting_default": 0,
+      "rarity_spearman": -0.5021540588410005,
+      "surprise_spearman": -0.20902267826383844,
+      "rarity_top10_overlap": 0.0,
+      "surprise_top10_overlap": 0.1,
+      "fused_spearman": 0.545530702320734,
+      "fused_top10_overlap": 0.4,
+      "fused_mean_bug": 48.292929292929294,
+      "fused_mean_correct": 50.6161616161616
+    },
+    "ties": {
+      "rarity_largest_tie_group_size": 33,
+      "rarity_tied_raw_value": 1.0,
+      "rarity_score_spread_within_tie_group": 32.32323232323232,
+      "rarity_fair_spread_within_tie_group": 0.0,
+      "surprise_largest_tie_group_size": 43,
+      "surprise_tied_raw_value": 0.0,
+      "surprise_score_spread_within_tie_group": 42.42424242424242,
+      "surprise_fair_spread_within_tie_group": 0.0
+    },
+    "residue_vs_rmsf": {
+      "pearson_r_residue_score_vs_rmsf": 0.9081440389277805,
+      "n_residues": 91,
+      "score_min": 29.143,
+      "score_max": 74.1465
+    },
+    "mean_fused_score": 48.292929292929294
+  },
+  "1CRN": {
+    "active_set": {
+      "n_frames": 1001,
+      "n_clusters_labels": 10,
+      "n_msm_states": 7,
+      "dropped_original_labels": [
+        2,
+        4,
+        8
+      ],
+      "identity_mapping": false,
+      "frames_in_dropped_states": 53,
+      "frames_wrong_pi_row (survivors misindexed)": 375,
+      "dropped_frames_reading_valid_but_wrong_pi": 52,
+      "dropped_frames_hitting_default": 1,
+      "rarity_spearman": 0.2617110678369239,
+      "surprise_spearman": -0.45355456014853646,
+      "rarity_top10_overlap": 0.01,
+      "surprise_top10_overlap": 0.65,
+      "fused_spearman": 0.8729441612563889,
+      "fused_top10_overlap": 0.25,
+      "fused_mean_bug": 47.374025974025976,
+      "fused_mean_correct": 52.02487512487512
+    },
+    "ties": {
+      "rarity_largest_tie_group_size": 278,
+      "rarity_tied_raw_value": 1.0,
+      "rarity_score_spread_within_tie_group": 27.700000000000003,
+      "rarity_fair_spread_within_tie_group": 0.0,
+      "surprise_largest_tie_group_size": 410,
+      "surprise_tied_raw_value": 0.0,
+      "surprise_score_spread_within_tie_group": 40.9,
+      "surprise_fair_spread_within_tie_group": 0.0
+    },
+    "mean_fused_score": 47.387612387612386
+  },
+  "unit_checks_tiny_msm": {
+    "rarity_state0_expected": 0.5999999999999996,
+    "rarity_state0_actual": 0.5999999999999996,
+    "rarity_bogus_label5_actual": 1.0,
+    "surprise_0to1_expected": 2.3025850929940455,
+    "surprise_0to1_actual": 2.3025850929940455,
+    "surprise_2to2_expected": 0.2231435513142097,
+    "surprise_2to2_actual": 0.2231435513142097,
+    "surprise_into_bogus_actual(should_flag_not_zero)": 0.0,
+    "surprise_last_frame": 0.0,
+    "rarity_math_ok": true,
+    "surprise_math_ok": true
+  }
+}

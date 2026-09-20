@@ -1,0 +1,128 @@
+{
+  "R1_residue_score_vs_rmsf": {
+    "1VII": {
+      "n": 36,
+      "pearson_post_fix": 0.99629,
+      "spearman_post_fix": 0.9869
+    },
+    "8H0R": {
+      "n": 182,
+      "pearson_post_fix": 0.990482,
+      "spearman_post_fix": 0.9388
+    },
+    "1UBQ": {
+      "n": 76,
+      "pearson_post_fix": 0.992226,
+      "spearman_post_fix": 0.943
+    },
+    "_verdict": "D-04 only PARTIALLY fixed: the constant-offset defect is gone, but residue scores remain ~99% collinear with RMSF (r >= 0.99). The anomaly channel still contributes almost no rank information."
+  },
+  "R2_chain_counts": {
+    "1VII": {
+      "entries": 36,
+      "chain_disambiguated": 0
+    },
+    "8H0R": {
+      "entries": 182,
+      "chain_disambiguated": 182
+    },
+    "1UBQ": {
+      "entries": 76,
+      "chain_disambiguated": 0
+    },
+    "_verdict": "D-05 CONFIRMED fixed: 8H0R now yields 182 entries (was 91)."
+  },
+  "R3_partial_bfactor": {
+    "8H0R": {
+      "n": 178,
+      "spearman_B_vs_score": 0.595,
+      "spearman_B_vs_rmsf": 0.642,
+      "partial_spearman_score_given_rmsf": -0.019
+    },
+    "1UBQ": {
+      "n": 76,
+      "spearman_B_vs_score": 0.573,
+      "spearman_B_vs_rmsf": 0.656,
+      "partial_spearman_score_given_rmsf": -0.181
+    },
+    "_verdict": "B-factor agreement is fully explained by RMSF. Controlling for RMSF, the dynamic score's partial correlation with B-factors is ~0 (-0.02, -0.18). Section 6.1 must NOT be read as external validation of the anomaly signal \u2014 it validates the RMSF component only."
+  },
+  "R4_state_label_circularity": {
+    "1VII": {
+      "fused_all_three": 0.947,
+      "fused_without_rarity": 0.851,
+      "isolation_forest": 0.752,
+      "local_outlier_factor": 0.835
+    },
+    "8H0R": {
+      "fused_all_three": 0.958,
+      "fused_without_rarity": 0.83,
+      "isolation_forest": 0.879,
+      "local_outlier_factor": 0.934
+    },
+    "1UBQ": {
+      "fused_all_three": 0.904,
+      "fused_without_rarity": 0.69,
+      "isolation_forest": 0.696,
+      "local_outlier_factor": 0.694
+    },
+    "1CRN": {
+      "fused_all_three": 0.955,
+      "fused_without_rarity": 0.761,
+      "isolation_forest": 0.845,
+      "local_outlier_factor": 0.49
+    },
+    "_verdict": "Rare-STATE baseline comparison is CIRCULAR. Labels are defined from pi; the rarity channel is 1-pi. Removing it collapses the advantage: the pipeline then loses to LOF on 8H0R (0.83 vs 0.93), loses to Isolation Forest on 1CRN (0.76 vs 0.85), and ties on 1UBQ. The 'wins on all four proteins' claim in section 6.2 is not supportable as a benchmark result."
+  },
+  "R5_transition_label_circularity": {
+    "1VII": {
+      "spearman_surprise_vs_neg_transition_count": 0.514
+    },
+    "8H0R": {
+      "spearman_surprise_vs_neg_transition_count": 0.609
+    },
+    "1UBQ": {
+      "spearman_surprise_vs_neg_transition_count": 0.692
+    },
+    "1CRN": {
+      "spearman_surprise_vs_neg_transition_count": 0.865
+    },
+    "_verdict": "Rare-TRANSITION result is also substantially circular: surprise = -log P, and P is row-normalised from the same count matrix that defines the labels (rho 0.69-0.87 between surprise and negative transition count). The 1UBQ 'headline figure' (surprise 0.91 vs geometric 0.43) therefore cannot be presented as a benchmark win."
+  },
+  "R6_vamp2_test_pairs": {
+    "100_frames": {
+      "lag_5": 15,
+      "lag_10": 10,
+      "lag_15": 5
+    },
+    "1001_frames": {
+      "lag_5": 195,
+      "lag_10": 190,
+      "lag_15": 185
+    },
+    "_verdict": "VAMP-2 'saturation at dim' is explained by a degenerate test set: with 100 frames the 20-frame held-out split leaves only 5 lagged pairs at lag 15. The score is not measuring model quality at that setting at all."
+  },
+  "R7_edge_case_count": {
+    "actual_cases": 25,
+    "report_prose_said": 21,
+    "_verdict": "Report section 3.5 prose understates the count; actual suite is 25 cases."
+  },
+  "R8_core_finding_recheck": {
+    "1VII": {
+      "frames": 100,
+      "frames_reading_wrong_pi": 50,
+      "percent": 50.0
+    },
+    "8H0R": {
+      "frames": 100,
+      "frames_reading_wrong_pi": 28,
+      "percent": 28.0
+    },
+    "1CRN": {
+      "frames": 1001,
+      "frames_reading_wrong_pi": 375,
+      "percent": 37.5
+    },
+    "_verdict": "D-01 CONFIRMED by independent re-derivation: 28-50% of frames would read a different pi value than the truth. The core finding stands unchanged."
+  }
+}

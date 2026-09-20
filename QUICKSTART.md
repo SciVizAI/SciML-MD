@@ -10,9 +10,7 @@ This guide provides the exact step-by-step terminal commands to run the dynamic 
 
 ```bash
 # Install all required packages
-pip install -r requirements_phase1.txt
-pip install -r requirements_phase2.txt
-pip install -r requirements_phase3.txt
+pip install -r requirements.txt
 ```
 
 ### 2. Prepare Your Data
@@ -186,7 +184,7 @@ python tools/score_v2.py \
 cd /path/to/ensemble-anomaly-maps
 
 # Install dependencies
-pip install -r requirements_phase1.txt
+pip install -r requirements.txt
 pip install mdtraj deeptime pyemma scikit-learn pandas numpy
 ```
 

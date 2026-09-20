@@ -1,3 +1,23 @@
+"""DEPRECATED 2026-09-20 - do not use for the visualiser.
+
+This module builds `hotspots_unified.json` with fields named `anomaly_score`
+and `hotspot`. Every one of those names asserts a claim that has been withdrawn:
+
+    CLAIMS.md W-1  "detect dynamic hotspot residues"
+    CLAIMS.md W-2  "per-frame anomaly scores identifying unusual conformations"
+    CLAIMS.md W-5  "often identifies hinge residues, allosteric nodes"
+    CLAIMS.md W-6  the Prime/Rigid hotspot interpretation table
+
+It also reads no trust contract, so it exports numbers the pipeline has gated
+as meaningless for the trajectory in question - state occupancies from a
+trajectory 40x too short to have converged, for instance.
+
+    USE tools/export_for_viewer.py INSTEAD.
+
+It is kept, and kept runnable behind an explicit flag, only so older exports in
+`exports/` remain reproducible. Nothing new should consume its output.
+See INTEGRATION.md and HANDOFF.md.
+"""
 # ================================================================ #
 #  Module:      tools/export_unified.py
 #  Description: Generates hotspots_unified.json — single file with
@@ -7,6 +27,7 @@
 # ================================================================ #
 
 import json
+import sys
 import numpy as np
 import pandas as pd
 from pathlib import Path
@@ -167,6 +188,19 @@ def write_unified(unified: dict, output_path: Path) -> None:
 # Main entry point
 # ---------------------------------------------------------------- #
 def main():
+    # Refuse by default. A deprecated exporter that still runs on muscle memory
+    # is not deprecated, and this one writes withdrawn claims into the file the
+    # viewer reads.
+    if "--i-know-this-is-deprecated" not in sys.argv:
+        raise SystemExit(
+            "tools/export_unified.py is DEPRECATED (2026-09-20).\n"
+            "It emits anomaly_score and hotspot fields, which assert claims\n"
+            "withdrawn in CLAIMS.md (W-1, W-2, W-5, W-6), and it reads no trust\n"
+            "contract, so it can export quantities the pipeline has gated.\n\n"
+            "  Use:  python tools/export_for_viewer.py --all\n\n"
+            "To reproduce a historical export anyway, pass\n"
+            "  --i-know-this-is-deprecated")
+    sys.argv = [a for a in sys.argv if a != "--i-know-this-is-deprecated"]
     parser = argparse.ArgumentParser(
         description="Generate hotspots_unified.json for SciViz"
     )

@@ -1,0 +1,932 @@
+{
+  "n_proteins": 9,
+  "n_events": 61,
+  "event_definition": {
+    "cutoff_ang": 2.0,
+    "min_persist_frames": 20
+  },
+  "firing": {
+    "percentile": 95.0,
+    "max_lead": 50
+  },
+  "acceptance": {
+    "L1_surprise_leads_oneliner": {
+      "median_diff_frames": 1.0,
+      "pass": true
+    },
+    "L2_leads_on_60pct_events": {
+      "frac": 0.508,
+      "pass": false
+    },
+    "L3_wilcoxon_p_lt_0.05": {
+      "p_value": 0.526238577261157,
+      "pass": false
+    },
+    "L4_surprise_beats_random_lead": {
+      "surprise": 29.0,
+      "random": 28.0,
+      "pass": true
+    },
+    "L5_random_at_uniform_expectation": {
+      "median_lead": 28.0,
+      "expected": 25.0,
+      "pass": true
+    },
+    "overall_pass": false
+  },
+  "per_protein": {
+    "1ois_A": {
+      "n_events": 9,
+      "n_basins": 14,
+      "lag_frames": 5,
+      "leads": {
+        "surprise_only": [
+          29,
+          36,
+          1,
+          14,
+          47,
+          22,
+          9,
+          33,
+          34
+        ],
+        "abs_diff_oneliner": [
+          29,
+          2,
+          31,
+          5,
+          20,
+          50,
+          10,
+          23,
+          14
+        ],
+        "frame_to_frame_rmsd": [
+          26,
+          24,
+          6,
+          36,
+          11,
+          6,
+          15,
+          39,
+          25
+        ],
+        "rmsd_from_mean": [
+          20,
+          37,
+          15,
+          50,
+          1,
+          35,
+          18,
+          42,
+          12
+        ],
+        "rarity_only": [
+          29,
+          10,
+          46,
+          46,
+          25,
+          35,
+          3,
+          9,
+          40
+        ],
+        "density_only": [
+          29,
+          1,
+          47,
+          46,
+          20,
+          14,
+          31,
+          8,
+          45
+        ],
+        "pipeline_fused": [
+          29,
+          1,
+          4,
+          46,
+          25,
+          35,
+          34,
+          28,
+          40
+        ],
+        "random_score": [
+          7,
+          30,
+          47,
+          22,
+          9,
+          15,
+          40,
+          45,
+          3
+        ]
+      },
+      "fire_rate": {
+        "surprise_only": 1.0,
+        "abs_diff_oneliner": 1.0,
+        "frame_to_frame_rmsd": 1.0,
+        "rmsd_from_mean": 1.0,
+        "rarity_only": 1.0,
+        "density_only": 1.0,
+        "pipeline_fused": 1.0,
+        "random_score": 1.0
+      },
+      "median_lead": {
+        "surprise_only": 29.0,
+        "abs_diff_oneliner": 20.0,
+        "frame_to_frame_rmsd": 24.0,
+        "rmsd_from_mean": 20.0,
+        "rarity_only": 29.0,
+        "density_only": 29.0,
+        "pipeline_fused": 29.0,
+        "random_score": 22.0
+      }
+    },
+    "1upt_D": {
+      "n_events": 4,
+      "n_basins": 41,
+      "lag_frames": 5,
+      "leads": {
+        "surprise_only": [
+          30,
+          48,
+          30,
+          31
+        ],
+        "abs_diff_oneliner": [
+          16,
+          46,
+          29,
+          0
+        ],
+        "frame_to_frame_rmsd": [
+          25,
+          50,
+          6,
+          41
+        ],
+        "rmsd_from_mean": [
+          20,
+          45,
+          18,
+          14
+        ],
+        "rarity_only": [
+          43,
+          43,
+          25,
+          14
+        ],
+        "density_only": [
+          8,
+          47,
+          1,
+          14
+        ],
+        "pipeline_fused": [
+          18,
+          16,
+          1,
+          14
+        ],
+        "random_score": [
+          38,
+          46,
+          12,
+          35
+        ]
+      },
+      "fire_rate": {
+        "surprise_only": 1.0,
+        "abs_diff_oneliner": 1.0,
+        "frame_to_frame_rmsd": 1.0,
+        "rmsd_from_mean": 1.0,
+        "rarity_only": 1.0,
+        "density_only": 1.0,
+        "pipeline_fused": 1.0,
+        "random_score": 1.0
+      },
+      "median_lead": {
+        "surprise_only": 30.5,
+        "abs_diff_oneliner": 22.5,
+        "frame_to_frame_rmsd": 33.0,
+        "rmsd_from_mean": 19.0,
+        "rarity_only": 34.0,
+        "density_only": 11.0,
+        "pipeline_fused": 15.0,
+        "random_score": 36.5
+      }
+    },
+    "2hnu_A": {
+      "n_events": 8,
+      "n_basins": 5,
+      "lag_frames": 5,
+      "leads": {
+        "surprise_only": [
+          47,
+          21,
+          6,
+          17,
+          50,
+          23,
+          20,
+          26
+        ],
+        "abs_diff_oneliner": [
+          31,
+          33,
+          6,
+          50,
+          29,
+          49,
+          2,
+          13
+        ],
+        "frame_to_frame_rmsd": [
+          6,
+          6,
+          43,
+          6,
+          6,
+          25,
+          11,
+          33
+        ],
+        "rmsd_from_mean": [
+          13,
+          1,
+          38,
+          24,
+          1,
+          12,
+          6,
+          1
+        ],
+        "rarity_only": [
+          50,
+          43,
+          39,
+          21,
+          21,
+          5,
+          6,
+          28
+        ],
+        "density_only": [
+          42,
+          1,
+          38,
+          5,
+          21,
+          28,
+          6,
+          1
+        ],
+        "pipeline_fused": [
+          42,
+          42,
+          39,
+          1,
+          21,
+          12,
+          6,
+          28
+        ],
+        "random_score": [
+          49,
+          2,
+          39,
+          6,
+          14,
+          10,
+          0,
+          12
+        ]
+      },
+      "fire_rate": {
+        "surprise_only": 1.0,
+        "abs_diff_oneliner": 1.0,
+        "frame_to_frame_rmsd": 1.0,
+        "rmsd_from_mean": 1.0,
+        "rarity_only": 1.0,
+        "density_only": 1.0,
+        "pipeline_fused": 1.0,
+        "random_score": 1.0
+      },
+      "median_lead": {
+        "surprise_only": 22.0,
+        "abs_diff_oneliner": 30.0,
+        "frame_to_frame_rmsd": 8.5,
+        "rmsd_from_mean": 9.0,
+        "rarity_only": 24.5,
+        "density_only": 13.5,
+        "pipeline_fused": 24.5,
+        "random_score": 11.0
+      }
+    },
+    "2w56_A": {
+      "n_events": 4,
+      "n_basins": 5,
+      "lag_frames": 5,
+      "leads": {
+        "surprise_only": [
+          46,
+          7,
+          20,
+          45
+        ],
+        "abs_diff_oneliner": [
+          50,
+          46,
+          4,
+          5
+        ],
+        "frame_to_frame_rmsd": [
+          6,
+          8,
+          47,
+          16
+        ],
+        "rmsd_from_mean": [
+          1,
+          8,
+          1,
+          9
+        ],
+        "rarity_only": [
+          49,
+          2,
+          18,
+          13
+        ],
+        "density_only": [
+          42,
+          8,
+          15,
+          21
+        ],
+        "pipeline_fused": [
+          49,
+          49,
+          36,
+          13
+        ],
+        "random_score": [
+          21,
+          46,
+          5,
+          50
+        ]
+      },
+      "fire_rate": {
+        "surprise_only": 1.0,
+        "abs_diff_oneliner": 1.0,
+        "frame_to_frame_rmsd": 1.0,
+        "rmsd_from_mean": 1.0,
+        "rarity_only": 1.0,
+        "density_only": 1.0,
+        "pipeline_fused": 1.0,
+        "random_score": 1.0
+      },
+      "median_lead": {
+        "surprise_only": 32.5,
+        "abs_diff_oneliner": 25.5,
+        "frame_to_frame_rmsd": 12.0,
+        "rmsd_from_mean": 4.5,
+        "rarity_only": 15.5,
+        "density_only": 18.0,
+        "pipeline_fused": 42.5,
+        "random_score": 33.5
+      }
+    },
+    "3bzl_D": {
+      "n_events": 5,
+      "n_basins": 20,
+      "lag_frames": 5,
+      "leads": {
+        "surprise_only": [
+          37,
+          50,
+          50,
+          47,
+          1
+        ],
+        "abs_diff_oneliner": [
+          22,
+          50,
+          43,
+          9,
+          49
+        ],
+        "frame_to_frame_rmsd": [
+          19,
+          0,
+          6,
+          6,
+          21
+        ],
+        "rmsd_from_mean": [
+          1,
+          40,
+          31,
+          5,
+          7
+        ],
+        "rarity_only": [
+          37,
+          50,
+          50,
+          16,
+          46
+        ],
+        "density_only": [
+          37,
+          36,
+          8,
+          43,
+          26
+        ],
+        "pipeline_fused": [
+          37,
+          48,
+          50,
+          4,
+          26
+        ],
+        "random_score": [
+          31,
+          6,
+          28,
+          24,
+          39
+        ]
+      },
+      "fire_rate": {
+        "surprise_only": 1.0,
+        "abs_diff_oneliner": 1.0,
+        "frame_to_frame_rmsd": 1.0,
+        "rmsd_from_mean": 1.0,
+        "rarity_only": 1.0,
+        "density_only": 1.0,
+        "pipeline_fused": 1.0,
+        "random_score": 1.0
+      },
+      "median_lead": {
+        "surprise_only": 47.0,
+        "abs_diff_oneliner": 43.0,
+        "frame_to_frame_rmsd": 6.0,
+        "rmsd_from_mean": 7.0,
+        "rarity_only": 46.0,
+        "density_only": 36.0,
+        "pipeline_fused": 37.0,
+        "random_score": 28.0
+      }
+    },
+    "3ig9_C": {
+      "n_events": 7,
+      "n_basins": 7,
+      "lag_frames": 5,
+      "leads": {
+        "surprise_only": [
+          14,
+          9,
+          18,
+          8,
+          1,
+          48,
+          40
+        ],
+        "abs_diff_oneliner": [
+          25,
+          41,
+          49,
+          25,
+          7,
+          50,
+          16
+        ],
+        "frame_to_frame_rmsd": [
+          0,
+          14,
+          50,
+          15,
+          7,
+          16,
+          28
+        ],
+        "rmsd_from_mean": [
+          26,
+          3,
+          24,
+          15,
+          9,
+          25,
+          7
+        ],
+        "rarity_only": [
+          35,
+          24,
+          22,
+          37,
+          31,
+          47,
+          39
+        ],
+        "density_only": [
+          26,
+          46,
+          9,
+          35,
+          16,
+          33,
+          33
+        ],
+        "pipeline_fused": [
+          20,
+          10,
+          9,
+          37,
+          31,
+          15,
+          33
+        ],
+        "random_score": [
+          29,
+          49,
+          22,
+          48,
+          22,
+          36,
+          46
+        ]
+      },
+      "fire_rate": {
+        "surprise_only": 1.0,
+        "abs_diff_oneliner": 1.0,
+        "frame_to_frame_rmsd": 1.0,
+        "rmsd_from_mean": 1.0,
+        "rarity_only": 1.0,
+        "density_only": 1.0,
+        "pipeline_fused": 1.0,
+        "random_score": 1.0
+      },
+      "median_lead": {
+        "surprise_only": 14.0,
+        "abs_diff_oneliner": 25.0,
+        "frame_to_frame_rmsd": 15.0,
+        "rmsd_from_mean": 15.0,
+        "rarity_only": 35.0,
+        "density_only": 33.0,
+        "pipeline_fused": 20.0,
+        "random_score": 36.0
+      }
+    },
+    "4jgi_A": {
+      "n_events": 13,
+      "n_basins": 4,
+      "lag_frames": 5,
+      "leads": {
+        "surprise_only": [
+          24,
+          31,
+          5,
+          45,
+          16,
+          3,
+          0,
+          43,
+          14,
+          28,
+          40,
+          44,
+          31
+        ],
+        "abs_diff_oneliner": [
+          12,
+          4,
+          50,
+          35,
+          26,
+          39,
+          34,
+          39,
+          28,
+          9,
+          5,
+          42,
+          4
+        ],
+        "frame_to_frame_rmsd": [
+          19,
+          50,
+          50,
+          1,
+          29,
+          4,
+          31,
+          34,
+          45,
+          20,
+          39,
+          1,
+          48
+        ],
+        "rmsd_from_mean": [
+          14,
+          1,
+          49,
+          37,
+          46,
+          23,
+          6,
+          29,
+          40,
+          28,
+          43,
+          35,
+          1
+        ],
+        "rarity_only": [
+          50,
+          6,
+          42,
+          35,
+          48,
+          45,
+          27,
+          38,
+          9,
+          1,
+          21,
+          39,
+          25
+        ],
+        "density_only": [
+          47,
+          6,
+          42,
+          23,
+          34,
+          36,
+          19,
+          29,
+          31,
+          27,
+          21,
+          49,
+          1
+        ],
+        "pipeline_fused": [
+          50,
+          6,
+          42,
+          46,
+          48,
+          45,
+          16,
+          35,
+          0,
+          1,
+          21,
+          39,
+          9
+        ],
+        "random_score": [
+          16,
+          6,
+          50,
+          37,
+          14,
+          49,
+          12,
+          38,
+          33,
+          27,
+          48,
+          25,
+          18
+        ]
+      },
+      "fire_rate": {
+        "surprise_only": 1.0,
+        "abs_diff_oneliner": 1.0,
+        "frame_to_frame_rmsd": 1.0,
+        "rmsd_from_mean": 1.0,
+        "rarity_only": 1.0,
+        "density_only": 1.0,
+        "pipeline_fused": 1.0,
+        "random_score": 1.0
+      },
+      "median_lead": {
+        "surprise_only": 28.0,
+        "abs_diff_oneliner": 28.0,
+        "frame_to_frame_rmsd": 31.0,
+        "rmsd_from_mean": 29.0,
+        "rarity_only": 35.0,
+        "density_only": 29.0,
+        "pipeline_fused": 35.0,
+        "random_score": 27.0
+      }
+    },
+    "4zya_A": {
+      "n_events": 3,
+      "n_basins": 18,
+      "lag_frames": 5,
+      "leads": {
+        "surprise_only": [
+          45,
+          29,
+          7
+        ],
+        "abs_diff_oneliner": [
+          20,
+          20,
+          30
+        ],
+        "frame_to_frame_rmsd": [
+          10,
+          13,
+          50
+        ],
+        "rmsd_from_mean": [
+          12,
+          8,
+          3
+        ],
+        "rarity_only": [
+          16,
+          8,
+          29
+        ],
+        "density_only": [
+          12,
+          47,
+          22
+        ],
+        "pipeline_fused": [
+          16,
+          8,
+          28
+        ],
+        "random_score": [
+          28,
+          32,
+          20
+        ]
+      },
+      "fire_rate": {
+        "surprise_only": 1.0,
+        "abs_diff_oneliner": 1.0,
+        "frame_to_frame_rmsd": 1.0,
+        "rmsd_from_mean": 1.0,
+        "rarity_only": 1.0,
+        "density_only": 1.0,
+        "pipeline_fused": 1.0,
+        "random_score": 1.0
+      },
+      "median_lead": {
+        "surprise_only": 29.0,
+        "abs_diff_oneliner": 20.0,
+        "frame_to_frame_rmsd": 13.0,
+        "rmsd_from_mean": 8.0,
+        "rarity_only": 16.0,
+        "density_only": 22.0,
+        "pipeline_fused": 16.0,
+        "random_score": 28.0
+      }
+    },
+    "6ypi_A": {
+      "n_events": 8,
+      "n_basins": 8,
+      "lag_frames": 5,
+      "leads": {
+        "surprise_only": [
+          16,
+          0,
+          3,
+          29,
+          23,
+          5,
+          45,
+          17
+        ],
+        "abs_diff_oneliner": [
+          36,
+          9,
+          32,
+          14,
+          24,
+          48,
+          33,
+          30
+        ],
+        "frame_to_frame_rmsd": [
+          7,
+          6,
+          29,
+          1,
+          10,
+          32,
+          36,
+          15
+        ],
+        "rmsd_from_mean": [
+          2,
+          44,
+          24,
+          22,
+          1,
+          50,
+          22,
+          45
+        ],
+        "rarity_only": [
+          50,
+          17,
+          40,
+          20,
+          0,
+          50,
+          35,
+          46
+        ],
+        "density_only": [
+          50,
+          17,
+          22,
+          48,
+          45,
+          50,
+          24,
+          20
+        ],
+        "pipeline_fused": [
+          50,
+          17,
+          40,
+          29,
+          0,
+          21,
+          31,
+          18
+        ],
+        "random_score": [
+          18,
+          18,
+          41,
+          47,
+          11,
+          18,
+          15,
+          22
+        ]
+      },
+      "fire_rate": {
+        "surprise_only": 1.0,
+        "abs_diff_oneliner": 1.0,
+        "frame_to_frame_rmsd": 1.0,
+        "rmsd_from_mean": 1.0,
+        "rarity_only": 1.0,
+        "density_only": 1.0,
+        "pipeline_fused": 1.0,
+        "random_score": 1.0
+      },
+      "median_lead": {
+        "surprise_only": 16.5,
+        "abs_diff_oneliner": 31.0,
+        "frame_to_frame_rmsd": 12.5,
+        "rmsd_from_mean": 23.0,
+        "rarity_only": 37.5,
+        "density_only": 34.5,
+        "pipeline_fused": 25.0,
+        "random_score": 18.0
+      }
+    }
+  },
+  "skipped": {
+    "1g2r_A": "only 0 persistent basin change(s)",
+    "1j5u_A": "only 0 persistent basin change(s)",
+    "2ad6_D": "only 0 persistent basin change(s)",
+    "2vnl_A": "only 0 persistent basin change(s)",
+    "3bpj_B": "only 0 persistent basin change(s)",
+    "3dso_A": "only 2 persistent basin change(s)",
+    "3rmq_A": "only 2 persistent basin change(s)",
+    "4eo1_A": "only 0 persistent basin change(s)",
+    "4v1g_B": "only 0 persistent basin change(s)",
+    "4xo1_A": "only 0 persistent basin change(s)",
+    "5cyz_C": "only 2 persistent basin change(s)",
+    "5xct_B": "only 0 persistent basin change(s)",
+    "5z42_A": "only 0 persistent basin change(s)",
+    "6c62_C": "only 0 persistent basin change(s)",
+    "6kty_A": "only 0 persistent basin change(s)",
+    "6l4p_B": "only 0 persistent basin change(s)"
+  }
+}

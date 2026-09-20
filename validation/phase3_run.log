@@ -1,0 +1,733 @@
+discovered 75 system(s)
+
+[1/75] 1g2r_A:1g2r_A_R1             n= 1001 surprise 0.666  jump 0.462  rmsd_mean 0.463
+13:21:22 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[2/75] 1g2r_A:1g2r_A_R2             n= 1001 surprise 0.743  jump 0.779  rmsd_mean 0.803
+13:21:30 [WARNING] Skipping state set [1] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:21:31 [WARNING] Skipping state set [1] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:21:31 [WARNING] Skipping state set [1] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:21:31 [WARNING] Skipping state set [1] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:21:32 [WARNING] Skipping state set [1] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[3/75] 1g2r_A:1g2r_A_R3             n= 1001 surprise 0.721  jump 0.627  rmsd_mean 0.565
+[4/75] 1j5u_A:1j5u_A_R1             n= 1001 surprise 0.857  jump 0.464  rmsd_mean 0.461
+13:21:48 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:21:48 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:21:49 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:21:49 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:21:50 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[5/75] 1j5u_A:1j5u_A_R2             n= 1001 surprise 0.891  jump 0.613  rmsd_mean 0.463
+[6/75] 1j5u_A:1j5u_A_R3             n= 1001 surprise 0.936  jump 0.614  rmsd_mean 0.482
+13:22:07 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:08 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:08 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:09 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:10 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:10 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:10 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:11 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:11 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:11 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:11 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:12 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:12 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:12 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:12 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[7/75] 1ois_A:1ois_A_R1             n= 1001 surprise 0.737  jump 0.315  rmsd_mean 0.400
+13:22:21 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:22 [WARNING] Skipping state set [3] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:22 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:23 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:23 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:24 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:24 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:25 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:26 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:26 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[8/75] 1ois_A:1ois_A_R2             n= 1001 surprise 0.805  jump 0.482  rmsd_mean 0.503
+13:22:35 [WARNING] Skipping state set [3] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:35 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:36 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:36 [WARNING] Skipping state set [3] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:36 [WARNING] Skipping state set [1] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:37 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:38 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:38 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:39 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:39 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:40 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[9/75] 1ois_A:1ois_A_R3             n= 1001 surprise 0.653  jump 0.551  rmsd_mean 0.816
+13:22:43 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:43 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:43 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:44 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:44 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:44 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:45 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:45 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:45 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[10/75] 1upt_D:1upt_D_R1             n= 1001 surprise 0.743  jump 0.247  rmsd_mean 0.317
+13:22:48 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:48 [WARNING] Skipping state set [19] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:49 [WARNING] Skipping state set [16] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:49 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:49 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:50 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:50 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:50 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[11/75] 1upt_D:1upt_D_R2             n= 1001 surprise 0.759  jump 0.349  rmsd_mean 0.322
+13:22:53 [WARNING] Skipping state set [20] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:53 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:54 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:54 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:54 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:54 [WARNING] Skipping state set [10] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:55 [WARNING] Skipping state set [10] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:55 [WARNING] Skipping state set [10] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:55 [WARNING] Skipping state set [10] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:22:56 [WARNING] Skipping state set [10] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[12/75] 1upt_D:1upt_D_R3             n= 1001 surprise 0.734  jump 0.567  rmsd_mean 0.637
+13:23:00 [WARNING] Skipping state set [33] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [41] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [38] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [33] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [41] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [38] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [33] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [41] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [38] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:00 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:01 [WARNING] Skipping state set [33] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:01 [WARNING] Skipping state set [41] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:01 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:01 [WARNING] Skipping state set [38] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:01 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:01 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:01 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:01 [WARNING] Skipping state set [33] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:01 [WARNING] Skipping state set [41] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:01 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:01 [WARNING] Skipping state set [38] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:01 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:01 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:01 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[13/75] 2ad6_D:2ad6_D_R1             n= 1001 surprise 0.893  jump 0.671  rmsd_mean 0.625
+13:23:04 [WARNING] Skipping state set [1] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:05 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:05 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:06 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:06 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:06 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:06 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[14/75] 2ad6_D:2ad6_D_R2             n= 1001 surprise 0.813  jump 0.797  rmsd_mean 0.572
+[15/75] 2ad6_D:2ad6_D_R3             n= 1001 surprise 0.896  jump 0.587  rmsd_mean 0.100
+13:23:15 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:15 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:15 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:15 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:16 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:16 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:16 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:17 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:17 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:17 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[16/75] 2hnu_A:2hnu_A_R1             n= 1001 surprise 0.787  jump 0.508  rmsd_mean 0.449
+13:23:20 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:21 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:21 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:21 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[17/75] 2hnu_A:2hnu_A_R2             n= 1001 surprise 0.929  jump 0.556  rmsd_mean 0.382
+13:23:25 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:26 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:27 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:27 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:27 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:28 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:28 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:28 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[18/75] 2hnu_A:2hnu_A_R3             n= 1001 surprise 0.803  jump 0.699  rmsd_mean 0.649
+[19/75] 2vnl_A:2vnl_A_R1             n= 1001 surprise 0.905  jump 0.523  rmsd_mean 0.346
+13:23:45 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:46 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:46 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:47 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:47 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[20/75] 2vnl_A:2vnl_A_R2             n= 1001 surprise 0.865  jump 0.449  rmsd_mean 0.385
+13:23:53 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:55 [WARNING] Skipping state set [37] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:56 [WARNING] Skipping state set [37] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:56 [WARNING] Skipping state set [37] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:56 [WARNING] Skipping state set [37] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:23:57 [WARNING] Skipping state set [37] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[21/75] 2vnl_A:2vnl_A_R3             n= 1001 surprise 0.804  jump 0.520  rmsd_mean 0.371
+13:24:02 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:03 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:03 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:04 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:04 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:05 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:05 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:05 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:06 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:06 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[22/75] 2w56_A:2w56_A_R1             n= 1001 surprise 0.883  jump 0.491  rmsd_mean 0.665
+13:24:12 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:12 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:13 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:13 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:14 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:14 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:15 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:15 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:15 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:16 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[23/75] 2w56_A:2w56_A_R2             n= 1001 surprise 0.803  jump 0.666  rmsd_mean 0.623
+13:24:21 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:22 [WARNING] Skipping state set [18] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:22 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:22 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:23 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:23 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:24 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:24 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:24 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:25 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:25 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[24/75] 2w56_A:2w56_A_R3             n= 1001 surprise 0.893  jump 0.705  rmsd_mean 0.667
+13:24:29 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[25/75] 3bpj_B:3bpj_B_R1             n= 1001 surprise 0.874  jump 0.778  rmsd_mean 0.549
+13:24:35 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:35 [WARNING] Skipping state set [10] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:36 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:36 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:37 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:37 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:37 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:37 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:37 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:37 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:38 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:38 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[26/75] 3bpj_B:3bpj_B_R2             n= 1001 surprise 0.829  jump 0.645  rmsd_mean 0.484
+13:24:41 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:41 [WARNING] Skipping state set [44] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:42 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:42 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:42 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:43 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:43 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:43 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:44 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[27/75] 3bpj_B:3bpj_B_R3             n= 1001 surprise 0.849  jump 0.701  rmsd_mean 0.307
+13:24:47 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:47 [WARNING] Skipping state set [22] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:48 [WARNING] Skipping state set [21] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:49 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:49 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:49 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:50 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:50 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[28/75] 3bzl_D:3bzl_D_R1             n= 1001 surprise 0.873  jump 0.509  rmsd_mean 0.252
+13:24:53 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:54 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:54 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:54 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:55 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:55 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:55 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:56 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:56 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:24:56 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[29/75] 3bzl_D:3bzl_D_R2             n= 1001 surprise 0.835  jump 0.737  rmsd_mean 0.499
+13:25:00 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:00 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:00 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:01 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:01 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:01 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:02 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:02 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:02 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:03 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[30/75] 3bzl_D:3bzl_D_R3             n= 1001 surprise 0.752  jump 0.510  rmsd_mean 0.549
+13:25:06 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:06 [WARNING] Skipping state set [13] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:06 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:07 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:07 [WARNING] Skipping state set [8] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:07 [WARNING] Skipping state set [34] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:07 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:08 [WARNING] Skipping state set [34] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:08 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:08 [WARNING] Skipping state set [34] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:08 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:08 [WARNING] Skipping state set [34] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:08 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:08 [WARNING] Skipping state set [34] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:08 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[31/75] 3dso_A:3dso_A_R1             n= 1001 surprise 0.871  jump 0.682  rmsd_mean 0.537
+13:25:11 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:12 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:12 [WARNING] Skipping state set [38] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:12 [WARNING] Skipping state set [22] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:13 [WARNING] Skipping state set [13] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:13 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:13 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:14 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:14 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:14 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[32/75] 3dso_A:3dso_A_R2             n= 1001 surprise 0.792  jump 0.590  rmsd_mean 0.461
+13:25:17 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:18 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:18 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:19 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:19 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:19 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:19 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:20 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[33/75] 3dso_A:3dso_A_R3             n= 1001 surprise 0.865  jump 0.430  rmsd_mean 0.205
+13:25:23 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:23 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:23 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:24 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:24 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:24 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:25 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:25 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:25 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:26 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[34/75] 3ig9_C:3ig9_C_R1             n= 1001 surprise 0.781  jump 0.554  rmsd_mean 0.586
+13:25:29 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:29 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:29 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:29 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:30 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:30 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:30 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:31 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:31 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:31 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[35/75] 3ig9_C:3ig9_C_R2             n= 1001 surprise 0.803  jump 0.722  rmsd_mean 0.490
+13:25:34 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:35 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:35 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:35 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:36 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:36 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:36 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:37 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:37 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:37 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[36/75] 3ig9_C:3ig9_C_R3             n= 1001 surprise 0.823  jump 0.665  rmsd_mean 0.397
+13:25:41 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:41 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:42 [WARNING] Skipping state set [3] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:43 [WARNING] Skipping state set [40] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:43 [WARNING] Skipping state set [9] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:43 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:44 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:44 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:44 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:45 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[37/75] 3rmq_A:3rmq_A_R1             n= 1001 surprise 0.813  jump 0.693  rmsd_mean 0.546
+13:25:49 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:50 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:50 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:51 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:51 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:51 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:52 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:52 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:53 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[38/75] 3rmq_A:3rmq_A_R2             n= 1001 surprise 0.778  jump 0.596  rmsd_mean 0.511
+13:25:57 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:58 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:58 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:59 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:59 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:25:59 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:00 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:00 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[39/75] 3rmq_A:3rmq_A_R3             n= 1001 surprise 0.863  jump 0.591  rmsd_mean 0.450
+13:26:03 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:03 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:03 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:04 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:04 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:04 [WARNING] Skipping state set [8] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:05 [WARNING] Skipping state set [8] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:05 [WARNING] Skipping state set [8] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:05 [WARNING] Skipping state set [8] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:05 [WARNING] Skipping state set [8] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[40/75] 4eo1_A:4eo1_A_R1             n= 1001 surprise 0.686  jump 0.510  rmsd_mean 0.473
+13:26:08 [WARNING] Skipping state set [25] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:08 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:09 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:09 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:09 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:09 [WARNING] Skipping state set [11] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:10 [WARNING] Skipping state set [11] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:10 [WARNING] Skipping state set [11] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:10 [WARNING] Skipping state set [11] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:11 [WARNING] Skipping state set [11] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[41/75] 4eo1_A:4eo1_A_R2             n= 1001 surprise 0.758  jump 0.416  rmsd_mean 0.295
+13:26:13 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:13 [WARNING] Skipping state set [34] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:14 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:14 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:14 [WARNING] Skipping state set [30] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:15 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:15 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:15 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:15 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:16 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[42/75] 4eo1_A:4eo1_A_R3             n= 1001 surprise 0.714  jump 0.632  rmsd_mean 0.653
+13:26:24 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:24 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:25 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:25 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:26 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:26 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:27 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:27 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:28 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[43/75] 4jgi_A:4jgi_A_R1             n= 1001 surprise 0.844  jump 0.662  rmsd_mean 0.395
+13:26:37 [WARNING] Skipping state set [44] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:38 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:38 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:39 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:40 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:40 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[44/75] 4jgi_A:4jgi_A_R2             n= 1001 surprise 0.778  jump 0.573  rmsd_mean 0.511
+13:26:48 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:50 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:50 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:51 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:51 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:52 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:52 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[45/75] 4jgi_A:4jgi_A_R3             n= 1001 surprise 0.766  jump 0.566  rmsd_mean 0.498
+13:26:55 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:56 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:56 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:57 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:57 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:58 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:58 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:26:58 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[46/75] 4v1g_B:4v1g_B_R1             n= 1001 surprise 0.800  jump 0.497  rmsd_mean 0.358
+13:27:01 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:02 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:02 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:02 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:03 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:03 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:03 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:03 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:04 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:04 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:04 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:04 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:04 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:04 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[47/75] 4v1g_B:4v1g_B_R2             n= 1001 surprise 0.863  jump 0.626  rmsd_mean 0.641
+13:27:09 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:09 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:09 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:10 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:10 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:10 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[48/75] 4v1g_B:4v1g_B_R3             n= 1001 surprise 0.831  jump 0.701  rmsd_mean 0.283
+13:27:13 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:14 [WARNING] Skipping state set [13] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:14 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:14 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:15 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:15 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:15 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[49/75] 4xo1_A:4xo1_A_R1             n= 1001 surprise 0.852  jump 0.566  rmsd_mean 0.435
+13:27:19 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:19 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:20 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:20 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:20 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:20 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[50/75] 4xo1_A:4xo1_A_R2             n= 1001 surprise 0.802  jump 0.741  rmsd_mean 0.472
+13:27:23 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:24 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:24 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:24 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:24 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:25 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:25 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:25 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:26 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[51/75] 4xo1_A:4xo1_A_R3             n= 1001 surprise 0.847  jump 0.501  rmsd_mean 0.543
+13:27:29 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:29 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:29 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:30 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:30 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:30 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:31 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:31 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:31 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:32 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[52/75] 4zya_A:4zya_A_R1             n= 1001 surprise 0.813  jump 0.696  rmsd_mean 0.354
+13:27:35 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:35 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:35 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:36 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:36 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:36 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:37 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:37 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:37 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:38 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[53/75] 4zya_A:4zya_A_R2             n= 1001 surprise 0.742  jump 0.523  rmsd_mean 0.391
+13:27:41 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:41 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:41 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:41 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:42 [WARNING] Skipping state set [9] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:42 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:42 [WARNING] Skipping state set [18] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:42 [WARNING] Skipping state set [27] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:43 [WARNING] Skipping state set [18] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:43 [WARNING] Skipping state set [27] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:43 [WARNING] Skipping state set [18] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:43 [WARNING] Skipping state set [27] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:43 [WARNING] Skipping state set [18] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:43 [WARNING] Skipping state set [27] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:44 [WARNING] Skipping state set [18] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:44 [WARNING] Skipping state set [27] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[54/75] 4zya_A:4zya_A_R3             n= 1001 surprise 0.707  jump 0.655  rmsd_mean 0.592
+13:27:49 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:50 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:50 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:50 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:51 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:51 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[55/75] 5cyz_C:5cyz_C_R1             n= 1001 surprise 0.647  jump 0.700  rmsd_mean 0.553
+13:27:57 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:58 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:58 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:58 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:27:59 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[56/75] 5cyz_C:5cyz_C_R2             n= 1001 surprise 0.925  jump 0.768  rmsd_mean 0.456
+13:28:04 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[57/75] 5cyz_C:5cyz_C_R3             n= 1001 surprise 0.893  jump 0.663  rmsd_mean 0.628
+[58/75] 5xct_B:5xct_B_R1             n= 1001 surprise 0.819  jump 0.670  rmsd_mean 0.495
+13:28:25 [WARNING] Skipping state set [39] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:25 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:25 [WARNING] Skipping state set [39] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:25 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:25 [WARNING] Skipping state set [39] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:25 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:26 [WARNING] Skipping state set [39] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:26 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:26 [WARNING] Skipping state set [39] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:26 [WARNING] Skipping state set [43] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[59/75] 5xct_B:5xct_B_R2             n= 1001 surprise 0.874  jump 0.803  rmsd_mean 0.498
+13:28:34 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:35 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:35 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:36 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:36 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[60/75] 5xct_B:5xct_B_R3             n= 1001 surprise 0.684  jump 0.702  rmsd_mean 0.646
+13:28:41 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:42 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[61/75] 5z42_A:5z42_A_R1             n= 1001 surprise 0.786  jump 0.641  rmsd_mean 0.853
+13:28:48 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:49 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:49 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:49 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:50 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:50 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:51 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:51 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:51 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[62/75] 5z42_A:5z42_A_R2             n= 1001 surprise 0.782  jump 0.484  rmsd_mean 0.419
+13:28:55 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:56 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:56 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:57 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:57 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:57 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:58 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:58 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:58 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:28:59 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[63/75] 5z42_A:5z42_A_R3             n= 1001 surprise 0.880  jump 0.613  rmsd_mean 0.668
+13:29:03 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:03 [WARNING] Skipping state set [44] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:03 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:03 [WARNING] Skipping state set [44] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:04 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:04 [WARNING] Skipping state set [44] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:04 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:04 [WARNING] Skipping state set [44] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:04 [WARNING] Skipping state set [42] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:04 [WARNING] Skipping state set [44] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[64/75] 6c62_C:6c62_C_R1             n= 1001 surprise 0.711  jump 0.896  rmsd_mean 0.965
+13:29:08 [WARNING] Skipping state set [5] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:09 [WARNING] Skipping state set [5] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:09 [WARNING] Skipping state set [5] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:09 [WARNING] Skipping state set [5] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:09 [WARNING] Skipping state set [5] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[65/75] 6c62_C:6c62_C_R2             n= 1001 surprise 0.824  jump 0.442  rmsd_mean 0.344
+13:29:12 [WARNING] Skipping state set [33] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:13 [WARNING] Skipping state set [34] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:14 [WARNING] Skipping state set [44] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:14 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:14 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:14 [WARNING] Skipping state set [44] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:14 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:14 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:14 [WARNING] Skipping state set [44] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:14 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:14 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:14 [WARNING] Skipping state set [44] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:14 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:15 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:15 [WARNING] Skipping state set [44] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:15 [WARNING] Skipping state set [45] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:15 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[66/75] 6c62_C:6c62_C_R3             n= 1001 surprise 0.870  jump 0.726  rmsd_mean 0.555
+13:29:22 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:24 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[67/75] 6kty_A:6kty_A_R1             n= 1001 surprise 0.736  jump 0.487  rmsd_mean 0.415
+13:29:33 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:34 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:34 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:35 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:36 [WARNING] Skipping state set [9] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:36 [WARNING] Skipping state set [9] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:37 [WARNING] Skipping state set [9] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:37 [WARNING] Skipping state set [9] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:38 [WARNING] Skipping state set [9] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[68/75] 6kty_A:6kty_A_R2             n= 1001 surprise 0.533  jump 0.477  rmsd_mean 0.385
+13:29:45 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:45 [WARNING] Skipping state set [17] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:46 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[69/75] 6kty_A:6kty_A_R3             n= 1001 surprise 0.735  jump 0.566  rmsd_mean 0.660
+13:29:55 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:55 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:56 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:57 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:57 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:58 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:58 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:29:58 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[70/75] 6l4p_B:6l4p_B_R1             n= 1001 surprise 0.847  jump 0.571  rmsd_mean 0.485
+13:30:04 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:04 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:05 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:05 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:05 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:06 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:06 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:07 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:07 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:08 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[71/75] 6l4p_B:6l4p_B_R2             n= 1001 surprise 0.818  jump 0.643  rmsd_mean 0.510
+13:30:13 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:13 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:14 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:14 [WARNING] Skipping state set [7] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:15 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:16 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:16 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:16 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:17 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[72/75] 6l4p_B:6l4p_B_R3             n= 1001 surprise 0.732  jump 0.709  rmsd_mean 0.468
+13:30:21 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:21 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:21 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:22 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:22 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:22 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:23 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:23 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:23 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:24 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[73/75] 6ypi_A:6ypi_A_R1             n= 1001 surprise 0.827  jump 0.668  rmsd_mean 0.364
+13:30:27 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:28 [WARNING] Skipping state set [2] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:28 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:28 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:29 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:29 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:29 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:30 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:30 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:30 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[74/75] 6ypi_A:6ypi_A_R2             n= 1001 surprise 0.682  jump 0.577  rmsd_mean 0.644
+13:30:34 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:34 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:35 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:35 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:35 [WARNING] Skipping state set [46] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:36 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:36 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:36 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:37 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+13:30:37 [WARNING] Skipping state set [0] due to error in estimation: Some row and corresponding column of the count matrix C have zero counts..
+[75/75] 6ypi_A:6ypi_A_R3             n= 1001 surprise 0.813  jump 0.695  rmsd_mean 0.793
+
+=== AGGREGATE ===
+  75 trajectories -> 25 INDEPENDENT protein(s)
+
+--- NULL CONTROL (must all be ~0.50) ---
+  frame_to_frame_rmsd    0.518
+  surprise_only          0.503
+  local_outlier_factor   0.501
+  rmsd_from_mean         0.492
+  feature_zscore         0.486
+  density_only           0.485
+  pipeline_fused         0.485
+  isolation_forest       0.482
+  rarity_only            0.478
+  VERDICT: construction valid - junctions carry no positional bias
+
+=== NEAR MODE (median AUROC across proteins) ===
+  surprise_only          0.816  [IQR 0.774-0.840]  80% >= bar
+  pipeline_fused         0.666  [IQR 0.633-0.705]  4% >= bar
+  frame_to_frame_rmsd    0.608  [IQR 0.567-0.647]  0% >= bar
+  rarity_only            0.606  [IQR 0.550-0.623]  0% >= bar  (time-blind)
+  feature_zscore         0.595  [IQR 0.547-0.635]  0% >= bar  (time-blind)
+  isolation_forest       0.592  [IQR 0.562-0.625]  0% >= bar  (time-blind)
+  local_outlier_factor   0.589  [IQR 0.514-0.637]  0% >= bar  (time-blind)
+  density_only           0.572  [IQR 0.526-0.605]  0% >= bar  (time-blind)
+  rmsd_from_mean         0.487  [IQR 0.446-0.546]  0% >= bar  (time-blind)
+
+ACCEPTANCE: {
+  "C1_median_surprise_ge_0.75": {
+    "pass": true,
+    "value": 0.816
+  },
+  "C2_beats_best_blind_on_80pct": {
+    "pass": true,
+    "win_fraction": 1.0
+  },
+  "C3_blind_medians_in_band": {
+    "pass": true
+  },
+  "C4_wilcoxon_p_lt_0.05": {
+    "pass": true,
+    "p_value": 2.9802322387695312e-08
+  },
+  "overall_pass": true
+}
+
+saved -> validation/phase3_results.json

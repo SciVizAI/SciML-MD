@@ -1,0 +1,120 @@
+{
+  "n_proteins": 10,
+  "median_auroc_full": 0.8559761357804443,
+  "median_auroc_cap_indicator_only": 0.49949544628819537,
+  "median_auroc_excluding_capped": 0.8558779648942856,
+  "median_cap_rate_at_junctions": 0.0,
+  "median_cap_rate_elsewhere": 0.0010078281617740253,
+  "per_protein": {
+    "1g2r_A": {
+      "auroc_full": 0.6842834506542821,
+      "auroc_cap_indicator_only": NaN,
+      "auroc_excluding_capped": 0.6826861632993084,
+      "cap_rate_at_junctions": 0.0,
+      "cap_rate_elsewhere": 0.0,
+      "cap_rate_overall": 0.0,
+      "n_junction_frames": 7.5,
+      "n_frames_kept": 996.0,
+      "n_replicates": 2
+    },
+    "1j5u_A": {
+      "auroc_full": 0.802544182785633,
+      "auroc_cap_indicator_only": NaN,
+      "auroc_excluding_capped": 0.8015432503075346,
+      "cap_rate_at_junctions": 0.0,
+      "cap_rate_elsewhere": 0.0,
+      "cap_rate_overall": 0.0,
+      "n_junction_frames": 7.5,
+      "n_frames_kept": 996.0,
+      "n_replicates": 2
+    },
+    "1ois_A": {
+      "auroc_full": 0.8051149832596105,
+      "auroc_cap_indicator_only": 0.49949544628819537,
+      "auroc_excluding_capped": 0.8049407338693053,
+      "cap_rate_at_junctions": 0.0,
+      "cap_rate_elsewhere": 0.0010091074236092442,
+      "cap_rate_overall": 0.000999000999000999,
+      "n_junction_frames": 10.0,
+      "n_frames_kept": 995.0,
+      "n_replicates": 2
+    },
+    "1upt_D": {
+      "auroc_full": 0.8834588606697222,
+      "auroc_cap_indicator_only": 0.4994967255500306,
+      "auroc_excluding_capped": 0.8837635235604779,
+      "cap_rate_at_junctions": 0.0,
+      "cap_rate_elsewhere": 0.0010065488999388065,
+      "cap_rate_overall": 0.000999000999000999,
+      "n_junction_frames": 7.5,
+      "n_frames_kept": 995.0,
+      "n_replicates": 2
+    },
+    "2ad6_D": {
+      "auroc_full": 0.8740963855421686,
+      "auroc_cap_indicator_only": 0.4979919678714859,
+      "auroc_excluding_capped": 0.8753554022678269,
+      "cap_rate_at_junctions": 0.0,
+      "cap_rate_elsewhere": 0.002008032128514056,
+      "cap_rate_overall": 0.001998001998001998,
+      "n_junction_frames": 5.0,
+      "n_frames_kept": 994.0,
+      "n_replicates": 2
+    },
+    "2hnu_A": {
+      "auroc_full": 0.8575299168275536,
+      "auroc_cap_indicator_only": 0.49949544628819537,
+      "auroc_excluding_capped": 0.8576762523191095,
+      "cap_rate_at_junctions": 0.0,
+      "cap_rate_elsewhere": 0.0010091074236092442,
+      "cap_rate_overall": 0.000999000999000999,
+      "n_junction_frames": 10.0,
+      "n_frames_kept": 995.0,
+      "n_replicates": 2
+    },
+    "2vnl_A": {
+      "auroc_full": 0.8579242297140126,
+      "auroc_cap_indicator_only": NaN,
+      "auroc_excluding_capped": 0.8572042909512182,
+      "cap_rate_at_junctions": 0.0,
+      "cap_rate_elsewhere": 0.0,
+      "cap_rate_overall": 0.0,
+      "n_junction_frames": 7.5,
+      "n_frames_kept": 996.0,
+      "n_replicates": 2
+    },
+    "2w56_A": {
+      "auroc_full": 0.8833333333333333,
+      "auroc_cap_indicator_only": 0.4994979919678715,
+      "auroc_excluding_capped": 0.8836363636363637,
+      "cap_rate_at_junctions": 0.0,
+      "cap_rate_elsewhere": 0.001004016064257028,
+      "cap_rate_overall": 0.000999000999000999,
+      "n_junction_frames": 5.0,
+      "n_frames_kept": 995.0,
+      "n_replicates": 2
+    },
+    "3bpj_B": {
+      "auroc_full": 0.8544223547333349,
+      "auroc_cap_indicator_only": 0.49949544628819537,
+      "auroc_excluding_capped": 0.8545516388373531,
+      "cap_rate_at_junctions": 0.0,
+      "cap_rate_elsewhere": 0.0010091074236092442,
+      "cap_rate_overall": 0.000999000999000999,
+      "n_junction_frames": 10.0,
+      "n_frames_kept": 995.0,
+      "n_replicates": 2
+    },
+    "3bzl_D": {
+      "auroc_full": 0.8270870500256604,
+      "auroc_cap_indicator_only": 0.49949544628819537,
+      "auroc_excluding_capped": 0.827046485260771,
+      "cap_rate_at_junctions": 0.0,
+      "cap_rate_elsewhere": 0.0010091074236092442,
+      "cap_rate_overall": 0.000999000999000999,
+      "n_junction_frames": 10.0,
+      "n_frames_kept": 995.0,
+      "n_replicates": 2
+    }
+  }
+}

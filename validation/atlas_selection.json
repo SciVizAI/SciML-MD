@@ -1,0 +1,43 @@
+{
+  "picks": [
+    "5iqj_C",
+    "1o4k_A",
+    "4zmk_A",
+    "4eo1_A",
+    "2p58_A",
+    "6ypi_A",
+    "4zya_A",
+    "3ig9_C",
+    "2w56_A",
+    "3bzl_D",
+    "1ois_A",
+    "5z42_A",
+    "4jgi_A",
+    "2hnu_A",
+    "6l4p_B",
+    "1upt_D",
+    "3rmq_A",
+    "6kty_A",
+    "3dso_A",
+    "3bpj_B",
+    "4xo1_A",
+    "4v1g_B",
+    "1q2h_A",
+    "5cyz_C"
+  ],
+  "band": [
+    0.9,
+    3.5
+  ],
+  "length": [
+    60,
+    250
+  ],
+  "diversity_column": "div_MM",
+  "spearman_vs_rmsf": {
+    "div_SE": -0.7919611792033822,
+    "div_MM": -0.7316600130409621,
+    "avg_gyration": 0.21333580847848854,
+    "length": -0.12554518225670946
+  }
+}

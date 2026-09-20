@@ -25,3 +25,20 @@ __pycache__/
 
 # Keep pre-computed case study
 !sample_data/**/*.npy
+
+# macOS
+.DS_Store
+
+# --- Handoff examples (2026-09-20) -------------------------------------------
+# results/ and artifacts/ are ignored above, so an engineer cloning this repo
+# had NOTHING to build against: INTEGRATION.md described a file they could not
+# see. Three worked examples are force-added so the contract can be read, and
+# the interface built, without obtaining a single trajectory.
+!results/ATLAS_1g2r_A/
+!results/ATLAS_1g2r_A/**
+!results/ATLAS_2hnu_A/
+!results/ATLAS_2hnu_A/**
+!results/SAMPLE_1CRN/
+!results/SAMPLE_1CRN/**
+!viewer/
+!viewer/**

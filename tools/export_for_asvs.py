@@ -105,24 +105,41 @@ def create_per_frame_residue_json(
         return output
     
     n_frames = len(frame_scores)
-    
-    # Get dynamic residue scores if available
+
+    # Get dynamic residue scores if available.
+    # NOTE: residue_scores_dynamic.json is keyed by residue NAME (e.g. "MET41"),
+    # not by numeric index — the previous str(res_idx) lookup never matched, so
+    # every residue silently fell back to 0.5 and the export was constant
+    # (validated: exports/8H0R/anomaly_residue.json was 0.25 everywhere).
+    # Residue order in the JSON follows CA-atom order, so we map by position.
     dynamic_scores = residue_scores.get('dynamic', {})
-    
+    dynamic_values = [float(v) for v in dynamic_scores.values()]  # [0, 100]
+
+    # Frame score column: pipeline writes 'score_dynamic' (in [0, 100]);
+    # legacy exports used 'score'.
+    if 'score_dynamic' in frame_scores.columns:
+        frame_vals = frame_scores['score_dynamic'].to_numpy(dtype=float) / 100.0
+    elif 'score' in frame_scores.columns:
+        frame_vals = frame_scores['score'].to_numpy(dtype=float)
+    else:
+        frame_vals = np.full(n_frames, 0.5)
+
     for frame_idx in range(n_frames):
         frame_data = {}
-        # Get frame-level score
-        frame_score = float(frame_scores.iloc[frame_idx]['score']) if 'score' in frame_scores.columns else 0.5
-        
+        frame_score = float(frame_vals[frame_idx])
+
         for res_idx in range(n_residues):
-            # Combine frame score with residue importance
-            res_score = float(dynamic_scores.get(str(res_idx), 0.5))
+            # Positional lookup into the residue score list ([0,100] -> [0,1])
+            if res_idx < len(dynamic_values):
+                res_score = dynamic_values[res_idx] / 100.0
+            else:
+                res_score = 0.5
             # Weight by frame score
             combined = res_score * frame_score
             frame_data[str(res_idx)] = round(combined, 6)
-        
+
         output[str(frame_idx)] = frame_data
-    
+
     return output
 
 
